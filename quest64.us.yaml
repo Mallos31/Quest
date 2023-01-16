@@ -53,7 +53,7 @@ segments:
       - [0x32840, c]
       - [0x328F0, c]
       - [0x34450, c, initialize]
-      - [0x346E0, asm, asmreatethread]
+      - [0x346E0, asm, createthread]
       - [0x34830, asm, startthread]
       - [0x34980, asm, pimgr]
       - [0x34B10, asm, createmesgqueue]

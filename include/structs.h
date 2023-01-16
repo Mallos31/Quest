@@ -340,21 +340,21 @@ typedef struct unk_1d8b0_s
 ///*0x3C*/    char unk3C[0x860];
 //} Message; // size = 0x89C
 
-typedef struct player_Action_s
-{
-   /*0x00*/ s16 unk0;
-   /*0x02*/ s16 unk2; //pad? 
-   /*0x04*/ s16 dustTimer;
-   /*0x06*/ s16 doorSide;
-   /*0x08*/ u16 unk8;
-   /*0x0A*/ s16 unkA; //unconfirmed type
-   /*0x0C*/ s32 unkC; //unconfirmed type
-   /*0x10*/ void* unk10; //pointer to beginning of player struct 
-   /*0x14*/ f32 xpos;
-   /*0x18*/ f32 ypos;
-   /*0x1C*/ f32 zpos;
-    
-}sPlayerAction;
+//typedef struct player_Action_s
+//{
+//   /*0x00*/ s16 unk0;
+//   /*0x02*/ s16 unk2; //pad? 
+//   /*0x04*/ s16 dustTimer;
+//   /*0x06*/ s16 doorSide;
+//   /*0x08*/ u16 unk8;
+//   /*0x0A*/ s16 unkA; //unconfirmed type
+//   /*0x0C*/ s32 unkC; //unconfirmed type
+//   /*0x10*/ void* unk10; //pointer to beginning of player struct 
+//   /*0x14*/ f32 xpos;
+//   /*0x18*/ f32 ypos;
+//   /*0x1C*/ f32 zpos;
+//    
+//}sPlayerAction;
 
 typedef struct unk_30e10_s
 {

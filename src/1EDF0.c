@@ -8,6 +8,24 @@
 #define R_CBUTTONS	CONT_F
 #define D_CBUTTONS	CONT_D
 
+typedef struct player_Action_s
+{
+            s16 unk0;
+            s16 unk2;
+            s16 dustTimer;
+            s16 doorSide;
+            u16 unk8;
+            s16 unkA;
+            s32 unkC;
+            void* unk10;
+            f32 xpos;
+            f32 ypos;
+            f32 zpos;
+            char unk1C[0x18];
+            f32 unk38; //
+            char unk3C[0x3C];
+            BrianData1* unk78;            
+}sPlayerAction;
 
 typedef struct {
     s16 unk0;
@@ -95,6 +113,7 @@ typedef struct {
     char unk0[0x10];
     unk1f3dcTEST2* unk10;
 }unk1f3dcTEST;
+extern sPlayerAction D_8007BAB8;
 
 extern u8 D_8007BAA4;
 extern u8 D_8007BAA5;
@@ -127,6 +146,7 @@ extern s32 D_8008C64C;
 extern Mtx D_2000000[];
 extern Gfx D_803A8EA0[]; //Compass Display List
 extern Gfx D_803A8C80[];
+extern f64 D_800716C8;
 
 void func_8001EBDC(unk1ebdcs* arg0);
 void func_8001EA84(Mtx *arg0);
@@ -332,7 +352,35 @@ void func_8001FA60(u16 monsterNum) {
         func_80020F8C(sp44 - 4, sp40 - 0x2A, 0x18, 0x2A, 0, 0, 0x400, 0x400);
     }
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FB94.s")
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FB94.s")
+void func_8001FB94(void) {
+
+    s32 sp5C;
+    s32 sp58;
+    s32 pad;
+    f32 temp = D_8007BAB8.unk38 * D_8007BAB8.unk78->unk1C;
+    
+    if (func_8002413C(D_8007BAB8.xpos, 
+        D_8007BAB8.ypos + temp, 
+        D_8007BAB8.zpos, 
+        &sp5C, 
+        &sp58) != 0) {
+        
+        gDPPipeSync(gMasterGfxPos++);
+        gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A2960);
+        gDPTileSync(gMasterGfxPos++);
+        gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | 
+            G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+        
+        gDPLoadSync(gMasterGfxPos++);
+        gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 255);
+        gDPPipeSync(gMasterGfxPos++);
+        
+        
+        func_800210FC(&D_803A6F70, sp5C - 0x17, sp58 - 0xF, 0x2E, 0xF, 0x51, 0x31, 0x400, 0x400);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FCF8.s")
 
@@ -436,10 +484,34 @@ void func_80020888(void) {
         var_v1--;
     }
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800208B8.s") 
-//https://decomp.me/scratch/e4B4a
-/*This function seems to use the EnemyBattleData struct, but also references the 
-BrianData2 struct at the same time. This may mean that both structs are identical*/
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800208B8.s") 
+void func_800208B8(MonsterBattleData* arg0) {
+    MonsterBaseData* temp_v1;
+    s32 i;
+    u16 temp_a1;
+    unk20888s* var_v0;
+
+    var_v0 = &D_8008C668;
+    for (i = 7; i != 0 && var_v0->unk0 != 0; i--, var_v0++) {
+        
+    }
+    var_v0->unk0 = 0x2D;
+    var_v0->unk4 = arg0;
+    var_v0->unk10 = 0.0f;
+    var_v0->unk8 = 0.0f;
+    temp_v1 = arg0->unk64;
+    if (temp_v1->monsterType == ON_GROUND) {
+        var_v0->unkC = temp_v1->hitboxWidth * arg0->scale;
+    } else if (temp_v1->monsterType == FLYING) {
+        var_v0->unkC = arg0->unk68->unk94 - arg0->y;
+    } else {
+        var_v0->unkC = (f32) ((f64) arg0->scale * D_800716C8);
+    }
+    var_v0->unk14 = 0x23;
+    var_v0->unk16 = 0x31;
+    var_v0->unk18 = 0x29;
+    var_v0->unk1A = 0xE;
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020988.s")
 void func_80020988(void)

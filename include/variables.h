@@ -171,7 +171,6 @@ extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
 extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
 extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
 
-extern sPlayerAction D_8007BAB8; //Player action. 
 extern Gfx D_803A8C08[]; //exclamation mark display list
 extern Gfx* gMasterGfxPos;
 
