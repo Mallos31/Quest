@@ -1,0 +1,16 @@
+# folders
+assets/
+build/
+expected/
+junk/
+__pycache__/
+tools/
+nonmatchings/
+decomp-permuter/
+
+# files
+*.ld
+*.ok
+*auto.txt
+*.z64
+*.old

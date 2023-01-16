@@ -1,0 +1,360 @@
+osScAddClient             = 0x800007d4;
+
+Inventory_Init            = 0x80021170;
+
+ScreenDimInit             = 0x800228E0;
+DimScreen				  = 0x800228F8;
+SetupScreenDim			  = 0x80022B08;
+
+osInitialize         	  = 0x80033850;
+osCreateThread       	  = 0x80033AE0;
+osStartThread        	  = 0x80033C30;
+osCreatePiManager   	  = 0x80033D80;
+osCreateMesgQueue    	  = 0x80033F10;
+osViSetEvent         	  = 0x80033f40;
+osSetEventMesg            = 0x80033fb0;
+
+osRecvMesg           	  = 0x80034020;
+osSetIntMask        	  = 0x80034160;
+osSendMesg           	  = 0x80034200;
+osWritebackDCacheAll      = 0x80034350;
+osSpTaskYield             = 0x80034380;
+osSpTaskYielded           = 0x800343a0;
+_VirtualToPhysicalTask    = 0x80034420;
+osSpTaskLoad              = 0x8003452c;
+osSpTaskStartGo           = 0x80034694;
+osViRepeatLine            = 0x800346e0;
+osViSwapBuffer 	          = 0x80034750;
+osViGetCurrentFramebuffer = 0x800347a0;
+osCreateViManager         = 0x80034840;
+viMgrMain                 = 0x800349c8;
+osViSetMode               = 0x80034ba0;
+osViSetSpecialFeatures    = 0x80034c10;
+osVirtualToPhysical 	  = 0x80034dd0;
+osWritebackDCache         = 0x80034e50;
+osGetTime                 = 0x80034ed0;
+_nsqrtf                   = 0x80034f60;
+guPositionF               = 0x80034f70;
+
+guPosition                = 0x80035120;
+sins                      = 0x80035190;
+guMtxF2L                  = 0x80035200;
+guMtxIdentF               = 0x80035300;
+guMtxIdent                = 0x80035388;
+guMtxXFMF                 = 0x80035470;
+guMtxCatF                 = 0x80035510;
+sinf                      = 0x80035680;
+guOrthoF                  = 0x80035840;
+guOrtho                   = 0x80035994;
+guPerspectiveF            = 0x80035a00;
+guPerspective             = 0x80035c30;
+guLookAtReflectF          = 0x80035c90;
+
+guLookAtReflect           = 0x800360d0;
+guTranslateF              = 0x80036150;
+guTranslate               = 0x80036198;
+cosf                      = 0x800361f0;
+proutSprintf              = 0x80036360;
+sprintf                   = 0x80036384;
+osInvalICache             = 0x800363e0;
+osInvalDCache             = 0x80036460;
+osPiStartDma              = 0x80036510;
+alHeapInit                = 0x80036620;
+alHeapDBAlloc 			  = 0x80036660;
+osAiSetFrequency 		  = 0x800366c0;
+alUnlink 				  = 0x80036820;
+alLink 				      = 0x80036850;
+alClose                   = 0x80036874;
+alInit                    = 0x800368ac;
+alSeqpSetVol 			  = 0x800368e0;
+_timeToSamplesNoRound     = 0x80036928;
+_freePVoice               = 0x80036980;
+_collectPVoices           = 0x800369b8;
+__freeParam               = 0x80036a18;
+__allocParam              = 0x80036a30;
+alAudioFrame 			  = 0x80036a68;
+alSynNew                  = 0x80036d00;
+
+osAiGetLength 			  = 0x80037000;
+osAiSetNextBuffer 		  = 0x80037010;
+n_alSeqpGetVol 			  = 0x800370c0;
+__CSPPostNextSeqEvent     = 0x800370d0;
+
+alCSPNew                  = 0x80038190;
+alBnkfNew 			      = 0x80038404;
+alSeqFileNew              = 0x80038508;
+alSeqpSetBank             = 0x80038550;
+__getTrackByte            = 0x800386d0;
+__readVarLen              = 0x80038794;
+alCSeqNextEvent           = 0x800387f4;
+alCSeqNew 				  = 0x80038aec;
+alCSeqNewMarker           = 0x80038c00;
+__alCSeqNextDelta         = 0x80038edc;
+
+alCSPSetSeq 			  = 0x80039050;
+alSeqpPlay 				  = 0x80039090;
+alSeqpStop 				  = 0x800390c0;
+alSeqpGetState 			  = 0x800390f0;
+_removeEvents             = 0x80039100;
+_handleEvent              = 0x8003918c;
+alSndpNew 				  = 0x800396d4;
+alSndpAllocate 			  = 0x80039810;
+alSndpSetSound 			  = 0x800398b0;
+alSndpGetState 			  = 0x800398d0;
+alSndpPlay 				  = 0x800398f0;
+alSndpStop 				  = 0x80039960;
+alSndpSetPitch 			  = 0x800399b0;
+alSndpSetVol 			  = 0x80039a10;
+alSndpSetPan 			  = 0x80039a70;
+__ull_div                 = 0x80039b38;
+__ll_mul                  = 0x80039c38;
+osPfsInitPak              = 0x80039d90;
+
+osMotorStop               = 0x8003a000;
+osMotorStart              = 0x8003a1a0;
+_MakeMotorData            = 0x8003a340;
+osMotorInit               = 0x8003a4bc;
+osContInit                = 0x8003a7e0;
+__osContGetInitData       = 0x8003a9d8;
+__osPackRequestData       = 0x8003aaa8;
+osContSetCh               = 0x8003aba0;
+osContStartReadData       = 0x8003ac10;
+osContGetReadData         = 0x8003ac9c;
+__osPackReadData          = 0x8003ad44;
+osPfsFileState            = 0x8003ae30;
+
+osPfsFreeBlocks           = 0x8003b120;
+osPfsAllocateFile         = 0x8003b270;
+__osPfsDeclearPage        = 0x8003b6f4;
+__osClearPage             = 0x8003b958;
+osPfsDeleteFile           = 0x8003ba20;
+__osPfsReleasePages       = 0x8003bd00;
+__osBlockSum              = 0x8003bf38;
+
+__osPfsGetNextPage        = 0x8003c030;
+osPfsReadWriteFile        = 0x8003c12c;
+osPfsNumFiles             = 0x8003c790;
+osContStartQuery          = 0x8003c8e0;
+osContGetQuery            = 0x8003c964;
+__osSetSR                 = 0x8003c990;
+__osGetSR                 = 0x8003c9a0;
+__osSetFpcCsr             = 0x8003c9b0;
+__osSpRawReadIo           = 0x8003c9c0;
+__osSpRawWriteIo          = 0x8003ca10;
+send_mesg                 = 0x8003cfa4;
+
+__osEnqueueAndYield       = 0x8003d08c;
+__osEnqueueThread         = 0x8003d18c;
+__osPopThread             = 0x8003d1d4;
+__osDispatchThread        = 0x8003d1e4;
+osMapTLBRdb               = 0x8003d370;
+osPiRawReadIo             = 0x8003d3d0;
+bzero                     = 0x8003d430;
+__osDisableInt            = 0x8003d4d0;
+__osRestoreInt            = 0x8003d4f0;
+__osDequeueThread         = 0x8003d510;
+osCartRomInit             = 0x8003d550;
+//__osSiGetAccess           = 0x8003d7a0;
+//__osSiRelAccess           = 0x8003d7e4;
+osGetThreadPri            = 0x8003d810;
+osSetThreadPri            = 0x8003d830;
+osPiRawStartDma           = 0x8003d910;
+osEPiRawStartDma          = 0x8003d9f0;
+__osDevMgrMain            = 0x8003dc20;
+alEvtqFlush               = 0x8003fdfc;
+
+__osViInit                = 0x8003e0b0;
+__osSpSetStatus           = 0x8003e1f0;
+__osSpGetStatus           = 0x8003e200;
+bcopy                     = 0x8003e210;
+__osSpSetPc               = 0x8003e520;
+__osSpRawStartDma         = 0x8003e560;
+__osSpDeviceBusy          = 0x8003e5f0;
+__osTimerServicesInit     = 0x8003e620;
+__osTimerInterrupt        = 0x8003e6ac;
+__osSetTimerIntr          = 0x8003e824;
+__osInsertTimer           = 0x8003e898;
+__osViGetCurrentContext   = 0x8003ea20;
+__osViSwapContext         = 0x8003ea30;
+osGetCount                = 0x8003ed90;
+__osProbeTLB              = 0x8003eda0;
+_Putfld                   = 0x8003ee60;
+
+_Printf                   = 0x8003f4d0;
+memcpy                    = 0x8003fb20;
+strlen                    = 0x8003fb4c;
+strchr                    = 0x8003fb74;
+osJamMesg                 = 0x8003fbc0;
+osPiGetCmdQueue           = 0x8003fd10;
+alSynDelete               = 0x8003fd40;
+alEvtqFlushType           = 0x8003fd50;
+alEvtqPostEvent           = 0x8003fe6c;
+alEvtqNextEvent           = 0x8003ff90;
+
+alEvtqNew                 = 0x8004001c;
+alSaveNew                 = 0x80040090;
+alMainBusNew              = 0x800400d4;
+alAuxBusNew               = 0x80040128;
+alResampleNew             = 0x8004017c;
+alLoadNew                 = 0x80040204;
+alEnvmixerNew             = 0x800402ac;
+init_lpfilter             = 0x80040350;
+alFxNew                   = 0x800403f0;
+alSynAllocFX              = 0x80040830;
+alMainBusParam            = 0x800408d0;
+alMainBusPull             = 0x80040900;
+alLoadParam               = 0x80040a20;
+alRaw16Pull               = 0x80040bf4;
+_decodeChunk              = 0x80040fa0;
+
+alAdpcmPull               = 0x800410cc;
+alResampleParam           = 0x80041570;
+alResamplePull            = 0x8004165c;
+_frexpf                   = 0x80041898;
+alEnvmixerParam           = 0x80041984;
+_getRate                  = 0x80041a64;
+_getVol                   = 0x80041ecc;
+alEnvmixerPull            = 0x80041f7c;
+
+alAuxBusParam             = 0x800424d0;
+alAuxBusPull              = 0x80042500;
+alSaveParam               = 0x800425e0;
+alSavePull                = 0x80042614;
+__osAiDeviceBusy          = 0x800426a0;
+__setInstChanState        = 0x800426d0;
+__resetPerfChanState      = 0x80042724;
+__initFromBank            = 0x800427a4;
+__vsDelta                 = 0x80042860;
+__vsVol                   = 0x80042884;
+__seqpReleaseVoice        = 0x8004290c;
+__voiceNeedsNoteKill      = 0x80042a38;
+__unmapVoice              = 0x80042ae0;
+__postNextSeqEvent        = 0x80042b50;
+__handleMetaMsg           = 0x80042c2c;
+__vsPan                   = 0x80042ca4;
+__lookupVoice             = 0x80042cec;
+__mapVoice                = 0x80042d60;
+__lookupSoundQuick        = 0x80042dd0;
+__handleMIDIMsg           = 0x80042ecc;
+
+__handleNextSeqEvent      = 0x800436ec;
+__seqpStopOsc             = 0x80043d10;
+__initChanState           = 0x80043e14;
+alSeqpNew                 = 0x80043e84;
+
+alSynAddPlayer            = 0x80044010;
+alSynStopVoice            = 0x80044060;
+alSynFreeVoice            = 0x800440e0;
+alSynSetVol               = 0x80044190;
+alSynSetPitch             = 0x80044230;
+_allocatePVoice           = 0x800442c0;
+alSynAllocVoice           = 0x800443a8;
+alCents2Ratio             = 0x800444f0;
+alSynStartVoiceParams     = 0x80044540;
+alSynSetPan               = 0x80044630;
+alSynSetFXMix             = 0x800446c0;
+alSynStartVoice           = 0x80044760;
+__osSiCreateAccessQueue	  = 0x800447f0;
+__osSiGetAccess           = 0x80044840;
+__osSiRelAccess           = 0x80044884;
+__osPfsGetStatus          = 0x800448b0;
+__osPfsRequestOneChannel  = 0x80044994;
+__osPfsGetOneChannelData  = 0x80044a54;
+__osSumcalc               = 0x80044af0;
+__osIdCheckSum            = 0x80044b4c;
+__osRepairPackId          = 0x80044bb4;
+__osCheckPackId           = 0x80044fcc;
+
+__osGetId				  = 0x80045164;
+__osCheckId               = 0x800453c0;
+__osPfsRWInode            = 0x800454bc;
+__osPfsSelectBank         = 0x800457dc;
+__osContRamRead           = 0x80045850;
+__osPackRamReadData       = 0x80045a6c;
+osPfsChecker              = 0x80045bb0;
+
+corrupted_init            = 0x80046274;
+corrupted                 = 0x80046428;
+osPfsIsPlug               = 0x80046610;
+__osPfsRequestData        = 0x800467b0;
+__osPfsGetInitData        = 0x80046880;
+__osSiRawStartDma         = 0x80046950;
+__osContAddressCrc        = 0x80046a00;
+__osContDataCrc           = 0x80046ab0;
+__osContRamWrite          = 0x80046b80;
+_osPackRamWriteData       = 0x80046d84;
+osSetTimer                = 0x80046ee0;
+osPfsFindFile             = 0x80046fc0;
+
+
+__osSiDeviceBusy          = 0x80047180;
+__osLeoInterrupt          = 0x800471b0;
+__osLeoResume             = 0x80047854;
+_osLeoAbnormalResume      = 0x8004793c;
+osDestroyThread           = 0x80047a30;
+__osResetGlobalIntMask    = 0x80047b30;
+osEPiRawWriteIo           = 0x80047b90;
+osEPiRawReadIo            = 0x80047be0;
+__osSetGlobalIntMask      = 0x80047c30;
+osYieldThread             = 0x80047c80;
+__osSetCompare            = 0x80047cd0;
+_Litob                    = 0x80047ce0;
+_Ldtob                    = 0x80047f80;
+
+_Genld                    = 0x800484f0;
+alCopy                    = 0x80048a40;
+alFilterNew               = 0x80048ac0;
+_doModFunc                = 0x80048ae0;
+_filterBuffer             = 0x80048b88;
+_saveBuffer               = 0x80048c40;
+_loadBuffer               = 0x80048dc8;
+_loadOutputBuffer         = 0x80048f54;
+
+alFxParam                 = 0x800493d4;
+alFxPull                  = 0x800493ec;
+alSeqSetLoc               = 0x8004974c;
+alSeqGetTicks             = 0x80049768;
+readVarLen                = 0x80049778;
+alSeqNextEvent            = 0x800497c4;
+alSeqNewMarker            = 0x80049948;
+__alSeqNextDelta          = 0x80049ba0;
+read32                    = 0x80049bf8;
+read16                    = 0x80049c48;
+alSeqNew                  = 0x80049c78;
+alSynSetPriority          = 0x80049d50;
+ldiv                      = 0x80049e60;
+
+dlScreenDimRectangle      = 0x8004D4F0;
+
+osClockRate               = 0x8006F400
+//__osPiTable               = 0x8006f43c; 
+
+__osContinitialized		  = 0x800709C0;
+gameMode                  = 0x8007b2e0;
+gMasterGfxPos             = 0x8007B2FC;
+
+gNextSubmap				  = 0x80084ee8;
+gAllowBattles             = 0x80084f10;
+gMapData                  = 0x80084f18;
+
+currentTime               = 0x800859d0;
+dayLength				  = 0x800859d4;
+currentDay				  = 0x800859e0;
+
+gInventoryScrollAmt       = 0x8008C760;
+gInvHighlightedItemIndex  = 0x8008c764;
+
+gVisibleInvItemIDs        = 0x8008C770;
+gInventory                = 0x8008CF78;
+
+gLastInvSlot              = 0x8008D00D;
+gScreenDimFlags           = 0x8008D020;
+gScreenDimTimer           = 0x8008D024;
+gScreenDimRGBA            = 0x8008D028;
+
+__osContPifRam            = 0x80095450;
+__osContLastCmd           = 0x80095490;
+__osMaxControllers        = 0x80095491;
+__osEepromTimerQ          = 0x800954B8;
+__osEepromTimerMsg        = 0x800954D0;
+__osPfsPifRam             = 0x80095660;
