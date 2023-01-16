@@ -560,54 +560,48 @@ void func_80020988(void)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020B4C.s")
 
-/*
-void func_80020B4C(s32 arg0, s32 arg1, s32 arg2, u8 *arg3)
-{
-  s32 i;
-  u8 *var_v0;
-    
-  gDPPipeSync(gMasterGfxPos++);
-  gDPSetTextureImage(gMasterGfxPos++, 0, G_IM_SIZ_16b, 1, D_803A6FB0[arg2]);
-  gDPTileSync(gMasterGfxPos++);
-  gDPSetTile(gMasterGfxPos++, 0, G_IM_SIZ_4b, 0, 0x0100, 7, 0, 0 | 0, 0, 0, 0 | 0, 0, 0);
-  gDPLoadSync(gMasterGfxPos++);
-  gDPLoadTLUTCmd(gMasterGfxPos++, 7, 15);
-  gDPPipeSync(gMasterGfxPos++);
-    
-  if ((*arg3) != 0)
-  {
-    do
-    {
-      if ((*arg3) == ' ')
-      {
-        arg3 += 1;
-        arg0 += 6;
-      }
-      else
-      {
-        var_v0 = D_8004D44C;
-        i = 0;
-        loop_4:
-        if ((*var_v0) != (*arg3))
-        {
-          i += 1;
-          var_v0 += 1;
-          if (i != 0x2C)
-          {
-            goto loop_4;
-          }
-          i = 0;
-        }
+/*void func_80020B4C(s32 arg0, s32 arg1, s32 arg2, u8* arg3) {
 
-        func_800210FC((s32) (&D_803A6F80), arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
-        arg0 += 6;
-        arg3 += 1;
-      }
+    s32 i;
+    u8* var_v0; 
+
+    gDPPipeSync(gMasterGfxPos++);
+
+    
+    gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A6FB0[arg2]);
+
+    gDPTileSync(gMasterGfxPos++);
+
+    gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | 
+        G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+
+    gDPLoadSync(gMasterGfxPos++);
+
+    gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 15);    
+
+    gDPPipeSync(gMasterGfxPos++);
+
+    if (*arg3 != 0) {
+        do {
+            if (*arg3 == 0x20) {
+                arg3 += 1;
+                arg0 += 6;
+            } else {
+                var_v0 = &D_8004D44C;
+                for (i = 0; i < 0x2C; i++) {
+                    if (*var_v0 != *arg3) {
+                        var_v0 += 1;
+                    } else {
+                     break;
     }
-    while ((*arg3) != 0);
-  }
 }
-*/
+                func_800210FC((s32) &D_803A6F80, arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
+                arg0 += 6;
+                arg3 += 1;
+            }
+        } while (*arg3 != 0);
+    }
+}*/
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D18.s")

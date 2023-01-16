@@ -218,6 +218,8 @@ segments:
       - [0x4ABC0, bin, ucode]
       - [0x4BFF0, bin]  # TBD whether this is actually code
       - [0x71AF0, bin]
+      #- [0x72350, rodata, 2C110]
+      - [0x725D0, bin]
       - [0x72650, .rodata, 31F00]
       - [0x72680, bin]
       - [0x72FD0, bin, ucode_data]
