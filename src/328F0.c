@@ -17,13 +17,32 @@ typedef struct {
     s8 unk2;
 }unk31cf0s;
 
+extern unk32218s D_8006CC88;
+extern unk32218s D_8006E288;
+extern unk32218s D_8006E298;
+extern u8 D_80092D0E;
+extern u16 D_80092D1A;
+extern s32 D_80092D1C;
 extern s32 D_80092D20; //Probably a struct/array
 extern s32 D_80092D30;
 extern s16 D_80092D34;
 extern s16 D_80092D36;
+extern s32 D_8006E4B4;
+extern OSMesgQueue* D_80092D28;
+extern void* D_80092D2C;
+extern void* D_8006E4B8[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031CF0.s")
-
+//
+//{
+//  if (arg0 >= 1000)
+//  {
+//    arg0 = 999;
+//  }
+//  arg1->unk0 = (s8) (((arg0 / 100) + ((arg0 < 100) ^ 1)) + 0xF);
+//  arg1->unk1 = (s8) ((((((s32) (arg0 % 100)) / 10) + ((arg0 < 10) ^ 1)) ^ ((arg0 / 100) * 0)) + 0xF);
+//  arg1->unk2 = (s8) ((arg0 % 10) + 0x10);
+//}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031DD4.s")
 
@@ -42,7 +61,7 @@ void func_80031F1C(s16 arg0, s16 arg1) {
     if (var_s0 != 0) {
         do {
             arg0++;
-            func_80031DD4((s32) var_s0);
+            func_80031DD4(var_s0);
             var_s0 = *arg0;
         } while (var_s0 != 0);
     }
@@ -70,7 +89,22 @@ void func_80032218(unk32218s* arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003228C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003228C.s")
+void func_8003228C(void)
+{
+  s32 temp_v0;
+  osWritebackDCacheAll();
+  osRecvMesg(D_80092D28, &D_80092D2C, 1);
+  if (D_80092D1C != 0)
+  {
+    osViSwapBuffer(D_8006E4B8[D_8006E4B4 & 1]);
+    temp_v0 = D_8006E4B4 + 1;
+    do { 
+        D_8006E4B4 = temp_v0; D_80092D20 = D_8006E4B8[temp_v0 & 1]; 
+       } while (0);
+    D_80092D1C = 0;
+  }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003232C.s")
 
@@ -88,6 +122,27 @@ void func_80032560(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_800325FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003265C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003265C.s")
+void func_8003265C(void) {
+    s32 var_s0;
+    u8 temp_v0;
+
+    func_80032218(&D_8006CC88, 0xF0);
+    func_80032560(D_80092D1A);
+    temp_v0 = D_80092D0E;
+    if (temp_v0 != 0) {
+        func_80032218(&D_8006E288, 1);
+    }
+    temp_v0 = D_80092D0E;
+    if ((s32) temp_v0 < 0xA) {
+        func_80032218(&D_8006E298, 1);
+    }
+    var_s0 = 0;
+    do {
+        func_8003232C(var_s0);
+        var_s0 += 1;
+    } while (var_s0 != 6);
+    D_80092D1C = 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80032704.s")

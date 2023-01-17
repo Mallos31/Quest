@@ -5,7 +5,9 @@ Inventory_Init            = 0x80021170;
 ScreenDimInit             = 0x800228E0;
 DimScreen				  = 0x800228F8;
 SetupScreenDim			  = 0x80022B08;
-
+UpdateBGM                 = 0x800267B8;
+UpdateBGMDelay            = 0x800267F8;
+func_8002684C                = 0x8002684C;
 osInitialize         	  = 0x80033850;
 osCreateThread       	  = 0x80033AE0;
 osStartThread        	  = 0x80033C30;
@@ -351,6 +353,10 @@ gLastInvSlot              = 0x8008D00D;
 gScreenDimFlags           = 0x8008D020;
 gScreenDimTimer           = 0x8008D024;
 gScreenDimRGBA            = 0x8008D028;
+
+gCurrentBGM               = 0x8008FCC1;
+gPlayBGM                  = 0x8008FCC2;
+gBGMDelay                 = 0x8008FCC4;
 
 __osContPifRam            = 0x80095450;
 __osContLastCmd           = 0x80095490;

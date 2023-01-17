@@ -4,53 +4,54 @@ extern u8 D_80053CAC;
 extern u8 D_8008FCC6;
 
 typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s8 unk4;
-}unk53B00s;
+    s16 map;
+    s16 submap;
+    s8 bgm;
+    s8 pad;
+}bgmData;
 
-extern unk53B00s D_80053B00;
+
+extern bgmData D_80053B00[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_800265F0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_80026658.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_800267B8.s")
-void func_800267B8(s8 arg0) { //UpdateBGM
-    if (arg0 != gCurrentBGM) {
-        gCurrentBGM = arg0;
+//#pragma GLOBAL_ASM("asm/nonmatchings/271F0/UpdateBGM.s")
+void UpdateBGM(s8 newBGM) { //UpdateBGM
+    if (newBGM != gCurrentBGM) {
+        gCurrentBGM = newBGM;
         gPlayBGM |= 1;
     }
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_800267F8.s")
-void func_800267F8(s8 arg0, u16 arg1) {
-    if (arg0 != gCurrentBGM) {
-        gCurrentBGM = arg0;
+//#pragma GLOBAL_ASM("asm/nonmatchings/271F0/UpdateBGMDelay.s")
+void UpdateBGMDelay(s8 newBGM, u16 delay) {
+    if (newBGM != gCurrentBGM) {
+        gCurrentBGM = newBGM;
         gPlayBGM |= 1;
-        gBGMDelay = arg1 & 0xFFFF;
+        gBGMDelay = delay & 0xFFFF;
     }
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_8002684C.s")
-void func_8002684C(s32 arg0, s32 arg1, u16 arg2) {
-    s16 temp_a2;
-    s32 var_v1;
-    unk53B00s* var_v0;
+void func_8002684C(s32 nextMap, s32 nextSubmap, u16 delay) {
+    s32 mapNum;
+    bgmData* bgmData;
 
-    var_v0 = &D_80053B00;
+    bgmData = D_80053B00;
 
-    for (var_v1 = 0x46; var_v1 != 0; var_v1--) {
-        if ((arg0 == var_v0->unk0) && ((arg1 == var_v0->unk2) || (var_v0->unk2 == -1))) {
+    for (mapNum = 0x46; mapNum != 0; mapNum--) {
+        if ((nextMap == bgmData->map) && ((nextSubmap == bgmData->submap) || (bgmData->submap == -1))) {
             break;
         }
-        var_v0++;
+        bgmData++;
     }
-    if (var_v1 != 0) {
-        if (gCurrentBGM != var_v0->unk4) {
-            gCurrentBGM = var_v0->unk4;
+    if (mapNum != 0) {
+        if (gCurrentBGM != bgmData->bgm) {
+            gCurrentBGM = bgmData->bgm;
             gPlayBGM |= 1;
-            gBGMDelay = arg2;
+            gBGMDelay = delay;
         }
     }
 }
