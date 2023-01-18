@@ -113,6 +113,7 @@ typedef struct {
     char unk0[0x10];
     unk1f3dcTEST2* unk10;
 }unk1f3dcTEST;
+
 extern sPlayerAction D_8007BAB8;
 
 extern u8 D_8007BAA4;

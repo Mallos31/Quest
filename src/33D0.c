@@ -35,8 +35,16 @@ typedef struct {
     s16 unk4;
 }unk6604s;
 
+typedef struct {
+    s32 start;
+    s32 end;
+}fileBounds;
+
+extern fileBounds D_80053F58[];
+
 void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2);
 void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2);
+void func_80006720(BrianData2* arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800027D0.s")
 
@@ -131,8 +139,27 @@ void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_8000669C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006720.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006720.s") 
+//!TODO matches, but keeps putting 8004C270 into .rodata
 
+/*void func_80006720(BrianData2* arg0) {
+    s32 start;
+    s32 size;
+    fileBounds* fb;
+    static s32 D_8004C270 = 0; // or could be .bss
+
+    if (D_8004C270 != arg0->animID) {
+
+        D_8004C270 = arg0->animID;
+        
+        fb = &D_80053F58[D_8004C270];      
+        
+        start = fb->start;
+        size = fb->end - start;      
+        
+        func_80024260(start, 0x80200000, size);
+    }
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006774.s")
 
