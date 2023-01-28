@@ -562,48 +562,43 @@ void func_80020988(void)
 #pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020B4C.s")
 
 /*void func_80020B4C(s32 arg0, s32 arg1, s32 arg2, u8* arg3) {
+    s32 var_v1_2;
+    u8* var_v0;
+    
+    gDPPipeSync(gMasterGfxPos++);
 
-    s32 i;
-    u8* var_v0; 
-
+    gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A6FB0[arg2]);
+        
+    gDPTileSync(gMasterGfxPos++);
+    
+    gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | 
+        G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    
+    gDPLoadSync(gMasterGfxPos++);
+    
+    gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 15);
+    
     gDPPipeSync(gMasterGfxPos++);
 
     
-    gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A6FB0[arg2]);
-
-    gDPTileSync(gMasterGfxPos++);
-
-    gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | 
-        G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-
-    gDPLoadSync(gMasterGfxPos++);
-
-    gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 15);    
-
-    gDPPipeSync(gMasterGfxPos++);
-
-    if (*arg3 != 0) {
-        do {
+        while (*arg3 != 0) {
             if (*arg3 == 0x20) {
                 arg3 += 1;
                 arg0 += 6;
             } else {
-                var_v0 = &D_8004D44C;
-                for (i = 0; i < 0x2C; i++) {
+                for (var_v0 = &D_8004D44C, var_v1_2 = 0; var_v1_2 != 0x2C; var_v1_2++) {
                     if (*var_v0 != *arg3) {
-                        var_v0 += 1;
+                        var_v0++;
                     } else {
-                     break;
-    }
-}
-                func_800210FC((s32) &D_803A6F80, arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
+                        break;
+                    }
+                }
+                func_800210FC((s32) &D_803A6F80, arg0, arg1, 6, 8, var_v1_2 * 6, 0, 0x400, 0x400);
                 arg0 += 6;
                 arg3 += 1;
             }
-        } while (*arg3 != 0);
-    }
-}*/
-
+        }
+    }*/
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D18.s")
 s32 func_80020D18(u8* arg0) {

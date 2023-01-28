@@ -1,6 +1,17 @@
 #ifndef _STRUCTS_H_
 #define _STRUCTS_H_
 
+typedef struct Vec3f {
+  union {
+    struct {
+      f32 x;
+      f32 y;
+      f32 z;
+    };
+    f32 f[3];
+  };
+} Vec3f;
+
 typedef struct map_data_s{
     char unk0[0x30];
     s32 unk30;
@@ -386,7 +397,11 @@ typedef struct unk_D_80086DC0_s
     s32 unk0;
     s32 unk4;
     u16 unk8;
-    char unkA[0x48];
+    s16 unkA;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    char unk18[0x3C];
     f32 unk54;
 }unkD80086DC0s;
 

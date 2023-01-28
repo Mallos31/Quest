@@ -5,7 +5,26 @@ typedef struct {
     f32 unk4;
 }unk13f20s;
 
+typedef struct {
+    f32 x;
+    f32 y;
+    f32 z;
+    f32 randomOffset;
+    u16 pickedUp;
+    s16 animTimer;
+    char unk14[0x4];
+}Spirit;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+}unk12358s;
+
+extern s32 D_80086A00;
+extern Spirit D_80086A08;
 extern s32 D_2000080;
 extern s32 D_20080C0;
 extern s32 D_20080D0;
@@ -122,7 +141,43 @@ void func_800121F0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012220.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")
+Spirit* func_80012358(unk12358s* arg0) {
+    
+    Spirit* var_s0;
+    f32 temp_f0;
+    f32 temp_f2;
+    s32 pad;
+    Spirit* sp5C;
+    s32 var_s1;
+    unk232f4s sp50;
+    
+
+    var_s1 = D_80086A00;
+    sp5C = NULL;
+    var_s0 = &D_80086A08;
+    while (var_s1 != 0) {
+        if ((var_s0->pickedUp == 0)){
+            temp_f0 = var_s0->x - arg0->unk0;
+            temp_f2 = var_s0->z - arg0->unk8;
+            if((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 400.0f)){
+                sp50.unk0 = temp_f0;
+                sp50.unk4 = temp_f2;
+                func_800232F4(arg0->unk10, (unk232f4s* ) &sp50);
+                if((sp50.unk4  >= 0.0f) 
+                    && ((sp50.unk0 > -5.0)) && (sp50.unk0 < 5.0)
+                ) {
+                    sp5C = var_s0;
+                    break;
+                } 
+            }
+        }
+        var_s1--;
+        var_s0++;
+
+    }
+    return sp5C;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_8001249C.s")
 
