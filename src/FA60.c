@@ -1,5 +1,11 @@
 #include "common.h"
 
+typedef struct {
+    s32 unk0[0xC];
+}unk111d8s; //For probably unused function func_800111D8
+
+extern unk111d8s D_80085A14[]; //For probably unused function func_800111D8
+
 extern unk232f4s D_80085358;
 extern u16 D_8008C592;
 
@@ -144,7 +150,10 @@ void func_800110D0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80011100.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80011150.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80011150.s")
+void func_80011150(s32 arg0) {
+    D_800859E8[arg0].unk0 = 0;
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80011170.s")
 void func_80011170(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -170,7 +179,11 @@ void func_800111A4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_v0->unk24 = arg3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111D8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111D8.s")
+/*This function appears to be uncalled. If so, the struct and global variable associated with it are also unused.*/
+void func_800111D8(s32 arg0, s32 arg1) {
+    D_80085A14[arg0].unk0[0] = arg1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111F8.s")
 

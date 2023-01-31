@@ -51,8 +51,80 @@ u32 func_80022FD0(u32 arg0)
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")
-
-
+#ifdef NON_MATCHING
+f32 func_80023028(f32 arg0)
+{
+  //f32 temp_f4;
+  f32 var_f12;
+  f32 var_f2;
+  s32 temp_a1;
+  s32 temp_a3;
+  s32 temp_f16;
+  //s32 temp_f4_2;
+  //s32 temp_f6;
+  s32 temp_lo;
+  s32 temp_t1;
+  s32 var_a0;
+  s32 var_a2;
+  s32 var_t0;
+  s32 var_t2;
+  s32 var_v0;
+  s32 var_v1;
+  var_f12 = arg0;
+  var_v1 = 0xC;
+  var_f2 = 0.0f;
+  var_a0 = 0x19;
+  var_a2 = 0x17;
+  var_t0 = 0x15;
+  if (var_f12 > 1.0f)
+  {
+    var_v0 = 1;
+    var_f12 = 1.0f / var_f12;
+  }
+  else
+  {
+    var_v0 = 0;
+    if (var_f12 < (-1.0f))
+    {
+      var_v0 = -1;
+      var_f12 = 1.0f / var_f12;
+    }
+  }
+  var_t2 = 0x13;
+  do
+  {
+    temp_lo = var_v1 * var_v1;
+    temp_a1 = var_v1 - 1;
+    temp_a3 = var_v1 - 2;
+    //temp_f4 = (f32) var_a0;
+    temp_t1 = var_v1 - 3;
+    var_v1 -= 4;
+    var_a0 -= 8;
+    temp_f16 = var_a2;
+    var_a2 -= 8;
+    //temp_f4_2 = var_t0;
+    var_t0 -= 8;
+    //temp_f6 = var_t2;
+    var_t2 -= 8;
+    temp_f16 = var_f12;
+    var_f2 = ((((f32) (temp_t1 * temp_t1)) * temp_f16) * temp_f16) 
+        / (((f32) var_t2) + (((((f32) (temp_a3 * temp_a3)) * temp_f16) * temp_f16) 
+        / (((f32) var_t0) + (((((f32) (temp_a1 * temp_a1)) * temp_f16) * temp_f16) 
+        / (((f32) temp_f16) + (((((f32) temp_lo) * temp_f16) * temp_f16) 
+        / (var_a0 + var_f2)))))));
+  }
+  while (var_v1 != 0);
+  if (var_v0 > 0)
+  {
+    return (f32) (D_800716D0 - ((f64) (temp_f16 / (1.0f + var_f2))));
+  }
+  if (var_v0 < 0)
+  {
+    return (f32) (D_800716D8 - ((f64) (temp_f16 / (1.0f + var_f2))));
+  }
+  return temp_f16 / (1.0f + var_f2);
+}
+#endif
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800231B0.s")
 void func_800231B0(f32* arg0, f32* arg1) {
@@ -284,57 +356,7 @@ void func_80023974(unk23974s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023A08.s")
-/*void func_80023A08(unk23a08s *arg0, f32 arg1, f32 arg2, f32 arg3)
-{
-  f32 sp34;
-  f32 temp_f0;
-  f32 temp_f0_2;
-  f32 temp_f20;
-  f32 temp_f4;
-  f32 var_f18;
-  f32 var_f22;
-    
-  temp_f0 = _nsqrtf((arg1 * arg1) + (arg3 * arg3));
-  if (temp_f0 != 0.0f)
-  {
-    var_f22 = arg1 / temp_f0;
-    var_f18 = arg3 / temp_f0;
-  }
-  else
-  {
-    temp_f4 = 0.0f;
-    var_f22 = temp_f4;
-    if (arg2 >= temp_f4)
-    {
-      var_f18 = (f32) 1.0;
-    }
-    else
-    {
-      var_f18 = (f32) (-1.0);
-    }
-  }
-  sp34 = temp_f0;
-  temp_f0_2 = _nsqrtf((temp_f0 * temp_f0) + (arg2 * arg2));
-  temp_f4 = sp34 / temp_f0_2;
-  arg0->unk0 = (f32) ((1.0f * var_f18) + (temp_f4 * temp_f4 * var_f22));
-  arg0->unkC = temp_f4;
-  temp_f20 = arg2 / temp_f0_2;
-  arg0->unk4 = (f32) (temp_f4 * temp_f20);
-  arg0->unk8 = (f32) ((-var_f22 * 1.0f) + (temp_f4 * temp_f4 * var_f18));
-  arg0->unk1C = temp_f4;
-  arg0->unk10 = (f32) (((-temp_f4) * var_f18) + (temp_f4 * var_f22));
-  arg0->unk14 = (f32) (1.0f * temp_f20);
-  arg0->unk20 = (f32) (temp_f20 * var_f22);
-  arg0->unk18 = (f32) (((-temp_f4) * -var_f22) + (temp_f4 * var_f18));
-  arg0->unk2C = temp_f4;
-  arg0->unk30 = temp_f4;
-  arg0->unk24 = (f32) (-temp_f4);
-  arg0->unk34 = temp_f4;
-  arg0->unk38 = temp_f4;
-  arg0->unk28 = (f32) (temp_f20 * var_f18);
-  arg0->unk3C = 1.0f;
-}
-*/
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023BCC.s")
 void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3) {

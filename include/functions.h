@@ -18,3 +18,7 @@ void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
 s32 func_8000FF54(f32);                             /* extern */
 s32 func_8000FFE8(unkfde0s*);                       /* extern */
 void func_80010080(unkfde0s*);                         /* extern */
+
+
+void func_80023A08(f32 arg0[4][4], f32 arg1, f32 arg2, f32 arg3);
+void func_80023DF4(f32 arg0[4][4], f32 arg1, f32 arg2, f32 arg3);
