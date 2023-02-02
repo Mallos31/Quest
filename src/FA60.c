@@ -9,10 +9,6 @@ extern unk111d8s D_80085A14[]; //For probably unused function func_800111D8
 extern unk232f4s D_80085358;
 extern u16 D_8008C592;
 
-s32 D_80085B68[10][3];
-s32 D_8008C634;
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000EE60.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000F0BC.s")
@@ -108,19 +104,7 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010080.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800100D0.s")
-void func_800100D0(void) {
-    s32 i;
-    currentTime = 0x1EC3;
-    dayLength = 0x6978;
-    currentDay = 1;
-    D_8008C634 = 7;
-    for (i = 0; i < 4; i++) {
-        D_80085B68[i][0] = 0;
-        D_80085B68[i][1] = 0;
-        D_80085B68[i][2] = 0;
-    }
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800100D0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010150.s")
 
