@@ -28,6 +28,40 @@ extern s16 D_8008C578;
 extern u16 D_8008C592;
 //extern unk1c560s* gMapData; //gMapData
 
+typedef struct {
+    void* stats;
+    Vec3f* pos;
+    Vec3f* rot;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 scale;
+    f32 collisionScale;
+    Vec3f* shadowPos;
+    f32 unk38;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+    f32 unk4C;
+    s16 modelID;
+    s16 animID;
+    u16 animFrame;
+    u16 totalFrameCnt;
+    u16 animSpeed;
+    u16 nextAnimID;
+    s16 unk5C;
+    s16 unk5E;
+    u16 unk60;
+    u16 unk62;
+    MonsterBaseData *unk64;
+    UnknownData2 *unk68;
+    UnknownData2 unk6C;
+}unkEnemy;
+
+extern unkEnemy* D_8007C9B8[];
+extern u16 D_8008C59A;
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001C560.s")
 void func_8001C560(void) {
@@ -90,6 +124,18 @@ void func_8001D820(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001D828.s")
+#ifdef NON_MATCHING
+s32 func_8001D828(void) {
+    u8* var_v1;
+
+    if ((D_8008C592 & 0x100) || ((func_80022FD0(4U) == 0))) {
+        var_v1 = D_8007C9B8[func_80022FD0(D_8008C59A)]->shadowPos;
+        
+    }
+    return var_v1;
+}
+#endif
 
 void func_8001D89C(void) {
 }
+

@@ -47,34 +47,6 @@ s32 func_80021214(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021240.s")
-/*s32 func_80021240(u8 arg0)
-{
-  s32 i;
-  u64 new_var;
-  u8 *temp;
-  u8 temp2;
-  u8 *tempInv;
-    
-  temp2 = arg0;
-  new_var = 0x95;
-  tempInv = gInventory;
-  i = 0;
-  temp = tempInv + new_var;
-  new_var = &D_8008CF77;  
-  loop_1:
-  if (temp2 == (*temp))
-  {
-    i++;
-  }
-
-  temp--;
-  if ((temp != ((u8 *) (new_var))) && (i == 0))
-  {
-    goto loop_1;
-  }
-  return i;
-}*/
-
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
 void func_800212A0(u8 arg0) {

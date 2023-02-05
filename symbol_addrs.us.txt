@@ -1,3 +1,5 @@
+osTvType		  = 0x80000300;
+osViClock                 = 0x8006F408;
 osScAddClient             = 0x800007d4;
 
 Inventory_Init            = 0x80021170;
@@ -11,6 +13,9 @@ func_8002684C                = 0x8002684C;
 osInitialize         	  = 0x80033850;
 osCreateThread       	  = 0x80033AE0;
 osStartThread        	  = 0x80033C30;
+__osSiRawReadIo           = 0x8003c9c0;
+__osSiRawWriteIo          = 0x8003CA10;
+
 osCreatePiManager   	  = 0x80033D80;
 osCreateMesgQueue    	  = 0x80033F10;
 osViSetEvent         	  = 0x80033f40;
@@ -149,6 +154,7 @@ __osEnqueueAndYield       = 0x8003d08c;
 __osEnqueueThread         = 0x8003d18c;
 __osPopThread             = 0x8003d1d4;
 __osDispatchThread        = 0x8003d1e4;
+__osCleanupThread         = 0x8003D360;
 osMapTLBRdb               = 0x8003d370;
 osPiRawReadIo             = 0x8003d3d0;
 bzero                     = 0x8003d430;
@@ -332,6 +338,9 @@ osClockRate               = 0x8006F400
 //__osPiTable               = 0x8006f43c; 
 
 __osContinitialized		  = 0x800709C0;
+__osRunQueue              = 0x800709F8;
+__osActiveQueue           = 0x800709FC;
+__osRunningThread         = 0x80070A00;
 gameMode                  = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
 
@@ -342,6 +351,8 @@ gMapData                  = 0x80084f18;
 currentTime               = 0x800859d0;
 dayLength				  = 0x800859d4;
 currentDay				  = 0x800859e0;
+
+D_8008C592              = 0x8008C592;
 
 gInventoryScrollAmt       = 0x8008C760;
 gInvHighlightedItemIndex  = 0x8008c764;

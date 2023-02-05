@@ -11,6 +11,7 @@ extern s32 D_8007B2F8; //Gfx matrix index?
 
 extern u16 D_80092874;
 extern MonsterBattleData D_8007C9BC;
+extern BrianData2 D_8007BACC;
 
 extern unkdb38s D_80084E60; //Door animation data
 extern s32 D_8007D2D0;

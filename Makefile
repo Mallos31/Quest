@@ -84,7 +84,9 @@ build/src/pfsgetstatus.c.o: OPT_FLAGS := -O1
 build/src/contpfs.c.o: OPT_FLAGS := -O1
 build/src/leodiskinit.c.o: OPT_FLAGS := -O1
 build/src/controller.c.o: OPT_FLAGS := -O1
-
+build/src/initialize.c.o: OPT_FLAGS := -O1
+build/src/createthread.c.o: OPT_FLAGS := -O1
+build/src/startthread.c.o: OPT_FLAGS := -O1
 
 
 ### Targets

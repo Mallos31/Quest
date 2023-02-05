@@ -40,6 +40,28 @@ typedef struct {
     s32 end;
 }fileBounds;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    char unk6[0x5E];
+    s16 unk64;
+    char unk66[0xE];
+    u16 unk74;
+    char unk76[0xA0];
+    s16 unk116;
+    s8 unk118;
+}unkBAB8;
+
+extern unkBAB8 D_8007BAB8;
+
+typedef struct {
+    /* 0x000 */ u8 unk_000[0x116];
+    /* 0x114 */ s16 unk_116;
+} struct_80053D00;
+
+extern struct_80053D00 *D_80053D00[];
+
 extern fileBounds D_80053F58[];
 
 void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2);
@@ -137,7 +159,15 @@ void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2) {
     arg1->unk60 |= 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_8000669C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_8000669C.s")
+void func_8000669C(u8 arg0) {
+    struct_80053D00 *x = D_80053D00[D_8007BAB8.unk64];
+    D_8007BAB8.unk118 =  arg0;
+    D_8007BAB8.unk0 = 0xC;
+    D_8007BAB8.unk4  = x->unk_116;
+    D_8007BAB8.unk74 |= 1;
+    func_8001D8B0(&D_8007BACC, 0x17, 1, 0x16, 1, (u16) 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006720.s") 
 //!TODO matches, but keeps putting 8004C270 into .rodata
