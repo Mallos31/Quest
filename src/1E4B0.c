@@ -64,3 +64,10 @@ void func_8001E0AC(s32 arg0, unk1e0acs *arg1, unk1e0acs2 *arg2)
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001E138.s")
+#ifdef NON_MATCHING
+void func_8001E138(MtxF* arg0, MtxF* arg1) {
+    arg0->mf[3][0] -= (arg0->mf[0][0] * arg1->mf[0][2]) + (arg0->mf[1][0] * arg1->mf[0][3]) + (arg0->mf[2][0] * arg1->mf[1][0]);
+    arg0->mf[3][1] -= (arg0->mf[0][1] * arg1->mf[0][2]) + (arg0->mf[1][1] * arg1->mf[0][3]) + (arg0->mf[2][1] * arg1->mf[1][0]);
+    arg0->mf[3][2] -= (arg0->mf[0][2] * arg1->mf[0][2]) + (arg0->mf[1][2] * arg1->mf[0][3]) + (arg0->mf[2][2] * arg1->mf[1][0]);
+}
+#endif

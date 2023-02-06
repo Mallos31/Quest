@@ -367,16 +367,16 @@ void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023C1C.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023DF4.s")
-void func_80023DF4(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3) {
-    arg0->unk0 = (f32) (arg0->unk0 * arg1);
-    arg0->unk4 = (f32) (arg0->unk4 * arg1);
-    arg0->unk8 = (f32) (arg0->unk8 * arg1);
-    arg0->unk10 = (f32) (arg0->unk10 * arg2);
-    arg0->unk14 = (f32) (arg0->unk14 * arg2);
-    arg0->unk18 = (f32) (arg0->unk18 * arg2);
-    arg0->unk20 = (f32) (arg0->unk20 * arg3);
-    arg0->unk24 = (f32) (arg0->unk24 * arg3);
-    arg0->unk28 = (f32) (arg0->unk28 * arg3);
+void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3) {
+    arg0[0][0] *= arg1;
+    arg0[0][1] *= arg1;
+    arg0[0][2] *= arg1;
+    arg0[1][0] *= arg2;
+    arg0[1][1] *= arg2;
+    arg0[1][2] *= arg2;
+    arg0[2][0] *= arg3;
+    arg0[2][1] *= arg3;
+    arg0[2][2] *= arg3;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023E80.s")

@@ -456,9 +456,11 @@ typedef struct {
 } MonsterBaseData; // size 0x38
 
 typedef struct {
-    u8  pad[0x94];
+    u8 pad[0x86];
+    u16 unk86;
+    char unk88[0xC];
     f32 unk94;
-} UnknownData2; // size 0x98
+} UnknownData2;
 
 typedef struct {
     /* 0x00 */ f32 x;
@@ -509,7 +511,7 @@ typedef struct {
     /* 0x14  */ u8   pad[0x8];
     /* 0x1C  */ AIScript* AIScript;
     /* 0x20  */ MonsterBaseData* monBaseData;
-    /* 0x24  */ MonsterBattleData pos; //monster 1 position 
+    /* 0x24  */ MonsterBattleData battleData; //monster 1 position 
 } EnemyAction; // size 0x128
 
 
