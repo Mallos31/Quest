@@ -129,40 +129,27 @@ void func_8000932C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A284.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A3F4.s")
-#ifdef NON_MATCHING
-void func_8000A3F4(unka3f4s *arg0, f32 arg1, f32 arg2)
-{
-  f32 var_f12;
-  f64 new_var;
-  f64 var_f2;
-  f64 temp;
-  var_f2 = func_80023210(arg1 - arg0->unk0, arg2 - arg0->unk8) - arg0->unk10;
-  if (D_80071160 < var_f2)
-  {
-    var_f12 = var_f2 - D_80071168;
-    goto block_4;
-  }
-  if (var_f2 < D_80071170)
-  {
-    var_f12 = var_f2 + D_80071178;
- block_4:     
-    var_f2 = var_f12;
-  }
-  temp = D_80071180;
-  new_var = D_80071160;
-  arg0->unk10 += var_f2 * D_80071188;
-  if (new_var < arg0->unk10)
-  {
-    arg0->unk10 = arg0->unk10 - temp;
-    return;
-  }
-  if (arg0->unk10 < D_80071190)
-  {
-    arg0->unk10 = arg0->unk10 + temp;
-  }
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A3F4.s")
+void func_8000A3F4(unka3f4s *arg0, f32 arg1, f32 arg2) {
+  f32 var_f2;
+    
+    arg1 -= arg0->unk0;
+    arg2 -= arg0->unk8;
+    var_f2 = func_80023210(arg1, arg2) - arg0->unk10;
+    if (var_f2 > M_PI) {
+        var_f2 -= 2 * M_PI;
+    } else if (var_f2 < (-M_PI)) {
+        var_f2 += 2 * M_PI;
+    }
+
+    arg0->unk10 += var_f2 * 0.05;
+
+    if (arg0->unk10 > M_PI) {
+        arg0->unk10 -= 2 * M_PI;
+    } else if (arg0->unk10 < (-M_PI)) {
+        arg0->unk10 += 2 * M_PI;
+    }
 }
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A508.s")
 
