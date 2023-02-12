@@ -3,6 +3,7 @@
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001D8B0.s")
+/*!TODO Judging by other functions' use of this one, this may use an NPC struct instead of Brian's*/
 void func_8001D8B0(BrianData2 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u16 arg5)
 {
   if (arg1 != -1)
