@@ -98,7 +98,7 @@ segments:
       - [0x37C00, c, aigetlen]
       - [0x37C10, asm, aisetnextbuf]
       - [0x37CC0, asm, n_alseqpgetvol]
-      - [0x37CD0, asm, csplayer]
+      - [0x37CD0, c, csplayer]
       - [0x38F00, asm, bnkf]
       - [0x39150, asm, seqpsetbank]
       - [0x39190, asm, cseq]

@@ -114,7 +114,18 @@ typedef struct {
     unk1f3dcTEST2* unk10;
 }unk1f3dcTEST;
 
+typedef struct temp2 {
+/* 0x00 */ char unk_00[0x14];
+/* 0x14 */ Vec3f unk_14;
+/* 0x20 */ char unk_20[0x64];
+} temp2; //NPC struct. 
+
 extern sPlayerAction D_8007BAB8;
+
+extern s32 D_8007BA74;
+extern temp2 D_8007BD30[];
+extern s32 D_8008C644;
+extern Gfx D_803A8B90[];
 
 extern u8 D_8007BAA4;
 extern u8 D_8007BAA5;
@@ -300,7 +311,22 @@ void func_8001F3DC(unk1f3dcTEST* arg0) {
         func_800268D4(0, 4, 0xFF);
     }
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F818.s")
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F818.s") //Matched by rainchus
+void func_8001F818(void) {
+    s32 sp34; //probably a struct of 8 size to align stack
+    Vec3f* temp_v0;
+
+    temp_v0 = &D_8007BD30[D_8007BA74 - 1].unk_14;
+    
+    if (func_8002413C(temp_v0->x, (temp_v0->y + 14.0), temp_v0->z, &sp34, &D_8008C644) != 0) {
+        gSPDisplayList(gMasterGfxPos++, D_803A8B90);
+        func_80020F8C(sp34, D_8008C644 - 0x1E, 0x40, 0x1D, 0, 0, 0x400, 0x400);
+        return;
+    }
+    
+    D_8008C644 = 0xF0;
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F900.s")
 void func_8001F900(void) {
@@ -325,7 +351,10 @@ void func_8001F9B0(void) {
         func_80020F8C(sp34, sp30 - 0x1E, 0x10, 0x1E, 0, 0, 0x400, 0x400);
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FA60.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FA60.s")
+
+/*This is set as non-matching until the enemy data structs are fixed*/
+#ifdef NON_MATCHING
 void func_8001FA60(u16 monsterNum) {
     s32 sp44;
     s32 sp40;
@@ -353,6 +382,8 @@ void func_8001FA60(u16 monsterNum) {
         func_80020F8C(sp44 - 4, sp40 - 0x2A, 0x18, 0x2A, 0, 0, 0x400, 0x400);
     }
 }
+#endif
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FB94.s")
 void func_8001FB94(void) {
