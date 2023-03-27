@@ -44,62 +44,46 @@ for (i = 0; i != 4; i++){
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002E628.s")
-/*
+#ifdef NON_MATCHING
+
 void func_8002E628(s32 arg0, u8 arg1) {
-    //Message* temp_a1;
-    Message* temp_v0;
-    //Message* var_a0;
-    //Message* var_a2;
-    //Message* var_a2_2;
     s32 i;
-    //s32 j;
-    //s32 var_v1_3;
+    s32 j;
 
     if (!arg1) {
-        temp_v0 = &D_800905E0[arg0];
-        temp_v0->ypos = 0;
-        temp_v0->height = 0;
-        temp_v0->unk0 = 0;
-        temp_v0->xpos = temp_v0->ypos;
-        temp_v0->width = temp_v0->height;
+        D_800905E0[arg0].ypos = 0;
+        D_800905E0[arg0].height = 0;
+        D_800905E0[arg0].unk0 = 0;
+        D_800905E0[arg0].xpos = D_800905E0[arg0].ypos;
+        D_800905E0[arg0].width = D_800905E0[arg0].height;
     }
-    temp_v0 = &D_800905E0[arg0];
-    temp_v0->quillTimer = 1;
-    temp_v0->unkE = 0;
-    temp_v0->unkF = 0;
-    temp_v0->unk10 = 0;
-    temp_v0->unk12 = 0;
-    temp_v0->unk14 = -1;
-    temp_v0->unk15 = 0;
-    temp_v0->unk16[0] = 0;
-    
+    D_800905E0[arg0].quillTimer = 1;
+    D_800905E0[arg0].unkE = 0;
+    D_800905E0[arg0].unkF = 0;
+    D_800905E0[arg0].unk10 = 0;
+    D_800905E0[arg0].unk12 = 0;
+    D_800905E0[arg0].unk14 = -1;
+    D_800905E0[arg0].unk15 = 0;
+    D_800905E0[arg0].unk16 = 0;
+
     for (i = 0; i < 0x20; i++) {
-        D_800905E0[arg0].unk16[i + 1] = 0xFF;
-    }
-
-    for (i = 0; i < 0x400; i++) {
-        temp_v0->unk9B[i] = -1;
-        temp_v0->unk49B[i] = -1;
-
+        D_800905E0[arg0].unk17[i] = -1;
     }
     
-    temp_v0->unk38 = 0;
-    temp_v0->unk3A = 0;
+    for(i = 0 ; i < 0x400; i++){
+        D_800905E0[arg0].unk9C[i] = -1;
+        D_800905E0[arg0].unk49C[i] = -1;
+    }
     
-    
-
-    
-    // i = 0;
-    // var_a0 = temp_v0;
-    // do {
-    //     i += 1;
-    //     var_a0 += 1;
-    //     var_a0->unk3C[0x17] = -1;
-    //     var_a0->unk3C[0x2F] = -1;
-    //     var_a0->unk3C[0x47] = -1;
-    //     var_a0->unk3B = -1;
-    // } while (i != 0x18);
-}*/
+    D_800905E0[arg0].unk38 = 0;
+    D_800905E0[arg0].unk3A = 0;
+    for(i = 0; i != 0x18; i++) {
+        for (j = 0; j < 4; j++) {
+            D_800905E0[arg0].unk3C[j][i] = -1;
+        }
+    }
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002E768.s")
 

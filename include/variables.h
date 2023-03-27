@@ -13,7 +13,7 @@ extern u16 D_80092874;
 extern MonsterBattleData D_8007C9BC;
 extern BrianData2 D_8007BACC;
 
-extern unkdb38s D_80084E60; //Door animation data
+extern DoorAnimData gDoorAnimData; //Door animation data
 extern s32 D_8007D2D0;
 extern unke3c4s D_80084180;
 extern unke3c4s D_80084098;
@@ -165,14 +165,14 @@ extern s32 D_8008C63C;
 extern s32 D_8008C640;
 
 //HUD stuff
-extern s32 D_8008C648;
-extern s32 D_8008C64C;
+extern s32 gHUDSegX; //These two may need renaming.
+extern s32 gHUDSegY;
 extern s32 D_8008C650; //number of lines to cover from left to right (HUD)
 extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
 extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
 extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
 
-extern Gfx D_803A8C08[]; //exclamation mark display list
+extern Gfx gDL_exclamationMarkPal[]; //exclamation mark display list
 extern Gfx* gMasterGfxPos;
 
 extern f32 D_80071428;

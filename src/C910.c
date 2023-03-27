@@ -47,7 +47,7 @@ void func_8000DB10(void)
   s32 var_a0;
   s32 *var_v0;
   s32 new_var;
-  var_v0 = &D_80084E60; //Door anim data
+  var_v0 = &gDoorAnimData; //Door anim data
   new_var = var_a0;
   var_a0 = 3;
   do
@@ -61,24 +61,20 @@ void func_8000DB10(void)
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000DB38.s")
-//var_v0->unk0 is door anim countdown timer unk10 is a pointer to door position data
-s32 func_8000DB38(s32 arg0) {
-    s32 var_v1;
-    unkdb38s* var_v0;
-
-    var_v1 = 4;
-    var_v0 = &D_80084E60;
-loop_1:
-    if ((var_v0->unk0 != 0) && (arg0 == var_v0->unk10)) {
-        var_v1 = 5 - var_v1;
-    } else {
-        var_v1--;
-        var_v0++;
-        if (var_v1 != 0) {
-            goto loop_1;
+//DoorAnimData->unk0 is door anim countdown timer unk10 is a pointer to door position data
+s32 func_8000DB38(void* arg0) {
+    s32 i = 4;
+    DoorAnimData* DoorAnimData = &gDoorAnimData;
+    
+    while (i != 0) {
+        if ((DoorAnimData->timer != 0) && (arg0 == DoorAnimData->position)) {
+            i = 5 - i;
+            break;
         }
+        DoorAnimData++;
+        i--;
     }
-    return var_v1;
+    return i;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000DB7C.s")

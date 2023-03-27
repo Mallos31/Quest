@@ -3,30 +3,30 @@
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001D8B0.s")
-/*!TODO Judging by other functions' use of this one, this may use an NPC struct instead of Brian's*/
-void func_8001D8B0(BrianData2 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u16 arg5)
+/*This seems to be the function that plays brian's next animation*/
+void func_8001D8B0(BrianData2 *brian, s32 nextAnim, s32 nextFramerate, s32 arg3, s32 arg4, u16 arg5)
 {
-  if (arg1 != -1)
+  if (nextAnim != -1)
   {
-    if (arg1 != arg0->animID)
+    if (nextAnim != brian->animID)
     {
-      arg0->animID = (s16) arg1;
-      arg0->unk60 = arg0->unk60 | 0x400;
-      arg0->unk60 = arg0->unk60 & 0xFDFF;
+      brian->animID = (s16) nextAnim;
+      brian->unk60 = brian->unk60 | 0x400;
+      brian->unk60 = brian->unk60 & 0xFDFF;
     }
-    arg0->animeFramerate = (s16) arg2;
+    brian->animeFramerate = (s16) nextFramerate;
     if (arg5 & 1)
     {
-      arg0->animFrame = (arg0->totalAnimFrames = 0);
+      brian->animFrame = (brian->totalAnimFrames = 0);
     }
   }
   if (arg3 != (-1))
   {
-    if (arg3 != arg0->unk5A)
+    if (arg3 != brian->unk5A)
     {
-      arg0->unk5A = (s16) arg3;
+      brian->unk5A = (s16) arg3;
     }
-    arg0->unk5C = (u16) arg4;
+    brian->unk5C = (u16) arg4;
   }
 }
 

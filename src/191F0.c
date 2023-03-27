@@ -23,16 +23,33 @@ typedef struct {
 }unk19324s;
 
 
-//This struct is fine, it's just an example of loop unrolling. 
 typedef struct {
-    s16 unk0;
-    char unk2[0x56];
-   // s16 unk58;
-    //char unk5A[0x56];
-    //s16 unkB0;
-    //char unkB2[0x56];
-    //s16 unk108;
-    //char unk10A[0x56];
+    u16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    s32 unk34; //may be u32
+    s16 unk38;
+    s16 unk3A;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
 }unk1a238s;
 
 
@@ -69,10 +86,27 @@ typedef struct {
 /* 0x70 */ char unk70[0x60];
 }BattleFence;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+}test;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+}unk800DA828s;
+
 extern BattleFence D_800880A8[];
 extern unk18684s D_80087210;
 extern unk19324s D_800874E8;
 extern unk1a238s D_800875A8;
+extern test D_800EB9EC[];
+extern unk800DA828s D_800DA828[]; //updates when enemy defeated. 
+extern void* D_800CB4E0[];
 
 
 void func_80018684(void);
@@ -185,6 +219,58 @@ void func_8001A238(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A268.s")
+#ifdef NON_MATCHING
+unk1a238s *func_8001A268(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB)
+{
+  s32 i;
+  test *temp_t0;
+  unk1a238s *var_v1;
+  s32 new_var;
+  unk800DA828s *temp_t9;
+
+  i = 0x1F;
+  var_v1 = &D_800875A8;
+    
+  while (i != 0 && var_v1->unk0 != 0) {
+        i--;
+      var_v1++;
+  }
+  
+  var_v1->unkC = arg5;
+  var_v1->unk10 = arg6;
+  var_v1->unk14 = arg7;
+  var_v1->unk18 = arg8;
+  temp_t0 = &D_800EB9EC[arg0];
+  var_v1->unk1C = arg9;
+  var_v1->unk20 = argA;
+  var_v1->unk24 = argB;
+  var_v1->unk28 = 0.0f;
+  var_v1->unk2C = 0.0f;
+  temp_t9 = temp_t0;
+  var_v1->unk30 = 1.0f;
+  var_v1->unk38 = temp_t9->unk0;
+  var_v1->unk3C = temp_t9->unk4;
+  var_v1->unk4 = 0;
+  var_v1->unk6 = arg3;
+  var_v1->unk40 = temp_t9->unk8;
+  var_v1->unk40 = &D_800CB4E0[arg1];
+  var_v1->unk0 = var_v1->unk3A;
+  var_v1->unk2 = (s16) var_v1->unk3A;
+  temp_t9 = &D_800DA828[arg2];
+  var_v1->unk8 = (s16) arg4;
+  var_v1->unk34 = 0;
+  var_v1->unk44 = temp_t9->unk0;
+  var_v1->unk48 = temp_t9->unk4;
+  new_var = temp_t9->unk8;
+  var_v1->unk4C = new_var;
+  var_v1->unk50 = temp_t9->unkC;
+  var_v1->unk54 = temp_t9->unk10;
+    
+  return var_v1;
+}
+#endif
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A398.s")
 

@@ -128,5 +128,12 @@ void func_800008B0(OSSched* arg0, OSMesg arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000900.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000A80.s")
+#ifdef NON_MATCHING
+
+void func_80000A80(struct UnkStruct80000A80* arg0) {
+    LeoReadDiskID(&arg0->cmd, arg0->unk20, &D_80083C04);
+    func_800009C8();
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000BB4.s")

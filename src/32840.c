@@ -1,10 +1,10 @@
 #include "common.h"
 
-extern u8 D_DA68F0[];
-extern u8 D_DC1620[];
-extern u8 D_E27840[];
-extern u8 D_E7E800[];
-extern u8 D_80100000[];
+u8 D_DA68F0[];
+u8 D_DC1620[];
+u8 D_E27840[];
+u8 D_E7E800[];
+u8 D_80100000[];
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/32840/func_80031C40.s")
 void func_80031C40(void) {

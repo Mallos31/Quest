@@ -8,25 +8,6 @@
 #define R_CBUTTONS	CONT_F
 #define D_CBUTTONS	CONT_D
 
-typedef struct player_Action_s
-{
-            s16 unk0;
-            s16 unk2;
-            s16 dustTimer;
-            s16 doorSide;
-            u16 unk8;
-            s16 unkA;
-            s32 unkC;
-            void* unk10;
-            f32 xpos;
-            f32 ypos;
-            f32 zpos;
-            char unk1C[0x18];
-            f32 unk38; //
-            char unk3C[0x3C];
-            BrianData1* unk78;            
-}sPlayerAction;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -114,6 +95,11 @@ typedef struct {
     unk1f3dcTEST2* unk10;
 }unk1f3dcTEST;
 
+typedef struct temp4 {
+/* 0x00 */ u8 unk_00;
+/* 0x01 */ char unk_01[5];
+} temp4;
+
 typedef struct temp2 {
 /* 0x00 */ char unk_00[0x14];
 /* 0x14 */ Vec3f unk_14;
@@ -139,8 +125,8 @@ extern s32 D_8008C65C;
 extern unk20888s D_8008C668;
 extern u8 D_803A2960[]; //Status icons palette
 extern unk20e2cs D_803A6F70;
-extern u8 D_8004D44C;
-extern unk20e2cs D_803A6F80;
+extern u8 D_8004D44C[];
+extern u8 D_803A6F80[];
 extern void* D_803A6FB0[];
 extern unk203d0s* D_8007D088;
 extern s32 *D_8007D0AC;
@@ -149,12 +135,12 @@ extern u8 D_8039D990[];
 extern unk20e2cs D_803A6F60;
 extern f64 D_800716C0; //.rodata value 4075E00000000000 or 350.0 
 extern EnemyAction D_8007C998[]; //enemy action data
-extern Gfx D_803A8CF8[]; //Staff icon DL
+extern Gfx gDL_StaffIcon[]; //Staff icon DL
 extern unk20e2cs D_803A6F40;
 extern s32 D_8007B2F8;
 extern f32 D_80086DEC;
-extern s32 D_8008C648;
-extern s32 D_8008C64C;
+extern s32 gHUDSegX;
+extern s32 gHUDSegY;
 extern Mtx D_2000000[];
 extern Gfx D_803A8EA0[]; //Compass Display List
 extern Gfx D_803A8C80[];
@@ -167,6 +153,7 @@ s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32* arg3, s32* arg4);
 void func_80020F8C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7);
 void func_800210FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8);
 void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
+void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001E1F0.s")
 void func_8001E1F0(void)
@@ -174,7 +161,7 @@ void func_8001E1F0(void)
   D_8008C638 = 0;
   D_8008C63C = 0;
   D_8008C640 = -1;
-  D_8008C648 = D_8008C64C = 0;
+  gHUDSegX = gHUDSegY = 0;
   D_8008C650 = D_8008C654 = 0;  
   D_8008C658 = 0x140; //HUD height
   D_8008C65C = 0xF0; //HUD Width
@@ -215,11 +202,11 @@ void func_8001E7FC(BrianData2 *arg0)
 void func_8001EA84(Mtx *arg0) {
     MtxF sp38;
 
-    D_8008C648 = 0x104;
-    D_8008C64C = 0x18;
+    gHUDSegX = 0x104;
+    gHUDSegY = 0x18;
     func_80023570(&sp38, 0.0f, 0.0f, D_80086DEC);
-    sp38.mf[3][0] = (f32) (D_8008C648 + 0x11);
-    sp38.mf[3][1] = (f32) (D_8008C64C + 0x11);
+    sp38.mf[3][0] = (f32) (gHUDSegX + 0x11);
+    sp38.mf[3][1] = (f32) (gHUDSegY + 0x11);
     sp38.mf[3][2] = 0.0f;
     
     guMtxF2L(sp38.mf, arg0 + 3 + D_8007B2F8);
@@ -228,9 +215,9 @@ void func_8001EA84(Mtx *arg0) {
 
     D_8007B2F8++;
 
-    gSPDisplayList(gMasterGfxPos++, D_803A8EA0);
+    gSPDisplayList(gMasterGfxPos++, D_803A8EA0); //Compass DL
 
-    
+    //Pointer to texture, X, Y, NumPixelsX, NumPixelsY, SheetLocationX, unknown, resolutionX, resolutionY
     func_800210FC((s32) &D_803A6F40, 0xD, 0xA, 0xB, 0xE, 0x93, 0, 0x400, 0x400);
 }
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001EBDC.s")
@@ -261,8 +248,8 @@ void func_8001F3DC(unk1f3dcTEST* arg0) {
     unk20e2cs* temp;
     
     
-    D_8008C648 = 0;
-    D_8008C64C = 0;
+    gHUDSegX = 0;
+    gHUDSegY = 0;
 
     gDPPipeSync(gMasterGfxPos++);
     gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_8039D990);
@@ -347,14 +334,13 @@ void func_8001F9B0(void) {
 
     if (func_8002413C(D_8007BAB8.xpos, (f32) ((f64) D_8007BAB8.ypos + 11.0), D_8007BAB8.zpos, &sp34, &sp30) != 0) {
 
-        gSPDisplayList(gMasterGfxPos++, D_803A8C08);
+        gSPDisplayList(gMasterGfxPos++, gDL_exclamationMarkPal);
         func_80020F8C(sp34, sp30 - 0x1E, 0x10, 0x1E, 0, 0, 0x400, 0x400);
     }
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FA60.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FA60.s")
 
 /*This is set as non-matching until the enemy data structs are fixed*/
-#ifdef NON_MATCHING
 void func_8001FA60(u16 monsterNum) {
     s32 sp44;
     s32 sp40;
@@ -362,7 +348,7 @@ void func_8001FA60(u16 monsterNum) {
     MonsterBaseData* MonsterBaseData;
     MonsterBattleData* MonsterBattleData;
 
-    MonsterBattleData = &D_8007C998[monsterNum].pos;
+    MonsterBattleData = &D_8007C998[monsterNum].battleData;
 
     /*if enemy is flying, the y positioin of the 
     staff icon should be moved upward to match*/
@@ -372,17 +358,16 @@ void func_8001FA60(u16 monsterNum) {
     } else {
         MonsterBaseData = MonsterBattleData->unk64;
         if (MonsterBaseData->monsterType == MAMMON) {
-            var_f14 = MonsterBattleData->y + (D_800716C0 * MonsterBattleData->scale);
+            var_f14 = MonsterBattleData->pos.y + (D_800716C0 * MonsterBattleData->scale);
         } else {
-            var_f14 = MonsterBattleData->y + (MonsterBaseData->hitboxWidth * MonsterBattleData->scale);
+            var_f14 = MonsterBattleData->pos.y + (MonsterBaseData->hitboxWidth * MonsterBattleData->scale);
         }
     }
-    if (func_8002413C(MonsterBattleData->x, var_f14, MonsterBattleData->z, &sp44, &sp40)) {
-        gSPDisplayList(gMasterGfxPos++, D_803A8CF8);
+    if (func_8002413C(MonsterBattleData->pos.x, var_f14, MonsterBattleData->pos.z, &sp44, &sp40)) {
+        gSPDisplayList(gMasterGfxPos++, gDL_StaffIcon);
         func_80020F8C(sp44 - 4, sp40 - 0x2A, 0x18, 0x2A, 0, 0, 0x400, 0x400);
     }
 }
-#endif
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FB94.s")
@@ -462,8 +447,8 @@ void func_800203C8(void) {
 void func_800203D0(void)
 {
   unk20e2cs *new_var;
-  D_8008C648 = 0xB5;
-  D_8008C64C = 0x1A;
+  gHUDSegX = 0xB5;
+  gHUDSegY = 0x1A;
   gDPPipeSync(gMasterGfxPos++);
   gDPSetTextureImage(gMasterGfxPos++, 0, G_IM_SIZ_16b, 1, D_8039D990);
   gDPTileSync(gMasterGfxPos++);
@@ -535,7 +520,7 @@ void func_800208B8(MonsterBattleData* arg0) {
     if (temp_v1->monsterType == ON_GROUND) {
         var_v0->unkC = temp_v1->hitboxWidth * arg0->scale;
     } else if (temp_v1->monsterType == FLYING) {
-        var_v0->unkC = arg0->unk68->unk94 - arg0->y;
+        var_v0->unkC = arg0->unk68->unk94 - arg0->pos.y;
     } else {
         var_v0->unkC = (f32) ((f64) arg0->scale * D_800716C8);
     }
@@ -592,9 +577,10 @@ void func_80020988(void)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020B4C.s")
 
-/*void func_80020B4C(s32 arg0, s32 arg1, s32 arg2, u8* arg3) {
-    s32 var_v1_2;
-    u8* var_v0;
+/*This DOES match, I just have to fix a ton of errors in other functions to make it work.*/
+#ifdef NON_MATCHING
+void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
+    u32 i;
     
     gDPPipeSync(gMasterGfxPos++);
 
@@ -612,24 +598,27 @@ void func_80020988(void)
     gDPPipeSync(gMasterGfxPos++);
 
     
-        while (*arg3 != 0) {
-            if (*arg3 == 0x20) {
-                arg3 += 1;
-                arg0 += 6;
-            } else {
-                for (var_v0 = &D_8004D44C, var_v1_2 = 0; var_v1_2 != 0x2C; var_v1_2++) {
-                    if (*var_v0 != *arg3) {
-                        var_v0++;
-                    } else {
-                        break;
-                    }
+    while (*arg3) {
+        if (*arg3 == ' ') {
+            arg3++;
+            arg0++;
+            continue;
+        } else {
+            for (i = 0; i < 44; i++) {
+                if (D_8004D44C[i] != *arg3) {
+                    continue;
+                } else {
+                    break;
                 }
-                func_800210FC((s32) &D_803A6F80, arg0, arg1, 6, 8, var_v1_2 * 6, 0, 0x400, 0x400);
-                arg0 += 6;
-                arg3 += 1;
             }
         }
-    }*/
+        
+        func_800210FC(D_803A6F80, arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
+        arg0++;
+        arg3++;
+    }
+}
+#endif
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D18.s")
 s32 func_80020D18(u8* arg0) {
@@ -679,6 +668,7 @@ void func_80020E24(void) {
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020E2C.s") //Assist by StuckPixel
+/*This function sets up the graphics pipeline for loading a texture image and rendering it to the screen.*/
 void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         
     gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, arg0->unk8, arg0->unk0);
@@ -691,35 +681,35 @@ void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020F8C.s")
-void func_80020F8C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7)
+void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy)
 {
-  arg0 += D_8008C648;
-  arg2 += arg0;
-  arg1 += D_8008C64C;
-  if (arg2 >= D_8008C650)
+  ulx += gHUDSegX;
+  lrx += ulx;
+  uly += gHUDSegY;
+  if (lrx >= D_8008C650)
   {
-    arg3 += arg1;
-    if (((arg3 >= D_8008C654) && (D_8008C658 >= arg0)) && (D_8008C65C >= arg1))
+    lry += uly;
+    if (((lry >= D_8008C654) && (D_8008C658 >= ulx)) && (D_8008C65C >= uly))
     {
-      if (D_8008C658 < arg2)
+      if (D_8008C658 < lrx)
       {
-        arg2 = D_8008C658;
+        lrx = D_8008C658;
       }
-      if (D_8008C65C < arg3)
+      if (D_8008C65C < lry)
       {
-        arg3 = D_8008C65C;
+        lry = D_8008C65C;
       }
-      if (arg0 < D_8008C650)
+      if (ulx < D_8008C650)
       {
-        arg4 = (arg4 - arg0) + D_8008C650;
-        arg0 = D_8008C650;
+        s = (s - ulx) + D_8008C650;
+        ulx = D_8008C650;
       }
-      if (arg1 < D_8008C654)
+      if (uly < D_8008C654)
       {
-        arg5 = (arg5 - arg1) + D_8008C654;
-        arg1 = D_8008C654;
+        t = (t - uly) + D_8008C654;
+        uly = D_8008C654;
       }
-      gSPTextureRectangle(gMasterGfxPos++, arg0 << 2, arg1 << 2, arg2 << 2, arg3 << 2, 0, arg4 << 5, arg5 << 5, arg6, arg7);
+      gSPTextureRectangle(gMasterGfxPos++, ulx << 2, uly << 2, lrx << 2, lry << 2, 0, s << 5, t << 5, dsdx, dtdy);
     }
   }
  dummy_label_814065: ;

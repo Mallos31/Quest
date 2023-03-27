@@ -23,6 +23,20 @@ typedef struct {
     f32 unk14;
 }unk14e80a0s;
 
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+    u16 unk8;
+}arg6s;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+}arg7s;
+
 extern s32 D_80086F10;
 extern s16 D_80087170;
 extern s16 D_80087188;
@@ -43,25 +57,25 @@ extern unk15b50s D_80086F18[];
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014E80.s")
 void func_80014E80(unk14e80a0s* arg0, MonsterBattleData* arg1) {
 
-    arg0->unkC = arg1->x;
-    arg0->unk14 = arg1->z;
+    arg0->unkC = arg1->pos.x;
+    arg0->unk14 = arg1->pos.z;
     if (arg1->unk64->monsterType == 1) {
         arg0->unk10 = arg1->unk68->unk94 - (arg1->unk64->hitboxHeight * arg1->scale);
         return;
     }
-    arg0->unk10 = arg1->y;
+    arg0->unk10 = arg1->pos.y;
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014ED4.s")
 void func_80014ED4(unk14e80a0s* arg0, MonsterBattleData* arg1) {
     
-    arg0->unkC = arg1->x;
-    arg0->unk14 = arg1->z;
+    arg0->unkC = arg1->pos.x;
+    arg0->unk14 = arg1->pos.z;
     if (arg1->unk64->monsterType == 1) {
         arg0->unk10 = arg1->unk68->unk94;
         return;
     }
-    arg0->unk10 = (f32) ((f64) arg1->y + ((f64) arg1->unk64->hitboxWidth * 0.5 * (f64) arg1->scale));
+    arg0->unk10 = (f32) ((f64) arg1->pos.y + ((f64) arg1->unk64->hitboxWidth * 0.5 * (f64) arg1->scale));
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014F48.s")
@@ -209,6 +223,7 @@ void func_800175B8(s32 arg0, unk173e0s* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800175D4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800177F8.s")
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017998.s")
 

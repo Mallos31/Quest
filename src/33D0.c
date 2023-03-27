@@ -53,7 +53,14 @@ typedef struct {
     s8 unk118;
 }unkBAB8;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+}unk69fcs;
+
 extern unkBAB8 D_8007BAB8;
+extern s32 D_8007BC2C;
 
 typedef struct {
     /* 0x000 */ u8 unk_000[0x116];
@@ -67,6 +74,7 @@ extern fileBounds D_80053F58[];
 void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2);
 void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2);
 void func_80006720(BrianData2* arg0);
+void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg2);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800027D0.s")
 
@@ -193,7 +201,15 @@ void func_8000669C(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006774.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800069FC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800069FC.s")
+/*!TODO Confirm the structs are correct here*/
+void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg2) {
+    arg0->unk0 = 0xD;
+    arg0->dustTimer = 0x14;
+    arg1->unk60 |= 1;
+    func_8001D8B0(arg1, 0xA, 1, D_8007BC2C, 1, 1);
+    func_800140EC(0x23, arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006A74.s")
 
@@ -204,6 +220,29 @@ void func_8000669C(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006F6C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80007030.s")
+#ifdef NON_MATCHING
+s32 func_80007030(s32 arg0, unk1d924s2* arg1) {
+    
+    s32 var_v1;
+    s32 sp1C;
+
+    var_v1 = 0;
+    if (!(arg1->unk60 & 1) && !(D_8007B2E4 & 0x80)) {
+        if (D_8008C592 & 1) {
+            if (!(D_8008C592 & 0x202)) {
+                sp1C = 0;
+                var_v1 = sp1C;
+                if ((func_80015B50() == 0) && (D_8008C594 == 0)) {
+                    var_v1 = 1;
+                }
+            }
+        } else {
+            var_v1 = 1;
+        }
+    }
+    return var_v1;
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800070C0.s")
 

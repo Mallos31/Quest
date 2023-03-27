@@ -375,3 +375,6 @@ __osMaxControllers        = 0x80095491;
 __osEepromTimerQ          = 0x800954B8;
 __osEepromTimerMsg        = 0x800954D0;
 __osPfsPifRam             = 0x80095660;
+
+
+gDL_StaffIcon             = 0x803A8CF8;

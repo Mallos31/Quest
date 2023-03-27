@@ -230,36 +230,51 @@ void func_80023500(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023570.s")
+
+/*createRotationMatrix or rotateMatrix
+  This is dependant on what I find this
+  function is actually being used for.*/
+
+  /*This function appears to be creating a 4x4 matrix arg0 that represents a rotation transformation in 3D space. 
+  The three input parameters arg1, arg2, and arg3 specify the rotation angles around the X, Y, and Z axes, respectively, 
+  in radians.
+  The function computes the sine and cosine values of each angle using the sinf() and cosf() math functions and uses them to 
+  fill the corresponding elements of the arg0 matrix. The resulting matrix can then be used to apply the rotation transformation 
+  to a 3D point or vector.
+
+  The function starts by computing the sine and cosine values of the three input angles using the sinf() and cosf() functions. 
+  It then uses these values to compute the elements of the rotation matrix arg0. Finally, the function sets the last row of arg0 
+  to the identity matrix.*/
 void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3)
 {
-  f32 sp4C;
-  f32 sp48;
-  f32 sp44;
-  f32 temp_f20;
-  f32 sp3C;
-  f32 temp_f0;
+    f32 sin1;
+    f32 sin2;
+    f32 sin3;
+    f32 cos1;
+    f32 cos2;
+    f32 cos3;
   
   
-  sp4C = sinf(arg1);
-  temp_f20 = cosf(arg1);
-  sp48 = sinf(arg2);
-  sp3C = cosf(arg2);
-  sp44 = sinf(arg3);
-  temp_f0 = cosf(arg3);
+    sin1 = sinf(arg1);
+    cos1 = cosf(arg1);
+    sin2 = sinf(arg2);
+    cos2 = cosf(arg2);
+    sin3 = sinf(arg3);
+    cos3 = cosf(arg3);
 
-    arg0->mf[0][0] = (temp_f0 * sp3C) + (sp44 * sp4C * sp48);
-    arg0->mf[0][1] = sp44 * temp_f20;
-    arg0->mf[0][2] = (-sp48 * temp_f0) + (sp44 * sp4C * sp3C);
+    arg0->mf[0][0] = (cos3 * cos2) + (sin3 * sin1 * sin2);
+    arg0->mf[0][1] = sin3 * cos1;
+    arg0->mf[0][2] = (-sin2 * cos3) + (sin3 * sin1 * cos2);
     arg0->mf[0][3] = 0.0f;
 
-    arg0->mf[1][0] = (-sp44 * sp3C) + (temp_f0 * sp4C * sp48);
-    arg0->mf[1][1] = temp_f0 * temp_f20;
-    arg0->mf[1][2] = (-sp44 * -sp48) + (temp_f0 * sp4C * sp3C);
+    arg0->mf[1][0] = (-sin3 * cos2) + (cos3 * sin1 * sin2);
+    arg0->mf[1][1] = cos3 * cos1;
+    arg0->mf[1][2] = (-sin3 * -sin2) + (cos3 * sin1 * cos2);
     arg0->mf[1][3] = 0.0f;
 
-    arg0->mf[2][0] = temp_f20 * sp48;
-    arg0->mf[2][1] = -sp4C;
-    arg0->mf[2][2] = temp_f20 * sp3C;
+    arg0->mf[2][0] = cos1 * sin2;
+    arg0->mf[2][1] = -sin1;
+    arg0->mf[2][2] = cos1 * cos2;
     arg0->mf[2][3] = 0.0f;
 
     arg0->mf[3][0] = 0.0f;

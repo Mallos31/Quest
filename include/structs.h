@@ -270,14 +270,14 @@ typedef struct unk_23974_s
 
 typedef struct unk_db38_s //door animation struct
 {
-    s32 unk0;
+    s32 timer;
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    s32 unk10;
+    void* position;
     s32 unk14;
     s32 unk18;
-}unkdb38s;
+}DoorAnimData;
 
 typedef struct unk_e3c4_s
 {
@@ -463,9 +463,7 @@ typedef struct {
 } UnknownData2;
 
 typedef struct {
-    /* 0x00 */ f32 x;
-    /* 0x04 */ f32 y;
-    /* 0x08 */ f32 z;
+    /* 0x00 */ Vec3f pos;
     /* 0x0C */ f32 xrot;
     /* 0x10 */ f32 yrot;
     /* 0x14 */ f32 zrot;
@@ -511,7 +509,7 @@ typedef struct {
     /* 0x14  */ u8   pad[0x8];
     /* 0x1C  */ AIScript* AIScript;
     /* 0x20  */ MonsterBaseData* monBaseData;
-    /* 0x24  */ MonsterBattleData battleData; //monster 1 position 
+    /* 0x24  */ MonsterBattleData battleData;
 } EnemyAction; // size 0x128
 
 
@@ -596,6 +594,81 @@ typedef struct {
     /*0x64*/ BrianData1* brianData1;
     
 }BrianData2;
+
+typedef struct player_Action_s
+{
+            s16 unk0;
+            s16 unk2;
+            s16 dustTimer;
+            s16 doorSide;
+            u16 unk8;
+            s16 unkA;
+            s32 unkC;
+            void* unk10;
+            f32 xpos;
+            f32 ypos;
+            f32 zpos;
+            char unk20[0x18];
+            f32 unk38; //
+            char unk3C[0x3C];
+            BrianData1* unk78;            
+}sPlayerAction;
+
+typedef struct {
+    s32 start;
+    s32 end;
+}NPCFile;
+
+typedef struct {
+Vec3f pos;
+Vec3f rot;
+} PosRot;
+
+typedef struct {
+    char unk0[0x2];
+    s16 unk2;
+    char unk4[0xA];
+    s16 unkE;
+    
+}NPC3;
+
+typedef struct {
+    char unk0[0x4];
+    u8 unk4;
+    char unk5[0xB];
+    NPC3* unk10;
+    char unk14[4];
+    u16 unk18;
+}NPC2;
+
+typedef struct {
+/*0x00*/u16 action;
+/*0x02*/u16 actionTimer;
+/*0x04*/f32 xWanderOrigin; //xpos of a point a wandering NPC can't stray too far from.  
+/*0x08*/f32 zWanderOrigin; //zpos of a point a wandering NPC can't stray too far from. 
+/*0x0C*/f32 yRotReturn; //yRotation to return to when done speaking. 
+/*0x10*/f32 unk10; //changes based on where Brian speaks to the NPC from. Current purpose unknown. 
+/*0x14*/PosRot PosRot;
+/*0x2C*/f32 unk2C; 
+/*0x30*/f32 unk30;
+/*0x34*/f32 unk34;
+/*0x38*/f32 scale;
+/*0x3C*/f32 collisionSize;
+/*0x40*/Vec3f shadowRot;
+/*0x4C*/char unk4C[0x14];
+/*0x60*/u16 unk60;
+/*0x62*/char unk62[4];
+/*0x66*/s16 animID;
+    u16 animFrames;
+    u16 totalFrames;
+    u16 animSpeed;
+    s16 unkAnimID; //may be nextAnimID, but doesn't seem to be. Research needed. 
+    s16 unk70;
+    char unk72[0x2];
+    u16 unk74;
+    char unk76[0xA];
+    NPC2* unk80;    
+}NPC;
 
 #endif
 

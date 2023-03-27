@@ -25,24 +25,7 @@ typedef struct {
     s32 fileEnd;
 }bossFile;
 
-typedef struct player_Action_s
-{
-            s16 unk0;
-            s16 unk2;
-            s16 dustTimer;
-            s16 doorSide;
-            u16 unk8;
-            s16 unkA;
-            s32 unkC;
-            void* unk10;
-            f32 xpos;
-            f32 ypos;
-            f32 zpos;
-            char unk1C[0x18];
-            f32 unk38; //
-            char unk3C[0x3C];
-            BrianData1* unk78;            
-}sPlayerAction;
+
 
 extern unkD_7D1A8s D_8007D1A8; //boss position data
 extern f32 D_803A9B8C[]; //apparently a table of distances to be away from the boss to start an encounter

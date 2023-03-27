@@ -125,14 +125,18 @@ void func_8001D820(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001D828.s")
 #ifdef NON_MATCHING
-s32 func_8001D828(void) {
-    u8* var_v1;
-
-    if ((D_8008C592 & 0x100) || ((func_80022FD0(4U) == 0))) {
-        var_v1 = D_8007C9B8[func_80022FD0(D_8008C59A)]->shadowPos;
-        
-    }
-    return var_v1;
+u8 func_8001D828(void)
+{
+    u8 ret;
+  if ((D_8008C592 & 0x100) || ((func_80022FD0(4U)) == 0))
+  {
+    ret = D_8007C9B8[func_80022FD0(D_8008C59A)].unk00->unk34;
+  }
+  else
+  {
+    ret = 0xFF;
+  }
+    return ret;
 }
 #endif
 
