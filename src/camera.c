@@ -50,7 +50,7 @@ u32 func_80022FD0(u32 arg0)
   return 0U;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")//Major match assist by EllipticEllipsis
 f32 func_80023028(f32 x) {
     f32 var_f2 = 0.0f;
     s32 temp_lo;
