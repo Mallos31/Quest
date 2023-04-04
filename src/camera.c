@@ -50,81 +50,36 @@ u32 func_80022FD0(u32 arg0)
   return 0U;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")
-#ifdef NON_MATCHING
-f32 func_80023028(f32 arg0)
-{
-  //f32 temp_f4;
-  f32 var_f12;
-  f32 var_f2;
-  s32 temp_a1;
-  s32 temp_a3;
-  s32 temp_f16;
-  //s32 temp_f4_2;
-  //s32 temp_f6;
-  s32 temp_lo;
-  s32 temp_t1;
-  s32 var_a0;
-  s32 var_a2;
-  s32 var_t0;
-  s32 var_t2;
-  s32 var_v0;
-  s32 var_v1;
-  var_f12 = arg0;
-  var_v1 = 0xC;
-  var_f2 = 0.0f;
-  var_a0 = 0x19;
-  var_a2 = 0x17;
-  var_t0 = 0x15;
-  if (var_f12 > 1.0f)
-  {
-    var_v0 = 1;
-    var_f12 = 1.0f / var_f12;
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")
+f32 func_80023028(f32 x) {
+    f32 var_f2 = 0.0f;
+    s32 temp_lo;
+    s32 var_v0;
+    s32 var_v1;
+    
+    if (x > 1.0f) {
+        var_v0 = 1;
+        x = 1.0f / x;
+    } else if (x < -1.0f) {
+        var_v0 = -1;
+        x = 1.0f / x;
+    } else {
+        var_v0 = 0;
   }
-  else
-  {
-    var_v0 = 0;
-    if (var_f12 < (-1.0f))
-    {
-      var_v0 = -1;
-      var_f12 = 1.0f / var_f12;
+
+    for (var_v1 = 12; var_v1 > 0; var_v1--) {
+        temp_lo = var_v1 * var_v1;
+        var_f2 = ((temp_lo * x * x) / (var_v1 * 2 + 1 + var_f2));
     }
-  }
-  var_t2 = 0x13;
-  do
-  {
-    temp_lo = var_v1 * var_v1;
-    temp_a1 = var_v1 - 1;
-    temp_a3 = var_v1 - 2;
-    //temp_f4 = (f32) var_a0;
-    temp_t1 = var_v1 - 3;
-    var_v1 -= 4;
-    var_a0 -= 8;
-    temp_f16 = var_a2;
-    var_a2 -= 8;
-    //temp_f4_2 = var_t0;
-    var_t0 -= 8;
-    //temp_f6 = var_t2;
-    var_t2 -= 8;
-    temp_f16 = var_f12;
-    var_f2 = ((((f32) (temp_t1 * temp_t1)) * temp_f16) * temp_f16) 
-        / (((f32) var_t2) + (((((f32) (temp_a3 * temp_a3)) * temp_f16) * temp_f16) 
-        / (((f32) var_t0) + (((((f32) (temp_a1 * temp_a1)) * temp_f16) * temp_f16) 
-        / (((f32) temp_f16) + (((((f32) temp_lo) * temp_f16) * temp_f16) 
-        / (var_a0 + var_f2)))))));
-  }
-  while (var_v1 != 0);
-  if (var_v0 > 0)
-  {
-    return (f32) (D_800716D0 - ((f64) (temp_f16 / (1.0f + var_f2))));
-  }
-  if (var_v0 < 0)
-  {
-    return (f32) (D_800716D8 - ((f64) (temp_f16 / (1.0f + var_f2))));
-  }
-  return temp_f16 / (1.0f + var_f2);
+
+    if (var_v0 > 0) {
+        return D_800716D0 - (x / (1.0f + var_f2));
+    } else if (var_v0 < 0) {
+        return D_800716D8 - (x / (1.0f + var_f2));
+    } else {
+        return x / (1.0f + var_f2);
+    }
 }
-#endif
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800231B0.s")
 void func_800231B0(f32* arg0, f32* arg1) {
@@ -190,30 +145,31 @@ void func_800232F4(f32 arg0, unk232f4s* arg1) {
 void func_80023360(unk23360s *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
 {
     
-  f32 sp4C;    
-  f32 sp48;
-  f32 sp44;
-  f32 temp_f20;    
-  f32 sp3C;    
-  f32 temp_f0;
+  f32 s1;    
+  f32 s2;
+  f32 s3;
+  f32 c1;    
+  f32 c2;    
+  f32 c3;
     
-  sp4C = sinf(arg1);
-  temp_f20 = cosf(arg1);
-  sp48 = sinf(arg2);
-  sp3C = cosf(arg2);
-  sp44 = sinf(arg3);
-  temp_f0 = cosf(arg3);
-  arg0->unk0 = (f32) (((temp_f0 * sp3C) + ((sp44 * sp4C) * sp48)) * arg4);
-  arg0->unk4 = (f32) ((sp44 * temp_f20) * arg4);
-  arg0->unk8 = (f32) ((((-sp48) * temp_f0) + ((sp44 * sp4C) * sp3C)) * arg4);
+  s1 = sinf(arg1);
+  c1 = cosf(arg1);
+  s2 = sinf(arg2);
+  c2 = cosf(arg2);
+  s3 = sinf(arg3);
+  c3 = cosf(arg3);
+  
+  arg0->unk0 = (f32) (((c3 * c2) + ((s3 * s1) * s2)) * arg4);
+  arg0->unk4 = (f32) ((s3 * c1) * arg4);
+  arg0->unk8 = (f32) ((((-s2) * c3) + ((s3 * s1) * c2)) * arg4);
   arg0->unkC = 0.0f;
-  arg0->unk10 = (f32) ((((-sp44) * sp3C) + ((temp_f0 * sp4C) * sp48)) * arg4);
-  arg0->unk14 = (f32) ((temp_f0 * temp_f20) * arg4);
-  arg0->unk18 = (f32) ((((-sp44) * (-sp48)) + ((temp_f0 * sp4C) * sp3C)) * arg4);
+  arg0->unk10 = (f32) ((((-s3) * c2) + ((c3 * s1) * s2)) * arg4);
+  arg0->unk14 = (f32) ((c3 * c1) * arg4);
+  arg0->unk18 = (f32) ((((-s3) * (-s2)) + ((c3 * s1) * c2)) * arg4);
   arg0->unk1C = 0.0f;
-  arg0->unk20 = (f32) ((temp_f20 * sp48) * arg4);
-  arg0->unk24 = (f32) ((-sp4C) * arg4);
-  arg0->unk28 = (f32) ((temp_f20 * sp3C) * arg4);
+  arg0->unk20 = (f32) ((c1 * s2) * arg4);
+  arg0->unk24 = (f32) ((-s1) * arg4);
+  arg0->unk28 = (f32) ((c1 * c2) * arg4);
   arg0->unk2C = 0.0f;
   arg0->unk30 = arg5;
   arg0->unk34 = arg6;

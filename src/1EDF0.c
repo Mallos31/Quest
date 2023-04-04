@@ -139,8 +139,8 @@ extern Gfx gDL_StaffIcon[]; //Staff icon DL
 extern unk20e2cs D_803A6F40;
 extern s32 D_8007B2F8;
 extern f32 D_80086DEC;
-extern s32 gHUDSegX;
-extern s32 gHUDSegY;
+extern s32 gHUDResolutionX;
+extern s32 gHUDResolutionY;
 extern Mtx D_2000000[];
 extern Gfx D_803A8EA0[]; //Compass Display List
 extern Gfx D_803A8C80[];
@@ -161,7 +161,7 @@ void func_8001E1F0(void)
   D_8008C638 = 0;
   D_8008C63C = 0;
   D_8008C640 = -1;
-  gHUDSegX = gHUDSegY = 0;
+  gHUDResolutionX = gHUDResolutionY = 0;
   D_8008C650 = D_8008C654 = 0;  
   D_8008C658 = 0x140; //HUD height
   D_8008C65C = 0xF0; //HUD Width
@@ -202,11 +202,11 @@ void func_8001E7FC(BrianData2 *arg0)
 void func_8001EA84(Mtx *arg0) {
     MtxF sp38;
 
-    gHUDSegX = 0x104;
-    gHUDSegY = 0x18;
+    gHUDResolutionX = 0x104;
+    gHUDResolutionY = 0x18;
     func_80023570(&sp38, 0.0f, 0.0f, D_80086DEC);
-    sp38.mf[3][0] = (f32) (gHUDSegX + 0x11);
-    sp38.mf[3][1] = (f32) (gHUDSegY + 0x11);
+    sp38.mf[3][0] = (f32) (gHUDResolutionX + 0x11);
+    sp38.mf[3][1] = (f32) (gHUDResolutionY + 0x11);
     sp38.mf[3][2] = 0.0f;
     
     guMtxF2L(sp38.mf, arg0 + 3 + D_8007B2F8);
@@ -248,8 +248,8 @@ void func_8001F3DC(unk1f3dcTEST* arg0) {
     unk20e2cs* temp;
     
     
-    gHUDSegX = 0;
-    gHUDSegY = 0;
+    gHUDResolutionX = 0;
+    gHUDResolutionY = 0;
 
     gDPPipeSync(gMasterGfxPos++);
     gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_8039D990);
@@ -447,8 +447,8 @@ void func_800203C8(void) {
 void func_800203D0(void)
 {
   unk20e2cs *new_var;
-  gHUDSegX = 0xB5;
-  gHUDSegY = 0x1A;
+  gHUDResolutionX = 0xB5;
+  gHUDResolutionY = 0x1A;
   gDPPipeSync(gMasterGfxPos++);
   gDPSetTextureImage(gMasterGfxPos++, 0, G_IM_SIZ_16b, 1, D_8039D990);
   gDPTileSync(gMasterGfxPos++);
@@ -683,9 +683,9 @@ void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020F8C.s")
 void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy)
 {
-  ulx += gHUDSegX;
+  ulx += gHUDResolutionX;
   lrx += ulx;
-  uly += gHUDSegY;
+  uly += gHUDResolutionY;
   if (lrx >= D_8008C650)
   {
     lry += uly;

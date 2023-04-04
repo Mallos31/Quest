@@ -344,6 +344,7 @@ __osRunningThread         = 0x80070A00;
 gameMode                  = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
 
+gDoorAnimData             = 0x80084E60;
 gNextSubmap				  = 0x80084ee8;
 gAllowBattles             = 0x80084f10;
 gMapData                  = 0x80084f18;
@@ -353,6 +354,9 @@ dayLength				  = 0x800859d4;
 currentDay				  = 0x800859e0;
 
 D_8008C592              = 0x8008C592;
+
+gHUDResolutionX           = 0x8008C648;
+gHUDResolutionY           = 0x8008C64C;
 
 gInventoryScrollAmt       = 0x8008C760;
 gInvHighlightedItemIndex  = 0x8008c764;

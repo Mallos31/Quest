@@ -165,8 +165,8 @@ extern s32 D_8008C63C;
 extern s32 D_8008C640;
 
 //HUD stuff
-extern s32 gHUDSegX; //These two may need renaming.
-extern s32 gHUDSegY;
+extern s32 gHUDResolutionX; //These two may need renaming.
+extern s32 gHUDResolutionY;
 extern s32 D_8008C650; //number of lines to cover from left to right (HUD)
 extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
 extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
