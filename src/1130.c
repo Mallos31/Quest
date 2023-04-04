@@ -35,9 +35,24 @@ typedef struct {
     u32 unk678;
 }OSSched;
 
+typedef struct SCClient_s {
+    struct SCClient_s   *next;  /* next client in the list      */
+    OSMesgQueue         *msgQ;  /* where to send the frame msg  */
+} OSScClient;
+
 extern u16 D_8007B2D0;
 
+void func_80000530(OSSched* arg0, u8 numFields);
+//
+s32 func_800006F8(s32 arg0);
+s32 func_80000704(s32 arg0);
+void func_80000710(s32 arg0);
+void osScAddClient(OSSched* sc, unk7d4s* c, OSMesgQueue* msgQ);
+//
 void func_800008B0(OSSched* arg0, OSMesg arg1);
+//
+//
+//
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000530.s")
 void func_80000530(OSSched* arg0, u8 numFields) {
@@ -87,11 +102,11 @@ void func_80000710(s32 arg0) {
     osRecvMesg(arg0 + 0x74, &sp3C, 1);
     D_8007B2D0 += 1;
     switch (sp3C) {
-            case 0x29A:
+            case VIDEO_MSG:
                 
                 func_800008B0(arg0, arg0);
                 break;
-            case 0x29D:
+            case PRE_NMI_MSG:
                 func_800008B0(arg0, arg0 + 2);
                 break;
         }
@@ -113,15 +128,11 @@ void osScAddClient(OSSched* sc, unk7d4s* c, OSMesgQueue* msgQ) {
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000824.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_800008B0.s")
-void func_800008B0(OSSched* arg0, OSMesg arg1) {
-    unk8b0s* var_s0;
+void func_800008B0(OSSched* sc, OSMesg arg1) {
+    OSScClient* client;
 
-    var_s0 = arg0->clientList;
-    if (var_s0 != NULL) {
-        do {
-            osSendMesg(var_s0->unk4, arg1, 0);
-            var_s0 = var_s0->unk0;
-        } while (var_s0 != NULL);
+    for (client = sc->clientList; client != NULL; client = client->next) {
+        osSendMesg(client->msgQ, arg1, 0);
     }
 }
 

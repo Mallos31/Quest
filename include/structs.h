@@ -253,20 +253,6 @@ typedef union {
     };
 } MtxF;
 
-typedef struct unk_23974_s
-{
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-}unk23974s;
 
 typedef struct unk_db38_s //door animation struct
 {

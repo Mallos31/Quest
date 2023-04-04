@@ -26,17 +26,23 @@ extern f32 D_80086E88[4];
 extern f32 D_80086ECC;
 extern f32 D_80086ED4;
 
+u32 func_80022FD0(u32 arg0);
+f32 func_80023028(f32 x);
+void func_800231B0(f32* arg0, f32* arg1);
+f32 func_80023210(f32 arg0, f32 arg1);
+void func_800232F4(f32 arg0, unk232f4s* arg1);
 void func_80023360(unk23360s *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_80023500(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_800236CC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3);
-void func_800231B0(f32* arg0, f32* arg1);
 void func_8002371C(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 void func_8002387C(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
+void func_800238E4(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6);
+void func_80023974(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6);
+
 void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3);
-void func_80023A08(f32 arg0[4][4], f32 arg1, f32 arg2, f32 arg3);
 
-f32 func_80023028(f32);                             /* extern */
-
+void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3);
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80022FD0.s")
@@ -80,6 +86,36 @@ f32 func_80023028(f32 x) {
         return x / (1.0f + var_f2);
     }
 }
+
+/*once rodata is split, and some defines are created, this needs to look like this
+f32 func_80023028(f32 x) {
+    f32 conv = 0.0f;
+    s32 sector;
+    s32 i;
+    
+    if (x > 1.0f) {
+        sector = 1;
+        x = 1.0f / x;
+    } else if (x < -1.0f) {
+        sector = -1;
+        x = 1.0f / x;
+    } else {
+        sector = 0;
+    }
+
+    for (i = 12; i > 0; i--) {
+        conv = ((SQ(i) * x * x) / (i * 2 + 1 + conv));
+    }
+
+    if (sector > 0) {
+        return M_PI / 2 - (x / (1.0f + conv));
+    } else if (sector < 0) {
+        return - M_PI / 2 - (x / (1.0f + conv));
+    } else {
+        return x / (1.0f + conv);
+    }
+}
+*/
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800231B0.s")
 void func_800231B0(f32* arg0, f32* arg1) {
@@ -320,7 +356,7 @@ void func_800238E4(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32
 }
   
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023974.s")
-void func_80023974(unk23974s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6) {
+void func_80023974(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32* arg5, f32* arg6) {
     *arg4 = (arg0->unk20 * arg3) + ((arg0->unk0 * arg1) + (arg0->unk10 * arg2));
     *arg5 = (arg0->unk24 * arg3) + ((arg0->unk4 * arg1) + (arg0->unk14 * arg2));
     *arg6 = -((arg0->unk28 * arg3) + ((arg0->unk8 * arg1) + (arg0->unk18 * arg2)));
