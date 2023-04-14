@@ -35,6 +35,11 @@ typedef struct {
     u32 unk678;
 }OSSched;
 
+typedef struct unk_7d4_s{
+    s32 unk0;
+    s32 unk4;
+}unk7d4s;
+
 typedef struct SCClient_s {
     struct SCClient_s   *next;  /* next client in the list      */
     OSMesgQueue         *msgQ;  /* where to send the frame msg  */

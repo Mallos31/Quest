@@ -23,6 +23,27 @@ typedef struct {
     f32 unk10;
 }unk12358s;
 
+typedef struct unk_1205c_s
+{
+    char unk0[0x60];
+    u16 unk60;
+    u16 unk62;
+}unk1205cs;
+
+typedef struct unkD_80086EE0_s
+{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+}unkD80086EE0s;
+
+extern unkD80086EE0s D_80086EE0;
+
 extern s32 D_80086A00;
 extern Spirit D_80086A08;
 extern s32 D_2000080;
@@ -47,8 +68,6 @@ extern f32 D_80086ED0;
 extern f32 D_80086ED4;
 extern s32 D_80086ED8;
 extern u16 D_80086F00;
-extern u16 D_8008C592;
-extern s32 D_8008C638;
 extern u16 D_80092876;
 extern unk13f20s D_8004CCB0[];
 extern s32 D_80086C2C;
@@ -62,6 +81,8 @@ extern u8 D_8007C970[];
 extern u8* D_803A9954[]; //array of pointers to item names
 extern u8 D_800869F8;
 extern u8 D_800869D8[];
+extern f32 D_80071428;
+extern f32 D_8007142C;
 
 void func_800121B0(u16 arg0);
 void func_800120C0(s32 arg0);

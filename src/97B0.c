@@ -1,4 +1,5 @@
 #include "common.h"
+#include "monsters.h"
 
 typedef struct {
     s16 unk0;
@@ -43,7 +44,7 @@ extern void* D_80054640[];
 extern EnemyAction D_8007C998[];
 extern u16 D_8007D0B0;
 extern u16 D_8008C598;
-extern UnknownData2* D_8007BB34;
+extern UnknownMonsterData2* D_8007BB34;
 extern void (*D_8004C290[])(s32, void*, void*);
 extern f64 D_80071160;
 extern f64 D_80071168;
@@ -52,6 +53,8 @@ extern f64 D_80071178;
 extern f64 D_80071180;
 extern f64 D_80071188;
 extern f64 D_80071190;
+extern MonsterBattleData D_8007C9BC;
+extern s32 D_8007D0C4;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008BB0.s")
 

@@ -341,7 +341,7 @@ __osContinitialized		  = 0x800709C0;
 __osRunQueue              = 0x800709F8;
 __osActiveQueue           = 0x800709FC;
 __osRunningThread         = 0x80070A00;
-gameMode                  = 0x8007b2e0;
+gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
 
 gDoorAnimData             = 0x80084E60;
@@ -349,9 +349,10 @@ gNextSubmap				  = 0x80084ee8;
 gAllowBattles             = 0x80084f10;
 gMapData                  = 0x80084f18;
 
-currentTime               = 0x800859d0;
-dayLength				  = 0x800859d4;
-currentDay				  = 0x800859e0;
+gCurrentTime              = 0x800859d0;
+gDayLength				  = 0x800859d4;
+gCurrentDay				  = 0x800859e0;
+
 
 D_8008C592              = 0x8008C592;
 
@@ -380,5 +381,6 @@ __osEepromTimerQ          = 0x800954B8;
 __osEepromTimerMsg        = 0x800954D0;
 __osPfsPifRam             = 0x80095660;
 
-
+gTextPalettes             = 0x80331A30;
 gDL_StaffIcon             = 0x803A8CF8;
+gInventoryPalette		  = 0x803AAC20;

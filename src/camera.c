@@ -19,12 +19,36 @@ typedef struct {
     f32 unk3C;
 }unk23360s;
 
+typedef struct unk_23df4_s
+{
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+}unk23df4s;
+
 extern f64 D_800716D0;
 extern f64 D_800716D8;
 extern MtxF D_8008D030;
 extern f32 D_80086E88[4];
 extern f32 D_80086ECC;
 extern f32 D_80086ED4;
+extern u32 D_8004D748; //possibly RNG seed
+extern f64 D_800716D0;
+extern f64 D_800716D8;
+extern f64 D_800716E0;
+extern f64 D_800716E8;
+extern f64 D_800716F0;
+extern f64 D_800716F8;
+
+
 
 u32 func_80022FD0(u32 arg0);
 f32 func_80023028(f32 x);

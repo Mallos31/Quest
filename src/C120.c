@@ -1,4 +1,6 @@
 #include "common.h"
+#include "player.h"
+
 
 
 
@@ -30,7 +32,6 @@ typedef struct {
 extern unkD_7D1A8s D_8007D1A8; //boss position data
 extern f32 D_803A9B8C[]; //apparently a table of distances to be away from the boss to start an encounter
 extern s32 D_8007D1A0; //boss cutscene model loaded when !=0
-extern s32 D_80084EE4;
 extern void* D_802A7BC0;
 extern bossFile D_803A9A90[]; //ptr to boss file ROM addresses
 extern BossData D_803A9AD0[];

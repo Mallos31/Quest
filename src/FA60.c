@@ -4,32 +4,48 @@ typedef struct {
     s32 unk0[0xC];
 }unk111d8s; //For probably unused function func_800111D8
 
-typedef struct {
+
+typedef struct unk_11170_s {
     s32 unk0;
     s32 unk4;
-    char unk8[0x10];
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
     s32 unk18;
-    char unk1C[0x10];
-    s32 unk2C;
-}unk80011100s; //size 0x30
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C; 
+}unk11170s;
 
-extern unk80011100s D_80085B38;
+
+
+extern unk11170s D_80085B38;
 
 extern unk111d8s D_80085A14[]; //For probably unused function func_800111D8
 
 extern unk232f4s D_80085358;
-extern u16 D_8008C592;
 extern f64 D_80071268;
 extern f64 D_80071270;
 extern f64 D_80071278;
 extern s32 D_80085B68[4][3];
 extern s32 D_8008C634;
+extern s32 D_800859D8;
 
 extern s32 D_8008538C;
 extern s32 D_80085390;
 extern s32 D_80085394;
 extern u16* D_80085398;
 extern u8 D_800853A0[];
+extern unk11170s D_800859E8[];
+
+
+s32 func_8000FFE8(unkfde0s*);                       /* extern */
+void func_80010080(unkfde0s*);                         /* extern */
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000EE60.s")
 
@@ -319,9 +335,9 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
 #ifdef NON_MATCHING
 void func_800100D0(void) {
     s32 i;
-    currentTime = 0x1EC3;
-    dayLength = 0x6978;
-    currentDay = 1;
+    gCurrentTIme = 0x1EC3;
+    gDayLength = 0x6978;
+    gCurrentDay = 1;
     D_8008C634 = 7;
     for (i = 0; i < 4; i++) {
         D_80085B68[i][0] = 0;
@@ -339,14 +355,14 @@ void func_800100D0(void) {
 void func_80010510(s32 arg0) {
     s32 temp_v1;
 
-    currentTime = arg0;
-    if (dayLength <= currentTime) {
-        currentTime = currentTime - dayLength;
-        if (currentDay < 9999) {
-            currentDay++;
+    gCurrentTIme = arg0;
+    if (gDayLength <= gCurrentTIme) {
+        gCurrentTIme = gCurrentTIme - gDayLength;
+        if (gCurrentDay < 9999) {
+            gCurrentDay++;
             }
     }
-    D_800859D8 = currentTime;
+    D_800859D8 = gCurrentTIme;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010564.s")
@@ -361,12 +377,12 @@ void func_80010510(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010EC4.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800110D0.s")
-//likely uses the unk80011100s struct. Needs research. Used in actor lighting. 
+//likely uses the unk11170s struct. Needs research. Used in actor lighting. 
 void func_800110D0(void) {
-    unk110d0s* var_v0;
+    unk11170s* var_v0;
     s32 var_v1;
 
-    var_v0 =(unk110d0s*) &D_800859E8;
+    var_v0 = &D_800859E8;
     var_v1 = 8;
     while (var_v1 > 0) {
         var_v0->unk0 = 0;
@@ -379,7 +395,7 @@ void func_800110D0(void) {
 //something to do with environment lighting. Possibly actor lighting as well. 
 s32 func_80011100(void) {
     s32 i;
-    unk80011100s* var_v1;
+    unk11170s* var_v1;
 
     var_v1 = &D_80085B38;
     for (i = 7; i != 0 && var_v1->unk0 != 0; i--) {

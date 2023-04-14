@@ -1,4 +1,5 @@
 #include "common.h"
+#include "player.h"
 
 typedef struct unk_1d924_s2
 {
@@ -58,6 +59,23 @@ typedef struct {
     s16 unk2;
     s16 unk4;
 }unk69fcs;
+
+typedef struct unk_3f5c_s{
+    char unk0[0x18];
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    char unk24[0x3C];
+    u16 unk60;
+}unk3f5cs;
+
+typedef struct unk_3f5c_s2{
+    s16 unk0;
+    s16 unk2;
+    u16 unk4;
+}unk3f5cs2;
+
+
 
 extern unkBAB8 D_8007BAB8;
 extern s32 D_8007BC2C;
@@ -159,7 +177,7 @@ void func_80005740(void) {
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006604.s")
 void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2) {
-    func_8001D8B0((unk1e0acs* ) arg1, 0x1C, 1, 0x1D, 1, (u16) 1);
+    func_8001D8B0(arg1, 0x1C, 1, 0x1D, 1, (u16) 1);
     func_80006720(arg1);
     func_8001D924(arg1, (arg1->animID * 0xC) + arg2, arg1->scale);
     arg0->unk0 = 0xB;

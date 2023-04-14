@@ -5,10 +5,23 @@ typedef struct {
     Mtx unkC0[1];
 } mkst;
 
+typedef struct unk_Shadow_s{
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+}unkShadows;
+
+extern unkShadows D_80085BD0[];
+
 extern u8 D_1000230[];
 extern u8 D_1000270[];
 extern s16 D_8007B318;
 extern s16 D_8007B31A;
+extern s32 D_800862D0;
 
 void func_800118D4(mkst *arg0);
 

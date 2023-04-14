@@ -1,4 +1,6 @@
 #include "common.h"
+#include "player.h"
+#include "npc.h"
 
 typedef struct {
     s16 unk0;
@@ -17,6 +19,19 @@ typedef struct {
     u8* unk14;
 }unk8948s2;
 
+typedef struct unk_1d8b0_s
+{
+    char unk0[0x52];
+    s16 unk52;
+    s16 unk54;
+    s16 unk56;
+    s16 unk58;
+    s16 unk5A;
+    s16 unk5C;
+    s16 unk5E;
+    u16 unk60;
+}unk1d8b0s;
+
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -26,7 +41,10 @@ typedef struct {
     unk8948s2* unk80;
 }unk8948s;
 
-
+typedef struct {
+    s32 start;
+    s32 end;
+}NPCFile;
 
 
 
@@ -109,14 +127,14 @@ void func_80007A50(void)
 void func_80007B64(void)
 {
   PosRot *new_var;
-  NPC *npc;
+  NPCData *npc;
   PosRot *npcPosRot;
   f32 temp_f20;
   f32 temp_f22;
   f32 var_f8;
   s32 var_s4;
     
-  npc = (NPC *) D_8007BD30;
+  npc = (NPCData *) D_8007BD30;
   for (var_s4 = D_8007BCE4; var_s4 != 0; var_s4--)
   {
     {
@@ -134,7 +152,7 @@ void func_80007B64(void)
               npc->action = 1;
               npcPosRot = &npc->PosRot;
               npc->actionTimer = (func_80022FD0(2U) + 1) * npc->unk80->unk10->unkE;
-              func_8001D8B0((NPC *) npcPosRot, 1, 1, 1, 1, (u16) 1);
+              func_8001D8B0((NPCData *) npcPosRot, 1, 1, 1, 1, (u16) 1);
               temp_f20 = npc->xWanderOrigin - npcPosRot->pos.x;
               temp_f22 = npc->zWanderOrigin - npcPosRot->pos.z;
               if (_nsqrtf((temp_f20 * temp_f20) + (temp_f22 * temp_f22)) > 50.0)
@@ -161,13 +179,13 @@ void func_80007B64(void)
           D_8007BCB8.unk0 = 0.0f;
           D_8007BCB8.unk4 = 0.4f;
           func_800232F4(npcPosRot->rot.y, &D_8007BCB8);
-          func_80008290(D_8007BCB8.unk0, D_8007BCB8.unk4, (NPC *) npcPosRot);
+          func_80008290(D_8007BCB8.unk0, D_8007BCB8.unk4, (NPCData *) npcPosRot);
           npc->actionTimer--;
           if (!npc->actionTimer)
         {
           npc->action = 0;
           npc->actionTimer = (u16) npc->unk80->unk10->unk2;
-          func_8001D8B0((NPC *) npcPosRot, 0, 1, 0, 1, (u16) 1);
+          func_8001D8B0((NPCData *) npcPosRot, 0, 1, 0, 1, (u16) 1);
           D_8007BCB4--;
         }
           break;
@@ -180,7 +198,7 @@ void func_80007B64(void)
           npcPosRot->rot.f[1] += npc->unk10 / 15.0f;
           if (npc->actionTimer == 0)
           {
-            func_8001D8B0((NPC *) npcPosRot, (s32) npc->unk80->unk18, 1, (s32) npc->unk80->unk18, 1, (u16) 1);
+            func_8001D8B0((NPCData *) npcPosRot, (s32) npc->unk80->unk18, 1, (s32) npc->unk80->unk18, 1, (u16) 1);
           }
         }
           break;
@@ -194,7 +212,7 @@ void func_80007B64(void)
           npc->action = 0;
           npc->actionTimer = (u16) npc->unk80->unk10->unk2;
           npcPosRot->rot.y = npc->yRotReturn;
-          func_8001D8B0((NPC *) npcPosRot, 0, 1, 0, 1, (u16) 1);
+          func_8001D8B0((NPCData *) npcPosRot, 0, 1, 0, 1, (u16) 1);
         }
           break;
 

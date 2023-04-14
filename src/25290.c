@@ -1,5 +1,33 @@
 #include "common.h"
 
+typedef struct unk_2513c_s{
+    s32 unk0;
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u16 unkA;
+    ALHeap* unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    char unk1C[0x174];
+    s32 unk190;
+    char unk194[8];
+    s32 unk19C;
+    s32 unk1A0;
+    u8 unk1A4;
+    u8 unk1A5;
+    s16 unk1A6;
+    s32 unk1A8;
+    s32 unk1AC;
+    s32 unk1B0;
+    s32 unk1B4;
+    char unk1B8[0x174];
+    s32 unk32C;
+}unk2513cs;
+
+extern unk2513cs D_8008F978;
+
 extern s16* D_8008F68C;
 extern ALSndPlayer D_8008F620;
 extern s32 D_800539A4;
@@ -10,6 +38,20 @@ extern s32 D_8005392C[];
 extern s32 D_8005394C[];
 extern s32 D_80053970;
 extern s32 D_8008FCB4;
+extern void* func_80024BEC;
+extern s32 D_800539E4;
+extern u32 D_8005398C;
+extern s32 D_80053990;
+extern s32 D_8008F92C;
+extern s32 D_8008D090;
+extern OSMesgQueue D_8008F288;
+extern ALBankFile* D_800538E8;
+extern ALSeqFile* D_800538F0;
+extern ALHeap D_8008F240;
+extern ALCSPlayer D_8008F994;
+extern ALSeqpConfig D_8008FB14;
+extern ALCSPlayer D_8008FB30;
+
 
 
 

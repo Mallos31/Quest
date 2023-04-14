@@ -22,11 +22,45 @@ typedef struct Unkstruct {
     s16 unk192;
 } Unkstruct;
 
+typedef struct unk_db38_s //door animation struct
+{
+    s32 timer;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    void* position;
+    s32 unk14;
+    s32 unk18;
+}DoorAnimData;
+
+typedef struct unk_e3c4_s
+{
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    char unk20[0x18];
+    s32 unk38;
+    char unk3C[0x18];
+    s32 unk54;
+    char unk58[0x18];
+}unke3c4s; //size 0x70
+
+extern DoorAnimData gDoorAnimData; //Door animation data
+
+extern unke3c4s D_80084180;
+extern unke3c4s D_80084098;
 extern Unkstruct D_800826D8[];
 extern Unkstruct D_80082866[];
 extern s32 D_8004C428;
 extern u16 D_80082868;
 extern u16 D_8008286A;
+extern s32 D_8007D2D0;
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000BD10.s")
 

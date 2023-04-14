@@ -37,6 +37,18 @@ typedef struct {
     f32 unk8;
 }arg7s;
 
+typedef struct unk_16ffc_s{
+    char unk0[0x24];
+    s32 unk24;
+    s32 unk28;
+}unk16ffcs;
+
+typedef struct unk_164e4_s{
+    char unk0[0xA];
+    u16 unkA;
+}unk164e4s;
+
+
 extern s32 D_80086F10;
 extern s16 D_80087170;
 extern s16 D_80087188;
@@ -164,7 +176,7 @@ void func_80016FFC(unk16ffcs* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001700C.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017094.s")
-void func_80017094(s32 arg0, unk173e0s* arg1) {
+void func_80017094(s32 arg0, unk18278s* arg1) {
     u16* temp_v0;
 
     temp_v0 = (u16*)arg1->unk68;
@@ -183,7 +195,7 @@ void func_80017094(s32 arg0, unk173e0s* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001737C.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800173E0.s")
-void func_800173E0(s32 arg0, unk173e0s* arg1) {
+void func_800173E0(s32 arg0, unk18278s* arg1) {
     u16* temp_v0;
 
     temp_v0 = (u16*)arg1->unk68;
@@ -193,7 +205,7 @@ void func_800173E0(s32 arg0, unk173e0s* arg1) {
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017428.s")
-void func_80017428(s32 arg0, unk173e0s* arg1) {
+void func_80017428(s32 arg0, unk18278s* arg1) {
     u16* temp_v0;
 
     temp_v0 = (u16*)arg1->unk68;
@@ -202,7 +214,7 @@ void func_80017428(s32 arg0, unk173e0s* arg1) {
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017470.s")
-void func_80017470(s32 arg0, unk173e0s* arg1) {
+void func_80017470(s32 arg0, unk18278s* arg1) {
     u16* temp_v0;
 
     temp_v0 = (u16*)arg1->unk68;
@@ -213,7 +225,7 @@ void func_80017470(s32 arg0, unk173e0s* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800174B8.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800175B8.s")
-void func_800175B8(s32 arg0, unk173e0s* arg1) {
+void func_800175B8(s32 arg0, unk18278s* arg1) {
     u16* temp_v0;
 
     temp_v0 = (u16*)arg1->unk68;

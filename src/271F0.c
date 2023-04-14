@@ -1,7 +1,6 @@
 #include "common.h"
 
-extern u8 D_80053CAC;
-extern u8 D_8008FCC6;
+
 
 typedef struct {
     s16 map;
@@ -10,8 +9,14 @@ typedef struct {
     s8 pad;
 }bgmData;
 
-
+extern s8 D_80053CA4;
+extern u8 D_80053CAC;
+extern u8 D_8008FCC6;
 extern bgmData D_80053B00[];
+extern s8 D_8005F010;
+extern s8 gCurrentBGM;
+extern u16 gPlayBGM;
+extern s16 gBGMDelay;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/271F0/func_800265F0.s")
 

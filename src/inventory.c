@@ -1,10 +1,48 @@
 #include "common.h"
+#include "player.h"
 
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
 
+typedef struct unk_22260_s{
+    char unk0[0x64];
+    s32 unk64;
+}unk22260s;
+
+typedef struct unk_22260_s2{
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+}unk22260s2;
+
+typedef struct unk_22260_s3{
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+    u16 unk8;
+    u16 unkA;
+}unk22260s3;
+
+typedef struct unk_2260c_s{
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+}unk2260cs;
+
+extern u8 gLastInvSlot;
 extern u8 D_8008CF77;
 extern Gfx D_803A8FF8[];
-
+extern unk22260s3 D_803A91F0[];
+extern void (*D_8004D490[])(s32, unk22260s3*, u8, s32);
+extern u16 D_80084EE0;
+extern s32 gInventoryScrollAmt; 
+extern s32 gInvHighlightedItemIndex;
+extern s32 D_8008C768; //Possibly amount the control stick is being pressed left or right to determine inventory scroll speed.
+extern s8 gVisibleInvItemIDs[8]; //IDs of items visible in inventory. One per item no matter how many of it you have.  
+extern u8 gInventory[150];
+extern u8 gInventoryPalette;
+extern u8 D_D3BE40; //phys inventory palette
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Inventory_Init.s")
@@ -13,7 +51,7 @@ void Inventory_Init(void) {
     u8* slot;
 
 
-    func_80024260(&D_D3BE40, &D_803AAC20, 0x400); //load inventory palette into RAM
+    func_80024260(&D_D3BE40, &gInventoryPalette, 0x400); //load inventory palette into RAM
     i = 8;
     slot = (u8*)&gVisibleInvItemIDs;
     do {
@@ -69,83 +107,7 @@ void func_800213D8(u8 arg0, s32 arg1) {
 }//Rain
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021434.s")
-/*s32 func_80021434(u16 arg0)   //CONTINUE WORKING ON THIS ONE...
-{
-  s32 temp_a0;
-  s32 temp_a2_2;
-  s32 slotsLeft;
-  s32 var_v1;
-  u32 slotItemID;
-  u8 *tempInvSlot;
-  u8 *tempInvSlot_2;
-  unk213d8s *temp_a2;
-  
-  var_v1 = 0;
-  tempInvSlot = gInventory;
-  slotsLeft = 0x96;
-  if ((*gInventory) != 0xFF)
-  {
-    slotItemID = *gInventory;
-    loop_2:
-    tempInvSlot += 1;
 
-    temp_a2 = &D_803A91F0[slotItemID];
-    if (temp_a2->unk2 == 0xF)
-    {
-      var_v1 = temp_a2->unk4 == (arg0);
-    }
-    slotsLeft--;
-    if (var_v1 == 0)
-    {
-      slotItemID = tempInvSlot[0];
-      if (slotItemID != 0xFF)
-      {
-        goto loop_2;
-      }
-    }
-  }
-  if (var_v1 != 0)
-  {
-    tempInvSlot_2 = tempInvSlot - 1;
-    if (slotsLeft != 0)
-    {
-      temp_a2_2 = -(slotsLeft & 3);
-      ;
-      if (temp_a2_2 != 0)
-      {
-        do
-        {
-          slotsLeft--;
-          tempInvSlot_2 += 1;
-          tempInvSlot_2[0] = tempInvSlot_2[1];
-        }
-        while ((temp_a2_2 + slotsLeft) != slotsLeft);
-        if (slotsLeft != 0)
-        {
-          goto loop_11;
-        }
-      }
-      else
-      {
-        do
-        {
-          loop_11:
-          slotsLeft -= 4;
-
-          tempInvSlot_2 += 4;
-          tempInvSlot_2[0] = tempInvSlot_2[1];
-          tempInvSlot_2[1] = tempInvSlot_2[2];
-          tempInvSlot_2[2] = tempInvSlot_2[3];
-          tempInvSlot_2[3] = tempInvSlot_2[4];
-        }
-        while (slotsLeft != 0);
-      }
-    }
-    *tempInvSlot_2 = 0xFF;
-  }
-  return var_v1;
-}
-*/
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021524.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002224C.s")

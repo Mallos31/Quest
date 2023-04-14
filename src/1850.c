@@ -38,13 +38,33 @@ extern u64 D_80300000[]; // dram stack (0x400 bytes)
 extern u64 D_80300400[]; // ucode yield buffer (0xC00 bytes)
 extern u64 D_8031B2A0[]; // ucode output buffer start
 extern u64 D_803232A0[]; // ucode output buffer end
+extern f32 D_80070F04;
+extern s16 D_8007B2F0;
+extern s8 D_8007B344;
+extern s8 D_8007B345;
+extern f32 D_8007BA40;
+extern f32 D_8007BA44;
+extern f32 D_8007BA48;
+extern s32 D_8007BA4C;
+extern s16 D_8007BA60;
+extern u16 D_8007BA62;
+extern s16 D_8007BA64;
+extern s16 D_8007BABE;
+extern u32 D_80084EEC;
+extern s32 D_80084EF0;
+extern s32 D_80084EF8;
+extern s32 D_80084F04;
+extern u16 D_80084F14;
+extern s32 D_80085370;
+extern s16 D_800859E2;
+extern f32 D_80086E44;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000C50.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000EEC.s")
 void func_80000EEC(void) {
     D_8007B2E4 = 0x160;  //menu that is open
-    gameMode = 4;
+    gGameMode = 4;
     D_80084EE4 = -1;     //current map
     D_80084EF8 = -1;
     D_80084F04 = -1;

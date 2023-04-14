@@ -25,8 +25,6 @@ extern s32 D_8008C560;
 extern s32 D_8008C564;
 extern f32 D_8008C574;
 extern s16 D_8008C578;
-extern u16 D_8008C592;
-//extern unk1c560s* gMapData; //gMapData
 
 typedef struct {
     void* stats;
@@ -55,8 +53,8 @@ typedef struct {
     u16 unk60;
     u16 unk62;
     MonsterBaseData *unk64;
-    UnknownData2 *unk68;
-    UnknownData2 unk6C;
+    UnknownMonsterData2 *unk68;
+    UnknownMonsterData2 unk6C;
 }unkEnemy;
 
 extern unkEnemy* D_8007C9B8[];

@@ -1,4 +1,6 @@
 #include "common.h"
+#include "monsters.h"
+#include "player.h"
 
 #define ON_GROUND 0
 #define FLYING 1
@@ -118,10 +120,10 @@ extern u8 D_8007BAA5;
 extern u8 D_8007BAA6;
 extern u8 D_8007BAA7;
 
-extern s32 D_8008C650;
-extern s32 D_8008C654;
-extern s32 D_8008C658;
-extern s32 D_8008C65C;
+extern s32 D_8008C650; //number of lines to cover from left to right (HUD)
+extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
+extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
+extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
 extern unk20888s D_8008C668;
 extern u8 D_803A2960[]; //Status icons palette
 extern unk20e2cs D_803A6F70;
@@ -145,6 +147,11 @@ extern Mtx D_2000000[];
 extern Gfx D_803A8EA0[]; //Compass Display List
 extern Gfx D_803A8C80[];
 extern f64 D_800716C8;
+extern s16 D_8008C630;
+extern s32 D_8008C638;
+extern s32 D_8008C63C;
+extern s32 D_8008C640;
+extern Gfx gExclamationMarkPalette[]; //exclamation mark display list
 
 void func_8001EBDC(unk1ebdcs* arg0);
 void func_8001EA84(Mtx *arg0);
@@ -334,7 +341,7 @@ void func_8001F9B0(void) {
 
     if (func_8002413C(D_8007BAB8.xpos, (f32) ((f64) D_8007BAB8.ypos + 11.0), D_8007BAB8.zpos, &sp34, &sp30) != 0) {
 
-        gSPDisplayList(gMasterGfxPos++, gDL_exclamationMarkPal);
+        gSPDisplayList(gMasterGfxPos++, gExclamationMarkPalette);
         func_80020F8C(sp34, sp30 - 0x1E, 0x10, 0x1E, 0, 0, 0x400, 0x400);
     }
 }

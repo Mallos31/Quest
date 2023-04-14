@@ -95,14 +95,14 @@ void func_8001B19C(s32 arg0) {
                     spB4.xw = var_s0->unk18;
                     spB4.yw = var_s0->unk1C;
                     spB4.zw = var_s0->unk20;
-                    func_80023DF4((unk23df4s* ) &spB4, var_s0->unk28, var_s0->unk28, var_s0->unk28);
+                    func_80023DF4( &spB4, var_s0->unk28, var_s0->unk28, var_s0->unk28);
                 } else {
                     func_8002371C((MtxF* ) &spB4, var_s0->unk18, var_s0->unk1C, var_s0->unk20, D_80086DC0.unkC, D_80086DC0.unk10, D_80086DC0.unk14);
                     if (var_s0->unk24 != 0.0f) {
                         func_80023570(&sp74, 0.0f, 0.0f, var_s0->unk24);
-                        guMtxCatF( &sp74,  (f32 (*)[4])&spB4,  (f32 (*)[4])&spB4);
+                        guMtxCatF(&sp74,  (f32 (*)[4])&spB4,  (f32 (*)[4])&spB4);
                     }
-                    func_80023DF4((unk23df4s* ) &spB4, var_s0->unk28, var_s0->unk2C, 1.0f);
+                    func_80023DF4(&spB4, var_s0->unk28, var_s0->unk2C, 1.0f);
                 }
                 guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 0xC0);
 

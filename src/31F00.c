@@ -1,10 +1,13 @@
 #include "common.h"
 
 extern OSPfs D_80092898[];
-extern s8 D_80092870;
 extern OSMesgQueue D_80092880;
 extern u8 D_8005FB40;
 extern s32 D_8005FB74;
+extern u16 D_80092874;
+extern OSContPad D_80092AA8;
+extern u16 D_80092878;
+
 
 void func_800319E0(s32 arg0, s32 arg1, s32 arg2, s32 arg3, u8* arg4);
 

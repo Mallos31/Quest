@@ -1,5 +1,9 @@
 #include "common.h"
 
+extern void* gTextPalettes;
+extern u8 D_D3E240[];
+extern u8 D_D3E2C0[];
+
 //#pragma GLOBAL_ASM("asm/nonmatchings/31A10/func_80030E10.s")
 void func_80030E10(u8 *arg0, u8 *arg1)
 {
@@ -13,7 +17,7 @@ void func_80030E10(u8 *arg0, u8 *arg1)
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/31A10/func_80030E58.s")
 void func_80030E58(void) {
-    func_80024260(D_D3E240, &D_80331A30, 0x80);    //text palettes
+    func_80024260(D_D3E240, &gTextPalettes, 0x80);    //text palettes
     func_80024260(D_D3E2C0, &D_803232A0, 0xE790);  //text gfx
 }
 

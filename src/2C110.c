@@ -9,11 +9,14 @@ extern s32 D_8008FD24;
 extern s8 D_8008FD29;
 extern s8 D_8008FD2A;
 extern u8 D_8008FD2C;
-extern temp D_8008FD30[];
+extern s8 D_8008FD31[];
+extern s8 D_8008FD22;
+extern u8 D_8008FD28;
+extern s8 D_8008FD2B;
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/2C110/func_8002B510.s")
 void func_8002B510(s32 arg0) {
-    gameMode = 2;
+    gGameMode = 2;
     D_8008FD0C = D_8008FD0C | arg0 | 0x4000;
     D_8008FD20 = 0x1000;
     D_8008FD28 = 0xFF;
@@ -44,42 +47,44 @@ void func_8002D5D4(void) {
     }
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/2C110/func_8002D614.s") //!TODO This function needs a rewrite once more Pfs data is confirmed.
 void func_8002D614(void) {
-    s32 pfsErr;
+    s32 temp_v0;
     s32 temp_v1;
     
 
-    pfsErr = func_8003195C(D_80092870, D_8008FD30[D_8008FD2A].unk_01);
-    if (pfsErr != 0) {
-        D_8008FD24 = pfsErr;
-        temp_v1 = -func_80031BB0(pfsErr);
-        switch (temp_v1) {
+    temp_v0 = func_8003195C(D_80092870, *&D_8008FD31[D_8008FD2A * 2]);
+    if (temp_v0 != 0) {
+        D_8008FD24 = temp_v0;
+        // temp_v1 = -func_80031BB0(temp_v0);
+        switch (-func_80031BB0(temp_v0)) {
             case 1:
-                D_8008FD22 = 8;
-                D_8008FD29 = 0xA;
-                break;
+            D_8008FD22 = 8;
+            D_8008FD29 = 0xA;
+            break;
+                
             case 4:
-                D_8008FD22 = 0xC;
-                D_8008FD29 = 0xA;
-                break;
+            D_8008FD22 = 0xC;
+            D_8008FD29 = 0xA;
+            break;
+                
             default:
-                D_8008FD22 = 0x11;
-                D_8008FD29 = 0xA;
-                break;
+            D_8008FD22 = 0x11;
+            D_8008FD29 = 0xA;
+            break;
         }
-        D_8008FD20 &= ~7;
+
+        D_8008FD20 &= ~7 ;
         D_8008FD20 |= 5;
         D_8008FD20 &= ~0x2000;
-        return;
+    } else {
+        D_8008FD20 &= ~7 ;
+        D_8008FD20 |= 5;
+        D_8008FD20 &= ~0x2000;
+        D_8008FD22 = 0x16;
+        D_8008FD29 = 0xA;
+        D_8008FD31[D_8008FD2A * 2] = -1;
     }
    
-    D_8008FD20 &= ~7;
-    D_8008FD20 |= 5;
-    D_8008FD20 &= ~0x2000;
-    D_8008FD22 = 0x16;
-    D_8008FD29 = 0xA;
-    D_8008FD30[D_8008FD2A].unk_01 = -1;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2C110/func_8002D748.s")
