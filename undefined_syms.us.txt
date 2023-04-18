@@ -7,3 +7,4 @@ osAppNMIBuffer = 0x8000031C;
 D_8008C592 = 0x8008C592;
 gDL_StaffIcon = 0x803A8CF8;
 gExclamationMarkPalette = 0x803A8C08;
+gCurrentTime              = 0x800859d0;

@@ -59,25 +59,18 @@ typedef struct {
     u16 unk90;    
 }unk203d0s;
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    
-}unks;
-
 typedef struct unk_20888_s{
-    u16 unk0;
+    u16 displayTimer;
     s16 unk2;
-    unks* unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
+    Vec3f* pos;
+    f32 offsetX;
+    f32 offsetY;
+    f32 offsetZ;
     u16 unk14;
     u16 unk16;
-    u16 unk18;
-    u16 unk1A;
-}unk20888s;
+    u16 width;
+    u16 height;
+}MissIcon;
 
 typedef struct {
     char unk0[0x24];
@@ -124,7 +117,7 @@ extern s32 D_8008C650; //number of lines to cover from left to right (HUD)
 extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
 extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
 extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
-extern unk20888s D_8008C668;
+extern MissIcon gMISSData;
 extern u8 D_803A2960[]; //Status icons palette
 extern unk20e2cs D_803A6F70;
 extern u8 D_8004D44C[];
@@ -494,51 +487,51 @@ void func_800203D0(void)
     }
   }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020888.s")
-void func_80020888(void) {
-    unk20888s* var_v0;
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Init_MISS_Icon.s")
+void Init_MISS_Icon(void) {
+    MissIcon* missIconData;
     s32 var_v1;
 
-    var_v0 = &D_8008C668;
+    missIconData = &gMISSData;
     var_v1 = 8;
     while (var_v1 > 0){
         
-        var_v0->unk0 = 0;
-        var_v0++;
+        missIconData->displayTimer = 0;
+        missIconData++;
         var_v1--;
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800208B8.s") 
-void func_800208B8(MonsterBattleData* arg0) {
-    MonsterBaseData* temp_v1;
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Setup_MISS_Icon.s") 
+/*may be a different struct for the argument since it also applies to the MISS above Brian, but this works for now*/
+void Setup_MISS_Icon(MonsterBattleData* arg0) {
+    MonsterBaseData* monsterData;
     s32 i;
-    u16 temp_a1;
-    unk20888s* var_v0;
+    MissIcon* missIconData;
 
-    var_v0 = &D_8008C668;
-    for (i = 7; i != 0 && var_v0->unk0 != 0; i--, var_v0++) {
+    missIconData = &gMISSData;
+    for (i = 7; i != 0 && missIconData->displayTimer != 0; i--, missIconData++) {
         
     }
-    var_v0->unk0 = 0x2D;
-    var_v0->unk4 = arg0;
-    var_v0->unk10 = 0.0f;
-    var_v0->unk8 = 0.0f;
-    temp_v1 = arg0->unk64;
-    if (temp_v1->monsterType == ON_GROUND) {
-        var_v0->unkC = temp_v1->hitboxWidth * arg0->scale;
-    } else if (temp_v1->monsterType == FLYING) {
-        var_v0->unkC = arg0->unk68->unk94 - arg0->pos.y;
+    missIconData->displayTimer = 0x2D; //length of time "MISS" appears.
+    missIconData->pos = arg0; //pointer to the position "MISS" should appear.
+    missIconData->offsetZ = 0.0f; //"MISS" location offset (yPos?)
+    missIconData->offsetX = 0.0f; //"MISS" location offset (xPos?)
+    monsterData = arg0->unk64;
+    if (monsterData->monsterType == ON_GROUND) {
+        missIconData->offsetY = monsterData->hitboxWidth * arg0->scale;
+    } else if (monsterData->monsterType == FLYING) {
+        missIconData->offsetY = arg0->unk68->unk94 - arg0->pos.y;
     } else {
-        var_v0->unkC = (f32) ((f64) arg0->scale * D_800716C8);
+        missIconData->offsetY = (f32) ((f64) arg0->scale * D_800716C8);
     }
-    var_v0->unk14 = 0x23;
-    var_v0->unk16 = 0x31;
-    var_v0->unk18 = 0x29;
-    var_v0->unk1A = 0xE;
+    missIconData->unk14 = 0x23; //xpos on texture for MISS icons
+    missIconData->unk16 = 0x31; //ypos on texture for MISS icons
+    missIconData->width = 0x29;
+    missIconData->height = 0xE;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020988.s")
-void func_80020988(void)
+//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Draw_MISS_Icon.s")
+void Draw_MISS_Icon(void)
 {
     
   unk20e2cs *new_var;
@@ -547,8 +540,9 @@ void func_80020988(void)
   f32 var_f14;
   s32 sp74;
   s32 sp70;
-  unk20888s *var_s0;
+  MissIcon *missIconData;
   s32 var_s1;
+
 
   gDPPipeSync(gMasterGfxPos++);
   gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A2960);
@@ -557,28 +551,28 @@ void func_80020988(void)
   gDPLoadSync(gMasterGfxPos++);
   gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 255);
   gDPPipeSync(gMasterGfxPos++);
-  var_s0 = &D_8008C668;
+  missIconData = &gMISSData;
   var_s1 = 8;
   while (var_s1 != 0)
   {
-    if (var_s0->unk0 != 0)
+    if (missIconData->displayTimer != 0)
     {
-      var_f12 = var_s0->unk8;
-      var_f14 = var_s0->unkC;
+      var_f12 = missIconData->offsetX;
+      var_f14 = missIconData->offsetY;
       new_var = &D_803A6F70;
-      var_f0 = var_s0->unk10;
-      if (var_s0->unk4 != NULL)
+      var_f0 = missIconData->offsetZ;
+      if (missIconData->pos != NULL)
       {
-        var_f12 += var_s0->unk4->unk0;
-        var_f14 += var_s0->unk4->unk4;
-        var_f0 += var_s0->unk4->unk8;
+        var_f12 += missIconData->pos->x;
+        var_f14 += missIconData->pos->y;
+        var_f0 += missIconData->pos->z;
       }
       func_8002413C(var_f12, var_f14, var_f0, &sp74, &sp70);
-      func_800210FC((s32) new_var, sp74 - (((s32) var_s0->unk18) >> 1), sp70 - var_s0->unk1A, (s32) var_s0->unk18, (s32) var_s0->unk1A, (s32) var_s0->unk14, (s32) var_s0->unk16, 0x400, 0x400);
-      var_s0->unk0--;
+      func_800210FC((s32) new_var, sp74 - (((s32) missIconData->width) >> 1), sp70 - missIconData->height, (s32) missIconData->width, (s32) missIconData->height, (s32) missIconData->unk14, (s32) missIconData->unk16, 0x400, 0x400);
+      missIconData->displayTimer--;
     }
     var_s1--;
-    var_s0++;
+    missIconData++;
   }
 }
 
@@ -629,21 +623,21 @@ void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D18.s")
 s32 func_80020D18(u8* arg0) {
-    s32 var_v1;
-    u8 temp_v0;
+    s32 ret;
     u8 val;
 
-    var_v1 = 0;
+    ret = 0;
     val = *arg0;
+    
     arg0 += 1;
     if (val != 0) {
         do {
-            temp_v0 = *arg0;
-            var_v1 += 1;
-            arg0 += 1;
-        } while (temp_v0 != 0);
+            val = *arg0;
+            ret++;
+            arg0++;
+        } while (val != 0);
     }
-    return var_v1;
+    return ret;
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D4C.s")

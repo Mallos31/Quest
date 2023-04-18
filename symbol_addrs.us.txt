@@ -4,6 +4,10 @@ osScAddClient             = 0x800007d4;
 
 Inventory_Init            = 0x80021170;
 
+Init_MISS_Icon            = 0x80020888;
+Setup_MISS_Icon           = 0x800208B8;
+Draw_MISS_Icon            = 0x80020988;
+
 ScreenDimInit             = 0x800228E0;
 DimScreen				  = 0x800228F8;
 SetupScreenDim			  = 0x80022B08;
@@ -358,6 +362,8 @@ D_8008C592              = 0x8008C592;
 
 gHUDResolutionX           = 0x8008C648;
 gHUDResolutionY           = 0x8008C64C;
+
+gMISSData                 = 0x8008C668;
 
 gInventoryScrollAmt       = 0x8008C760;
 gInvHighlightedItemIndex  = 0x8008c764;

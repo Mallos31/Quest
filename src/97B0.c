@@ -187,7 +187,7 @@ u32 func_8000AC84(unkac84s *arg0)
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B110.s")
 void func_8000B110(void) {
-    func_800208B8();
+    Setup_MISS_Icon();
     func_800268D4(0, 0x17, 0xFF);
 }
 

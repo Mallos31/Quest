@@ -1,4 +1,5 @@
 #include "common.h"
+#include "monsters.h"
 
 typedef struct {
     s16 unk0;
@@ -18,13 +19,6 @@ typedef struct unk_1c560_s{
     s32 unk30;
     s32 unk34;
 }unk1c560s; //Map Data Struct
-
-extern s32 gNextSubmap; //gNextSubmap
-extern u16 gAllowBattles; //gAllowBattles
-extern s32 D_8008C560;
-extern s32 D_8008C564;
-extern f32 D_8008C574;
-extern s16 D_8008C578;
 
 typedef struct {
     void* stats;
@@ -59,11 +53,15 @@ typedef struct {
 
 extern unkEnemy* D_8007C9B8[];
 extern u16 D_8008C59A;
-
+extern s32 gNextSubmap;
+extern u16 gAllowBattles;
+extern void* D_8008C560;
+extern void* D_8008C564;
+extern f32 D_8008C574;
+extern s16 D_8008C578;
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001C560.s")
 void func_8001C560(void) {
-    s32 temp_v1;
 
     D_8008C592 &= 0x8000;
     D_8008C574 = 0.0f;

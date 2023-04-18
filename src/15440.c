@@ -1,4 +1,5 @@
 #include "common.h"
+#include "monsters.h"
 
 typedef struct {
     s32 unk0;

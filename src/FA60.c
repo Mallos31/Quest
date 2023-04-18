@@ -335,7 +335,7 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
 #ifdef NON_MATCHING
 void func_800100D0(void) {
     s32 i;
-    gCurrentTIme = 0x1EC3;
+    gCurrentTime = 0x1EC3;
     gDayLength = 0x6978;
     gCurrentDay = 1;
     D_8008C634 = 7;
@@ -355,14 +355,14 @@ void func_800100D0(void) {
 void func_80010510(s32 arg0) {
     s32 temp_v1;
 
-    gCurrentTIme = arg0;
-    if (gDayLength <= gCurrentTIme) {
-        gCurrentTIme = gCurrentTIme - gDayLength;
+    gCurrentTime = arg0;
+    if (gDayLength <= gCurrentTime) {
+        gCurrentTime = gCurrentTime - gDayLength;
         if (gCurrentDay < 9999) {
             gCurrentDay++;
             }
     }
-    D_800859D8 = gCurrentTIme;
+    D_800859D8 = gCurrentTime;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010564.s")

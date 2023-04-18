@@ -1,5 +1,6 @@
 #include "common.h"
 #include "player.h"
+#include "monsters.h"
 
 typedef struct unk_1d924_s2
 {

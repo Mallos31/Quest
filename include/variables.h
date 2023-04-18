@@ -32,7 +32,7 @@ extern u8 D_800869D8[];
 extern unk84f1cs* D_80084F1C;
 
 //unconfirmed if used by other C files, but I assume so
-extern s32 gCurrentTIme;
+extern s32 gCurrentTime;
 extern s32 gDayLength;
 extern u16 gCurrentDay;
 
