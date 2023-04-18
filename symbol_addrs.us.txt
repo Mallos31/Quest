@@ -388,5 +388,7 @@ __osEepromTimerMsg        = 0x800954D0;
 __osPfsPifRam             = 0x80095660;
 
 gTextPalettes             = 0x80331A30;
+
+gTex_HUD_and_Menu         = 0x803A6F40;
 gDL_StaffIcon             = 0x803A8CF8;
 gInventoryPalette		  = 0x803AAC20;
