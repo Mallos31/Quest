@@ -1,6 +1,11 @@
 osTvType		  = 0x80000300;
 osViClock                 = 0x8006F408;
-osScAddClient             = 0x800007d4;
+
+nnScCreateScheduler       = 0x80000530;
+nnScGetAudioMQ            = 0x800006F8;
+nnScGetGfxMQ              = 0x80000704;
+nnScAddClient             = 0x800007d4;
+nnScRemoveClient          = 0x80000824;
 
 Inventory_Init            = 0x80021170;
 

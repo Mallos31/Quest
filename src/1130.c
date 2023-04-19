@@ -1,155 +1,101 @@
 #include "common.h"
-
-
-#define VIDEO_MSG       666
-#define RSP_DONE_MSG    667
-#define RDP_DONE_MSG    668
-#define PRE_NMI_MSG     669
-
-//unk0 may be u16 and unk678 may be s32 if there are future problems with it. 
-typedef struct { 
-    s16 unk0;
-    s16 unk2;
-    OSMesgQueue unk4;
-    OSMesg unk1C;
-    char unk20[0x1C];
-    OSMesgQueue unk3C;
-    OSMesg unk54;
-    char unk58[0x1C];
-    OSMesgQueue unk74;
-    OSMesg unk8C;
-    char unk90[0x1C];
-    OSMesgQueue unkAC;
-    OSMesg unkC4;
-    char unkC8[0x1C];
-    OSMesgQueue unkE4;
-    OSMesg unkFC;
-    char unk100[0x1C];
-    OSMesgQueue unk11C;
-    OSMesg unk134;
-    char unk138[0x530];
-    s32 clientList; //type is OSScClient once I figure out how to include it properly.
-    s32 unk66C;
-    s32 unk670;
-    s32 unk674;
-    u32 unk678;
-}OSSched;
-
-typedef struct unk_7d4_s{
-    s32 unk0;
-    s32 unk4;
-}unk7d4s;
-
-typedef struct SCClient_s {
-    struct SCClient_s   *next;  /* next client in the list      */
-    OSMesgQueue         *msgQ;  /* where to send the frame msg  */
-} OSScClient;
+#include "nnsched.h"
 
 extern u16 D_8007B2D0;
 
-void func_80000530(OSSched* arg0, u8 numFields);
-//
-s32 func_800006F8(s32 arg0);
-s32 func_80000704(s32 arg0);
-void func_80000710(s32 arg0);
-void osScAddClient(OSSched* sc, unk7d4s* c, OSMesgQueue* msgQ);
-//
-void func_800008B0(OSSched* arg0, OSMesg arg1);
-//
-//
-//
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000530.s")
-void func_80000530(OSSched* arg0, u8 numFields) {
-
-    arg0->unk66C = 0;
-    arg0->unk670 = 0;
-    arg0->unk674 = 0;
-    arg0->clientList = 0;
-    arg0->unk678 = 1;
-    arg0->unk0 = 1;
-    arg0->unk2 = 3;
+//#pragma GLOBAL_ASM("asm/nonmatchings/1130/nnScCreateScheduler.s")
+void nnScCreateScheduler(NNSched * sc, u8 numFields) {
     
-    osCreateMesgQueue(&arg0->unk74, &arg0->unk8C, 8);
-    osCreateMesgQueue(&arg0->unkAC, &arg0->unkC4, 8);
-    osCreateMesgQueue(&arg0->unkE4, &arg0->unkFC, 8);
-    osCreateMesgQueue(&arg0->unk3C, &arg0->unk54, 8);
-    osCreateMesgQueue(&arg0->unk4, &arg0->unk1C, 8);
-    osCreateMesgQueue(&arg0->unk11C, &arg0->unk134, 8);
+    sc->curGraphicsTask = 0;
+    sc->curAudioTask    = 0;
+    sc->graphicsTaskSuspended = 0;
+    sc->clientList      = 0;
+    sc->firstTime       = 1; 
+    sc->retraceMsg      = NN_SC_RETRACE_MSG;
+    sc->prenmiMsg       = NN_SC_PRE_NMI_MSG;
     
-    osViSetEvent(&arg0->unk74, (OSMesg )VIDEO_MSG, (u32) numFields);
-    osSetEventMesg(OS_EVENT_SP, &arg0->unkAC, (OSMesg )RSP_DONE_MSG);
-    osSetEventMesg(OS_EVENT_DP, &arg0->unkE4, (OSMesg )RDP_DONE_MSG);
-    osSetEventMesg(OS_EVENT_PRENMI, &arg0->unk74, (OSMesg )PRE_NMI_MSG);
+    osCreateMesgQueue(&sc->retraceMQ, sc->retraceMsgBuf, NN_SC_MAX_MESGS);
+    osCreateMesgQueue(&sc->rspMQ, sc->rspMsgBuf, NN_SC_MAX_MESGS);
+    osCreateMesgQueue(&sc->rdpMQ, sc->rdpMsgBuf, NN_SC_MAX_MESGS);
+    osCreateMesgQueue(&sc->graphicsRequestMQ, sc->graphicsRequestBuf, NN_SC_MAX_MESGS);
+    osCreateMesgQueue(&sc->audioRequestMQ, sc->audioRequestBuf, NN_SC_MAX_MESGS);
+    osCreateMesgQueue(&sc->waitMQ, sc->waitMsgBuf, NN_SC_MAX_MESGS);
+    
+    osViSetEvent(&sc->retraceMQ, (OSMesg)VIDEO_MSG, numFields);    
+    osSetEventMesg(OS_EVENT_SP, &sc->rspMQ, (OSMesg)RSP_DONE_MSG);
+    osSetEventMesg(OS_EVENT_DP, &sc->rdpMQ, (OSMesg)RDP_DONE_MSG);
+    osSetEventMesg(OS_EVENT_PRENMI, &sc->retraceMQ, (OSMesg)PRE_NMI_MSG);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_8000062C.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_800006F8.s")
-s32 func_800006F8(s32 arg0) {
-    return arg0 + 4;
+//#pragma GLOBAL_ASM("asm/nonmatchings/1130/nnScGetAudioMQ.s")
+OSMesgQueue* nnScGetAudioMQ(NNSched* sc) {
+    return &sc->audioRequestMQ;
 }
 
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000704.s")
-
-s32 func_80000704(s32 arg0) {
-    return arg0 + 0x3C;
+//#pragma GLOBAL_ASM("asm/nonmatchings/1130/nnScGetGfxMQ.s")
+OSMesgQueue* nnScGetGfxMQ(NNSched* sc) {
+    return &sc->graphicsRequestMQ;
 }
-
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000710.s")
-void func_80000710(s32 arg0) {
-    u32 sp3C;
+void func_80000710(NNSched* sc) {
+    
+    OSMesg msg = (OSMesg)0;
 
-    sp3C = 0;
-    while(1){
-    osRecvMesg(arg0 + 0x74, &sp3C, 1);
-    D_8007B2D0 += 1;
-    switch (sp3C) {
+while(1){
+    osRecvMesg(&sc->retraceMQ, &msg, OS_MESG_BLOCK);
+    D_8007B2D0++;
+    
+    switch ( (int)msg ) {
             case VIDEO_MSG:
-                
-                func_800008B0(arg0, arg0);
+                func_800008B0(sc, &sc->retraceMsg);
                 break;
             case PRE_NMI_MSG:
-                func_800008B0(arg0, arg0 + 2);
+                func_800008B0(sc, &sc->prenmiMsg);
                 break;
         }
     }
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_800007D4.s")
-void osScAddClient(OSSched* sc, unk7d4s* c, OSMesgQueue* msgQ) {
-    s32 mask;
-
-    mask = osSetIntMask(1);
-    c->unk4 = msgQ;
-    c->unk0 = sc->clientList;
-    sc->clientList = c;
-	
-    osSetIntMask(mask);
+//#pragma GLOBAL_ASM("asm/nonmatchings/1130/nnScAddClient.s")
+void nnScAddClient(NNSched *sc, NNScClient *c, OSMesgQueue *msgQ)
+{
+  OSIntMask mask;
+  mask = osSetIntMask(OS_IM_NONE);
+  c->msgQ = msgQ;
+  c->next = sc->clientList;
+  sc->clientList = c;
+  osSetIntMask(mask);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000824.s")
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_800008B0.s")
-void func_800008B0(OSSched* sc, OSMesg arg1) {
-    OSScClient* client;
-
-    for (client = sc->clientList; client != NULL; client = client->next) {
-        osSendMesg(client->msgQ, arg1, 0);
+//#pragma GLOBAL_ASM("asm/nonmatchings/1130/nnScRemoveClient.s")
+void nnScRemoveClient(NNSched *sc, NNScClient *c)
+{
+  NNScClient *client = sc->clientList; 
+  NNScClient *prev   = 0;
+  OSIntMask  mask;
+  mask = osSetIntMask(OS_IM_NONE);
+    
+  while (client != 0) {
+    if (client == c) {
+      if(prev)
+	prev->next = c->next;
+      else
+	sc->clientList = c->next;
+      break;
     }
+    prev   = client;
+    client = client->next;
+  }
+  osSetIntMask(mask);
 }
+
+#pragma GLOBAL_ASM("asm/nonmatchings/1130/func_800008B0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000900.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000A80.s")
-#ifdef NON_MATCHING
-
-void func_80000A80(struct UnkStruct80000A80* arg0) {
-    LeoReadDiskID(&arg0->cmd, arg0->unk20, &D_80083C04);
-    func_800009C8();
-}
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1130/func_80000BB4.s")
