@@ -2,11 +2,15 @@ osTvType		  = 0x80000300;
 osViClock                 = 0x8006F408;
 
 nnScCreateScheduler       = 0x80000530;
+nnScStartScheduler        = 0x8000062C;
 nnScGetAudioMQ            = 0x800006F8;
 nnScGetGfxMQ              = 0x80000704;
+nnScEventHandler          = 0x80000710;
 nnScAddClient             = 0x800007d4;
 nnScRemoveClient          = 0x80000824;
-
+nnScExecuteAudio          = 0x80000900;
+nnScExecuteGraphics       = 0x80000A80;
+nnScWaitTaskReady         = 0x80000BB4;
 Inventory_Init            = 0x80021170;
 
 Init_MISS_Icon            = 0x80020888;
@@ -39,7 +43,7 @@ osSpTaskYielded           = 0x800343a0;
 _VirtualToPhysicalTask    = 0x80034420;
 osSpTaskLoad              = 0x8003452c;
 osSpTaskStartGo           = 0x80034694;
-osViRepeatLine            = 0x800346e0;
+osViBlack                 = 0x800346e0;
 osViSwapBuffer 	          = 0x80034750;
 osViGetCurrentFramebuffer = 0x800347a0;
 osCreateViManager         = 0x80034840;

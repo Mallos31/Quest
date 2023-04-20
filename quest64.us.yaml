@@ -22,7 +22,7 @@ segments:
     subsegments:
       - [0x1000, c]
       - [0x1050, c, init]
-      - [0x1130, c]
+      - [0x1130, c, nnsched]
       - [0x1850, c]
       - [0x33D0, c]
       - [0x8650, c]
@@ -66,7 +66,7 @@ segments:
       - [0x34F80, asm, sptaskyield]
       - [0x34FA0, asm, sptaskyielded]
       - [0x35020, asm, sptask]
-      - [0x352E0, asm, virepeatline]
+      - [0x352E0, asm, viblack]
       - [0x35350, asm, viswapbuf]
       - [0x353A0, asm, vigetcurrframebuf]
       - [0x35440, asm, vimgr]

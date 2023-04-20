@@ -884,7 +884,7 @@ extern void		osViSetEvent(OSMesgQueue *, OSMesg, u32);
 extern void		osViSwapBuffer(void *);
 extern void		osViBlack(u8);
 extern void		osViFade(u8, u16);
-extern void		osViRepeatLine(u8);
+extern void		osViBlack(u8);
 extern void		osCreateViManager(OSPri);
 
 /* Timer interface */
