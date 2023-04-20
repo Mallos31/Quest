@@ -32,7 +32,7 @@ extern u8 D_8004C460[];
 extern u8 D_8007C570[];
 extern u8 D_8007C574[];
 extern u8 D_8007C970[];
-extern u8* D_803A9954[]; //array of pointers to item names
+extern u8* gItemNamePtrs[]; //array of pointers to item names
 //joystick stuff?
 extern u8 D_80092850;
 extern u16 D_80092852;

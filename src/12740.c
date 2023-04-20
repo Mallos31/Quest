@@ -78,7 +78,7 @@ extern u8 D_8004C460[];
 extern u8 D_8007C570[];
 extern u8 D_8007C574[];
 extern u8 D_8007C970[];
-extern u8* D_803A9954[]; //array of pointers to item names
+extern u8* gItemNamePtrs[]; //array of pointers to item names
 extern u8 D_800869F8;
 extern u8 D_800869D8[];
 extern f32 D_80071428;
@@ -119,7 +119,7 @@ void func_800120C0(s32 arg0) //Writes data for [ITEM NAME] obtained! box.
   u8 *var_v0_2;
   u8 *var_v1;
     
-  var_v0 = D_803A9954[arg0];
+  var_v0 = gItemNamePtrs[arg0];
   D_8007C570[0] = 0x7F;
   D_8007C570[1] = 0xE0;
   D_8007C570[2] = 0x7F;

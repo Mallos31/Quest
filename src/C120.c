@@ -32,9 +32,9 @@ typedef struct {
 extern unkD_7D1A8s D_8007D1A8; //boss position data
 extern f32 D_803A9B8C[]; //apparently a table of distances to be away from the boss to start an encounter
 extern s32 D_8007D1A0; //boss cutscene model loaded when !=0
-extern void* D_802A7BC0;
-extern bossFile D_803A9A90[]; //ptr to boss file ROM addresses
-extern BossData D_803A9AD0[];
+extern void* gBossVAddr; //Virtual address boss files are placed at
+extern bossFile gBossFileOffsetTbl[]; //ptr to boss file ROM addresses
+extern BossData gBossData[];
 extern s32 gNextSubmap;
 extern u8 D_8007D19C[];
 extern sPlayerAction D_8007BAB8;
@@ -59,15 +59,15 @@ void func_8000B530(void)
     
   for (i = 0; i < 8; i++)
   {
-    data = &D_803A9AD0[i];
+    data = &gBossData[i];
     if ((D_80084EE4 == data->bossMap) && (gNextSubmap == data->bossSubmap))
     {
       if (func_8000B9D8(i) == 0)
       {
-        fileStart = D_803A9A90[data->bossNumber].fileStart;
-        fileEnd = D_803A9A90[data->bossNumber].fileEnd;
+        fileStart = gBossFileOffsetTbl[data->bossNumber].fileStart;
+        fileEnd = gBossFileOffsetTbl[data->bossNumber].fileEnd;
         fileSize = fileEnd - fileStart;
-        func_80024260((u8*)fileStart, &D_802A7BC0, fileSize); //load boss file from RAM
+        func_80024260((u8*)fileStart, &gBossVAddr, fileSize); //load boss file from RAM
         func_8000B7DC(i, data->x, data->y, data->z, &D_8007D1A8);
         D_8007D1A0 = i + 1;
       }

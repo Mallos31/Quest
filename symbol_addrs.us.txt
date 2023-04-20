@@ -1,3 +1,9 @@
+gTexAlphabetPhys          = 0x00D3E2C0;
+gSoundBank0Ctl            = 0x00E7E800;
+gSoundBank0Tbl            = 0x00E81610;
+gSoundBank1Ctl            = 0x00EEE020;
+gSoundBank1Tbl            = 0x00EEFCE0;
+
 osTvType		  = 0x80000300;
 osViClock                 = 0x8006F408;
 
@@ -396,8 +402,16 @@ __osEepromTimerQ          = 0x800954B8;
 __osEepromTimerMsg        = 0x800954D0;
 __osPfsPifRam             = 0x80095660;
 
+gBossVAddr                = 0x802A7BC0;
+
 gTextPalettes             = 0x80331A30;
 
+gBattleStatusPal          = 0x803A2960;
 gTex_HUD_and_Menu         = 0x803A6F40;
 gDL_StaffIcon             = 0x803A8CF8;
+gItemNamePtrs             = 0x803A9954;
+gBossFileOffsetTbl        = 0x803A9A90;
+gBossData                 = 0x803A9AD0;
+gBossNamePtrs             = 0x803AABD8;
+gBossSpeechPtrs           = 0x803AABF8;
 gInventoryPalette		  = 0x803AAC20;

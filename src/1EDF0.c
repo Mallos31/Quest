@@ -118,7 +118,7 @@ extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
 extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
 extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
 extern MissIcon gMISSData;
-extern u8 D_803A2960[]; //Status icons palette
+extern u8 gBattleStatusPal[]; //Status icons palette
 extern unk20e2cs D_803A6F70;
 extern u8 D_8004D44C[];
 extern u8 D_803A6F80[];
@@ -385,7 +385,7 @@ void func_8001FB94(void) {
         &sp58) != 0) {
         
         gDPPipeSync(gMasterGfxPos++);
-        gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A2960);
+        gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gBattleStatusPal);
         gDPTileSync(gMasterGfxPos++);
         gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | 
             G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
@@ -545,7 +545,7 @@ void Draw_MISS_Icon(void)
 
 
   gDPPipeSync(gMasterGfxPos++);
-  gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_803A2960);
+  gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gBattleStatusPal);
   gDPTileSync(gMasterGfxPos++);
   gDPSetTile(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_4b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
   gDPLoadSync(gMasterGfxPos++);
