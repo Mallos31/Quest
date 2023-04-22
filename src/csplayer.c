@@ -1,4 +1,7 @@
-#include "common.h"
+#include <libaudio.h>
+#include <os_internal.h>
+#include <ultraerror.h>
+#include <assert.h>
 
 #pragma GLOBAL_ASM("asm/nonmatchings/csplayer/__CSPPostNextSeqEvent.s")
 

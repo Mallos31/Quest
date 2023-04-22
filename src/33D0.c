@@ -193,7 +193,7 @@ void func_8000669C(u8 arg0) {
     D_8007BAB8.unk0 = 0xC;
     D_8007BAB8.unk4  = x->unk_116;
     D_8007BAB8.unk74 |= 1;
-    func_8001D8B0(&D_8007BACC, 0x17, 1, 0x16, 1, (u16) 1);
+    func_8001D8B0(&gPlayerPos, 0x17, 1, 0x16, 1, (u16) 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006720.s") 
@@ -247,8 +247,8 @@ s32 func_80007030(s32 arg0, unk1d924s2* arg1) {
 
     var_v1 = 0;
     if (!(arg1->unk60 & 1) && !(D_8007B2E4 & 0x80)) {
-        if (D_8008C592 & 1) {
-            if (!(D_8008C592 & 0x202)) {
+        if (gBattleState & 1) {
+            if (!(gBattleState & 0x202)) {
                 sp1C = 0;
                 var_v1 = sp1C;
                 if ((func_80015B50() == 0) && (D_8008C594 == 0)) {

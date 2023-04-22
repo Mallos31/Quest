@@ -3,26 +3,31 @@
 
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
 
+/*Battle state defines that need to be moved*/
+#define IN_BATTLE 1
+#define BOSS_BATTLE (1 << 8)
+#define IN_BOSS_BATTLE (gBattleState & BOSS_BATTLE)
+
+#define NO_BATTLE_USE 1 << 0
+#define BATTLE_USE 1 << 1
+#define NO_BOSS_BATTLE_USE 1 << 3
+#define ITEM_USABLE 1
+#define ITEM_NOT_USABLE 0
+
 typedef struct unk_22260_s{
     char unk0[0x64];
     s32 unk64;
 }unk22260s;
 
-typedef struct unk_22260_s2{
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-}unk22260s2;
 
 typedef struct unk_22260_s3{
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
+    u16 canBeUsed;
+    u16 type;
+    s16 hpHealed;
+    s16 mpHealed;
     u16 unk8;
     u16 unkA;
-}unk22260s3;
+}ItemData;
 
 typedef struct unk_2260c_s{
     s16 unk0;
@@ -30,11 +35,14 @@ typedef struct unk_2260c_s{
     s16 unk4;
 }unk2260cs;
 
+typedef s32 (*funcTypedef)(BrianData2 *, void *, u8, ItemData *);
+
+
 extern u8 gLastInvSlot;
 extern u8 D_8008CF77;
 extern Gfx D_803A8FF8[];
-extern unk22260s3 D_803A91F0[];
-extern void (*D_8004D490[])(s32, unk22260s3*, u8, s32);
+extern ItemData gItemData[];
+extern void (*D_8004D490[])(s32, ItemData*, u8, s32);
 extern u16 D_80084EE0;
 extern s32 gInventoryScrollAmt; 
 extern s32 gInvHighlightedItemIndex;
@@ -43,7 +51,7 @@ extern s8 gVisibleInvItemIDs[8]; //IDs of items visible in inventory. One per it
 extern u8 gInventory[150];
 extern u8 gInventoryPalette;
 extern u8 D_D3BE40; //phys inventory palette
-
+extern funcTypedef gUseItemFuncs[];
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Inventory_Init.s")
 void Inventory_Init(void) {
@@ -85,6 +93,40 @@ s32 func_80021214(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021240.s")
+#ifdef NON_MATCHING
+s32 func_80021240(u8 param_1)
+{
+  u8 *new_var4;
+  u8 *new_var3;
+  u8 new_var2;
+  u8 uVar1;
+  u8 *new_var;
+  s32 i;
+  u8 *temp;
+  new_var4 = &D_8008CF77;
+  i = 0;
+  uVar1 = 0x95;
+  new_var3 = (new_var = gInventory);
+  temp = new_var3 + uVar1;
+  uVar1 = new_var[149];
+  while (1)
+  {
+    uVar1 = *temp;
+    temp = temp + (-((0, 1)));
+    if (param_1 == (new_var2 = uVar1))
+    {
+      i += 1;
+    }
+    if ((new_var4 == temp) || (i != 0))
+    {
+      break;
+    }
+  }
+
+  return i;
+}
+#endif
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
 void func_800212A0(u8 arg0) {
@@ -99,62 +141,95 @@ void func_800212A0(u8 arg0) {
     gInventory[i] = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212E4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Use_item_if_able.s")
+s32 Use_item_if_able(u8 itemID)
+{
+  s32 ret;
+  ItemData *item;
+  s32 inBattle;
+  s32 itemUsable;
+    
+  ret = 0;
+  inBattle = gBattleState & 1; //Bit 1 set is in battle. 
+  if ((inBattle != FALSE) && (gItemData[itemID].canBeUsed & BATTLE_USE))
+  {
+    ret = ITEM_USABLE;
+  }
+  else if ((inBattle == FALSE) && (gItemData[itemID].canBeUsed & NO_BATTLE_USE)) {
+    ret = ITEM_USABLE;
+  }
+
+  item = &gItemData[itemID];
+  itemUsable = ret;
+  if (itemUsable != FALSE)
+  {
+    ret = gUseItemFuncs[item->type](&gPlayerPos, item, itemID, gItemData);
+  }
+  if (ret != ITEM_NOT_USABLE)
+  {
+    func_8000669C(itemID & 0xFF);
+  }
+  return ret;
+}
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800213D8.s")
-void func_800213D8(u8 arg0, s32 arg1) {
-    D_8004D490[D_803A91F0[arg0].unk2](arg1, &D_803A91F0[arg0], arg0, arg1);
+void func_800213D8(u8 itemID, s32 arg1) {
+    D_8004D490[gItemData[itemID].type](arg1, &gItemData[itemID], itemID, arg1);
 }//Rain
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021434.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021524.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002224C.s")
-s32 func_8002224C(s32 arg0, s32 arg1) {
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/NoEffectItem.s")
+s32 NoEffectItem(s32 pos, s32 item) {
     return 0;
 }
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80022260.s")
-s32 func_80022260(BrianData2* arg0, unk22260s2* arg1) {
-    BrianData1* temp_v0;
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/ChackIfHealingNeeded.s")
+s32 ChackIfHealingNeeded(BrianData2* pos, ItemData* itemData) {
+    /*@BUG Due to the game only checking if current and max HP or MP are EQUAL, 
+      you are able to heal if you have MORE than max of either.*/
+
+    BrianData1* brianData;
     s32 ret;
 
     ret = 0;
-    temp_v0 = arg0->brianData1;
-    if ((arg1->unk4 != 0) && (temp_v0->maxHP != temp_v0->currHP)) {
-        ret = 1;
+    brianData = pos->brianData1;
+    if ((itemData->hpHealed != 0) && (brianData->maxHP != brianData->currHP)) {
+        ret = ITEM_USABLE;
     }
-    if ((arg1->unk6 != 0) && (temp_v0->maxMP != temp_v0->currMP)) {
-        ret = 1;
+    if ((itemData->mpHealed != 0) && (brianData->maxMP != brianData->currMP)) {
+        ret = ITEM_USABLE;
     }
     return ret;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800222B4.s")
-s32 func_800222B4(s32 arg0, s32 arg1) {
-    s32 var_v1;
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/CheckIfTeleportPossible.s")
+s32 CheckIfTeleportPossible(s32 arg0, s32 arg1) {
+    s32 ret;
 
     if (((D_80084EE0 & 0xA) != 0) || ( ((D_80084F1C->unk14 & 4) != 0))) {
-        var_v1 = 0;
+        ret = ITEM_NOT_USABLE;
     }else {
-        var_v1 = 1;
+        ret = ITEM_USABLE;
     
     }
-    return var_v1;
+    return ret;
 }
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80022300.s")
-u8 func_80022300(s32 arg0, u16* arg1) {
-    u8 var_v1;
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/CheckIfSpellItemUsable.s")
+u8 CheckIfSpellItemUsable(s32 arg0, u16* itemData) {
+    u8 ret;
 
-    var_v1 = 1;
-    if (((D_8008C592 & 0x100) != 0) && ((*arg1 & 8) != 0)) {
-        var_v1 = 0;
+    ret = ITEM_USABLE;
+    if (IN_BOSS_BATTLE && ((*itemData & NO_BOSS_BATTLE_USE) != FALSE)) {
+        ret = ITEM_NOT_USABLE;
     }
-    return var_v1;
+    return ret;
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002233C.s")

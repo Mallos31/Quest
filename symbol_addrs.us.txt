@@ -18,17 +18,22 @@ nnScExecuteAudio          = 0x80000900;
 nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
 Inventory_Init            = 0x80021170;
+Use_item_if_able          = 0x800212E4;
 
 Init_MISS_Icon            = 0x80020888;
 Setup_MISS_Icon           = 0x800208B8;
 Draw_MISS_Icon            = 0x80020988;
 
+NoEffectItem              = 0x8002224C;
+ChackIfHealingNeeded      = 0x80022260;
+CheckIfTeleportPossible   = 0x800222B4;
+UseSpellEffectItem        = 0x80022300;
 ScreenDimInit             = 0x800228E0;
 DimScreen				  = 0x800228F8;
 SetupScreenDim			  = 0x80022B08;
 UpdateBGM                 = 0x800267B8;
 UpdateBGMDelay            = 0x800267F8;
-func_8002684C                = 0x8002684C;
+func_8002684C             = 0x8002684C;
 osInitialize         	  = 0x80033850;
 osCreateThread       	  = 0x80033AE0;
 osStartThread        	  = 0x80033C30;
@@ -351,17 +356,23 @@ alSeqNew                  = 0x80049c78;
 alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
 
+gUseItemFuncs             = 0x8004D480;
 dlScreenDimRectangle      = 0x8004D4F0;
 
-osClockRate               = 0x8006F400
-//__osPiTable               = 0x8006f43c; 
+osClockRate               = 0x8006F400;
+__osPiTable               = 0x8006F43C;
 
+__osViDevMgr              = 0x80070170;
 __osContinitialized		  = 0x800709C0;
+__osThreadTail            = 0x800709F0;
 __osRunQueue              = 0x800709F8;
 __osActiveQueue           = 0x800709FC;
 __osRunningThread         = 0x80070A00;
+__osViCurr                = 0x80070A80;
+__osViNext                = 0x80070A84;
 gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
+gPlayerPos                = 0x8007BACC;
 
 gDoorAnimData             = 0x80084E60;
 gNextSubmap				  = 0x80084ee8;
@@ -373,7 +384,7 @@ gDayLength				  = 0x800859d4;
 gCurrentDay				  = 0x800859e0;
 
 
-D_8008C592              = 0x8008C592;
+gBattleState              = 0x8008C592;
 
 gHUDResolutionX           = 0x8008C648;
 gHUDResolutionY           = 0x8008C64C;
@@ -400,6 +411,8 @@ __osContLastCmd           = 0x80095490;
 __osMaxControllers        = 0x80095491;
 __osEepromTimerQ          = 0x800954B8;
 __osEepromTimerMsg        = 0x800954D0;
+LeoDiskHandle             = 0x80095564;
+__osDiskHandle            = 0x800955D4;
 __osPfsPifRam             = 0x80095660;
 
 gBossVAddr                = 0x802A7BC0;
@@ -409,6 +422,7 @@ gTextPalettes             = 0x80331A30;
 gBattleStatusPal          = 0x803A2960;
 gTex_HUD_and_Menu         = 0x803A6F40;
 gDL_StaffIcon             = 0x803A8CF8;
+gItemData				  = 0x803A91F0;
 gItemNamePtrs             = 0x803A9954;
 gBossFileOffsetTbl        = 0x803A9A90;
 gBossData                 = 0x803A9AD0;

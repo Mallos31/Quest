@@ -104,7 +104,7 @@ typedef struct player_Action_s
 }sPlayerAction;
 
 
-extern BrianData2 D_8007BACC;
+extern BrianData2 gPlayerPos;
 
 
 #endif

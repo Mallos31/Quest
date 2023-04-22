@@ -15,3 +15,7 @@ asm/
 *auto.txt
 *.z64
 *.old
+ctx.c
+diff.py
+diff_settings.py
+first_diff.py

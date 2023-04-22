@@ -272,7 +272,7 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
   unkfde0s *var_s0;
   new_var = D_80084F1C;
   ret = 0;
-  if ((D_80084F1C->unk8 == 0) || ((var_s2 = new_var->unk8, (D_8008C592 & 1) != 0)))
+  if ((D_80084F1C->unk8 == 0) || ((var_s2 = new_var->unk8, (gBattleState & 1) != 0)))
   {
     return 0;
   }

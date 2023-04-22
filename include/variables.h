@@ -12,7 +12,7 @@ extern s32 D_8007B2E4;
 extern s16 D_8007B2E8;
 extern s32 D_80084EE4;
 extern s16 gGameMode;
-extern u16 D_8008C592;
+extern u16 gBattleState;
 extern s8 D_80092870;
 extern u64 D_803232A0[];
 extern s32 gNextSubmap;

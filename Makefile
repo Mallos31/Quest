@@ -4,7 +4,7 @@ VERSION  := us
 BUILD_DIR = build
 ASM_DIRS  = asm asm/data
 BIN_DIRS  = assets
-SRC_DIR   = src
+SRC_DIR   = src src/os
 
 SRC_DIRS  = $(SRC_DIR)
 
@@ -87,6 +87,16 @@ build/src/controller.c.o: OPT_FLAGS := -O1
 build/src/initialize.c.o: OPT_FLAGS := -O1
 build/src/createthread.c.o: OPT_FLAGS := -O1
 build/src/startthread.c.o: OPT_FLAGS := -O1
+build/src/createmesgqueue.c.o: OPT_FLAGS := -O1
+build/src/visetevent.c.o: OPT_FLAGS := -O1
+build/src/pfsisplug.c.o: OPT_FLAGS := -O1
+build/src/pfschecker.c.o: OPT_FLAGS := -O1
+build/src/sptaskyielded.c.o: OPT_FLAGS := -O1
+build/src/sptask.c.o: OPT_FLAGS := -O1
+build/src/viblack.c.o: OPT_FLAGS := -O1
+build/src/viswapbuf.c.o: OPT_FLAGS := -O1
+build/src/vigetcurrframebuf.c.o: OPT_FLAGS := -O1
+build/src/vimgr.c.o: OPT_FLAGS := -O1
 
 
 ### Targets

@@ -78,7 +78,7 @@ void func_80008C20(void)
     }
 
   }
-  if (D_8008C592 & 0x100)
+  if (gBattleState & 0x100)
   {
     func_8000B300();
   }
