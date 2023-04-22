@@ -1,6 +1,12 @@
 #include "common.h"
 #include "player.h"
 
+typedef short int16_t;
+
+typedef int16_t		qs510_t;
+
+#define qs510(n)		((qs510_t)((n) * 0x0400))
+
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
 
 /*Battle state defines that need to be moved*/
@@ -247,4 +253,33 @@ void func_8002260C(s32 arg0, unk2260cs* arg1) {
     func_80014A98(arg0, arg1->unk4, 0, 4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002263C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002263C.s")
+void func_8002263C(s32 ulx, s32 uly, s32 width, s32 height) {
+
+    gDPPipeSync(gMasterGfxPos++);
+    
+    gDPSetCycleType(gMasterGfxPos++, G_CYC_FILL);
+    
+    gDPSetRenderMode(gMasterGfxPos++, G_RM_NOOP, G_RM_NOOP2);
+    
+    gDPSetFillColor(gMasterGfxPos++, 0x00010001);
+    
+    gDPFillRectangle(gMasterGfxPos++,  ulx, uly, (ulx + width), uly);
+
+    gDPFillRectangle(gMasterGfxPos++, ulx, (uly + height), (ulx + width) , (uly + height));
+
+    gDPFillRectangle(gMasterGfxPos++, ulx , uly, ulx, (uly + height) );
+
+    gDPFillRectangle(gMasterGfxPos++, ulx + width, uly, (ulx + width), uly + height );
+
+    gDPFillRectangle(gMasterGfxPos++ , ((ulx + 3)), ((uly + height) + 1), ((ulx + width) + 2) , ((uly + height) + 2));
+
+    gDPFillRectangle(gMasterGfxPos++, ((ulx + width) + 1), (uly + 3) , ((ulx + width) + 2), ((uly + height) + 1));
+
+    gSPDisplayList(gMasterGfxPos++, D_803A8FF8);
+
+    // Needs to be shifted by 2. Multiplying by 4 technically has the same effect, but doesn't match
+    gSPTextureRectangle(gMasterGfxPos++, ((ulx + 1) <<2) ,((uly+1)<<2), ((ulx + width) * 4), ((uly + height) * 4) , G_TX_RENDERTILE, 0, 0, qs510(1), qs510(1));
+
+}
+
