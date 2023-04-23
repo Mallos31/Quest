@@ -59,7 +59,30 @@ extern u16 D_8004CD74[];
 extern unk15b50s D_80086F18[];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014840.s")
-
+/*!TODO extremely poor match. Needs work to make sense.*/
+#ifdef NON_MATCHING
+void func_80014840(void)
+{
+  s16 *new_var2;
+  s32 new_var3;
+  unk15b50s *var_v1;
+    
+  new_var2 = &D_80087170;
+     var_v1 = D_80086F18; new_var2 = &D_80087170; 
+     new_var3 = 0; 
+     do { 
+         var_v1->unk4 = 0; 
+         var_v1++; 
+     } while (((u32) var_v1) < ((u32) new_var2)); 
+     
+     D_80087170 = new_var3; 
+     D_80087188 = 0; 
+     D_800871A0 = 0; 
+    
+  D_800871B8 = 0;
+  D_80086F10 = 0;
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014890.s")
 
@@ -193,7 +216,20 @@ void func_80017094(s32 arg0, unk18278s* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800172A0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001737C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_8001737C.s")
+/*this function has a warning that may be fixed by identifying some struct stuff. !TODO fix the warning.*/
+void func_8001737C(s32 arg0, MonsterBattleData* arg1) {
+    u16* temp_v0;
+
+    if (!(gBattleState & 0x100)) {
+        temp_v0 = arg1->unk68;
+        *temp_v0 |= 0x40;
+        func_8001FCF8(arg1, 0x40, 0xB, -1);
+        return;
+    }
+    Setup_MISS_Icon(arg1);
+}
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800173E0.s")
 void func_800173E0(s32 arg0, unk18278s* arg1) {

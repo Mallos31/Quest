@@ -100,39 +100,35 @@ s32 func_80021214(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021240.s")
 #ifdef NON_MATCHING
-s32 func_80021240(u8 param_1)
+s32 func_80021240(u8 arg0)
 {
-  u8 *new_var4;
-  u8 *new_var3;
+  s32 var_v1 = 0;
+  u8 temp_t9;
   u8 new_var2;
-  u8 uVar1;
+  u8 *var_a2;
   u8 *new_var;
-  s32 i;
-  u8 *temp;
-  new_var4 = &D_8008CF77;
-  i = 0;
-  uVar1 = 0x95;
-  new_var3 = (new_var = gInventory);
-  temp = new_var3 + uVar1;
-  uVar1 = new_var[149];
-  while (1)
+  var_a2 = &gInventory[0x95];
+  var_a2 = &D_8008CF77;
+  while (var_v1 == 0)
   {
-    uVar1 = *temp;
-    temp = temp + (-((0, 1)));
-    if (param_1 == (new_var2 = uVar1))
+    new_var2 = *var_a2;
+    temp_t9 = new_var2;
+    new_var = var_a2;
+    new_var2 = 0;
+    var_a2 -= 1;
+    if (arg0 == temp_t9)
     {
-      i += 1;
+      var_v1 += 1;
     }
-    if ((new_var4 == temp) || (i != 0))
+    if (var_a2 == ((new_var2, new_var)))
     {
       break;
     }
   }
 
-  return i;
+  return var_v1;
 }
 #endif
-
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
 void func_800212A0(u8 arg0) {
