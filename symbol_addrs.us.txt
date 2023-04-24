@@ -18,16 +18,21 @@ nnScExecuteAudio          = 0x80000900;
 nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
 Inventory_Init            = 0x80021170;
-Use_item_if_able          = 0x800212E4;
-
+CheckIfItemUsable         = 0x800212E4;
+UseItem                   = 0x800213D8;
 Init_MISS_Icon            = 0x80020888;
 Setup_MISS_Icon           = 0x800208B8;
 Draw_MISS_Icon            = 0x80020988;
-
+CheckIfInventoryFull      = 0x80021214;
+AddItemToInventory        = 0x800212A0;
 NoEffectItem              = 0x8002224C;
 ChackIfHealingNeeded      = 0x80022260;
 CheckIfTeleportPossible   = 0x800222B4;
 CheckIfSpellItemUsable    = 0x80022300;
+UseHealingItem            = 0x8002234C;
+UseWings                  = 0x80022490;
+UseSpellItem              = 0x8002260C;
+DrawItemBox               = 0x8002263C;
 ScreenDimInit             = 0x800228E0;
 DimScreen				  = 0x800228F8;
 SetupScreenDim			  = 0x80022B08;
@@ -357,6 +362,7 @@ alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
 
 gCheckItemUsableFuncs     = 0x8004D480;
+gUseItemFuncs             = 0x8004D490;
 dlScreenDimRectangle      = 0x8004D4F0;
 
 osClockRate               = 0x8006F400;
@@ -422,6 +428,7 @@ gTextPalettes             = 0x80331A30;
 gBattleStatusPal          = 0x803A2960;
 gTex_HUD_and_Menu         = 0x803A6F40;
 gDL_StaffIcon             = 0x803A8CF8;
+gWingData                 = 0x803A9190;
 gItemData				  = 0x803A91F0;
 gItemNamePtrs             = 0x803A9954;
 gBossFileOffsetTbl        = 0x803A9A90;

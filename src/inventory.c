@@ -29,8 +29,8 @@ typedef struct unk_22260_s{
 typedef struct unk_22260_s3{
     u16 canBeUsed;
     u16 type;
-    s16 hpHealed;
-    s16 mpHealed;
+    s16 itemArg1;
+    s16 itemArg2;
     u16 unk8;
     u16 unkA;
 }ItemData;
@@ -58,7 +58,14 @@ typedef struct {
     char unk6[2];
     f32 unk8;
     f32 unkC;
+    s16 unk10;
+    u16 unk12;
+    u16 unk14;
+    char unk16[2];
+    f32 unk18;
+    f32 unk1C;
 }unk2234c2;
+
 typedef struct {
     u16 unk0;
     u16 unk2;
@@ -67,18 +74,46 @@ typedef struct {
     char unk8[2];
 }unk2234c3;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
+    char unkE[2];
+    s32 unk10;
+    f32 unk14;
+}unk80085368s;
+
+typedef struct {
+    u16 mapID;
+    u16 submapID;
+    f32 xpos;
+    f32 zpos;
+    f32 yrot;
+}unk803a9190s;
+
+extern unk80085368s D_80085368;
+extern unk803a9190s gWingData[];
+
+
 extern unk2234c3 D_803A9A54[];
 extern unk2234c D_8008D010;
 extern unk2234c2 D_803A9A68;
 
 typedef s32 (*funcTypedef)(BrianData2 *, void *, u8, ItemData *);
-
+extern s32 D_8007B2EC;
+extern s16 D_8007B2F0;
+extern f32 D_8007BA40;
+extern f32 D_8007BA44;
+extern f32 D_8007BA48;
+extern s32 D_8007BA4C;
+extern s16 D_8007BABE;
 
 extern u8 gLastInvSlot;
 extern u8 D_8008CF77;
 extern Gfx D_803A8FF8[];
 extern ItemData gItemData[];
-extern void (*D_8004D490[])(s32, ItemData*, u8, s32);
+extern void (*gUseItemFuncs[])(s32, ItemData*, u8, s32);
 extern u16 D_80084EE0;
 extern s32 gInventoryScrollAmt; 
 extern s32 gInvHighlightedItemIndex;
@@ -88,10 +123,26 @@ extern u8 gInventory[150];
 extern u8 gInventoryPalette;
 extern u8 D_D3BE40; //phys inventory palette
 extern funcTypedef gCheckItemUsableFuncs[];
+
+/*move to other headers*/
 void func_800177F8(u16 arg0, u16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, void* arg6, void* arg7, void* arg8);
 void func_80018DF4(s32 arg0, s32 arg1, s32 arg2);
 void func_800268D4(s32 arg0, s8 arg1, s32 arg2);
 
+void Inventory_Init(void);
+s32 CheckIfInventoryFull(void);
+
+void AddItemToInventory(u8 itemID);
+s32 CheckIfItemUsable(u8 itemID);
+void UseItem(u8 itemID, BrianData2* arg1);
+s32 ChackIfHealingNeeded(BrianData2* pos, ItemData* itemData);
+s32 CheckIfTeleportPossible(s32 arg0, s32 arg1);
+u8 CheckIfSpellItemUsable(s32 arg0, u16* itemData);
+void func_8002233C(s32 arg0, s32 arg1);
+void UseHealingItem(BrianData2* BrianData, ItemData* item);
+void UseWings(BrianData2 *arg0, ItemData *arg1);
+void UseSpellItem(BrianData2* arg0, ItemData* arg1);
+void DrawItemBox(s32 ulx, s32 uly, s32 width, s32 height);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Inventory_Init.s")
 void Inventory_Init(void) {
@@ -120,8 +171,8 @@ void Inventory_Init(void) {
     D_8008C768 = 0;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021214.s")
-s32 func_80021214(void) {
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/CheckIfInventoryFull.s")
+s32 CheckIfInventoryFull(void) {
     s32 var_v1;
 
     if (gLastInvSlot != 0xFF) {
@@ -164,8 +215,8 @@ s32 func_80021240(u8 arg0)
 }
 #endif
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
-void func_800212A0(u8 arg0) {
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/AddItemToInventory.s")
+void AddItemToInventory(u8 itemID) {
     s32 i = 0;
 
     do {
@@ -174,11 +225,11 @@ void func_800212A0(u8 arg0) {
         i++;
     } while(i < ARRAY_COUNT(gInventory));
 
-    gInventory[i] = arg0;
+    gInventory[i] = itemID;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Use_item_if_able.s")
-s32 Use_item_if_able(u8 itemID)
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/CheckIfItemUsable.s")
+s32 CheckIfItemUsable(u8 itemID)
 {
   s32 ret;
   ItemData *item;
@@ -209,9 +260,9 @@ s32 Use_item_if_able(u8 itemID)
 }
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800213D8.s")
-void func_800213D8(u8 itemID, BrianData2* arg1) {
-    D_8004D490[gItemData[itemID].type](arg1, &gItemData[itemID], itemID, arg1);
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseItem.s")
+void UseItem(u8 itemID, BrianData2* arg1) {
+    gUseItemFuncs[gItemData[itemID].type](arg1, &gItemData[itemID], itemID, arg1);
 }//Rain
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021434.s")
@@ -234,10 +285,10 @@ s32 ChackIfHealingNeeded(BrianData2* pos, ItemData* itemData) {
 
     ret = 0;
     brianData = pos->brianData1;
-    if ((itemData->hpHealed != 0) && (brianData->maxHP != brianData->currHP)) {
+    if ((itemData->itemArg1 != 0) && (brianData->maxHP != brianData->currHP)) {
         ret = ITEM_USABLE;
     }
-    if ((itemData->mpHealed != 0) && (brianData->maxMP != brianData->currMP)) {
+    if ((itemData->itemArg2 != 0) && (brianData->maxMP != brianData->currMP)) {
         ret = ITEM_USABLE;
     }
     return ret;
@@ -274,26 +325,26 @@ void func_8002233C(s32 arg0, s32 arg1) {
 }
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002234C.s")
-void func_8002234C(BrianData2* BrianData, ItemData* item)
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseHealingItem.s")
+void UseHealingItem(BrianData2* BrianData, ItemData* item)
 {
     u16 delta;
     BrianData1 *status = BrianData->brianData1;
     unk2234c3* temp;
     
-    if (item->hpHealed != 0) {
+    if (item->itemArg1 != 0) {
         delta = (status->maxHP - status->currHP);
-        if (item->hpHealed < delta) {
-            delta = item->hpHealed;
+        if (item->itemArg1 < delta) {
+            delta = item->itemArg1;
         }
         
         status->currHP += delta;
         func_80018DF4(BrianData, 1, delta);
     }
-    if (item->mpHealed != 0) {
+    if (item->itemArg2 != 0) {
         delta = (status->maxMP - status->currMP);
-        if (item->mpHealed < delta) {
-            delta = item->mpHealed;
+        if (item->itemArg2 < delta) {
+            delta = item->itemArg2;
         }
         status->currMP += delta;
         func_80018DF4(BrianData, 2, delta);
@@ -307,15 +358,36 @@ void func_8002234C(BrianData2* BrianData, ItemData* item)
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80022490.s")
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002260C.s")
-void func_8002260C(s32 arg0, unk2260cs* arg1) {
-    func_80014A98(arg0, arg1->unk4, 0, 4);
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseWings.s")
+void UseWings(BrianData2 *arg0, ItemData *arg1)
+{
+  unk2234c3 *new_var;
+  D_8007B2E4 |= 0x80;
+  D_8007B2EC = 0x16;
+  D_80085368.unk0 = (s32) gWingData[arg1->itemArg1].mapID;
+  D_80085368.unk4 = (s32) gWingData[arg1->itemArg1].submapID;
+  D_80085368.unk8 = -1;
+  D_8007BA40 = gWingData[arg1->itemArg1].xpos;
+  D_8007BA44 = gWingData[arg1->itemArg1].zpos;
+  D_8007BA48 = gWingData[arg1->itemArg1].yrot;
+  D_8007BA4C = 0x108;
+  D_8007BABE = 0;
+  D_8007B2F0 = 1;
+  D_8008D010.unk0 = D_803A9A68.unk18;
+  new_var = &D_803A9A54[D_803A9A68.unk10];
+  D_8008D010.unk4 = D_803A9A68.unk1C;
+  D_8008D010.unk8 = 1.0f;
+  func_800177F8(D_803A9A68.unk12, D_803A9A68.unk14, arg0->x, arg0->y, arg0->z, 0.0f, new_var, &D_8008D010, arg0);
+  func_800268D4(0, 0x3B, 0xFF);
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002263C.s")
-void func_8002263C(s32 ulx, s32 uly, s32 width, s32 height) {
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseSpellItem.s")
+void UseSpellItem(BrianData2* brian, ItemData* item) {
+    func_80014A98(brian, item->itemArg1, 0, 4);
+}
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/DrawItemBox.s")
+void DrawItemBox(s32 ulx, s32 uly, s32 width, s32 height) {
 
     gDPPipeSync(gMasterGfxPos++);
     
