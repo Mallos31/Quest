@@ -356,7 +356,7 @@ alSeqNew                  = 0x80049c78;
 alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
 
-gUseItemFuncs             = 0x8004D480;
+gCheckItemUsableFuncs     = 0x8004D480;
 dlScreenDimRectangle      = 0x8004D4F0;
 
 osClockRate               = 0x8006F400;

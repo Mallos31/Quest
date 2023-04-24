@@ -41,6 +41,36 @@ typedef struct unk_2260c_s{
     s16 unk4;
 }unk2260cs;
 
+typedef struct {
+    char unk0[4];
+    u16 unk4;
+    u16 unk6;    
+}unk2234c4;
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+}unk2234c;
+typedef struct {
+    s16 unk0;
+    u16 unk2;
+    u16 unk4;
+    char unk6[2];
+    f32 unk8;
+    f32 unkC;
+}unk2234c2;
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+    char unk8[2];
+}unk2234c3;
+
+extern unk2234c3 D_803A9A54[];
+extern unk2234c D_8008D010;
+extern unk2234c2 D_803A9A68;
+
 typedef s32 (*funcTypedef)(BrianData2 *, void *, u8, ItemData *);
 
 
@@ -57,7 +87,11 @@ extern s8 gVisibleInvItemIDs[8]; //IDs of items visible in inventory. One per it
 extern u8 gInventory[150];
 extern u8 gInventoryPalette;
 extern u8 D_D3BE40; //phys inventory palette
-extern funcTypedef gUseItemFuncs[];
+extern funcTypedef gCheckItemUsableFuncs[];
+void func_800177F8(u16 arg0, u16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, void* arg6, void* arg7, void* arg8);
+void func_80018DF4(s32 arg0, s32 arg1, s32 arg2);
+void func_800268D4(s32 arg0, s8 arg1, s32 arg2);
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/Inventory_Init.s")
 void Inventory_Init(void) {
@@ -165,7 +199,7 @@ s32 Use_item_if_able(u8 itemID)
   itemUsable = ret;
   if (itemUsable != FALSE)
   {
-    ret = gUseItemFuncs[item->type](&gPlayerPos, item, itemID, gItemData);
+    ret = gCheckItemUsableFuncs[item->type](&gPlayerPos, item, itemID, gItemData);
   }
   if (ret != ITEM_NOT_USABLE)
   {
@@ -176,7 +210,7 @@ s32 Use_item_if_able(u8 itemID)
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800213D8.s")
-void func_800213D8(u8 itemID, s32 arg1) {
+void func_800213D8(u8 itemID, BrianData2* arg1) {
     D_8004D490[gItemData[itemID].type](arg1, &gItemData[itemID], itemID, arg1);
 }//Rain
 
@@ -240,7 +274,38 @@ void func_8002233C(s32 arg0, s32 arg1) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002234C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_8002234C.s")
+void func_8002234C(BrianData2* BrianData, ItemData* item)
+{
+    u16 delta;
+    BrianData1 *status = BrianData->brianData1;
+    unk2234c3* temp;
+    
+    if (item->hpHealed != 0) {
+        delta = (status->maxHP - status->currHP);
+        if (item->hpHealed < delta) {
+            delta = item->hpHealed;
+        }
+        
+        status->currHP += delta;
+        func_80018DF4(BrianData, 1, delta);
+    }
+    if (item->mpHealed != 0) {
+        delta = (status->maxMP - status->currMP);
+        if (item->mpHealed < delta) {
+            delta = item->mpHealed;
+        }
+        status->currMP += delta;
+        func_80018DF4(BrianData, 2, delta);
+    }
+    D_8008D010.unk0 = D_803A9A68.unk8;
+    D_8008D010.unk4 = D_803A9A68.unkC;
+    D_8008D010.unk8 = 1.0f;
+    temp = &D_803A9A54[D_803A9A68.unk0];
+    func_800177F8(D_803A9A68.unk2, D_803A9A68.unk4, BrianData->x, BrianData->y, BrianData->z, 0.0, temp, &D_8008D010, BrianData);
+    func_800268D4(0, 0xB, 0xFF);
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80022490.s")
 
