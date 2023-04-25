@@ -404,6 +404,7 @@ gVisibleInvItemIDs        = 0x8008C770;
 gInventory                = 0x8008CF78;
 
 gLastInvSlot              = 0x8008D00D;
+gItemLightRing            = 0x8008D010;
 gScreenDimFlags           = 0x8008D020;
 gScreenDimTimer           = 0x8008D024;
 gScreenDimRGBA            = 0x8008D028;
@@ -431,6 +432,7 @@ gDL_StaffIcon             = 0x803A8CF8;
 gWingData                 = 0x803A9190;
 gItemData				  = 0x803A91F0;
 gItemNamePtrs             = 0x803A9954;
+gBaseItemLightRingData    = 0x803A9A68;
 gBossFileOffsetTbl        = 0x803A9A90;
 gBossData                 = 0x803A9AD0;
 gBossNamePtrs             = 0x803AABD8;

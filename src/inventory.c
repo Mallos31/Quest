@@ -46,25 +46,27 @@ typedef struct {
     u16 unk4;
     u16 unk6;    
 }unk2234c4;
+
 typedef struct {
-    f32 unk0;
-    f32 unk4;
+    f32 width;
+    f32 height;
     f32 unk8;
-}unk2234c;
+}ItemLightRingData;
+
 typedef struct {
     s16 unk0;
     u16 unk2;
-    u16 unk4;
+    u16 healItemLightColor;
     char unk6[2];
-    f32 unk8;
-    f32 unkC;
+    f32 healItemLightWidth;
+    f32 healItemLightHeight;
     s16 unk10;
     u16 unk12;
-    u16 unk14;
+    u16 wingLightColor;
     char unk16[2];
-    f32 unk18;
-    f32 unk1C;
-}unk2234c2;
+    f32 wingLightWidth;
+    f32 wingLightHeight;
+}BaseItemLightRingData;
 
 typedef struct {
     u16 unk0;
@@ -97,8 +99,8 @@ extern unk803a9190s gWingData[];
 
 
 extern unk2234c3 D_803A9A54[];
-extern unk2234c D_8008D010;
-extern unk2234c2 D_803A9A68;
+extern ItemLightRingData gItemLightRing; //width, height, and possibly rotation of the ring that appears around brian when he uses an item.
+extern BaseItemLightRingData gBaseItemLightRingData;
 
 typedef s32 (*funcTypedef)(BrianData2 *, void *, u8, ItemData *);
 extern s32 D_8007B2EC;
@@ -270,7 +272,7 @@ void UseItem(u8 itemID, BrianData2* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021524.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/NoEffectItem.s")
-s32 NoEffectItem(s32 pos, s32 item) {
+s32 NoEffectItem(BrianData2* pos, ItemData* item) {
     return 0;
 }
 
@@ -349,35 +351,35 @@ void UseHealingItem(BrianData2* BrianData, ItemData* item)
         status->currMP += delta;
         func_80018DF4(BrianData, 2, delta);
     }
-    D_8008D010.unk0 = D_803A9A68.unk8;
-    D_8008D010.unk4 = D_803A9A68.unkC;
-    D_8008D010.unk8 = 1.0f;
-    temp = &D_803A9A54[D_803A9A68.unk0];
-    func_800177F8(D_803A9A68.unk2, D_803A9A68.unk4, BrianData->x, BrianData->y, BrianData->z, 0.0, temp, &D_8008D010, BrianData);
+    gItemLightRing.width = gBaseItemLightRingData.healItemLightWidth;
+    gItemLightRing.height = gBaseItemLightRingData.healItemLightHeight;
+    gItemLightRing.unk8 = 1.0f;
+    temp = &D_803A9A54[gBaseItemLightRingData.unk0];
+    func_800177F8(gBaseItemLightRingData.unk2, gBaseItemLightRingData.healItemLightColor, BrianData->x, BrianData->y, BrianData->z, 0.0, temp, &gItemLightRing, BrianData);
     func_800268D4(0, 0xB, 0xFF);
 }
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/UseWings.s")
-void UseWings(BrianData2 *arg0, ItemData *arg1)
+void UseWings(BrianData2 *brian, ItemData *item)
 {
   unk2234c3 *new_var;
   D_8007B2E4 |= 0x80;
   D_8007B2EC = 0x16;
-  D_80085368.unk0 = (s32) gWingData[arg1->itemArg1].mapID;
-  D_80085368.unk4 = (s32) gWingData[arg1->itemArg1].submapID;
+  D_80085368.unk0 = (s32) gWingData[item->itemArg1].mapID;
+  D_80085368.unk4 = (s32) gWingData[item->itemArg1].submapID;
   D_80085368.unk8 = -1;
-  D_8007BA40 = gWingData[arg1->itemArg1].xpos;
-  D_8007BA44 = gWingData[arg1->itemArg1].zpos;
-  D_8007BA48 = gWingData[arg1->itemArg1].yrot;
+  D_8007BA40 = gWingData[item->itemArg1].xpos; //xpos after teleporting
+  D_8007BA44 = gWingData[item->itemArg1].zpos; //zpos after teleporting
+  D_8007BA48 = gWingData[item->itemArg1].yrot; //rotation after teleporting; all three of these also apply to going through doors.
   D_8007BA4C = 0x108;
   D_8007BABE = 0;
   D_8007B2F0 = 1;
-  D_8008D010.unk0 = D_803A9A68.unk18;
-  new_var = &D_803A9A54[D_803A9A68.unk10];
-  D_8008D010.unk4 = D_803A9A68.unk1C;
-  D_8008D010.unk8 = 1.0f;
-  func_800177F8(D_803A9A68.unk12, D_803A9A68.unk14, arg0->x, arg0->y, arg0->z, 0.0f, new_var, &D_8008D010, arg0);
+  gItemLightRing.width = gBaseItemLightRingData.wingLightWidth;
+  new_var = &D_803A9A54[gBaseItemLightRingData.unk10];
+  gItemLightRing.height = gBaseItemLightRingData.wingLightHeight;
+  gItemLightRing.unk8 = 1.0f;
+  func_800177F8(gBaseItemLightRingData.unk12, gBaseItemLightRingData.wingLightColor, brian->x, brian->y, brian->z, 0.0f, new_var, &gItemLightRing, brian);
   func_800268D4(0, 0x3B, 0xFF);
 }
 
