@@ -99,7 +99,7 @@ void func_80008EF4(void)
   start = areaMonsterData->fileStart;
   end = areaMonsterData->fileEnd;
   size = end - start;
-  func_80024260((u8 *) start, &D_8020E6F0, size);
+  dma_write((u8 *) start, &D_8020E6F0, size);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008F6C.s")
@@ -167,7 +167,7 @@ s32 func_8000ABF4(MonsterBattleData *arg0)
   int temp_v0;
   temp_v0 = arg0->unk68->unk86;
   sp1E = (s16) (((s32) (temp_v0 * 0x64)) / ((s32) (temp_v0 + (((s32) (D_8007BB34->unk86 + 7)) >> 3))));
-  return func_80022FD0(0x64U) < ((u32) sp1E);
+  return getRandomNumber(0x64U) < ((u32) sp1E);
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000AC84.s")

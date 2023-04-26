@@ -50,8 +50,8 @@ extern f64 D_800716F8;
 
 
 
-u32 func_80022FD0(u32 arg0);
-f32 func_80023028(f32 x);
+u32 getRandomNumber(u32 arg0);
+f32 calc_arctan_in_radians(f32 x);
 void func_800231B0(f32* arg0, f32* arg1);
 f32 func_80023210(f32 arg0, f32 arg1);
 void func_800232F4(f32 arg0, unk232f4s* arg1);
@@ -69,10 +69,9 @@ void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3);
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80022FD0.s")
-u32 func_80022FD0(u32 arg0)
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/getRandomNumber.s")
+u32 getRandomNumber(u32 arg0)
 {
-  u32 temp_t8;
   if (arg0 != 0)
   {
     return ((u32) ((D_8004D748 = (D_8004D748 * 0x41C64E6D) + 0x3039) >> 0x10)) % arg0;
@@ -80,8 +79,8 @@ u32 func_80022FD0(u32 arg0)
   return 0U;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023028.s")//Major match assist by EllipticEllipsis
-f32 func_80023028(f32 x) {
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/calc_arctan_in_radians.s")//Major match assist by EllipticEllipsis
+f32 calc_arctan_in_radians(f32 x) {
     f32 var_f2 = 0.0f;
     s32 temp_lo;
     s32 var_v0;
@@ -112,7 +111,7 @@ f32 func_80023028(f32 x) {
 }
 
 /*once rodata is split, and some defines are created, this needs to look like this
-f32 func_80023028(f32 x) {
+f32 calc_arctan_in_radians(f32 x) {
     f32 conv = 0.0f;
     s32 sector;
     s32 i;
@@ -142,6 +141,7 @@ f32 func_80023028(f32 x) {
 */
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800231B0.s")
+/*Normalizes a vector. What vector?*/
 void func_800231B0(f32* arg0, f32* arg1) {
     
     f32 temp_f2_2;
@@ -171,16 +171,16 @@ f32 func_80023210(f32 arg0, f32 arg1)
   else
     if (arg1 > 0.0f)
   {
-    var_f2 = func_80023028(arg0 / arg1);
+    var_f2 = calc_arctan_in_radians(arg0 / arg1);
   }
   else
     if ((arg1 < 0.0f) && (arg0 <= 0.0f))
   {
-    var_f2 = func_80023028(arg0 / arg1) - D_800716F0;
+    var_f2 = calc_arctan_in_radians(arg0 / arg1) - D_800716F0;
   }
   else
   {
-    var_f6 = ( func_80023028( (arg0 / arg1))) + D_800716F8;
+    var_f6 = ( calc_arctan_in_radians( (arg0 / arg1))) + D_800716F8;
     var_f2 = (f32) var_f6;
 
   }
@@ -188,6 +188,7 @@ f32 func_80023210(f32 arg0, f32 arg1)
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800232F4.s")
+/*rotates a 2D vector*/
 void func_800232F4(f32 arg0, unk232f4s* arg1) {
     f32 sp1C;
     f32 temp_f0;

@@ -124,9 +124,9 @@ void func_8001D820(void) {
 u8 func_8001D828(void)
 {
     u8 ret;
-  if ((gBattleState & 0x100) || ((func_80022FD0(4U)) == 0))
+  if ((gBattleState & 0x100) || ((getRandomNumber(4U)) == 0))
   {
-    ret = D_8007C9B8[func_80022FD0(D_8008C59A)].unk00->unk34;
+    ret = D_8007C9B8[getRandomNumber(D_8008C59A)].unk00->unk34;
   }
   else
   {

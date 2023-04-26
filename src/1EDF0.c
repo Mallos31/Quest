@@ -649,7 +649,7 @@ void func_80020D4C(u16 arg0, s32 arg1, s32 arg2, s32 arg3)
 
     
   var_s1 = sp48;
-  var_s2 = func_80024330(arg3, sp48, arg0);
+  var_s2 = int_to_str_with_flags(arg3, sp48, arg0);
     for (;var_s2 != 0; var_s2--, var_s1++)
     {
       if (*var_s1 != ' ')

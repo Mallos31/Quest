@@ -152,7 +152,7 @@ void Inventory_Init(void) {
     u8* slot;
 
 
-    func_80024260(&D_D3BE40, &gInventoryPalette, 0x400); //load inventory palette into RAM
+    dma_write(&D_D3BE40, &gInventoryPalette, 0x400); //load inventory palette into RAM
     i = 8;
     slot = (u8*)&gVisibleInvItemIDs;
     do {

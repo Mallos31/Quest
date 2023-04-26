@@ -2,7 +2,7 @@
 
 
 void func_80026A40();
-void func_80026A7C(s32 arg0);
+void func_80026A7C(void* arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/27640/func_80026A40.s")
 

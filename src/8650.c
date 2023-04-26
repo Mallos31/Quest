@@ -93,17 +93,17 @@ void func_80007A50(void)
     start = D_871900;
     end = D_873F20;
     size = end - start;  
-    func_80024260(start, D_8020C0D0, size);
+    dma_write(start, D_8020C0D0, size);
 
     start = D_A725D0;
     end = D_A7A190;
     size = end - start;
-    func_80024260(start, D_802A0000, size);
+    dma_write(start, D_802A0000, size);
       
     start = D_8007BCB0->start;
     end = D_8007BCB0->end;
     size = end - start;
-    func_80024260((u8 *) start, &D_8020E6F0, size);
+    dma_write((u8 *) start, &D_8020E6F0, size);
       
     func_800080E8();
     D_8007BCB4 = 0;
@@ -151,7 +151,7 @@ void func_80007B64(void)
             {
               npc->action = 1;
               npcPosRot = &npc->PosRot;
-              npc->actionTimer = (func_80022FD0(2U) + 1) * npc->unk80->unk10->unkE;
+              npc->actionTimer = (getRandomNumber(2U) + 1) * npc->unk80->unk10->unkE;
               func_8001D8B0((NPCData *) npcPosRot, 1, 1, 1, 1, (u16) 1);
               temp_f20 = npc->xWanderOrigin - npcPosRot->pos.x;
               temp_f22 = npc->zWanderOrigin - npcPosRot->pos.z;
@@ -161,14 +161,14 @@ void func_80007B64(void)
               }
               else
               {
-                var_f8 = func_80022FD0(0x10U);
+                var_f8 = getRandomNumber(0x10U);
                 npcPosRot->rot.y = (f32) ((var_f8 * (M_PI / 8)) - (M_PI / 2));
               }
               D_8007BCB4++;
             }
             else
             {
-              npc->actionTimer = (1 + func_80022FD0(2U)) * npc->unk80->unk10->unk2;
+              npc->actionTimer = (1 + getRandomNumber(2U)) * npc->unk80->unk10->unk2;
             }
           }
         }
@@ -242,7 +242,7 @@ void func_80008948(s32 arg0) {
     temp_v0 = D_8007BD30[arg0].unk80;
     if (temp_v0->unk4 == 2) {
         D_8007BD30[arg0].unk0 = 0;
-        D_8007BD30[arg0].unk2 = func_80022FD0(0x1EU) + 0x1E;
+        D_8007BD30[arg0].unk2 = getRandomNumber(0x1EU) + 0x1E;
         return;
     }
     if (temp_v0->unk5 & 2) {

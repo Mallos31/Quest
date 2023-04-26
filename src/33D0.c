@@ -214,7 +214,7 @@ void func_8000669C(u8 arg0) {
         start = fb->start;
         size = fb->end - start;      
         
-        func_80024260(start, 0x80200000, size);
+        dma_write(start, 0x80200000, size);
     }
 }*/
 
