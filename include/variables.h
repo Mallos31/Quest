@@ -14,7 +14,7 @@ extern s32 D_80084EE4;
 extern s16 gGameMode;
 extern u16 gBattleState;
 extern s8 D_80092870;
-extern u64 D_803232A0[];
+extern test D_803232A0[];
 extern s32 gNextSubmap;
 extern u16 gAllowBattles; 
 extern sMapData* gMapData;

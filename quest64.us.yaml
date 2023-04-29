@@ -286,6 +286,7 @@ segments:
   - [0xD237F0, bin, boss_Beigis]
   - [0xD305E0, bin, NPC_Msg]
   - [0xD3BE40, bin, inventory_pal]
+  - [0xD3C040, bin, inventory_greyscale_pal]
   - [0xD3C240, bin, icon_spirit_light]
   - [0xD3C340, bin, icon_fresh_bread]
   - [0xD3C440, bin, icon_honey_bread]

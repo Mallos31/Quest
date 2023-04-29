@@ -97,5 +97,9 @@ typedef struct {
     u16 unk14;
 }unk84f1cs;
 
+typedef struct test {
+    /* 0x000 */ char unk00[0x7B8];
+} test; // size = 0x7B8
+
 #endif
 

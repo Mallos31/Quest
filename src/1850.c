@@ -36,8 +36,7 @@ extern u64 D_800723D0[]; // gfx ucode data start
 extern OSMesgQueue D_8007B9E8;
 extern u64 D_80300000[]; // dram stack (0x400 bytes)
 extern u64 D_80300400[]; // ucode yield buffer (0xC00 bytes)
-extern u64 D_8031B2A0[]; // ucode output buffer start
-extern u64 D_803232A0[]; // ucode output buffer end
+extern u8 D_8031B2A0[]; // ucode output buffer start
 extern f32 D_80070F04;
 extern s16 D_8007B2F0;
 extern s8 D_8007B344;
@@ -103,7 +102,7 @@ void func_8000111C(unk111Cs* arg0) {
     arg0->task.list.t.dram_stack = D_80300000; // Stack at 0x80300000
     arg0->task.list.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     arg0->task.list.t.output_buff = D_8031B2A0;      // Output FIFO buffer starts at 0x8031B2A0
-    arg0->task.list.t.output_buff_size = D_803232A0; // Output FIFO buffer ends   at 0x803232A0
+    arg0->task.list.t.output_buff_size = &D_8031B2A0[0x8000]; // Output FIFO buffer ends   at 0x803232A0
     arg0->task.list.t.yield_data_ptr = D_80300400;
     arg0->task.list.t.yield_data_size = OS_YIELD_DATA_SIZE;
     arg0->task.next = NULL;
