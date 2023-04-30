@@ -1,6 +1,6 @@
 #include "common.h"
 
-typedef struct test {
+typedef struct test2 {
                u16 unk0;
                u8 unk2;
                u8 unk3;
@@ -23,19 +23,17 @@ typedef struct test {
                f32 unk34;
                f32 unk38;
                s32 unk3C;
-} test;
+} test2;
 
 
 extern s32 D_80088420;
-extern test D_80088428[0x100];
+extern test2 D_80088428[0x100];
 extern Gfx D_8004D050[];
 
 
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B0D0.s")
 void func_8001B0D0(void) {
     s32 var_v1;
-    test* var_v0;
+    test2* var_v0;
 
     var_v0 = D_80088428;
     var_v1 = 0x100;
@@ -47,9 +45,8 @@ void func_8001B0D0(void) {
     D_80088420 = 0;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B108.s")
-test* func_8001B108(test* arg0) {
-    test* ret = D_80088428;
+test2* func_8001B108(test2* arg0) {
+    test2* ret = D_80088428;
     u32 i = 0x100;
 
     while((i > 0) && (ret->unk0 != 0)){
@@ -71,7 +68,7 @@ test* func_8001B108(test* arg0) {
 void func_8001B19C(s32 arg0) {
     s32 var_s5;
     s32 var_s6;
-    test* var_s0;
+    test2* var_s0;
     MtxF spB4;
     MtxF sp74;
 
@@ -86,7 +83,7 @@ void func_8001B19C(s32 arg0) {
                     func_8001B448(var_s0->unk8, var_s6, var_s0->unk9, var_s0->unkA, (s32) var_s0->unkB, (s32) var_s0->unkC);
                 }
                 if (var_s0->unk4 != 0) {
-                    ((void (*)(test*)) var_s0->unk4)(var_s0);
+                    ((void (*)(test2*)) var_s0->unk4)(var_s0);
                 } else {
                     gSPDisplayList(gMasterGfxPos++, D_8004D050);
                 }

@@ -4,8 +4,6 @@ build/
 expected/
 junk/
 __pycache__/
-tools/
-nonmatchings/
 decomp-permuter/
 asm/
 
@@ -16,6 +14,5 @@ asm/
 *.z64
 *.old
 ctx.c
-diff.py
-diff_settings.py
-first_diff.py
+.ninja_log
+.build.ninja

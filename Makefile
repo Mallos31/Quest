@@ -34,7 +34,7 @@ PYTHON = python3
 OBJCOPYFLAGS = -O binary
 
 
-CC := $(TOOLS_DIR)/ido5.3_recomp/cc
+CC := $(TOOLS_DIR)/ido_5.3/usr/lib/cc
 
 OPT_FLAGS := -O2 -g3
 
@@ -130,12 +130,20 @@ clean:
 $(TARGET).elf: $(O_FILES) $(LANG_O_FILES)
 	@$(LD) $(LDFLAGS) -o $@
 
+# ifndef PERMUTER
+# $(GLOBAL_ASM_O_FILES): $(BUILD_DIR)/%.c.o: %.c
+# 	$(PYTHON) $(ASM_PROCESSOR_DIR)/asm_processor.py $(OPT_FLAGS) $< > $(BUILD_DIR)/$<
+# 	$(CC) -c -32 $(CFLAGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $(BUILD_DIR)/$<
+# 	$(PYTHON) $(ASM_PROCESSOR_DIR)/asm_processor.py $(OPT_FLAGS) $< --post-process $@ \
+# 		--assembler "$(AS) $(ASFLAGS)" --asm-prelude $(ASM_PROCESSOR_DIR)/prelude.s
+# endif
+
 ifndef PERMUTER
 $(GLOBAL_ASM_O_FILES): $(BUILD_DIR)/%.c.o: %.c
 	$(PYTHON) $(ASM_PROCESSOR_DIR)/asm_processor.py $(OPT_FLAGS) $< > $(BUILD_DIR)/$<
 	$(CC) -c -32 $(CFLAGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $(BUILD_DIR)/$<
 	$(PYTHON) $(ASM_PROCESSOR_DIR)/asm_processor.py $(OPT_FLAGS) $< --post-process $@ \
-		--assembler "$(AS) $(ASFLAGS)" --asm-prelude $(ASM_PROCESSOR_DIR)/prelude.s
+		--assembler "$(AS) $(ASFLAGS)" --asm-prelude include/macro.inc
 endif
 
 # non asm-processor recipe

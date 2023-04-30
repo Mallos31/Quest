@@ -1,0 +1,36 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "Quest64",
+            "compilerPath": "tools/ido_5.3/usr/lib/cc",
+            "compilerArgs": [
+                "-m32",
+                "-I.",
+                "-I include",
+                "-I include/PR",
+                "-I build/include",
+                "-I src"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "${workspaceFolder}/include/**",
+                    "${workspaceFolder}/src/**",
+                ]
+            },
+            "includePath": [
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/src/**",
+                "/usr/include/x86_64-linux-gnu"
+            ],
+            "defines": [
+                "F3DEX_GBI_2",
+                "_LANGUAGE_C",
+                "_MIPS_SZLONG=32"
+            ],
+            "cStandard": "gnu89",
+            "intelliSenseMode": "${default}"
+        }
+    ]
+}

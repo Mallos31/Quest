@@ -6,7 +6,7 @@ typedef struct {
     f32 unk8;
     f32 unkC;
     f32 unk10;
-}test;
+}test4;
 
 typedef struct {
     char unk0[0x52];
@@ -91,7 +91,7 @@ void func_8001E0AC(s32 arg0, unk1e0acs *arg1, unk1e0acs2 *arg2)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001E138.s")
 #ifdef NON_MATCHING
-void func_8001E138(MtxF* arg0, test* arg1) {
+void func_8001E138(MtxF* arg0, test4* arg1) {
     arg0->mf[3][0] -= (arg0->mf[0][0] * arg1->unk8) + (arg0->mf[1][0] * arg1->unkC) + (arg0->mf[2][0] * arg1->unk10);
     arg0->mf[3][1] -= (arg0->mf[0][1] * arg1->unk8) + (arg0->mf[1][1] * arg1->unkC) + (arg0->mf[2][1] * arg1->unk10);
     arg0->mf[3][2] -= (arg0->mf[0][2] * arg1->unk8) + (arg0->mf[1][2] * arg1->unkC) + (arg0->mf[2][2] * arg1->unk10);
