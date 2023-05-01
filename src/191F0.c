@@ -90,7 +90,7 @@ typedef struct {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-}test;
+}test3;
 
 typedef struct {
     s32 unk0;
@@ -104,7 +104,7 @@ extern BattleFence D_800880A8[];
 extern unk18684s D_80087210;
 extern unk19324s D_800874E8;
 extern unk1a238s D_800875A8;
-extern test D_800EB9EC[];
+extern test3 D_800EB9EC[];
 extern unk800DA828s D_800DA828[]; //updates when enemy defeated. 
 extern void* D_800CB4E0[];
 
@@ -223,7 +223,7 @@ void func_8001A238(void) {
 unk1a238s *func_8001A268(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB)
 {
   s32 i;
-  test *temp_t0;
+  test3 *temp_t0;
   unk1a238s *var_v1;
   s32 new_var;
   unk800DA828s *temp_t9;

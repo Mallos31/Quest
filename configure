@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+python3 tools/splat/split.py quest64.us.yaml
+python3 configure.py "$@"

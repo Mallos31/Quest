@@ -41,7 +41,7 @@ segments:
       - [0x21D70, c, inventory]
       - [0x234E0, c, screen_dim]
       - [0x23740, c]
-      - [0x23BD0, c]
+      - [0x23BD0, c, camera]
       - [0x24E60, c]
       - [0x25290, c]
       - [0x271F0, c]
