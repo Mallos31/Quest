@@ -1,10 +1,10 @@
 # Quest 64 Decompilation
 
-Clone with `--recursive` flag.
+Clone with `--recurse-submodules` flag.
 
 Drop the US ROM into the base of this repo, name it `baserom.us.z64`
 
-`make extract && make`
+`./configure && ninja`
 
 
 Spreadsheet of functions:
