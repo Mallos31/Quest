@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
+if [[ ! -f "baserom.us.z64" ]]; then
+    echo "Error: baserom.us.z64 not found in current directory"
+    exit 1
+fi
 
+expected_hash="91b96e938c6d91699057fad91d726ee5a23ce33a"
+actual_hash=$(sha1sum baserom.us.z64 | awk '{ print $1 }')
+
+if [[ "$actual_hash" != "$expected_hash" ]]; then
+    echo "Error: baserom.us.z64 has an invalid SHA1 hash"
+    exit 1
+fi
 python3 tools/splat/split.py quest64.us.yaml
 python3 configure.py "$@"

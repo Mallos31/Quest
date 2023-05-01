@@ -121,11 +121,9 @@ build build/src/sptaskyielded.c.o: O1_cc src/sptaskyielded.c
 build build/src/os/createthread.c.o: O1_cc src/os/createthread.c
 build build/asm/pirawdma.s.o: s_file asm/pirawdma.s
 build build/asm/contreaddata.s.o: s_file asm/contreaddata.s
-build build/asm/vigetcurrframebuf.s.o: s_file asm/vigetcurrframebuf.s
 build build/asm/cartrominit.s.o: s_file asm/cartrominit.s
 build build/asm/sirawdma.s.o: s_file asm/sirawdma.s
 build build/asm/aisetnextbuf.s.o: s_file asm/aisetnextbuf.s
-build build/asm/viblack.s.o: s_file asm/viblack.s
 build build/asm/heapalloc.s.o: s_file asm/heapalloc.s
 build build/asm/siacsDuplicate.s.o: s_file asm/siacsDuplicate.s
 build build/asm/cents2ratio.s.o: s_file asm/cents2ratio.s
@@ -143,11 +141,9 @@ build build/asm/synfreevoice.s.o: s_file asm/synfreevoice.s
 build build/asm/translate.s.o: s_file asm/translate.s
 build build/asm/reverb.s.o: s_file asm/reverb.s
 build build/asm/perspective.s.o: s_file asm/perspective.s
-build build/asm/createmesgqueue.s.o: s_file asm/createmesgqueue.s
 build build/asm/seteventmesg.s.o: s_file asm/seteventmesg.s
 build build/asm/auxbus.s.o: s_file asm/auxbus.s
 build build/asm/gettime.s.o: s_file asm/gettime.s
-build build/asm/viswapbuf.s.o: s_file asm/viswapbuf.s
 build build/asm/synaddplayer.s.o: s_file asm/synaddplayer.s
 build build/asm/synstopvoice.s.o: s_file asm/synstopvoice.s
 build build/asm/sendmesg.s.o: s_file asm/sendmesg.s
@@ -169,7 +165,6 @@ build build/asm/sins.s.o: s_file asm/sins.s
 build build/asm/copy.s.o: s_file asm/copy.s
 build build/asm/filter.s.o: s_file asm/filter.s
 build build/asm/sndpsetsound.s.o: s_file asm/sndpsetsound.s
-build build/asm/353E0.s.o: s_file asm/353E0.s
 build build/asm/n_alseqpgetvol.s.o: s_file asm/n_alseqpgetvol.s
 build build/asm/recvmesg.s.o: s_file asm/recvmesg.s
 build build/asm/seqpstop.s.o: s_file asm/seqpstop.s
@@ -182,7 +177,6 @@ build build/asm/sprawwrite.s.o: s_file asm/sprawwrite.s
 build build/asm/leointerrupt.s.o: s_file asm/leointerrupt.s
 build build/asm/setintmask.s.o: s_file asm/setintmask.s
 build build/asm/setcompare.s.o: s_file asm/setcompare.s
-build build/asm/sptaskyielded.s.o: s_file asm/sptaskyielded.s
 build build/asm/xlitob.s.o: s_file asm/xlitob.s
 build build/asm/getthreadpri.s.o: s_file asm/getthreadpri.s
 build build/asm/heapinit.s.o: s_file asm/heapinit.s
@@ -192,13 +186,11 @@ build build/asm/sndpallocate.s.o: s_file asm/sndpallocate.s
 build build/asm/synallocfx.s.o: s_file asm/synallocfx.s
 build build/asm/visetspecial.s.o: s_file asm/visetspecial.s
 build build/asm/xldtob.s.o: s_file asm/xldtob.s
-build build/asm/sptask.s.o: s_file asm/sptask.s
 build build/asm/seqplayer.s.o: s_file asm/seqplayer.s
 build build/asm/contquery.s.o: s_file asm/contquery.s
 build build/asm/synallocvoice.s.o: s_file asm/synallocvoice.s
 build build/asm/writebackdcache.s.o: s_file asm/writebackdcache.s
 build build/asm/load.s.o: s_file asm/load.s
-build build/asm/visetevent.s.o: s_file asm/visetevent.s
 build build/asm/cspsetseq.s.o: s_file asm/cspsetseq.s
 build build/asm/sndpsetpan.s.o: s_file asm/sndpsetpan.s
 build build/asm/motor.s.o: s_file asm/motor.s
@@ -211,13 +203,11 @@ build build/asm/pirawread.s.o: s_file asm/pirawread.s
 build build/asm/synsetpriority.s.o: s_file asm/synsetpriority.s
 build build/asm/synstartvoice.s.o: s_file asm/synstartvoice.s
 build build/asm/syndelete.s.o: s_file asm/syndelete.s
-build build/asm/sptaskyield.s.o: s_file asm/sptaskyield.s
 build build/asm/seqpsetvol.s.o: s_file asm/seqpsetvol.s
 build build/asm/header.s.o: s_file asm/header.s
 build build/asm/sndplay.s.o: s_file asm/sndplay.s
 build build/asm/maptlbrdb.s.o: s_file asm/maptlbrdb.s
 build build/asm/synthesizer.s.o: s_file asm/synthesizer.s
-build build/asm/vimgr.s.o: s_file asm/vimgr.s
 build build/asm/invalicache.s.o: s_file asm/invalicache.s
 build build/asm/thread.s.o: s_file asm/thread.s
 build build/asm/mtxcatf.s.o: s_file asm/mtxcatf.s
@@ -360,14 +350,30 @@ build build/assets/bosses/boss_Beigis.bin.o: bin_file $
     assets/bosses/boss_Beigis.bin
 build build/assets/bosses/boss_Solvaring.bin.o: bin_file $
     assets/bosses/boss_Solvaring.bin
-build build/assets/bosses/boss_Nepty.bin.o: bin_file $
-    assets/bosses/boss_Nepty.bin
 build build/assets/bosses/boss_Guilty.bin.o: bin_file $
     assets/bosses/boss_Guilty.bin
 build build/assets/bosses/boss_Fargo.bin.o: bin_file $
     assets/bosses/boss_Fargo.bin
+build build/assets/bosses/nepty/data.bin.o: bin_file $
+    assets/bosses/nepty/data.bin
 build build/assets/bosses/nepty/dls/model.bin.o: bin_file $
     assets/bosses/nepty/dls/model.bin
+build build/assets/bosses/zelse/data.bin.o: bin_file $
+    assets/bosses/zelse/data.bin
+build build/assets/bosses/zelse/dls/model.bin.o: bin_file $
+    assets/bosses/zelse/dls/model.bin
+build build/assets/bosses/solvaring/dls/model.bin.o: bin_file $
+    assets/bosses/solvaring/dls/model.bin
+build build/assets/bosses/solvaring/textures/unk5.rgba16.bin.o: bin_file $
+    assets/bosses/solvaring/textures/unk5.rgba16.bin
+build build/assets/bosses/solvaring/textures/unk4.rgba16.bin.o: bin_file $
+    assets/bosses/solvaring/textures/unk4.rgba16.bin
+build build/assets/bosses/solvaring/textures/unk6.rgba16.bin.o: bin_file $
+    assets/bosses/solvaring/textures/unk6.rgba16.bin
+build build/assets/bosses/shilf/data.bin.o: bin_file $
+    assets/bosses/shilf/data.bin
+build build/assets/bosses/shilf/dls/model.bin.o: bin_file $
+    assets/bosses/shilf/dls/model.bin
 build build/assets/maps/houses_7.bin.o: bin_file assets/maps/houses_7.bin
 build build/assets/maps/ship.bin.o: bin_file assets/maps/ship.bin
 build build/assets/maps/shamwood_pyramid.bin.o: bin_file $
@@ -434,8 +440,6 @@ build build/assets/npcs/NPC_Msg.bin.o: bin_file assets/npcs/NPC_Msg.bin
 build build/assets/npcs/NPC_Blob.bin.o: bin_file assets/npcs/NPC_Blob.bin
 build build/assets/bosses/nepty/textures/unk6.rgba16.png.j: rgba16_convert $
     assets/bosses/nepty/textures/unk6.rgba16.png
-build build/assets/bosses/nepty/textures/unk3.rgba16.png.j: rgba16_convert $
-    assets/bosses/nepty/textures/unk3.rgba16.png
 build build/assets/bosses/nepty/textures/unk8.rgba16.png.j: rgba16_convert $
     assets/bosses/nepty/textures/unk8.rgba16.png
 build build/assets/bosses/nepty/textures/cape.rgba16.png.j: rgba16_convert $
@@ -460,10 +464,82 @@ build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.j: $
     rgba16_convert assets/bosses/nepty/textures/ear_upper.rgba16.png
 build build/assets/bosses/nepty/textures/unk1.rgba16.png.j: rgba16_convert $
     assets/bosses/nepty/textures/unk1.rgba16.png
+build build/assets/bosses/zelse/textures/forearm.rgba16.png.j: $
+    rgba16_convert assets/bosses/zelse/textures/forearm.rgba16.png
+build build/assets/bosses/zelse/textures/hair.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/hair.rgba16.png
+build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.j: $
+    rgba16_convert assets/bosses/zelse/textures/staff_gem.rgba16.png
+build build/assets/bosses/zelse/textures/boots.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/boots.rgba16.png
+build build/assets/bosses/zelse/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/unk2.rgba16.png
+build build/assets/bosses/zelse/textures/pants.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/pants.rgba16.png
+build build/assets/bosses/zelse/textures/face.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/face.rgba16.png
+build build/assets/bosses/zelse/textures/clothes1.rgba16.png.j: $
+    rgba16_convert assets/bosses/zelse/textures/clothes1.rgba16.png
+build build/assets/bosses/zelse/textures/scarf.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/scarf.rgba16.png
+build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j: $
+    rgba16_convert assets/bosses/zelse/textures/clothes2.rgba16.png
+build build/assets/bosses/zelse/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/unk1.rgba16.png
+build build/assets/bosses/zelse/textures/chest.rgba16.png.j: rgba16_convert $
+    assets/bosses/zelse/textures/chest.rgba16.png
+build build/assets/bosses/solvaring/textures/unk3.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk3.rgba16.png
+build build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/pants_cloth.rgba16.png
+build build/assets/bosses/solvaring/textures/cape.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/cape.rgba16.png
+build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/pelt_ear.rgba16.png
+build build/assets/bosses/solvaring/textures/hand.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/hand.rgba16.png
+build build/assets/bosses/solvaring/textures/unk2.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk2.rgba16.png
+build build/assets/bosses/solvaring/textures/arm_shield.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/arm_shield.rgba16.png
+build build/assets/bosses/solvaring/textures/club_end.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/club_end.rgba16.png
+build build/assets/bosses/solvaring/textures/arm_cloth.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/arm_cloth.rgba16.png
+build build/assets/bosses/solvaring/textures/skin.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/skin.rgba16.png
+build build/assets/bosses/solvaring/textures/face.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/face.rgba16.png
+build build/assets/bosses/solvaring/textures/belt.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/belt.rgba16.png
+build build/assets/bosses/solvaring/textures/pelt_eye.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/pelt_eye.rgba16.png
+build build/assets/bosses/solvaring/textures/unk1.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk1.rgba16.png
+build build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/chest_armor.rgba16.png
+build build/assets/bosses/shilf/textures/sash.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/sash.rgba16.png
+build build/assets/bosses/shilf/textures/unk3.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/unk3.rgba16.png
+build build/assets/bosses/shilf/textures/hair.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/hair.rgba16.png
+build build/assets/bosses/shilf/textures/gold2.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/gold2.rgba16.png
+build build/assets/bosses/shilf/textures/hand.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/hand.rgba16.png
+build build/assets/bosses/shilf/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/unk2.rgba16.png
+build build/assets/bosses/shilf/textures/face.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/face.rgba16.png
+build build/assets/bosses/shilf/textures/dress.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/dress.rgba16.png
+build build/assets/bosses/shilf/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/unk1.rgba16.png
+build build/assets/bosses/shilf/textures/gold1.rgba16.png.j: rgba16_convert $
+    assets/bosses/shilf/textures/gold1.rgba16.png
 build build/assets/bosses/nepty/textures/unk6.rgba16.png.o: rgba16_build $
     build/assets/bosses/nepty/textures/unk6.rgba16.png.j
-build build/assets/bosses/nepty/textures/unk3.rgba16.png.o: rgba16_build $
-    build/assets/bosses/nepty/textures/unk3.rgba16.png.j
 build build/assets/bosses/nepty/textures/unk8.rgba16.png.o: rgba16_build $
     build/assets/bosses/nepty/textures/unk8.rgba16.png.j
 build build/assets/bosses/nepty/textures/cape.rgba16.png.o: rgba16_build $
@@ -488,6 +564,83 @@ build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.o: $
     rgba16_build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.j
 build build/assets/bosses/nepty/textures/unk1.rgba16.png.o: rgba16_build $
     build/assets/bosses/nepty/textures/unk1.rgba16.png.j
+build build/assets/bosses/zelse/textures/forearm.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/forearm.rgba16.png.j
+build build/assets/bosses/zelse/textures/hair.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/hair.rgba16.png.j
+build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.o: $
+    rgba16_build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.j
+build build/assets/bosses/zelse/textures/boots.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/boots.rgba16.png.j
+build build/assets/bosses/zelse/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/unk2.rgba16.png.j
+build build/assets/bosses/zelse/textures/pants.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/pants.rgba16.png.j
+build build/assets/bosses/zelse/textures/face.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/face.rgba16.png.j
+build build/assets/bosses/zelse/textures/clothes1.rgba16.png.o: $
+    rgba16_build build/assets/bosses/zelse/textures/clothes1.rgba16.png.j
+build build/assets/bosses/zelse/textures/scarf.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/scarf.rgba16.png.j
+build build/assets/bosses/zelse/textures/clothes2.rgba16.png.o: $
+    rgba16_build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j
+build build/assets/bosses/zelse/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/unk1.rgba16.png.j
+build build/assets/bosses/zelse/textures/chest.rgba16.png.o: rgba16_build $
+    build/assets/bosses/zelse/textures/chest.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk3.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk3.rgba16.png.j
+build build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.o: $
+    rgba16_build $
+    build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.j
+build build/assets/bosses/solvaring/textures/cape.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/cape.rgba16.png.j
+build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.j
+build build/assets/bosses/solvaring/textures/hand.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/hand.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk2.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk2.rgba16.png.j
+build build/assets/bosses/solvaring/textures/arm_shield.rgba16.png.o: $
+    rgba16_build $
+    build/assets/bosses/solvaring/textures/arm_shield.rgba16.png.j
+build build/assets/bosses/solvaring/textures/club_end.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/club_end.rgba16.png.j
+build build/assets/bosses/solvaring/textures/arm_cloth.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/arm_cloth.rgba16.png.j
+build build/assets/bosses/solvaring/textures/skin.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/skin.rgba16.png.j
+build build/assets/bosses/solvaring/textures/face.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/face.rgba16.png.j
+build build/assets/bosses/solvaring/textures/belt.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/belt.rgba16.png.j
+build build/assets/bosses/solvaring/textures/pelt_eye.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/pelt_eye.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk1.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk1.rgba16.png.j
+build build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.o: $
+    rgba16_build $
+    build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.j
+build build/assets/bosses/shilf/textures/sash.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/sash.rgba16.png.j
+build build/assets/bosses/shilf/textures/unk3.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/unk3.rgba16.png.j
+build build/assets/bosses/shilf/textures/hair.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/hair.rgba16.png.j
+build build/assets/bosses/shilf/textures/gold2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/gold2.rgba16.png.j
+build build/assets/bosses/shilf/textures/hand.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/hand.rgba16.png.j
+build build/assets/bosses/shilf/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/unk2.rgba16.png.j
+build build/assets/bosses/shilf/textures/face.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/face.rgba16.png.j
+build build/assets/bosses/shilf/textures/dress.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/dress.rgba16.png.j
+build build/assets/bosses/shilf/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/unk1.rgba16.png.j
+build build/assets/bosses/shilf/textures/gold1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/shilf/textures/gold1.rgba16.png.j
 build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/src/camera.c.o build/src/328F0.c.o build/src/screen_dim.c.o $
     build/src/vimgr.c.o build/src/contramread.c.o build/src/191F0.c.o $
@@ -514,54 +667,49 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/src/pfssearchfile.c.o build/src/1EDF0.c.o $
     build/src/sptaskyielded.c.o build/src/os/createthread.c.o $
     build/asm/pirawdma.s.o build/asm/contreaddata.s.o $
-    build/asm/vigetcurrframebuf.s.o build/asm/cartrominit.s.o $
-    build/asm/sirawdma.s.o build/asm/aisetnextbuf.s.o build/asm/viblack.s.o $
-    build/asm/heapalloc.s.o build/asm/siacsDuplicate.s.o $
-    build/asm/cents2ratio.s.o build/asm/viswapcontext.s.o $
-    build/asm/resetglobalintmask.s.o build/asm/setfpccsr.s.o $
-    build/asm/drvrNew.s.o build/asm/devmgr.s.o build/asm/sndpsetvol.s.o $
-    build/asm/contsetch.s.o build/asm/pidma.s.o build/asm/bcopy.s.o $
-    build/asm/setglobalintmask.s.o build/asm/synfreevoice.s.o $
-    build/asm/translate.s.o build/asm/reverb.s.o build/asm/perspective.s.o $
-    build/asm/createmesgqueue.s.o build/asm/seteventmesg.s.o $
-    build/asm/auxbus.s.o build/asm/gettime.s.o build/asm/viswapbuf.s.o $
-    build/asm/synaddplayer.s.o build/asm/synstopvoice.s.o $
-    build/asm/sendmesg.s.o build/asm/mtxutil.s.o $
+    build/asm/cartrominit.s.o build/asm/sirawdma.s.o $
+    build/asm/aisetnextbuf.s.o build/asm/heapalloc.s.o $
+    build/asm/siacsDuplicate.s.o build/asm/cents2ratio.s.o $
+    build/asm/viswapcontext.s.o build/asm/resetglobalintmask.s.o $
+    build/asm/setfpccsr.s.o build/asm/drvrNew.s.o build/asm/devmgr.s.o $
+    build/asm/sndpsetvol.s.o build/asm/contsetch.s.o build/asm/pidma.s.o $
+    build/asm/bcopy.s.o build/asm/setglobalintmask.s.o $
+    build/asm/synfreevoice.s.o build/asm/translate.s.o build/asm/reverb.s.o $
+    build/asm/perspective.s.o build/asm/seteventmesg.s.o $
+    build/asm/auxbus.s.o build/asm/gettime.s.o build/asm/synaddplayer.s.o $
+    build/asm/synstopvoice.s.o build/asm/sendmesg.s.o build/asm/mtxutil.s.o $
     build/asm/vigetcurrcontext.s.o build/asm/xprintf.s.o build/asm/save.s.o $
     build/asm/string.s.o build/asm/ortho.s.o build/asm/aisetfreq.s.o $
     build/asm/siacs.s.o build/asm/synsetpitch.s.o build/asm/synsetvol.s.o $
     build/asm/writebackdcacheall.s.o build/asm/synstartvoiceparam.s.o $
     build/asm/timerintr.s.o build/asm/event.s.o build/asm/sins.s.o $
     build/asm/copy.s.o build/asm/filter.s.o build/asm/sndpsetsound.s.o $
-    build/asm/353E0.s.o build/asm/n_alseqpgetvol.s.o build/asm/recvmesg.s.o $
+    build/asm/n_alseqpgetvol.s.o build/asm/recvmesg.s.o $
     build/asm/seqpstop.s.o build/asm/invaldcache.s.o $
     build/asm/exceptasm.s.o build/asm/spsetstat.s.o build/asm/si.s.o $
     build/asm/sqrtf.s.o build/asm/sprawwrite.s.o build/asm/leointerrupt.s.o $
-    build/asm/setintmask.s.o build/asm/setcompare.s.o $
-    build/asm/sptaskyielded.s.o build/asm/xlitob.s.o $
+    build/asm/setintmask.s.o build/asm/setcompare.s.o build/asm/xlitob.s.o $
     build/asm/getthreadpri.s.o build/asm/heapinit.s.o $
     build/asm/sndpgetstate.s.o build/asm/ll.s.o build/asm/sndpallocate.s.o $
     build/asm/synallocfx.s.o build/asm/visetspecial.s.o $
-    build/asm/xldtob.s.o build/asm/sptask.s.o build/asm/seqplayer.s.o $
-    build/asm/contquery.s.o build/asm/synallocvoice.s.o $
-    build/asm/writebackdcache.s.o build/asm/load.s.o $
-    build/asm/visetevent.s.o build/asm/cspsetseq.s.o $
-    build/asm/sndpsetpan.s.o build/asm/motor.s.o build/asm/interrupt.s.o $
-    build/asm/spsetpc.s.o build/asm/setsr.s.o build/asm/position.s.o $
-    build/asm/seq.s.o build/asm/pirawread.s.o build/asm/synsetpriority.s.o $
+    build/asm/xldtob.s.o build/asm/seqplayer.s.o build/asm/contquery.s.o $
+    build/asm/synallocvoice.s.o build/asm/writebackdcache.s.o $
+    build/asm/load.s.o build/asm/cspsetseq.s.o build/asm/sndpsetpan.s.o $
+    build/asm/motor.s.o build/asm/interrupt.s.o build/asm/spsetpc.s.o $
+    build/asm/setsr.s.o build/asm/position.s.o build/asm/seq.s.o $
+    build/asm/pirawread.s.o build/asm/synsetpriority.s.o $
     build/asm/synstartvoice.s.o build/asm/syndelete.s.o $
-    build/asm/sptaskyield.s.o build/asm/seqpsetvol.s.o build/asm/header.s.o $
-    build/asm/sndplay.s.o build/asm/maptlbrdb.s.o build/asm/synthesizer.s.o $
-    build/asm/vimgr.s.o build/asm/invalicache.s.o build/asm/thread.s.o $
-    build/asm/mtxcatf.s.o build/asm/__osGetId.s.o build/asm/yieldthread.s.o $
-    build/asm/env.s.o build/asm/cosf.s.o build/asm/vi.s.o $
-    build/asm/bnkf.s.o build/asm/ai.s.o build/asm/sp.s.o $
-    build/asm/synsetpan.s.o build/asm/epirawread.s.o build/asm/mainbus.s.o $
-    build/asm/epiramdma.s.o build/asm/contramwrite.s.o $
-    build/asm/sprawread.s.o build/asm/setthreadpri.s.o $
-    build/asm/jammesg.s.o build/asm/sndpstop.s.o build/asm/resample.s.o $
-    build/asm/getsr.s.o build/asm/crc.s.o build/asm/cseq.s.o $
-    build/asm/destroythread.s.o build/asm/settimer.s.o $
+    build/asm/seqpsetvol.s.o build/asm/header.s.o build/asm/sndplay.s.o $
+    build/asm/maptlbrdb.s.o build/asm/synthesizer.s.o $
+    build/asm/invalicache.s.o build/asm/thread.s.o build/asm/mtxcatf.s.o $
+    build/asm/__osGetId.s.o build/asm/yieldthread.s.o build/asm/env.s.o $
+    build/asm/cosf.s.o build/asm/vi.s.o build/asm/bnkf.s.o build/asm/ai.s.o $
+    build/asm/sp.s.o build/asm/synsetpan.s.o build/asm/epirawread.s.o $
+    build/asm/mainbus.s.o build/asm/epiramdma.s.o $
+    build/asm/contramwrite.s.o build/asm/sprawread.s.o $
+    build/asm/setthreadpri.s.o build/asm/jammesg.s.o build/asm/sndpstop.s.o $
+    build/asm/resample.s.o build/asm/getsr.s.o build/asm/crc.s.o $
+    build/asm/cseq.s.o build/asm/destroythread.s.o build/asm/settimer.s.o $
     build/asm/getcount.s.o build/asm/visetmode.s.o build/asm/lookatref.s.o $
     build/asm/sinf.s.o build/asm/bzero.s.o build/asm/pfsinitpak.s.o $
     build/asm/synsetfxmix.s.o build/asm/sprawdma.s.o build/asm/probetlb.s.o $
@@ -618,10 +766,18 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/bosses/boss_Zelse.bin.o $
     build/assets/bosses/boss_Beigis.bin.o $
     build/assets/bosses/boss_Solvaring.bin.o $
-    build/assets/bosses/boss_Nepty.bin.o $
     build/assets/bosses/boss_Guilty.bin.o $
     build/assets/bosses/boss_Fargo.bin.o $
+    build/assets/bosses/nepty/data.bin.o $
     build/assets/bosses/nepty/dls/model.bin.o $
+    build/assets/bosses/zelse/data.bin.o $
+    build/assets/bosses/zelse/dls/model.bin.o $
+    build/assets/bosses/solvaring/dls/model.bin.o $
+    build/assets/bosses/solvaring/textures/unk5.rgba16.bin.o $
+    build/assets/bosses/solvaring/textures/unk4.rgba16.bin.o $
+    build/assets/bosses/solvaring/textures/unk6.rgba16.bin.o $
+    build/assets/bosses/shilf/data.bin.o $
+    build/assets/bosses/shilf/dls/model.bin.o $
     build/assets/maps/houses_7.bin.o build/assets/maps/ship.bin.o $
     build/assets/maps/shamwood_pyramid.bin.o $
     build/assets/maps/west_carmagh.bin.o $
@@ -652,7 +808,6 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/npcs/actor_Shannon.bin.o build/assets/npcs/NPC_Msg.bin.o $
     build/assets/npcs/NPC_Blob.bin.o $
     build/assets/bosses/nepty/textures/unk6.rgba16.png.o $
-    build/assets/bosses/nepty/textures/unk3.rgba16.png.o $
     build/assets/bosses/nepty/textures/unk8.rgba16.png.o $
     build/assets/bosses/nepty/textures/cape.rgba16.png.o $
     build/assets/bosses/nepty/textures/neck_jewel.rgba16.png.o $
@@ -664,6 +819,43 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/bosses/nepty/textures/ear_lower.rgba16.png.o $
     build/assets/bosses/nepty/textures/face.rgba16.png.o $
     build/assets/bosses/nepty/textures/ear_upper.rgba16.png.o $
-    build/assets/bosses/nepty/textures/unk1.rgba16.png.o
+    build/assets/bosses/nepty/textures/unk1.rgba16.png.o $
+    build/assets/bosses/zelse/textures/forearm.rgba16.png.o $
+    build/assets/bosses/zelse/textures/hair.rgba16.png.o $
+    build/assets/bosses/zelse/textures/staff_gem.rgba16.png.o $
+    build/assets/bosses/zelse/textures/boots.rgba16.png.o $
+    build/assets/bosses/zelse/textures/unk2.rgba16.png.o $
+    build/assets/bosses/zelse/textures/pants.rgba16.png.o $
+    build/assets/bosses/zelse/textures/face.rgba16.png.o $
+    build/assets/bosses/zelse/textures/clothes1.rgba16.png.o $
+    build/assets/bosses/zelse/textures/scarf.rgba16.png.o $
+    build/assets/bosses/zelse/textures/clothes2.rgba16.png.o $
+    build/assets/bosses/zelse/textures/unk1.rgba16.png.o $
+    build/assets/bosses/zelse/textures/chest.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk3.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/cape.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/hand.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk2.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/arm_shield.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/club_end.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/arm_cloth.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/skin.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/face.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/belt.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/pelt_eye.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk1.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.o $
+    build/assets/bosses/shilf/textures/sash.rgba16.png.o $
+    build/assets/bosses/shilf/textures/unk3.rgba16.png.o $
+    build/assets/bosses/shilf/textures/hair.rgba16.png.o $
+    build/assets/bosses/shilf/textures/gold2.rgba16.png.o $
+    build/assets/bosses/shilf/textures/hand.rgba16.png.o $
+    build/assets/bosses/shilf/textures/unk2.rgba16.png.o $
+    build/assets/bosses/shilf/textures/face.rgba16.png.o $
+    build/assets/bosses/shilf/textures/dress.rgba16.png.o $
+    build/assets/bosses/shilf/textures/unk1.rgba16.png.o $
+    build/assets/bosses/shilf/textures/gold1.rgba16.png.o
 build build/quest64.us.z64: make_z64  build/quest64.us.elf
 build build/quest64.us.ok: make_expected  build/quest64.us.z64
