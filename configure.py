@@ -149,11 +149,11 @@ for bin_file in bin_files:
     ninja_file.build("build/" + append_extension(bin_file), "bin_file", bin_file)
     
 for rgba16_file in rgba16_files:
-    ninja_file.build("build/" + append_extension(rgba16_file), "rgba16_build", rgba16_file)
+    ninja_file.build("build/" + append_extension(rgba16_file, '.j'), "rgba16_convert", rgba16_file)
     
  #j files are png images converted using image_converter.py
 for j_file in j_files:
-    ninja_file.build("build/" + os.path.splitext(j_file)[0] + ".png.o", "rgba16_convert", j_file)
+    ninja_file.build("build/" + os.path.splitext(j_file)[0] + ".png.o", "rgba16_build", "build/" + os.path.splitext(j_file)[0] + ".png.j")
        
 ninja_file.build("build/quest64.us.elf", "make_elf ", o_files)
 ninja_file.build("build/quest64.us.z64", "make_z64 ", "build/quest64.us.elf")
