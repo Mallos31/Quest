@@ -44,481 +44,736 @@ rule make_z64
   description = Making z64
 rule make_expected
   command = (cp $in $out) && (python3 ./$MAKE_EXPECTED $in)
-build build/src/sptask.c.o: O1_cc src/sptask.c
-build build/src/23740.c.o: main_cc src/23740.c
-build build/src/vigetcurrframebuf.c.o: O1_cc src/vigetcurrframebuf.c
+rule ia4_build
+  command = python3 ./$IMG_CONVERT ia4 $in $out
+  description = Converting ia4
+rule rgba16_convert
+  command = (python3 ./$IMG_CONVERT rgba16 $in $out)
+  description = Converting rgba16
+rule rgba16_build
+  command = ($LD -r -b binary -o $out $in)
+  description = Converting rgba16
+build build/src/25290.c.o: main_cc src/25290.c
 build build/src/camera.c.o: main_cc src/camera.c
+build build/src/328F0.c.o: main_cc src/328F0.c
+build build/src/screen_dim.c.o: main_cc src/screen_dim.c
+build build/src/vimgr.c.o: O1_cc src/vimgr.c
+build build/src/contramread.c.o: main_cc src/contramread.c
+build build/src/191F0.c.o: main_cc src/191F0.c
+build build/src/startthread.c.o: O1_cc src/startthread.c
+build build/src/2F1E0.c.o: main_cc src/2F1E0.c
+build build/src/271F0.c.o: main_cc src/271F0.c
 build build/src/csplayer.c.o: main_cc src/csplayer.c
 build build/src/pimgr.c.o: main_cc src/pimgr.c
-build build/src/C120.c.o: main_cc src/C120.c
-build build/src/1BCD0.c.o: main_cc src/1BCD0.c
-build build/src/1850.c.o: main_cc src/1850.c
-build build/src/15440.c.o: main_cc src/15440.c
-build build/src/2F1E0.c.o: main_cc src/2F1E0.c
-build build/src/25290.c.o: main_cc src/25290.c
-build build/src/contramread.c.o: main_cc src/contramread.c
-build build/src/shadow.c.o: main_cc src/shadow.c
-build build/src/8650.c.o: main_cc src/8650.c
-build build/src/startthread.c.o: O1_cc src/startthread.c
-build build/src/initialize.c.o: O1_cc src/initialize.c
-build build/src/pfsallocatefile.c.o: O1_cc src/pfsallocatefile.c
-build build/src/init.c.o: main_cc src/init.c
-build build/src/leodiskinit.c.o: O1_cc src/leodiskinit.c
-build build/src/191F0.c.o: main_cc src/191F0.c
-build build/src/controller.c.o: O1_cc src/controller.c
-build build/src/syncprintf.c.o: main_cc src/syncprintf.c
-build build/src/pfsdeletefile.c.o: O1_cc src/pfsdeletefile.c
-build build/src/nnsched.c.o: main_cc src/nnsched.c
-build build/src/viswapbuf.c.o: O1_cc src/viswapbuf.c
-build build/src/pfsnumfiles.c.o: O1_cc src/pfsnumfiles.c
-build build/src/2C110.c.o: main_cc src/2C110.c
-build build/src/328F0.c.o: main_cc src/328F0.c
-build build/src/createmesgqueue.c.o: O1_cc src/createmesgqueue.c
-build build/src/pfsgetstatus.c.o: O1_cc src/pfsgetstatus.c
-build build/src/sptaskyielded.c.o: O1_cc src/sptaskyielded.c
-build build/src/pfsinitpak.c.o: main_cc src/pfsinitpak.c
-build build/src/inventory.c.o: main_cc src/inventory.c
-build build/src/pfsfreeblocks.c.o: O1_cc src/pfsfreeblocks.c
-build build/src/vimgr.c.o: O1_cc src/vimgr.c
-build build/src/deletedfuncs.c.o: main_cc src/deletedfuncs.c
-build build/src/pfschecker.c.o: O1_cc src/pfschecker.c
-build build/src/1E4B0.c.o: main_cc src/1E4B0.c
-build build/src/viblack.c.o: O1_cc src/viblack.c
-build build/src/createthread.c.o: O1_cc src/createthread.c
-build build/src/pfsreadwritefile.c.o: O1_cc src/pfsreadwritefile.c
-build build/src/27640.c.o: main_cc src/27640.c
-build build/src/97B0.c.o: main_cc src/97B0.c
-build build/src/1D160.c.o: main_cc src/1D160.c
-build build/src/pfsisplug.c.o: O1_cc src/pfsisplug.c
-build build/src/24E60.c.o: main_cc src/24E60.c
-build build/src/32840.c.o: main_cc src/32840.c
-build build/src/pfsfilestate.c.o: O1_cc src/pfsfilestate.c
-build build/src/1000.c.o: main_cc src/1000.c
-build build/src/seqpgetstate.c.o: O2_cc src/seqpgetstate.c
-build build/src/C910.c.o: main_cc src/C910.c
-build build/src/31A10.c.o: main_cc src/31A10.c
-build build/src/31F00.c.o: main_cc src/31F00.c
-build build/src/33D0.c.o: main_cc src/33D0.c
 build build/src/aigetlen.c.o: O1_cc src/aigetlen.c
-build build/src/pfssearchfile.c.o: O1_cc src/pfssearchfile.c
 build build/src/contpfs.c.o: O1_cc src/contpfs.c
-build build/src/sptaskyield.c.o: main_cc src/sptaskyield.c
-build build/src/screen_dim.c.o: main_cc src/screen_dim.c
-build build/src/visetevent.c.o: O1_cc src/visetevent.c
-build build/src/271F0.c.o: main_cc src/271F0.c
-build build/src/FA60.c.o: main_cc src/FA60.c
-build build/src/1EDF0.c.o: main_cc src/1EDF0.c
+build build/src/syncprintf.c.o: main_cc src/syncprintf.c
+build build/src/1D160.c.o: main_cc src/1D160.c
+build build/src/createthread.c.o: O1_cc src/createthread.c
+build build/src/shadow.c.o: main_cc src/shadow.c
+build build/src/97B0.c.o: main_cc src/97B0.c
+build build/src/15440.c.o: main_cc src/15440.c
+build build/src/controller.c.o: O1_cc src/controller.c
+build build/src/2C110.c.o: main_cc src/2C110.c
+build build/src/deletedfuncs.c.o: main_cc src/deletedfuncs.c
+build build/src/viswapbuf.c.o: O1_cc src/viswapbuf.c
+build build/src/sptask.c.o: O1_cc src/sptask.c
+build build/src/27640.c.o: main_cc src/27640.c
+build build/src/C910.c.o: main_cc src/C910.c
+build build/src/1000.c.o: main_cc src/1000.c
+build build/src/init.c.o: main_cc src/init.c
+build build/src/1E4B0.c.o: main_cc src/1E4B0.c
+build build/src/pfsfilestate.c.o: O1_cc src/pfsfilestate.c
+build build/src/pfsgetstatus.c.o: O1_cc src/pfsgetstatus.c
+build build/src/pfsallocatefile.c.o: O1_cc src/pfsallocatefile.c
+build build/src/nnsched.c.o: main_cc src/nnsched.c
+build build/src/pfsinitpak.c.o: main_cc src/pfsinitpak.c
+build build/src/32840.c.o: main_cc src/32840.c
+build build/src/leodiskinit.c.o: O1_cc src/leodiskinit.c
+build build/src/23740.c.o: main_cc src/23740.c
 build build/src/12740.c.o: main_cc src/12740.c
+build build/src/24E60.c.o: main_cc src/24E60.c
+build build/src/pfsreadwritefile.c.o: O1_cc src/pfsreadwritefile.c
+build build/src/8650.c.o: main_cc src/8650.c
+build build/src/1850.c.o: main_cc src/1850.c
+build build/src/initialize.c.o: O1_cc src/initialize.c
+build build/src/inventory.c.o: main_cc src/inventory.c
+build build/src/pfsisplug.c.o: O1_cc src/pfsisplug.c
+build build/src/createmesgqueue.c.o: O1_cc src/createmesgqueue.c
+build build/src/pfschecker.c.o: O1_cc src/pfschecker.c
+build build/src/seqpgetstate.c.o: O2_cc src/seqpgetstate.c
+build build/src/sptaskyield.c.o: main_cc src/sptaskyield.c
+build build/src/33D0.c.o: main_cc src/33D0.c
+build build/src/pfsnumfiles.c.o: O1_cc src/pfsnumfiles.c
+build build/src/visetevent.c.o: O1_cc src/visetevent.c
+build build/src/C120.c.o: main_cc src/C120.c
+build build/src/FA60.c.o: main_cc src/FA60.c
+build build/src/31A10.c.o: main_cc src/31A10.c
+build build/src/1BCD0.c.o: main_cc src/1BCD0.c
+build build/src/vigetcurrframebuf.c.o: O1_cc src/vigetcurrframebuf.c
+build build/src/viblack.c.o: O1_cc src/viblack.c
+build build/src/pfsfreeblocks.c.o: O1_cc src/pfsfreeblocks.c
+build build/src/pfsdeletefile.c.o: O1_cc src/pfsdeletefile.c
+build build/src/31F00.c.o: main_cc src/31F00.c
+build build/src/pfssearchfile.c.o: O1_cc src/pfssearchfile.c
+build build/src/1EDF0.c.o: main_cc src/1EDF0.c
+build build/src/sptaskyielded.c.o: O1_cc src/sptaskyielded.c
 build build/src/os/createthread.c.o: O1_cc src/os/createthread.c
-build build/asm/pirawread.s.o: s_file asm/pirawread.s
-build build/asm/resetglobalintmask.s.o: s_file asm/resetglobalintmask.s
-build build/asm/cartrominit.s.o: s_file asm/cartrominit.s
-build build/asm/xprintf.s.o: s_file asm/xprintf.s
-build build/asm/synallocfx.s.o: s_file asm/synallocfx.s
-build build/asm/copy.s.o: s_file asm/copy.s
-build build/asm/sndpallocate.s.o: s_file asm/sndpallocate.s
-build build/asm/spsetpc.s.o: s_file asm/spsetpc.s
-build build/asm/gettime.s.o: s_file asm/gettime.s
 build build/asm/pirawdma.s.o: s_file asm/pirawdma.s
-build build/asm/position.s.o: s_file asm/position.s
-build build/asm/synthesizer.s.o: s_file asm/synthesizer.s
-build build/asm/setsr.s.o: s_file asm/setsr.s
-build build/asm/bzero.s.o: s_file asm/bzero.s
-build build/asm/synstartvoice.s.o: s_file asm/synstartvoice.s
-build build/asm/sndpsetpan.s.o: s_file asm/sndpsetpan.s
-build build/asm/event.s.o: s_file asm/event.s
-build build/asm/setthreadpri.s.o: s_file asm/setthreadpri.s
-build build/asm/synsetpan.s.o: s_file asm/synsetpan.s
-build build/asm/seteventmesg.s.o: s_file asm/seteventmesg.s
-build build/asm/xlitob.s.o: s_file asm/xlitob.s
-build build/asm/sirawdma.s.o: s_file asm/sirawdma.s
-build build/asm/synstopvoice.s.o: s_file asm/synstopvoice.s
-build build/asm/synallocvoice.s.o: s_file asm/synallocvoice.s
-build build/asm/epirawread.s.o: s_file asm/epirawread.s
-build build/asm/header.s.o: s_file asm/header.s
-build build/asm/sprawread.s.o: s_file asm/sprawread.s
-build build/asm/sprawwrite.s.o: s_file asm/sprawwrite.s
-build build/asm/synfreevoice.s.o: s_file asm/synfreevoice.s
-build build/asm/env.s.o: s_file asm/env.s
-build build/asm/setglobalintmask.s.o: s_file asm/setglobalintmask.s
-build build/asm/destroythread.s.o: s_file asm/destroythread.s
-build build/asm/sinf.s.o: s_file asm/sinf.s
-build build/asm/aisetnextbuf.s.o: s_file asm/aisetnextbuf.s
-build build/asm/setintmask.s.o: s_file asm/setintmask.s
-build build/asm/bcopy.s.o: s_file asm/bcopy.s
-build build/asm/sndplay.s.o: s_file asm/sndplay.s
-build build/asm/sndpsetpitch.s.o: s_file asm/sndpsetpitch.s
-build build/asm/virtualtophysical.s.o: s_file asm/virtualtophysical.s
-build build/asm/syndelete.s.o: s_file asm/syndelete.s
-build build/asm/sqrtf.s.o: s_file asm/sqrtf.s
-build build/asm/synaddplayer.s.o: s_file asm/synaddplayer.s
-build build/asm/interrupt.s.o: s_file asm/interrupt.s
-build build/asm/ll.s.o: s_file asm/ll.s
-build build/asm/sp.s.o: s_file asm/sp.s
-build build/asm/xldtob.s.o: s_file asm/xldtob.s
-build build/asm/mainbus.s.o: s_file asm/mainbus.s
-build build/asm/cseq.s.o: s_file asm/cseq.s
-build build/asm/sndpsetvol.s.o: s_file asm/sndpsetvol.s
-build build/asm/seqpstop.s.o: s_file asm/seqpstop.s
-build build/asm/maptlbrdb.s.o: s_file asm/maptlbrdb.s
-build build/asm/visetspecial.s.o: s_file asm/visetspecial.s
-build build/asm/getcount.s.o: s_file asm/getcount.s
-build build/asm/timerintr.s.o: s_file asm/timerintr.s
-build build/asm/string.s.o: s_file asm/string.s
-build build/asm/contquery.s.o: s_file asm/contquery.s
-build build/asm/si.s.o: s_file asm/si.s
-build build/asm/reverb.s.o: s_file asm/reverb.s
-build build/asm/seqpsetbank.s.o: s_file asm/seqpsetbank.s
-build build/asm/heapinit.s.o: s_file asm/heapinit.s
-build build/asm/epirawwrite.s.o: s_file asm/epirawwrite.s
-build build/asm/synstartvoiceparam.s.o: s_file asm/synstartvoiceparam.s
-build build/asm/sndpsetsound.s.o: s_file asm/sndpsetsound.s
-build build/asm/vigetcurrcontext.s.o: s_file asm/vigetcurrcontext.s
-build build/asm/seqpplay.s.o: s_file asm/seqpplay.s
-build build/asm/pidma.s.o: s_file asm/pidma.s
-build build/asm/invaldcache.s.o: s_file asm/invaldcache.s
-build build/asm/getsr.s.o: s_file asm/getsr.s
-build build/asm/aisetfreq.s.o: s_file asm/aisetfreq.s
 build build/asm/contreaddata.s.o: s_file asm/contreaddata.s
-build build/asm/synsetfxmix.s.o: s_file asm/synsetfxmix.s
-build build/asm/__osGetId.s.o: s_file asm/__osGetId.s
-build build/asm/writebackdcacheall.s.o: s_file asm/writebackdcacheall.s
-build build/asm/siacs.s.o: s_file asm/siacs.s
-build build/asm/jammesg.s.o: s_file asm/jammesg.s
-build build/asm/vi.s.o: s_file asm/vi.s
-build build/asm/contsetch.s.o: s_file asm/contsetch.s
-build build/asm/synsetpitch.s.o: s_file asm/synsetpitch.s
-build build/asm/sprintf.s.o: s_file asm/sprintf.s
-build build/asm/sndplayer.s.o: s_file asm/sndplayer.s
-build build/asm/yieldthread.s.o: s_file asm/yieldthread.s
-build build/asm/ortho.s.o: s_file asm/ortho.s
-build build/asm/settimer.s.o: s_file asm/settimer.s
-build build/asm/writebackdcache.s.o: s_file asm/writebackdcache.s
-build build/asm/filter.s.o: s_file asm/filter.s
-build build/asm/cosf.s.o: s_file asm/cosf.s
-build build/asm/epiramdma.s.o: s_file asm/epiramdma.s
-build build/asm/mtxutil.s.o: s_file asm/mtxutil.s
-build build/asm/probetlb.s.o: s_file asm/probetlb.s
-build build/asm/synsetvol.s.o: s_file asm/synsetvol.s
-build build/asm/spsetstat.s.o: s_file asm/spsetstat.s
-build build/asm/contramwrite.s.o: s_file asm/contramwrite.s
-build build/asm/spgetstat.s.o: s_file asm/spgetstat.s
-build build/asm/invalicache.s.o: s_file asm/invalicache.s
-build build/asm/auxbus.s.o: s_file asm/auxbus.s
+build build/asm/vigetcurrframebuf.s.o: s_file asm/vigetcurrframebuf.s
+build build/asm/cartrominit.s.o: s_file asm/cartrominit.s
+build build/asm/sirawdma.s.o: s_file asm/sirawdma.s
+build build/asm/aisetnextbuf.s.o: s_file asm/aisetnextbuf.s
+build build/asm/viblack.s.o: s_file asm/viblack.s
+build build/asm/heapalloc.s.o: s_file asm/heapalloc.s
 build build/asm/siacsDuplicate.s.o: s_file asm/siacsDuplicate.s
-build build/asm/synsetpriority.s.o: s_file asm/synsetpriority.s
-build build/asm/seq.s.o: s_file asm/seq.s
-build build/asm/ai.s.o: s_file asm/ai.s
-build build/asm/motor.s.o: s_file asm/motor.s
-build build/asm/sprawdma.s.o: s_file asm/sprawdma.s
-build build/asm/seqplayer.s.o: s_file asm/seqplayer.s
-build build/asm/viswapcontext.s.o: s_file asm/viswapcontext.s
 build build/asm/cents2ratio.s.o: s_file asm/cents2ratio.s
-build build/asm/load.s.o: s_file asm/load.s
-build build/asm/exceptasm.s.o: s_file asm/exceptasm.s
-build build/asm/setcompare.s.o: s_file asm/setcompare.s
-build build/asm/mtxcatf.s.o: s_file asm/mtxcatf.s
-build build/asm/perspective.s.o: s_file asm/perspective.s
-build build/asm/crc.s.o: s_file asm/crc.s
-build build/asm/translate.s.o: s_file asm/translate.s
+build build/asm/viswapcontext.s.o: s_file asm/viswapcontext.s
+build build/asm/resetglobalintmask.s.o: s_file asm/resetglobalintmask.s
+build build/asm/setfpccsr.s.o: s_file asm/setfpccsr.s
 build build/asm/drvrNew.s.o: s_file asm/drvrNew.s
+build build/asm/devmgr.s.o: s_file asm/devmgr.s
+build build/asm/sndpsetvol.s.o: s_file asm/sndpsetvol.s
+build build/asm/contsetch.s.o: s_file asm/contsetch.s
+build build/asm/pidma.s.o: s_file asm/pidma.s
+build build/asm/bcopy.s.o: s_file asm/bcopy.s
+build build/asm/setglobalintmask.s.o: s_file asm/setglobalintmask.s
+build build/asm/synfreevoice.s.o: s_file asm/synfreevoice.s
+build build/asm/translate.s.o: s_file asm/translate.s
+build build/asm/reverb.s.o: s_file asm/reverb.s
+build build/asm/perspective.s.o: s_file asm/perspective.s
+build build/asm/createmesgqueue.s.o: s_file asm/createmesgqueue.s
+build build/asm/seteventmesg.s.o: s_file asm/seteventmesg.s
+build build/asm/auxbus.s.o: s_file asm/auxbus.s
+build build/asm/gettime.s.o: s_file asm/gettime.s
+build build/asm/viswapbuf.s.o: s_file asm/viswapbuf.s
+build build/asm/synaddplayer.s.o: s_file asm/synaddplayer.s
+build build/asm/synstopvoice.s.o: s_file asm/synstopvoice.s
+build build/asm/sendmesg.s.o: s_file asm/sendmesg.s
+build build/asm/mtxutil.s.o: s_file asm/mtxutil.s
+build build/asm/vigetcurrcontext.s.o: s_file asm/vigetcurrcontext.s
+build build/asm/xprintf.s.o: s_file asm/xprintf.s
+build build/asm/save.s.o: s_file asm/save.s
+build build/asm/string.s.o: s_file asm/string.s
+build build/asm/ortho.s.o: s_file asm/ortho.s
+build build/asm/aisetfreq.s.o: s_file asm/aisetfreq.s
+build build/asm/siacs.s.o: s_file asm/siacs.s
+build build/asm/synsetpitch.s.o: s_file asm/synsetpitch.s
+build build/asm/synsetvol.s.o: s_file asm/synsetvol.s
+build build/asm/writebackdcacheall.s.o: s_file asm/writebackdcacheall.s
+build build/asm/synstartvoiceparam.s.o: s_file asm/synstartvoiceparam.s
+build build/asm/timerintr.s.o: s_file asm/timerintr.s
+build build/asm/event.s.o: s_file asm/event.s
+build build/asm/sins.s.o: s_file asm/sins.s
+build build/asm/copy.s.o: s_file asm/copy.s
+build build/asm/filter.s.o: s_file asm/filter.s
+build build/asm/sndpsetsound.s.o: s_file asm/sndpsetsound.s
+build build/asm/353E0.s.o: s_file asm/353E0.s
+build build/asm/n_alseqpgetvol.s.o: s_file asm/n_alseqpgetvol.s
+build build/asm/recvmesg.s.o: s_file asm/recvmesg.s
+build build/asm/seqpstop.s.o: s_file asm/seqpstop.s
+build build/asm/invaldcache.s.o: s_file asm/invaldcache.s
+build build/asm/exceptasm.s.o: s_file asm/exceptasm.s
+build build/asm/spsetstat.s.o: s_file asm/spsetstat.s
+build build/asm/si.s.o: s_file asm/si.s
+build build/asm/sqrtf.s.o: s_file asm/sqrtf.s
+build build/asm/sprawwrite.s.o: s_file asm/sprawwrite.s
+build build/asm/leointerrupt.s.o: s_file asm/leointerrupt.s
+build build/asm/setintmask.s.o: s_file asm/setintmask.s
+build build/asm/setcompare.s.o: s_file asm/setcompare.s
+build build/asm/sptaskyielded.s.o: s_file asm/sptaskyielded.s
+build build/asm/xlitob.s.o: s_file asm/xlitob.s
+build build/asm/getthreadpri.s.o: s_file asm/getthreadpri.s
+build build/asm/heapinit.s.o: s_file asm/heapinit.s
+build build/asm/sndpgetstate.s.o: s_file asm/sndpgetstate.s
+build build/asm/ll.s.o: s_file asm/ll.s
+build build/asm/sndpallocate.s.o: s_file asm/sndpallocate.s
+build build/asm/synallocfx.s.o: s_file asm/synallocfx.s
+build build/asm/visetspecial.s.o: s_file asm/visetspecial.s
+build build/asm/xldtob.s.o: s_file asm/xldtob.s
+build build/asm/sptask.s.o: s_file asm/sptask.s
+build build/asm/seqplayer.s.o: s_file asm/seqplayer.s
+build build/asm/contquery.s.o: s_file asm/contquery.s
+build build/asm/synallocvoice.s.o: s_file asm/synallocvoice.s
+build build/asm/writebackdcache.s.o: s_file asm/writebackdcache.s
+build build/asm/load.s.o: s_file asm/load.s
+build build/asm/visetevent.s.o: s_file asm/visetevent.s
+build build/asm/cspsetseq.s.o: s_file asm/cspsetseq.s
+build build/asm/sndpsetpan.s.o: s_file asm/sndpsetpan.s
+build build/asm/motor.s.o: s_file asm/motor.s
+build build/asm/interrupt.s.o: s_file asm/interrupt.s
+build build/asm/spsetpc.s.o: s_file asm/spsetpc.s
+build build/asm/setsr.s.o: s_file asm/setsr.s
+build build/asm/position.s.o: s_file asm/position.s
+build build/asm/seq.s.o: s_file asm/seq.s
+build build/asm/pirawread.s.o: s_file asm/pirawread.s
+build build/asm/synsetpriority.s.o: s_file asm/synsetpriority.s
+build build/asm/synstartvoice.s.o: s_file asm/synstartvoice.s
+build build/asm/syndelete.s.o: s_file asm/syndelete.s
+build build/asm/sptaskyield.s.o: s_file asm/sptaskyield.s
+build build/asm/seqpsetvol.s.o: s_file asm/seqpsetvol.s
+build build/asm/header.s.o: s_file asm/header.s
+build build/asm/sndplay.s.o: s_file asm/sndplay.s
+build build/asm/maptlbrdb.s.o: s_file asm/maptlbrdb.s
+build build/asm/synthesizer.s.o: s_file asm/synthesizer.s
+build build/asm/vimgr.s.o: s_file asm/vimgr.s
+build build/asm/invalicache.s.o: s_file asm/invalicache.s
+build build/asm/thread.s.o: s_file asm/thread.s
+build build/asm/mtxcatf.s.o: s_file asm/mtxcatf.s
+build build/asm/__osGetId.s.o: s_file asm/__osGetId.s
+build build/asm/yieldthread.s.o: s_file asm/yieldthread.s
+build build/asm/env.s.o: s_file asm/env.s
+build build/asm/cosf.s.o: s_file asm/cosf.s
+build build/asm/vi.s.o: s_file asm/vi.s
+build build/asm/bnkf.s.o: s_file asm/bnkf.s
+build build/asm/ai.s.o: s_file asm/ai.s
+build build/asm/sp.s.o: s_file asm/sp.s
+build build/asm/synsetpan.s.o: s_file asm/synsetpan.s
+build build/asm/epirawread.s.o: s_file asm/epirawread.s
+build build/asm/mainbus.s.o: s_file asm/mainbus.s
+build build/asm/epiramdma.s.o: s_file asm/epiramdma.s
+build build/asm/contramwrite.s.o: s_file asm/contramwrite.s
+build build/asm/sprawread.s.o: s_file asm/sprawread.s
+build build/asm/setthreadpri.s.o: s_file asm/setthreadpri.s
+build build/asm/jammesg.s.o: s_file asm/jammesg.s
+build build/asm/sndpstop.s.o: s_file asm/sndpstop.s
+build build/asm/resample.s.o: s_file asm/resample.s
+build build/asm/getsr.s.o: s_file asm/getsr.s
+build build/asm/crc.s.o: s_file asm/crc.s
+build build/asm/cseq.s.o: s_file asm/cseq.s
+build build/asm/destroythread.s.o: s_file asm/destroythread.s
+build build/asm/settimer.s.o: s_file asm/settimer.s
+build build/asm/getcount.s.o: s_file asm/getcount.s
 build build/asm/visetmode.s.o: s_file asm/visetmode.s
 build build/asm/lookatref.s.o: s_file asm/lookatref.s
-build build/asm/heapalloc.s.o: s_file asm/heapalloc.s
-build build/asm/seqpsetvol.s.o: s_file asm/seqpsetvol.s
-build build/asm/setfpccsr.s.o: s_file asm/setfpccsr.s
-build build/asm/leointerrupt.s.o: s_file asm/leointerrupt.s
-build build/asm/resample.s.o: s_file asm/resample.s
-build build/asm/cspsetseq.s.o: s_file asm/cspsetseq.s
-build build/asm/recvmesg.s.o: s_file asm/recvmesg.s
-build build/asm/devmgr.s.o: s_file asm/devmgr.s
+build build/asm/sinf.s.o: s_file asm/sinf.s
+build build/asm/bzero.s.o: s_file asm/bzero.s
 build build/asm/pfsinitpak.s.o: s_file asm/pfsinitpak.s
-build build/asm/bnkf.s.o: s_file asm/bnkf.s
-build build/asm/thread.s.o: s_file asm/thread.s
-build build/asm/getthreadpri.s.o: s_file asm/getthreadpri.s
-build build/asm/sndpgetstate.s.o: s_file asm/sndpgetstate.s
-build build/asm/sndpstop.s.o: s_file asm/sndpstop.s
-build build/asm/sins.s.o: s_file asm/sins.s
-build build/asm/sendmesg.s.o: s_file asm/sendmesg.s
-build build/asm/save.s.o: s_file asm/save.s
-build build/asm/n_alseqpgetvol.s.o: s_file asm/n_alseqpgetvol.s
-build build/assets/map_limelin.bin.o: bin_file assets/map_limelin.bin
-build build/assets/icon_honey_bread.bin.o: bin_file $
-    assets/icon_honey_bread.bin
-build build/assets/actor_Brian.bin.o: bin_file assets/actor_Brian.bin
-build build/assets/map_data_common.bin.o: bin_file assets/map_data_common.bin
-build build/assets/map_limelin_castle.bin.o: bin_file $
-    assets/map_limelin_castle.bin
-build build/assets/map_skye.bin.o: bin_file assets/map_skye.bin
-build build/assets/trailer.bin.o: bin_file assets/trailer.bin
-build build/assets/ucode_data.bin.o: bin_file assets/ucode_data.bin
-build build/assets/map_melrode.bin.o: bin_file assets/map_melrode.bin
-build build/assets/map_windward_forest.bin.o: bin_file $
-    assets/map_windward_forest.bin
-build build/assets/map_brannoch.bin.o: bin_file assets/map_brannoch.bin
-build build/assets/icon_giants_shoes.bin.o: bin_file $
-    assets/icon_giants_shoes.bin
-build build/assets/map_west_carmagh.bin.o: bin_file $
-    assets/map_west_carmagh.bin
-build build/assets/map_larapool_houses_2.bin.o: bin_file $
-    assets/map_larapool_houses_2.bin
-build build/assets/SE_ctl.bin.o: bin_file assets/SE_ctl.bin
-build build/assets/SE_tbl.bin.o: bin_file assets/SE_tbl.bin
-build build/assets/map_houses_5.bin.o: bin_file assets/map_houses_5.bin
-build build/assets/icon_spirit_light.bin.o: bin_file $
-    assets/icon_spirit_light.bin
-build build/assets/icon_mint_leaf.bin.o: bin_file assets/icon_mint_leaf.bin
-build build/assets/icon_white_wings.bin.o: bin_file $
-    assets/icon_white_wings.bin
-build build/assets/map_houses_7.bin.o: bin_file assets/map_houses_7.bin
-build build/assets/ucode.bin.o: bin_file assets/ucode.bin
-build build/assets/DesertMonsters.bin.o: bin_file assets/DesertMonsters.bin
-build build/assets/icon_earth_orb.bin.o: bin_file assets/icon_earth_orb.bin
-build build/assets/map_dindom_dries.bin.o: bin_file $
-    assets/map_dindom_dries.bin
-build build/assets/4BFF0.bin.o: bin_file assets/4BFF0.bin
-build build/assets/icon_yellow_wings.bin.o: bin_file $
-    assets/icon_yellow_wings.bin
-build build/assets/inventory_pal.bin.o: bin_file assets/inventory_pal.bin
-build build/assets/boss_Guilty.bin.o: bin_file assets/boss_Guilty.bin
-build build/assets/boss_Nepty.bin.o: bin_file assets/boss_Nepty.bin
-build build/assets/map_holy_plain.bin.o: bin_file assets/map_holy_plain.bin
-build build/assets/map_boil_hole.bin.o: bin_file assets/map_boil_hole.bin
-build build/assets/map_larapool.bin.o: bin_file assets/map_larapool.bin
-build build/assets/Instrument_ctl.bin.o: bin_file assets/Instrument_ctl.bin
-build build/assets/NPC_Blob.bin.o: bin_file assets/NPC_Blob.bin
-build build/assets/map_dondoran.bin.o: bin_file assets/map_dondoran.bin
-build build/assets/icon_fire_ruby.bin.o: bin_file assets/icon_fire_ruby.bin
-build build/assets/BlueCaveMonsters.bin.o: bin_file $
-    assets/BlueCaveMonsters.bin
-build build/assets/D4B3C0.bin.o: bin_file assets/D4B3C0.bin
-build build/assets/71AF0.bin.o: bin_file assets/71AF0.bin
-build build/assets/map_shamwood_pyramid.bin.o: bin_file $
-    assets/map_shamwood_pyramid.bin
-build build/assets/font_tbl.bin.o: bin_file assets/font_tbl.bin
-build build/assets/map_shamwood.bin.o: bin_file assets/map_shamwood.bin
-build build/assets/ucode_boot.bin.o: bin_file assets/ucode_boot.bin
-build build/assets/boss_Solvaring.bin.o: bin_file assets/boss_Solvaring.bin
-build build/assets/map_connor_fortress.bin.o: bin_file $
-    assets/map_connor_fortress.bin
-build build/assets/71DD0.bin.o: bin_file assets/71DD0.bin
-build build/assets/boss_Fargo.bin.o: bin_file assets/boss_Fargo.bin
-build build/assets/icon_heroes_drink.bin.o: bin_file $
-    assets/icon_heroes_drink.bin
-build build/assets/icon_fresh_bread.bin.o: bin_file $
-    assets/icon_fresh_bread.bin
-build build/assets/map_normoon.bin.o: bin_file assets/map_normoon.bin
-build build/assets/map_town_common.bin.o: bin_file assets/map_town_common.bin
-build build/assets/map_world_of_mammon.bin.o: bin_file $
-    assets/map_world_of_mammon.bin
-build build/assets/boss_Beigis.bin.o: bin_file assets/boss_Beigis.bin
-build build/assets/icon_wind_jade.bin.o: bin_file assets/icon_wind_jade.bin
-build build/assets/map_dondoran_castle.bin.o: bin_file $
-    assets/map_dondoran_castle.bin
-build build/assets/map_ship.bin.o: bin_file assets/map_ship.bin
-build build/assets/72680.bin.o: bin_file assets/72680.bin
-build build/assets/NormoonMonsters.bin.o: bin_file assets/NormoonMonsters.bin
-build build/assets/DondoranMonsters.bin.o: bin_file $
-    assets/DondoranMonsters.bin
-build build/assets/icon_eltale_book.bin.o: bin_file $
-    assets/icon_eltale_book.bin
-build build/assets/map_nepty.bin.o: bin_file assets/map_nepty.bin
+build build/asm/synsetfxmix.s.o: s_file asm/synsetfxmix.s
+build build/asm/sprawdma.s.o: s_file asm/sprawdma.s
+build build/asm/probetlb.s.o: s_file asm/probetlb.s
+build build/asm/spgetstat.s.o: s_file asm/spgetstat.s
+build build/asm/seqpsetbank.s.o: s_file asm/seqpsetbank.s
+build build/asm/virtualtophysical.s.o: s_file asm/virtualtophysical.s
+build build/asm/sprintf.s.o: s_file asm/sprintf.s
+build build/asm/sndplayer.s.o: s_file asm/sndplayer.s
+build build/asm/sndpsetpitch.s.o: s_file asm/sndpsetpitch.s
+build build/asm/seqpplay.s.o: s_file asm/seqpplay.s
+build build/asm/epirawwrite.s.o: s_file asm/epirawwrite.s
 build build/assets/boot.bin.o: bin_file assets/boot.bin
-build build/assets/icon_silver_amulet.bin.o: bin_file $
-    assets/icon_silver_amulet.bin
-build build/assets/map_baragoon_tunnel.bin.o: bin_file $
-    assets/map_baragoon_tunnel.bin
-build build/assets/737D0.bin.o: bin_file assets/737D0.bin
-build build/assets/boss_Zelse.bin.o: bin_file assets/boss_Zelse.bin
-build build/assets/icon_healing_potion.bin.o: bin_file $
-    assets/icon_healing_potion.bin
-build build/assets/icon_dark_gaol_key.bin.o: bin_file $
-    assets/icon_dark_gaol_key.bin
-build build/assets/DA99F8.bin.o: bin_file assets/DA99F8.bin
-build build/assets/Instrument_tbl.bin.o: bin_file assets/Instrument_tbl.bin
-build build/assets/icon_blue_wings.bin.o: bin_file assets/icon_blue_wings.bin
-build build/assets/map_houses_6.bin.o: bin_file assets/map_houses_6.bin
-build build/assets/icon_dragon_potion.bin.o: bin_file $
-    assets/icon_dragon_potion.bin
-build build/assets/map_glencoe_forest.bin.o: bin_file $
-    assets/map_glencoe_forest.bin
-build build/assets/actor_unk_Knights.bin.o: bin_file $
-    assets/actor_unk_Knights.bin
+build build/assets/725D0.bin.o: bin_file assets/725D0.bin
 build build/assets/boss_Mammon.bin.o: bin_file assets/boss_Mammon.bin
-build build/assets/icon_black_wings.bin.o: bin_file $
-    assets/icon_black_wings.bin
-build build/assets/map_cull_hazard.bin.o: bin_file assets/map_cull_hazard.bin
-build build/assets/actor_Shannon.bin.o: bin_file assets/actor_Shannon.bin
+build build/assets/map_limelin.bin.o: bin_file assets/map_limelin.bin
+build build/assets/icon_wind_jade.bin.o: bin_file assets/icon_wind_jade.bin
+build build/assets/Instrument_ctl.bin.o: bin_file assets/Instrument_ctl.bin
 build build/assets/icon_green_wings.bin.o: bin_file $
     assets/icon_green_wings.bin
-build build/assets/map_dondoran_houses.bin.o: bin_file $
-    assets/map_dondoran_houses.bin
-build build/assets/icon_replica.bin.o: bin_file assets/icon_replica.bin
-build build/assets/725D0.bin.o: bin_file assets/725D0.bin
-build build/assets/boss_Shilf.bin.o: bin_file assets/boss_Shilf.bin
-build build/assets/map_east_limelin.bin.o: bin_file $
-    assets/map_east_limelin.bin
+build build/assets/map_world_of_mammon.bin.o: bin_file $
+    assets/map_world_of_mammon.bin
+build build/assets/icon_giants_shoes.bin.o: bin_file $
+    assets/icon_giants_shoes.bin
 build build/assets/MammonMonsters.bin.o: bin_file assets/MammonMonsters.bin
-build build/assets/73A90.bin.o: bin_file assets/73A90.bin
-build build/assets/text_palettes.bin.o: bin_file assets/text_palettes.bin
-build build/assets/HolyPlainsMonsters.bin.o: bin_file $
-    assets/HolyPlainsMonsters.bin
-build build/assets/map_windmills.bin.o: bin_file assets/map_windmills.bin
-build build/assets/icon_celines_bell.bin.o: bin_file $
-    assets/icon_celines_bell.bin
-build build/assets/map_ships.bin.o: bin_file assets/map_ships.bin
-build build/assets/icon_golden_amulet.bin.o: bin_file $
-    assets/icon_golden_amulet.bin
-build build/assets/icon_red_wings.bin.o: bin_file assets/icon_red_wings.bin
-build build/assets/map_larapool_houses.bin.o: bin_file $
-    assets/map_larapool_houses.bin
-build build/assets/NPC_Msg.bin.o: bin_file assets/NPC_Msg.bin
 build build/assets/map_blue_cave.bin.o: bin_file assets/map_blue_cave.bin
-build build/assets/map_melrode_houses.bin.o: bin_file $
-    assets/map_melrode_houses.bin
 build build/assets/map_dondoran_flats.bin.o: bin_file $
     assets/map_dondoran_flats.bin
+build build/assets/SE_tbl.bin.o: bin_file assets/SE_tbl.bin
+build build/assets/map_houses_6.bin.o: bin_file assets/map_houses_6.bin
+build build/assets/map_melrode.bin.o: bin_file assets/map_melrode.bin
+build build/assets/map_dondoran.bin.o: bin_file assets/map_dondoran.bin
+build build/assets/map_larapool_houses_2.bin.o: bin_file $
+    assets/map_larapool_houses_2.bin
+build build/assets/map_shamwood_pyramid.bin.o: bin_file $
+    assets/map_shamwood_pyramid.bin
+build build/assets/71DD0.bin.o: bin_file assets/71DD0.bin
+build build/assets/boss_Shilf.bin.o: bin_file assets/boss_Shilf.bin
+build build/assets/icon_fire_ruby.bin.o: bin_file assets/icon_fire_ruby.bin
+build build/assets/icon_black_wings.bin.o: bin_file $
+    assets/icon_black_wings.bin
+build build/assets/icon_healing_potion.bin.o: bin_file $
+    assets/icon_healing_potion.bin
+build build/assets/map_dondoran_castle.bin.o: bin_file $
+    assets/map_dondoran_castle.bin
+build build/assets/BlueCaveMonsters.bin.o: bin_file $
+    assets/BlueCaveMonsters.bin
+build build/assets/SE_ctl.bin.o: bin_file assets/SE_ctl.bin
+build build/assets/icon_dew_drop.bin.o: bin_file assets/icon_dew_drop.bin
+build build/assets/DesertMonsters.bin.o: bin_file assets/DesertMonsters.bin
+build build/assets/icon_eltale_book.bin.o: bin_file $
+    assets/icon_eltale_book.bin
+build build/assets/icon_dragon_potion.bin.o: bin_file $
+    assets/icon_dragon_potion.bin
+build build/assets/HolyPlainsMonsters.bin.o: bin_file $
+    assets/HolyPlainsMonsters.bin
+build build/assets/icon_yellow_wings.bin.o: bin_file $
+    assets/icon_yellow_wings.bin
+build build/assets/map_larapool_houses.bin.o: bin_file $
+    assets/map_larapool_houses.bin
+build build/assets/map_boil_hole.bin.o: bin_file assets/map_boil_hole.bin
+build build/assets/NormoonMonsters.bin.o: bin_file assets/NormoonMonsters.bin
+build build/assets/map_west_carmagh.bin.o: bin_file $
+    assets/map_west_carmagh.bin
+build build/assets/boss_Zelse.bin.o: bin_file assets/boss_Zelse.bin
+build build/assets/map_ships.bin.o: bin_file assets/map_ships.bin
+build build/assets/map_dindom_dries.bin.o: bin_file $
+    assets/map_dindom_dries.bin
+build build/assets/Instrument_tbl.bin.o: bin_file assets/Instrument_tbl.bin
+build build/assets/map_holy_plain.bin.o: bin_file assets/map_holy_plain.bin
+build build/assets/map_larapool.bin.o: bin_file assets/map_larapool.bin
+build build/assets/actor_Brian.bin.o: bin_file assets/actor_Brian.bin
+build build/assets/map_houses_5.bin.o: bin_file assets/map_houses_5.bin
+build build/assets/map_ship.bin.o: bin_file assets/map_ship.bin
+build build/assets/map_cull_hazard.bin.o: bin_file assets/map_cull_hazard.bin
+build build/assets/72680.bin.o: bin_file assets/72680.bin
+build build/assets/map_baragoon_tunnel.bin.o: bin_file $
+    assets/map_baragoon_tunnel.bin
+build build/assets/4BFF0.bin.o: bin_file assets/4BFF0.bin
+build build/assets/actor_Shannon.bin.o: bin_file assets/actor_Shannon.bin
+build build/assets/icon_earth_orb.bin.o: bin_file assets/icon_earth_orb.bin
+build build/assets/inventory_pal.bin.o: bin_file assets/inventory_pal.bin
+build build/assets/73A90.bin.o: bin_file assets/73A90.bin
+build build/assets/map_melrode_houses.bin.o: bin_file $
+    assets/map_melrode_houses.bin
+build build/assets/icon_honey_bread.bin.o: bin_file $
+    assets/icon_honey_bread.bin
+build build/assets/trailer.bin.o: bin_file assets/trailer.bin
+build build/assets/map_houses_7.bin.o: bin_file assets/map_houses_7.bin
+build build/assets/icon_golden_amulet.bin.o: bin_file $
+    assets/icon_golden_amulet.bin
+build build/assets/boss_Beigis.bin.o: bin_file assets/boss_Beigis.bin
+build build/assets/text_palettes.bin.o: bin_file assets/text_palettes.bin
+build build/assets/D4B3C0.bin.o: bin_file assets/D4B3C0.bin
+build build/assets/icon_replica.bin.o: bin_file assets/icon_replica.bin
+build build/assets/actor_unk_Knights.bin.o: bin_file $
+    assets/actor_unk_Knights.bin
+build build/assets/map_windmills.bin.o: bin_file assets/map_windmills.bin
+build build/assets/icon_mint_leaf.bin.o: bin_file assets/icon_mint_leaf.bin
 build build/assets/inventory_greyscale_pal.bin.o: bin_file $
     assets/inventory_greyscale_pal.bin
-build build/assets/icon_dew_drop.bin.o: bin_file assets/icon_dew_drop.bin
-build build/assets/icon_silent_flute.bin.o: bin_file $
-    assets/icon_silent_flute.bin
+build build/assets/737D0.bin.o: bin_file assets/737D0.bin
+build build/assets/icon_fresh_bread.bin.o: bin_file $
+    assets/icon_fresh_bread.bin
+build build/assets/map_town_common.bin.o: bin_file assets/map_town_common.bin
+build build/assets/map_brannoch.bin.o: bin_file assets/map_brannoch.bin
+build build/assets/map_normoon.bin.o: bin_file assets/map_normoon.bin
+build build/assets/71AF0.bin.o: bin_file assets/71AF0.bin
+build build/assets/ucode_boot.bin.o: bin_file assets/ucode_boot.bin
+build build/assets/boss_Solvaring.bin.o: bin_file assets/boss_Solvaring.bin
+build build/assets/map_data_common.bin.o: bin_file assets/map_data_common.bin
+build build/assets/icon_red_wings.bin.o: bin_file assets/icon_red_wings.bin
+build build/assets/icon_spirit_light.bin.o: bin_file $
+    assets/icon_spirit_light.bin
+build build/assets/icon_dark_gaol_key.bin.o: bin_file $
+    assets/icon_dark_gaol_key.bin
+build build/assets/icon_celines_bell.bin.o: bin_file $
+    assets/icon_celines_bell.bin
+build build/assets/map_nepty.bin.o: bin_file assets/map_nepty.bin
+build build/assets/map_glencoe_forest.bin.o: bin_file $
+    assets/map_glencoe_forest.bin
+build build/assets/ucode_data.bin.o: bin_file assets/ucode_data.bin
+build build/assets/icon_silver_amulet.bin.o: bin_file $
+    assets/icon_silver_amulet.bin
+build build/assets/map_skye.bin.o: bin_file assets/map_skye.bin
+build build/assets/font_tbl.bin.o: bin_file assets/font_tbl.bin
+build build/assets/NPC_Msg.bin.o: bin_file assets/NPC_Msg.bin
+build build/assets/map_connor_fortress.bin.o: bin_file $
+    assets/map_connor_fortress.bin
+build build/assets/icon_heroes_drink.bin.o: bin_file $
+    assets/icon_heroes_drink.bin
+build build/assets/icon_blue_wings.bin.o: bin_file assets/icon_blue_wings.bin
+build build/assets/map_shamwood.bin.o: bin_file assets/map_shamwood.bin
+build build/assets/NPC_Blob.bin.o: bin_file assets/NPC_Blob.bin
+build build/assets/map_limelin_castle.bin.o: bin_file $
+    assets/map_limelin_castle.bin
+build build/assets/map_east_limelin.bin.o: bin_file $
+    assets/map_east_limelin.bin
+build build/assets/boss_Guilty.bin.o: bin_file assets/boss_Guilty.bin
+build build/assets/icon_white_wings.bin.o: bin_file $
+    assets/icon_white_wings.bin
 build build/assets/icon_water_jewel.bin.o: bin_file $
     assets/icon_water_jewel.bin
-build build/quest64.us.elf: make_elf  build/src/sptask.c.o $
-    build/src/23740.c.o build/src/vigetcurrframebuf.c.o $
-    build/src/camera.c.o build/src/csplayer.c.o build/src/pimgr.c.o $
-    build/src/C120.c.o build/src/1BCD0.c.o build/src/1850.c.o $
-    build/src/15440.c.o build/src/2F1E0.c.o build/src/25290.c.o $
-    build/src/contramread.c.o build/src/shadow.c.o build/src/8650.c.o $
-    build/src/startthread.c.o build/src/initialize.c.o $
-    build/src/pfsallocatefile.c.o build/src/init.c.o $
-    build/src/leodiskinit.c.o build/src/191F0.c.o build/src/controller.c.o $
-    build/src/syncprintf.c.o build/src/pfsdeletefile.c.o $
-    build/src/nnsched.c.o build/src/viswapbuf.c.o build/src/pfsnumfiles.c.o $
-    build/src/2C110.c.o build/src/328F0.c.o build/src/createmesgqueue.c.o $
-    build/src/pfsgetstatus.c.o build/src/sptaskyielded.c.o $
-    build/src/pfsinitpak.c.o build/src/inventory.c.o $
-    build/src/pfsfreeblocks.c.o build/src/vimgr.c.o $
-    build/src/deletedfuncs.c.o build/src/pfschecker.c.o build/src/1E4B0.c.o $
-    build/src/viblack.c.o build/src/createthread.c.o $
-    build/src/pfsreadwritefile.c.o build/src/27640.c.o build/src/97B0.c.o $
-    build/src/1D160.c.o build/src/pfsisplug.c.o build/src/24E60.c.o $
-    build/src/32840.c.o build/src/pfsfilestate.c.o build/src/1000.c.o $
-    build/src/seqpgetstate.c.o build/src/C910.c.o build/src/31A10.c.o $
-    build/src/31F00.c.o build/src/33D0.c.o build/src/aigetlen.c.o $
-    build/src/pfssearchfile.c.o build/src/contpfs.c.o $
-    build/src/sptaskyield.c.o build/src/screen_dim.c.o $
-    build/src/visetevent.c.o build/src/271F0.c.o build/src/FA60.c.o $
-    build/src/1EDF0.c.o build/src/12740.c.o build/src/os/createthread.c.o $
-    build/asm/pirawread.s.o build/asm/resetglobalintmask.s.o $
-    build/asm/cartrominit.s.o build/asm/xprintf.s.o $
-    build/asm/synallocfx.s.o build/asm/copy.s.o build/asm/sndpallocate.s.o $
-    build/asm/spsetpc.s.o build/asm/gettime.s.o build/asm/pirawdma.s.o $
-    build/asm/position.s.o build/asm/synthesizer.s.o build/asm/setsr.s.o $
-    build/asm/bzero.s.o build/asm/synstartvoice.s.o $
-    build/asm/sndpsetpan.s.o build/asm/event.s.o build/asm/setthreadpri.s.o $
-    build/asm/synsetpan.s.o build/asm/seteventmesg.s.o build/asm/xlitob.s.o $
-    build/asm/sirawdma.s.o build/asm/synstopvoice.s.o $
-    build/asm/synallocvoice.s.o build/asm/epirawread.s.o $
-    build/asm/header.s.o build/asm/sprawread.s.o build/asm/sprawwrite.s.o $
-    build/asm/synfreevoice.s.o build/asm/env.s.o $
-    build/asm/setglobalintmask.s.o build/asm/destroythread.s.o $
-    build/asm/sinf.s.o build/asm/aisetnextbuf.s.o build/asm/setintmask.s.o $
-    build/asm/bcopy.s.o build/asm/sndplay.s.o build/asm/sndpsetpitch.s.o $
-    build/asm/virtualtophysical.s.o build/asm/syndelete.s.o $
-    build/asm/sqrtf.s.o build/asm/synaddplayer.s.o build/asm/interrupt.s.o $
-    build/asm/ll.s.o build/asm/sp.s.o build/asm/xldtob.s.o $
-    build/asm/mainbus.s.o build/asm/cseq.s.o build/asm/sndpsetvol.s.o $
-    build/asm/seqpstop.s.o build/asm/maptlbrdb.s.o $
-    build/asm/visetspecial.s.o build/asm/getcount.s.o $
-    build/asm/timerintr.s.o build/asm/string.s.o build/asm/contquery.s.o $
-    build/asm/si.s.o build/asm/reverb.s.o build/asm/seqpsetbank.s.o $
-    build/asm/heapinit.s.o build/asm/epirawwrite.s.o $
-    build/asm/synstartvoiceparam.s.o build/asm/sndpsetsound.s.o $
-    build/asm/vigetcurrcontext.s.o build/asm/seqpplay.s.o $
-    build/asm/pidma.s.o build/asm/invaldcache.s.o build/asm/getsr.s.o $
-    build/asm/aisetfreq.s.o build/asm/contreaddata.s.o $
-    build/asm/synsetfxmix.s.o build/asm/__osGetId.s.o $
-    build/asm/writebackdcacheall.s.o build/asm/siacs.s.o $
-    build/asm/jammesg.s.o build/asm/vi.s.o build/asm/contsetch.s.o $
-    build/asm/synsetpitch.s.o build/asm/sprintf.s.o build/asm/sndplayer.s.o $
-    build/asm/yieldthread.s.o build/asm/ortho.s.o build/asm/settimer.s.o $
-    build/asm/writebackdcache.s.o build/asm/filter.s.o build/asm/cosf.s.o $
-    build/asm/epiramdma.s.o build/asm/mtxutil.s.o build/asm/probetlb.s.o $
-    build/asm/synsetvol.s.o build/asm/spsetstat.s.o $
-    build/asm/contramwrite.s.o build/asm/spgetstat.s.o $
-    build/asm/invalicache.s.o build/asm/auxbus.s.o $
-    build/asm/siacsDuplicate.s.o build/asm/synsetpriority.s.o $
-    build/asm/seq.s.o build/asm/ai.s.o build/asm/motor.s.o $
-    build/asm/sprawdma.s.o build/asm/seqplayer.s.o $
-    build/asm/viswapcontext.s.o build/asm/cents2ratio.s.o $
-    build/asm/load.s.o build/asm/exceptasm.s.o build/asm/setcompare.s.o $
-    build/asm/mtxcatf.s.o build/asm/perspective.s.o build/asm/crc.s.o $
-    build/asm/translate.s.o build/asm/drvrNew.s.o build/asm/visetmode.s.o $
-    build/asm/lookatref.s.o build/asm/heapalloc.s.o $
-    build/asm/seqpsetvol.s.o build/asm/setfpccsr.s.o $
-    build/asm/leointerrupt.s.o build/asm/resample.s.o $
-    build/asm/cspsetseq.s.o build/asm/recvmesg.s.o build/asm/devmgr.s.o $
-    build/asm/pfsinitpak.s.o build/asm/bnkf.s.o build/asm/thread.s.o $
-    build/asm/getthreadpri.s.o build/asm/sndpgetstate.s.o $
-    build/asm/sndpstop.s.o build/asm/sins.s.o build/asm/sendmesg.s.o $
-    build/asm/save.s.o build/asm/n_alseqpgetvol.s.o $
-    build/assets/map_limelin.bin.o build/assets/icon_honey_bread.bin.o $
-    build/assets/actor_Brian.bin.o build/assets/map_data_common.bin.o $
-    build/assets/map_limelin_castle.bin.o build/assets/map_skye.bin.o $
-    build/assets/trailer.bin.o build/assets/ucode_data.bin.o $
-    build/assets/map_melrode.bin.o build/assets/map_windward_forest.bin.o $
-    build/assets/map_brannoch.bin.o build/assets/icon_giants_shoes.bin.o $
-    build/assets/map_west_carmagh.bin.o $
-    build/assets/map_larapool_houses_2.bin.o build/assets/SE_ctl.bin.o $
-    build/assets/SE_tbl.bin.o build/assets/map_houses_5.bin.o $
-    build/assets/icon_spirit_light.bin.o build/assets/icon_mint_leaf.bin.o $
-    build/assets/icon_white_wings.bin.o build/assets/map_houses_7.bin.o $
-    build/assets/ucode.bin.o build/assets/DesertMonsters.bin.o $
-    build/assets/icon_earth_orb.bin.o build/assets/map_dindom_dries.bin.o $
-    build/assets/4BFF0.bin.o build/assets/icon_yellow_wings.bin.o $
-    build/assets/inventory_pal.bin.o build/assets/boss_Guilty.bin.o $
-    build/assets/boss_Nepty.bin.o build/assets/map_holy_plain.bin.o $
-    build/assets/map_boil_hole.bin.o build/assets/map_larapool.bin.o $
-    build/assets/Instrument_ctl.bin.o build/assets/NPC_Blob.bin.o $
-    build/assets/map_dondoran.bin.o build/assets/icon_fire_ruby.bin.o $
-    build/assets/BlueCaveMonsters.bin.o build/assets/D4B3C0.bin.o $
-    build/assets/71AF0.bin.o build/assets/map_shamwood_pyramid.bin.o $
-    build/assets/font_tbl.bin.o build/assets/map_shamwood.bin.o $
-    build/assets/ucode_boot.bin.o build/assets/boss_Solvaring.bin.o $
-    build/assets/map_connor_fortress.bin.o build/assets/71DD0.bin.o $
-    build/assets/boss_Fargo.bin.o build/assets/icon_heroes_drink.bin.o $
-    build/assets/icon_fresh_bread.bin.o build/assets/map_normoon.bin.o $
-    build/assets/map_town_common.bin.o $
-    build/assets/map_world_of_mammon.bin.o build/assets/boss_Beigis.bin.o $
-    build/assets/icon_wind_jade.bin.o $
-    build/assets/map_dondoran_castle.bin.o build/assets/map_ship.bin.o $
-    build/assets/72680.bin.o build/assets/NormoonMonsters.bin.o $
-    build/assets/DondoranMonsters.bin.o build/assets/icon_eltale_book.bin.o $
-    build/assets/map_nepty.bin.o build/assets/boot.bin.o $
-    build/assets/icon_silver_amulet.bin.o $
-    build/assets/map_baragoon_tunnel.bin.o build/assets/737D0.bin.o $
-    build/assets/boss_Zelse.bin.o build/assets/icon_healing_potion.bin.o $
-    build/assets/icon_dark_gaol_key.bin.o build/assets/DA99F8.bin.o $
-    build/assets/Instrument_tbl.bin.o build/assets/icon_blue_wings.bin.o $
-    build/assets/map_houses_6.bin.o build/assets/icon_dragon_potion.bin.o $
-    build/assets/map_glencoe_forest.bin.o $
-    build/assets/actor_unk_Knights.bin.o build/assets/boss_Mammon.bin.o $
-    build/assets/icon_black_wings.bin.o build/assets/map_cull_hazard.bin.o $
-    build/assets/actor_Shannon.bin.o build/assets/icon_green_wings.bin.o $
-    build/assets/map_dondoran_houses.bin.o build/assets/icon_replica.bin.o $
-    build/assets/725D0.bin.o build/assets/boss_Shilf.bin.o $
-    build/assets/map_east_limelin.bin.o build/assets/MammonMonsters.bin.o $
-    build/assets/73A90.bin.o build/assets/text_palettes.bin.o $
-    build/assets/HolyPlainsMonsters.bin.o build/assets/map_windmills.bin.o $
-    build/assets/icon_celines_bell.bin.o build/assets/map_ships.bin.o $
-    build/assets/icon_golden_amulet.bin.o build/assets/icon_red_wings.bin.o $
-    build/assets/map_larapool_houses.bin.o build/assets/NPC_Msg.bin.o $
-    build/assets/map_blue_cave.bin.o build/assets/map_melrode_houses.bin.o $
-    build/assets/map_dondoran_flats.bin.o $
-    build/assets/inventory_greyscale_pal.bin.o $
-    build/assets/icon_dew_drop.bin.o build/assets/icon_silent_flute.bin.o $
-    build/assets/icon_water_jewel.bin.o
+build build/assets/ucode.bin.o: bin_file assets/ucode.bin
+build build/assets/icon_silent_flute.bin.o: bin_file $
+    assets/icon_silent_flute.bin
+build build/assets/DondoranMonsters.bin.o: bin_file $
+    assets/DondoranMonsters.bin
+build build/assets/map_dondoran_houses.bin.o: bin_file $
+    assets/map_dondoran_houses.bin
+build build/assets/boss_Fargo.bin.o: bin_file assets/boss_Fargo.bin
+build build/assets/map_windward_forest.bin.o: bin_file $
+    assets/map_windward_forest.bin
+build build/assets/DA99F8.bin.o: bin_file assets/DA99F8.bin
+build build/assets/monsters/MammonMonsters.bin.o: bin_file $
+    assets/monsters/MammonMonsters.bin
+build build/assets/monsters/BlueCaveMonsters.bin.o: bin_file $
+    assets/monsters/BlueCaveMonsters.bin
+build build/assets/monsters/DesertMonsters.bin.o: bin_file $
+    assets/monsters/DesertMonsters.bin
+build build/assets/monsters/HolyPlainsMonsters.bin.o: bin_file $
+    assets/monsters/HolyPlainsMonsters.bin
+build build/assets/monsters/NormoonMonsters.bin.o: bin_file $
+    assets/monsters/NormoonMonsters.bin
+build build/assets/monsters/DondoranMonsters.bin.o: bin_file $
+    assets/monsters/DondoranMonsters.bin
+build build/assets/text/text_palettes.bin.o: bin_file $
+    assets/text/text_palettes.bin
+build build/assets/text/font_tbl.bin.o: bin_file assets/text/font_tbl.bin
+build build/assets/inventory/icon_wind_jade.bin.o: bin_file $
+    assets/inventory/icon_wind_jade.bin
+build build/assets/inventory/icon_green_wings.bin.o: bin_file $
+    assets/inventory/icon_green_wings.bin
+build build/assets/inventory/icon_giants_shoes.bin.o: bin_file $
+    assets/inventory/icon_giants_shoes.bin
+build build/assets/inventory/icon_fire_ruby.bin.o: bin_file $
+    assets/inventory/icon_fire_ruby.bin
+build build/assets/inventory/icon_black_wings.bin.o: bin_file $
+    assets/inventory/icon_black_wings.bin
+build build/assets/inventory/icon_healing_potion.bin.o: bin_file $
+    assets/inventory/icon_healing_potion.bin
+build build/assets/inventory/icon_dew_drop.bin.o: bin_file $
+    assets/inventory/icon_dew_drop.bin
+build build/assets/inventory/icon_eltale_book.bin.o: bin_file $
+    assets/inventory/icon_eltale_book.bin
+build build/assets/inventory/icon_dragon_potion.bin.o: bin_file $
+    assets/inventory/icon_dragon_potion.bin
+build build/assets/inventory/icon_yellow_wings.bin.o: bin_file $
+    assets/inventory/icon_yellow_wings.bin
+build build/assets/inventory/icon_earth_orb.bin.o: bin_file $
+    assets/inventory/icon_earth_orb.bin
+build build/assets/inventory/inventory_pal.bin.o: bin_file $
+    assets/inventory/inventory_pal.bin
+build build/assets/inventory/icon_honey_bread.bin.o: bin_file $
+    assets/inventory/icon_honey_bread.bin
+build build/assets/inventory/icon_golden_amulet.bin.o: bin_file $
+    assets/inventory/icon_golden_amulet.bin
+build build/assets/inventory/icon_replica.bin.o: bin_file $
+    assets/inventory/icon_replica.bin
+build build/assets/inventory/icon_mint_leaf.bin.o: bin_file $
+    assets/inventory/icon_mint_leaf.bin
+build build/assets/inventory/inventory_greyscale_pal.bin.o: bin_file $
+    assets/inventory/inventory_greyscale_pal.bin
+build build/assets/inventory/icon_fresh_bread.bin.o: bin_file $
+    assets/inventory/icon_fresh_bread.bin
+build build/assets/inventory/icon_red_wings.bin.o: bin_file $
+    assets/inventory/icon_red_wings.bin
+build build/assets/inventory/icon_spirit_light.bin.o: bin_file $
+    assets/inventory/icon_spirit_light.bin
+build build/assets/inventory/icon_dark_gaol_key.bin.o: bin_file $
+    assets/inventory/icon_dark_gaol_key.bin
+build build/assets/inventory/icon_celines_bell.bin.o: bin_file $
+    assets/inventory/icon_celines_bell.bin
+build build/assets/inventory/icon_silver_amulet.bin.o: bin_file $
+    assets/inventory/icon_silver_amulet.bin
+build build/assets/inventory/icon_heroes_drink.bin.o: bin_file $
+    assets/inventory/icon_heroes_drink.bin
+build build/assets/inventory/icon_blue_wings.bin.o: bin_file $
+    assets/inventory/icon_blue_wings.bin
+build build/assets/inventory/icon_white_wings.bin.o: bin_file $
+    assets/inventory/icon_white_wings.bin
+build build/assets/inventory/icon_water_jewel.bin.o: bin_file $
+    assets/inventory/icon_water_jewel.bin
+build build/assets/inventory/icon_silent_flute.bin.o: bin_file $
+    assets/inventory/icon_silent_flute.bin
+build build/assets/bosses/boss_Mammon.bin.o: bin_file $
+    assets/bosses/boss_Mammon.bin
+build build/assets/bosses/boss_Shilf.bin.o: bin_file $
+    assets/bosses/boss_Shilf.bin
+build build/assets/bosses/boss_Zelse.bin.o: bin_file $
+    assets/bosses/boss_Zelse.bin
+build build/assets/bosses/boss_Beigis.bin.o: bin_file $
+    assets/bosses/boss_Beigis.bin
+build build/assets/bosses/boss_Solvaring.bin.o: bin_file $
+    assets/bosses/boss_Solvaring.bin
+build build/assets/bosses/boss_Nepty.bin.o: bin_file $
+    assets/bosses/boss_Nepty.bin
+build build/assets/bosses/boss_Guilty.bin.o: bin_file $
+    assets/bosses/boss_Guilty.bin
+build build/assets/bosses/boss_Fargo.bin.o: bin_file $
+    assets/bosses/boss_Fargo.bin
+build build/assets/bosses/nepty/dls/model.bin.o: bin_file $
+    assets/bosses/nepty/dls/model.bin
+build build/assets/bosses/nepty/textures/textures.bin.o: bin_file $
+    assets/bosses/nepty/textures/textures.bin
+build build/assets/maps/houses_7.bin.o: bin_file assets/maps/houses_7.bin
+build build/assets/maps/ship.bin.o: bin_file assets/maps/ship.bin
+build build/assets/maps/shamwood_pyramid.bin.o: bin_file $
+    assets/maps/shamwood_pyramid.bin
+build build/assets/maps/west_carmagh.bin.o: bin_file $
+    assets/maps/west_carmagh.bin
+build build/assets/maps/larapool_houses_2.bin.o: bin_file $
+    assets/maps/larapool_houses_2.bin
+build build/assets/maps/windmills.bin.o: bin_file assets/maps/windmills.bin
+build build/assets/maps/dindom_dries.bin.o: bin_file $
+    assets/maps/dindom_dries.bin
+build build/assets/maps/dondoran_flats.bin.o: bin_file $
+    assets/maps/dondoran_flats.bin
+build build/assets/maps/baragoon_tunnel.bin.o: bin_file $
+    assets/maps/baragoon_tunnel.bin
+build build/assets/maps/normoon.bin.o: bin_file assets/maps/normoon.bin
+build build/assets/maps/dondoran_castle.bin.o: bin_file $
+    assets/maps/dondoran_castle.bin
+build build/assets/maps/limelin_castle.bin.o: bin_file $
+    assets/maps/limelin_castle.bin
+build build/assets/maps/dondoran.bin.o: bin_file assets/maps/dondoran.bin
+build build/assets/maps/glencoe_forest.bin.o: bin_file $
+    assets/maps/glencoe_forest.bin
+build build/assets/maps/melrode.bin.o: bin_file assets/maps/melrode.bin
+build build/assets/maps/nepty.bin.o: bin_file assets/maps/nepty.bin
+build build/assets/maps/houses_5.bin.o: bin_file assets/maps/houses_5.bin
+build build/assets/maps/ships.bin.o: bin_file assets/maps/ships.bin
+build build/assets/maps/larapool.bin.o: bin_file assets/maps/larapool.bin
+build build/assets/maps/holy_plain.bin.o: bin_file assets/maps/holy_plain.bin
+build build/assets/maps/cull_hazard.bin.o: bin_file $
+    assets/maps/cull_hazard.bin
+build build/assets/maps/east_limelin.bin.o: bin_file $
+    assets/maps/east_limelin.bin
+build build/assets/maps/melrode_houses.bin.o: bin_file $
+    assets/maps/melrode_houses.bin
+build build/assets/maps/brannoch.bin.o: bin_file assets/maps/brannoch.bin
+build build/assets/maps/town_common.bin.o: bin_file $
+    assets/maps/town_common.bin
+build build/assets/maps/shamwood.bin.o: bin_file assets/maps/shamwood.bin
+build build/assets/maps/data_common.bin.o: bin_file $
+    assets/maps/data_common.bin
+build build/assets/maps/connor_fortress.bin.o: bin_file $
+    assets/maps/connor_fortress.bin
+build build/assets/maps/blue_cave.bin.o: bin_file assets/maps/blue_cave.bin
+build build/assets/maps/dondoran_houses.bin.o: bin_file $
+    assets/maps/dondoran_houses.bin
+build build/assets/maps/larapool_houses.bin.o: bin_file $
+    assets/maps/larapool_houses.bin
+build build/assets/maps/world_of_mammon.bin.o: bin_file $
+    assets/maps/world_of_mammon.bin
+build build/assets/maps/windward_forest.bin.o: bin_file $
+    assets/maps/windward_forest.bin
+build build/assets/maps/boil_hole.bin.o: bin_file assets/maps/boil_hole.bin
+build build/assets/maps/houses_6.bin.o: bin_file assets/maps/houses_6.bin
+build build/assets/maps/limelin.bin.o: bin_file assets/maps/limelin.bin
+build build/assets/maps/skye.bin.o: bin_file assets/maps/skye.bin
+build build/assets/player/actor_Brian.bin.o: bin_file $
+    assets/player/actor_Brian.bin
+build build/assets/npcs/npc_held_objects.bin.o: bin_file $
+    assets/npcs/npc_held_objects.bin
+build build/assets/npcs/actor_Shannon.bin.o: bin_file $
+    assets/npcs/actor_Shannon.bin
+build build/assets/npcs/NPC_Msg.bin.o: bin_file assets/npcs/NPC_Msg.bin
+build build/assets/npcs/NPC_Blob.bin.o: bin_file assets/npcs/NPC_Blob.bin
+build build/assets/bosses/nepty/textures/ear.rgba16.png.o: rgba16_convert $
+    assets/bosses/nepty/textures/ear.rgba16.j
+build build/quest64.us.elf: make_elf  build/src/25290.c.o $
+    build/src/camera.c.o build/src/328F0.c.o build/src/screen_dim.c.o $
+    build/src/vimgr.c.o build/src/contramread.c.o build/src/191F0.c.o $
+    build/src/startthread.c.o build/src/2F1E0.c.o build/src/271F0.c.o $
+    build/src/csplayer.c.o build/src/pimgr.c.o build/src/aigetlen.c.o $
+    build/src/contpfs.c.o build/src/syncprintf.c.o build/src/1D160.c.o $
+    build/src/createthread.c.o build/src/shadow.c.o build/src/97B0.c.o $
+    build/src/15440.c.o build/src/controller.c.o build/src/2C110.c.o $
+    build/src/deletedfuncs.c.o build/src/viswapbuf.c.o build/src/sptask.c.o $
+    build/src/27640.c.o build/src/C910.c.o build/src/1000.c.o $
+    build/src/init.c.o build/src/1E4B0.c.o build/src/pfsfilestate.c.o $
+    build/src/pfsgetstatus.c.o build/src/pfsallocatefile.c.o $
+    build/src/nnsched.c.o build/src/pfsinitpak.c.o build/src/32840.c.o $
+    build/src/leodiskinit.c.o build/src/23740.c.o build/src/12740.c.o $
+    build/src/24E60.c.o build/src/pfsreadwritefile.c.o build/src/8650.c.o $
+    build/src/1850.c.o build/src/initialize.c.o build/src/inventory.c.o $
+    build/src/pfsisplug.c.o build/src/createmesgqueue.c.o $
+    build/src/pfschecker.c.o build/src/seqpgetstate.c.o $
+    build/src/sptaskyield.c.o build/src/33D0.c.o build/src/pfsnumfiles.c.o $
+    build/src/visetevent.c.o build/src/C120.c.o build/src/FA60.c.o $
+    build/src/31A10.c.o build/src/1BCD0.c.o build/src/vigetcurrframebuf.c.o $
+    build/src/viblack.c.o build/src/pfsfreeblocks.c.o $
+    build/src/pfsdeletefile.c.o build/src/31F00.c.o $
+    build/src/pfssearchfile.c.o build/src/1EDF0.c.o $
+    build/src/sptaskyielded.c.o build/src/os/createthread.c.o $
+    build/asm/pirawdma.s.o build/asm/contreaddata.s.o $
+    build/asm/vigetcurrframebuf.s.o build/asm/cartrominit.s.o $
+    build/asm/sirawdma.s.o build/asm/aisetnextbuf.s.o build/asm/viblack.s.o $
+    build/asm/heapalloc.s.o build/asm/siacsDuplicate.s.o $
+    build/asm/cents2ratio.s.o build/asm/viswapcontext.s.o $
+    build/asm/resetglobalintmask.s.o build/asm/setfpccsr.s.o $
+    build/asm/drvrNew.s.o build/asm/devmgr.s.o build/asm/sndpsetvol.s.o $
+    build/asm/contsetch.s.o build/asm/pidma.s.o build/asm/bcopy.s.o $
+    build/asm/setglobalintmask.s.o build/asm/synfreevoice.s.o $
+    build/asm/translate.s.o build/asm/reverb.s.o build/asm/perspective.s.o $
+    build/asm/createmesgqueue.s.o build/asm/seteventmesg.s.o $
+    build/asm/auxbus.s.o build/asm/gettime.s.o build/asm/viswapbuf.s.o $
+    build/asm/synaddplayer.s.o build/asm/synstopvoice.s.o $
+    build/asm/sendmesg.s.o build/asm/mtxutil.s.o $
+    build/asm/vigetcurrcontext.s.o build/asm/xprintf.s.o build/asm/save.s.o $
+    build/asm/string.s.o build/asm/ortho.s.o build/asm/aisetfreq.s.o $
+    build/asm/siacs.s.o build/asm/synsetpitch.s.o build/asm/synsetvol.s.o $
+    build/asm/writebackdcacheall.s.o build/asm/synstartvoiceparam.s.o $
+    build/asm/timerintr.s.o build/asm/event.s.o build/asm/sins.s.o $
+    build/asm/copy.s.o build/asm/filter.s.o build/asm/sndpsetsound.s.o $
+    build/asm/353E0.s.o build/asm/n_alseqpgetvol.s.o build/asm/recvmesg.s.o $
+    build/asm/seqpstop.s.o build/asm/invaldcache.s.o $
+    build/asm/exceptasm.s.o build/asm/spsetstat.s.o build/asm/si.s.o $
+    build/asm/sqrtf.s.o build/asm/sprawwrite.s.o build/asm/leointerrupt.s.o $
+    build/asm/setintmask.s.o build/asm/setcompare.s.o $
+    build/asm/sptaskyielded.s.o build/asm/xlitob.s.o $
+    build/asm/getthreadpri.s.o build/asm/heapinit.s.o $
+    build/asm/sndpgetstate.s.o build/asm/ll.s.o build/asm/sndpallocate.s.o $
+    build/asm/synallocfx.s.o build/asm/visetspecial.s.o $
+    build/asm/xldtob.s.o build/asm/sptask.s.o build/asm/seqplayer.s.o $
+    build/asm/contquery.s.o build/asm/synallocvoice.s.o $
+    build/asm/writebackdcache.s.o build/asm/load.s.o $
+    build/asm/visetevent.s.o build/asm/cspsetseq.s.o $
+    build/asm/sndpsetpan.s.o build/asm/motor.s.o build/asm/interrupt.s.o $
+    build/asm/spsetpc.s.o build/asm/setsr.s.o build/asm/position.s.o $
+    build/asm/seq.s.o build/asm/pirawread.s.o build/asm/synsetpriority.s.o $
+    build/asm/synstartvoice.s.o build/asm/syndelete.s.o $
+    build/asm/sptaskyield.s.o build/asm/seqpsetvol.s.o build/asm/header.s.o $
+    build/asm/sndplay.s.o build/asm/maptlbrdb.s.o build/asm/synthesizer.s.o $
+    build/asm/vimgr.s.o build/asm/invalicache.s.o build/asm/thread.s.o $
+    build/asm/mtxcatf.s.o build/asm/__osGetId.s.o build/asm/yieldthread.s.o $
+    build/asm/env.s.o build/asm/cosf.s.o build/asm/vi.s.o $
+    build/asm/bnkf.s.o build/asm/ai.s.o build/asm/sp.s.o $
+    build/asm/synsetpan.s.o build/asm/epirawread.s.o build/asm/mainbus.s.o $
+    build/asm/epiramdma.s.o build/asm/contramwrite.s.o $
+    build/asm/sprawread.s.o build/asm/setthreadpri.s.o $
+    build/asm/jammesg.s.o build/asm/sndpstop.s.o build/asm/resample.s.o $
+    build/asm/getsr.s.o build/asm/crc.s.o build/asm/cseq.s.o $
+    build/asm/destroythread.s.o build/asm/settimer.s.o $
+    build/asm/getcount.s.o build/asm/visetmode.s.o build/asm/lookatref.s.o $
+    build/asm/sinf.s.o build/asm/bzero.s.o build/asm/pfsinitpak.s.o $
+    build/asm/synsetfxmix.s.o build/asm/sprawdma.s.o build/asm/probetlb.s.o $
+    build/asm/spgetstat.s.o build/asm/seqpsetbank.s.o $
+    build/asm/virtualtophysical.s.o build/asm/sprintf.s.o $
+    build/asm/sndplayer.s.o build/asm/sndpsetpitch.s.o $
+    build/asm/seqpplay.s.o build/asm/epirawwrite.s.o $
+    build/assets/boot.bin.o build/assets/725D0.bin.o $
+    build/assets/boss_Mammon.bin.o build/assets/map_limelin.bin.o $
+    build/assets/icon_wind_jade.bin.o build/assets/Instrument_ctl.bin.o $
+    build/assets/icon_green_wings.bin.o $
+    build/assets/map_world_of_mammon.bin.o $
+    build/assets/icon_giants_shoes.bin.o build/assets/MammonMonsters.bin.o $
+    build/assets/map_blue_cave.bin.o build/assets/map_dondoran_flats.bin.o $
+    build/assets/SE_tbl.bin.o build/assets/map_houses_6.bin.o $
+    build/assets/map_melrode.bin.o build/assets/map_dondoran.bin.o $
+    build/assets/map_larapool_houses_2.bin.o $
+    build/assets/map_shamwood_pyramid.bin.o build/assets/71DD0.bin.o $
+    build/assets/boss_Shilf.bin.o build/assets/icon_fire_ruby.bin.o $
+    build/assets/icon_black_wings.bin.o $
+    build/assets/icon_healing_potion.bin.o $
+    build/assets/map_dondoran_castle.bin.o $
+    build/assets/BlueCaveMonsters.bin.o build/assets/SE_ctl.bin.o $
+    build/assets/icon_dew_drop.bin.o build/assets/DesertMonsters.bin.o $
+    build/assets/icon_eltale_book.bin.o $
+    build/assets/icon_dragon_potion.bin.o $
+    build/assets/HolyPlainsMonsters.bin.o $
+    build/assets/icon_yellow_wings.bin.o $
+    build/assets/map_larapool_houses.bin.o build/assets/map_boil_hole.bin.o $
+    build/assets/NormoonMonsters.bin.o build/assets/map_west_carmagh.bin.o $
+    build/assets/boss_Zelse.bin.o build/assets/map_ships.bin.o $
+    build/assets/map_dindom_dries.bin.o build/assets/Instrument_tbl.bin.o $
+    build/assets/map_holy_plain.bin.o build/assets/map_larapool.bin.o $
+    build/assets/actor_Brian.bin.o build/assets/map_houses_5.bin.o $
+    build/assets/map_ship.bin.o build/assets/map_cull_hazard.bin.o $
+    build/assets/72680.bin.o build/assets/map_baragoon_tunnel.bin.o $
+    build/assets/4BFF0.bin.o build/assets/actor_Shannon.bin.o $
+    build/assets/icon_earth_orb.bin.o build/assets/inventory_pal.bin.o $
+    build/assets/73A90.bin.o build/assets/map_melrode_houses.bin.o $
+    build/assets/icon_honey_bread.bin.o build/assets/trailer.bin.o $
+    build/assets/map_houses_7.bin.o build/assets/icon_golden_amulet.bin.o $
+    build/assets/boss_Beigis.bin.o build/assets/text_palettes.bin.o $
+    build/assets/D4B3C0.bin.o build/assets/icon_replica.bin.o $
+    build/assets/actor_unk_Knights.bin.o build/assets/map_windmills.bin.o $
+    build/assets/icon_mint_leaf.bin.o $
+    build/assets/inventory_greyscale_pal.bin.o build/assets/737D0.bin.o $
+    build/assets/icon_fresh_bread.bin.o build/assets/map_town_common.bin.o $
+    build/assets/map_brannoch.bin.o build/assets/map_normoon.bin.o $
+    build/assets/71AF0.bin.o build/assets/ucode_boot.bin.o $
+    build/assets/boss_Solvaring.bin.o build/assets/map_data_common.bin.o $
+    build/assets/icon_red_wings.bin.o build/assets/icon_spirit_light.bin.o $
+    build/assets/icon_dark_gaol_key.bin.o $
+    build/assets/icon_celines_bell.bin.o build/assets/map_nepty.bin.o $
+    build/assets/map_glencoe_forest.bin.o build/assets/ucode_data.bin.o $
+    build/assets/icon_silver_amulet.bin.o build/assets/map_skye.bin.o $
+    build/assets/font_tbl.bin.o build/assets/NPC_Msg.bin.o $
+    build/assets/map_connor_fortress.bin.o $
+    build/assets/icon_heroes_drink.bin.o build/assets/icon_blue_wings.bin.o $
+    build/assets/map_shamwood.bin.o build/assets/NPC_Blob.bin.o $
+    build/assets/map_limelin_castle.bin.o $
+    build/assets/map_east_limelin.bin.o build/assets/boss_Guilty.bin.o $
+    build/assets/icon_white_wings.bin.o build/assets/icon_water_jewel.bin.o $
+    build/assets/ucode.bin.o build/assets/icon_silent_flute.bin.o $
+    build/assets/DondoranMonsters.bin.o $
+    build/assets/map_dondoran_houses.bin.o build/assets/boss_Fargo.bin.o $
+    build/assets/map_windward_forest.bin.o build/assets/DA99F8.bin.o $
+    build/assets/monsters/MammonMonsters.bin.o $
+    build/assets/monsters/BlueCaveMonsters.bin.o $
+    build/assets/monsters/DesertMonsters.bin.o $
+    build/assets/monsters/HolyPlainsMonsters.bin.o $
+    build/assets/monsters/NormoonMonsters.bin.o $
+    build/assets/monsters/DondoranMonsters.bin.o $
+    build/assets/text/text_palettes.bin.o build/assets/text/font_tbl.bin.o $
+    build/assets/inventory/icon_wind_jade.bin.o $
+    build/assets/inventory/icon_green_wings.bin.o $
+    build/assets/inventory/icon_giants_shoes.bin.o $
+    build/assets/inventory/icon_fire_ruby.bin.o $
+    build/assets/inventory/icon_black_wings.bin.o $
+    build/assets/inventory/icon_healing_potion.bin.o $
+    build/assets/inventory/icon_dew_drop.bin.o $
+    build/assets/inventory/icon_eltale_book.bin.o $
+    build/assets/inventory/icon_dragon_potion.bin.o $
+    build/assets/inventory/icon_yellow_wings.bin.o $
+    build/assets/inventory/icon_earth_orb.bin.o $
+    build/assets/inventory/inventory_pal.bin.o $
+    build/assets/inventory/icon_honey_bread.bin.o $
+    build/assets/inventory/icon_golden_amulet.bin.o $
+    build/assets/inventory/icon_replica.bin.o $
+    build/assets/inventory/icon_mint_leaf.bin.o $
+    build/assets/inventory/inventory_greyscale_pal.bin.o $
+    build/assets/inventory/icon_fresh_bread.bin.o $
+    build/assets/inventory/icon_red_wings.bin.o $
+    build/assets/inventory/icon_spirit_light.bin.o $
+    build/assets/inventory/icon_dark_gaol_key.bin.o $
+    build/assets/inventory/icon_celines_bell.bin.o $
+    build/assets/inventory/icon_silver_amulet.bin.o $
+    build/assets/inventory/icon_heroes_drink.bin.o $
+    build/assets/inventory/icon_blue_wings.bin.o $
+    build/assets/inventory/icon_white_wings.bin.o $
+    build/assets/inventory/icon_water_jewel.bin.o $
+    build/assets/inventory/icon_silent_flute.bin.o $
+    build/assets/bosses/boss_Mammon.bin.o $
+    build/assets/bosses/boss_Shilf.bin.o $
+    build/assets/bosses/boss_Zelse.bin.o $
+    build/assets/bosses/boss_Beigis.bin.o $
+    build/assets/bosses/boss_Solvaring.bin.o $
+    build/assets/bosses/boss_Nepty.bin.o $
+    build/assets/bosses/boss_Guilty.bin.o $
+    build/assets/bosses/boss_Fargo.bin.o $
+    build/assets/bosses/nepty/dls/model.bin.o $
+    build/assets/bosses/nepty/textures/textures.bin.o $
+    build/assets/maps/houses_7.bin.o build/assets/maps/ship.bin.o $
+    build/assets/maps/shamwood_pyramid.bin.o $
+    build/assets/maps/west_carmagh.bin.o $
+    build/assets/maps/larapool_houses_2.bin.o $
+    build/assets/maps/windmills.bin.o build/assets/maps/dindom_dries.bin.o $
+    build/assets/maps/dondoran_flats.bin.o $
+    build/assets/maps/baragoon_tunnel.bin.o build/assets/maps/normoon.bin.o $
+    build/assets/maps/dondoran_castle.bin.o $
+    build/assets/maps/limelin_castle.bin.o build/assets/maps/dondoran.bin.o $
+    build/assets/maps/glencoe_forest.bin.o build/assets/maps/melrode.bin.o $
+    build/assets/maps/nepty.bin.o build/assets/maps/houses_5.bin.o $
+    build/assets/maps/ships.bin.o build/assets/maps/larapool.bin.o $
+    build/assets/maps/holy_plain.bin.o build/assets/maps/cull_hazard.bin.o $
+    build/assets/maps/east_limelin.bin.o $
+    build/assets/maps/melrode_houses.bin.o build/assets/maps/brannoch.bin.o $
+    build/assets/maps/town_common.bin.o build/assets/maps/shamwood.bin.o $
+    build/assets/maps/data_common.bin.o $
+    build/assets/maps/connor_fortress.bin.o $
+    build/assets/maps/blue_cave.bin.o $
+    build/assets/maps/dondoran_houses.bin.o $
+    build/assets/maps/larapool_houses.bin.o $
+    build/assets/maps/world_of_mammon.bin.o $
+    build/assets/maps/windward_forest.bin.o $
+    build/assets/maps/boil_hole.bin.o build/assets/maps/houses_6.bin.o $
+    build/assets/maps/limelin.bin.o build/assets/maps/skye.bin.o $
+    build/assets/player/actor_Brian.bin.o $
+    build/assets/npcs/npc_held_objects.bin.o $
+    build/assets/npcs/actor_Shannon.bin.o build/assets/npcs/NPC_Msg.bin.o $
+    build/assets/npcs/NPC_Blob.bin.o $
+    build/assets/bosses/nepty/textures/ear.rgba16.png.o
 build build/quest64.us.z64: make_z64  build/quest64.us.elf
 build build/quest64.us.ok: make_expected  build/quest64.us.z64

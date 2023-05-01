@@ -41,9 +41,24 @@ for root, dirs, files in os.walk(assets_path):
 def append_extension(filename, extension='.o'):
     return filename + extension
 
+ia4_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('ia4.png'):
+            ia4_files.append(os.path.join(root, file))
+            
+rgba16_files = []
+for root, dirs, files in os.walk(assets_path):
+    for file in files:
+        if file.endswith('rgba16.png'):
+            rgba16_files.append(os.path.join(root, file))
+            
+j_files = []
+j_files.extend([f.replace('.png', '.j') for f in rgba16_files])
+            
 # Combine the lists and change file extensions
 o_files = []
-for file in c_files + s_files + bin_files:
+for file in c_files + s_files + bin_files + ia4_files + rgba16_files:
     if 'asm/nonmatchings/' not in file:
         o_files.append("build/" + append_extension(file))
 
@@ -106,6 +121,18 @@ ninja_file.rule('make_z64',
 
 ninja_file.rule('make_expected',
     command = '(cp $in $out) && (python3 ./$MAKE_EXPECTED $in)')
+    
+ninja_file.rule('ia4_build',
+                 command = "python3 ./$IMG_CONVERT ia4 $in $out",
+                 description = "Converting ia4")
+                 
+ninja_file.rule('rgba16_convert',
+                 command = "(python3 ./$IMG_CONVERT rgba16 $in $out)",
+                 description = "Converting rgba16") 
+                 
+ninja_file.rule('rgba16_build',
+                 command = "($LD -r -b binary -o $out $in)",
+                 description = "Converting rgba16")   
 
 for c_file in c_files:
     if os.path.basename(c_file) in optO2_files:
@@ -120,7 +147,14 @@ for s_file in s_files:
     ninja_file.build("build/" + append_extension(s_file), "s_file", s_file)
 for bin_file in bin_files:
     ninja_file.build("build/" + append_extension(bin_file), "bin_file", bin_file)
-
+    
+for rgba16_file in rgba16_files:
+    ninja_file.build("build/" + append_extension(rgba16_file), "rgba16_build", rgba16_file)
+    
+ #j files are png images converted using image_converter.py
+for j_file in j_files:
+    ninja_file.build("build/" + os.path.splitext(j_file)[0] + ".png.o", "rgba16_convert", j_file)
+       
 ninja_file.build("build/quest64.us.elf", "make_elf ", o_files)
 ninja_file.build("build/quest64.us.z64", "make_z64 ", "build/quest64.us.elf")
 ninja_file.build("build/quest64.us.ok", "make_expected ", "build/quest64.us.z64")
