@@ -269,18 +269,18 @@ build build/assets/ucode_boot.bin.o: bin_file assets/ucode_boot.bin
 build build/assets/ucode_data.bin.o: bin_file assets/ucode_data.bin
 build build/assets/ucode.bin.o: bin_file assets/ucode.bin
 build build/assets/DA99F8.bin.o: bin_file assets/DA99F8.bin
-build build/assets/monsters/MammonMonsters.bin.o: bin_file $
-    assets/monsters/MammonMonsters.bin
-build build/assets/monsters/BlueCaveMonsters.bin.o: bin_file $
-    assets/monsters/BlueCaveMonsters.bin
-build build/assets/monsters/DesertMonsters.bin.o: bin_file $
-    assets/monsters/DesertMonsters.bin
-build build/assets/monsters/HolyPlainsMonsters.bin.o: bin_file $
-    assets/monsters/HolyPlainsMonsters.bin
-build build/assets/monsters/NormoonMonsters.bin.o: bin_file $
-    assets/monsters/NormoonMonsters.bin
-build build/assets/monsters/DondoranMonsters.bin.o: bin_file $
-    assets/monsters/DondoranMonsters.bin
+build build/assets/monsters/Mammon/data.bin.o: bin_file $
+    assets/monsters/Mammon/data.bin
+build build/assets/monsters/BlueCave/data.bin.o: bin_file $
+    assets/monsters/BlueCave/data.bin
+build build/assets/monsters/Desert/data.bin.o: bin_file $
+    assets/monsters/Desert/data.bin
+build build/assets/monsters/Normoon/data.bin.o: bin_file $
+    assets/monsters/Normoon/data.bin
+build build/assets/monsters/HolyPlains/data.bin.o: bin_file $
+    assets/monsters/HolyPlains/data.bin
+build build/assets/monsters/Dondoran/data.bin.o: bin_file $
+    assets/monsters/Dondoran/data.bin
 build build/assets/text/text_palettes.bin.o: bin_file $
     assets/text/text_palettes.bin
 build build/assets/text/font_tbl.bin.o: bin_file assets/text/font_tbl.bin
@@ -340,28 +340,30 @@ build build/assets/inventory/icon_water_jewel.bin.o: bin_file $
     assets/inventory/icon_water_jewel.bin
 build build/assets/inventory/icon_silent_flute.bin.o: bin_file $
     assets/inventory/icon_silent_flute.bin
-build build/assets/bosses/boss_Mammon.bin.o: bin_file $
-    assets/bosses/boss_Mammon.bin
-build build/assets/bosses/boss_Shilf.bin.o: bin_file $
-    assets/bosses/boss_Shilf.bin
-build build/assets/bosses/boss_Zelse.bin.o: bin_file $
-    assets/bosses/boss_Zelse.bin
-build build/assets/bosses/boss_Beigis.bin.o: bin_file $
-    assets/bosses/boss_Beigis.bin
-build build/assets/bosses/boss_Solvaring.bin.o: bin_file $
-    assets/bosses/boss_Solvaring.bin
-build build/assets/bosses/boss_Guilty.bin.o: bin_file $
-    assets/bosses/boss_Guilty.bin
-build build/assets/bosses/boss_Fargo.bin.o: bin_file $
-    assets/bosses/boss_Fargo.bin
+build build/assets/bosses/guilty/data.bin.o: bin_file $
+    assets/bosses/guilty/data.bin
+build build/assets/bosses/guilty/dls/model.bin.o: bin_file $
+    assets/bosses/guilty/dls/model.bin
 build build/assets/bosses/nepty/data.bin.o: bin_file $
     assets/bosses/nepty/data.bin
 build build/assets/bosses/nepty/dls/model.bin.o: bin_file $
     assets/bosses/nepty/dls/model.bin
+build build/assets/bosses/fargo/data.bin.o: bin_file $
+    assets/bosses/fargo/data.bin
+build build/assets/bosses/fargo/dls/model.bin.o: bin_file $
+    assets/bosses/fargo/dls/model.bin
+build build/assets/bosses/beigis/data.bin.o: bin_file $
+    assets/bosses/beigis/data.bin
+build build/assets/bosses/beigis/dls/model.bin.o: bin_file $
+    assets/bosses/beigis/dls/model.bin
+build build/assets/bosses/beigis/textures/unk4.rgba16.bin.o: bin_file $
+    assets/bosses/beigis/textures/unk4.rgba16.bin
 build build/assets/bosses/zelse/data.bin.o: bin_file $
     assets/bosses/zelse/data.bin
 build build/assets/bosses/zelse/dls/model.bin.o: bin_file $
     assets/bosses/zelse/dls/model.bin
+build build/assets/bosses/solvaring/data.bin.o: bin_file $
+    assets/bosses/solvaring/data.bin
 build build/assets/bosses/solvaring/dls/model.bin.o: bin_file $
     assets/bosses/solvaring/dls/model.bin
 build build/assets/bosses/solvaring/textures/unk5.rgba16.bin.o: bin_file $
@@ -370,6 +372,10 @@ build build/assets/bosses/solvaring/textures/unk4.rgba16.bin.o: bin_file $
     assets/bosses/solvaring/textures/unk4.rgba16.bin
 build build/assets/bosses/solvaring/textures/unk6.rgba16.bin.o: bin_file $
     assets/bosses/solvaring/textures/unk6.rgba16.bin
+build build/assets/bosses/mammon/data.bin.o: bin_file $
+    assets/bosses/mammon/data.bin
+build build/assets/bosses/mammon/dls/model.bin.o: bin_file $
+    assets/bosses/mammon/dls/model.bin
 build build/assets/bosses/shilf/data.bin.o: bin_file $
     assets/bosses/shilf/data.bin
 build build/assets/bosses/shilf/dls/model.bin.o: bin_file $
@@ -438,6 +444,26 @@ build build/assets/npcs/actor_Shannon.bin.o: bin_file $
     assets/npcs/actor_Shannon.bin
 build build/assets/npcs/NPC_Msg.bin.o: bin_file assets/npcs/NPC_Msg.bin
 build build/assets/npcs/NPC_Blob.bin.o: bin_file assets/npcs/NPC_Blob.bin
+build build/assets/bosses/guilty/textures/unk6.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk6.rgba16.png
+build build/assets/bosses/guilty/textures/unk9.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk9.rgba16.png
+build build/assets/bosses/guilty/textures/unk3.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk3.rgba16.png
+build build/assets/bosses/guilty/textures/unk7.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk7.rgba16.png
+build build/assets/bosses/guilty/textures/unk8.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk8.rgba16.png
+build build/assets/bosses/guilty/textures/unk5.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk5.rgba16.png
+build build/assets/bosses/guilty/textures/unk4.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk4.rgba16.png
+build build/assets/bosses/guilty/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk2.rgba16.png
+build build/assets/bosses/guilty/textures/grass_cloak.rgba16.png.j: $
+    rgba16_convert assets/bosses/guilty/textures/grass_cloak.rgba16.png
+build build/assets/bosses/guilty/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/guilty/textures/unk1.rgba16.png
 build build/assets/bosses/nepty/textures/unk6.rgba16.png.j: rgba16_convert $
     assets/bosses/nepty/textures/unk6.rgba16.png
 build build/assets/bosses/nepty/textures/unk8.rgba16.png.j: rgba16_convert $
@@ -464,6 +490,54 @@ build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.j: $
     rgba16_convert assets/bosses/nepty/textures/ear_upper.rgba16.png
 build build/assets/bosses/nepty/textures/unk1.rgba16.png.j: rgba16_convert $
     assets/bosses/nepty/textures/unk1.rgba16.png
+build build/assets/bosses/fargo/textures/unk6.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk6.rgba16.png
+build build/assets/bosses/fargo/textures/unk9.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk9.rgba16.png
+build build/assets/bosses/fargo/textures/unk3.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk3.rgba16.png
+build build/assets/bosses/fargo/textures/hair.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/hair.rgba16.png
+build build/assets/bosses/fargo/textures/unk7.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk7.rgba16.png
+build build/assets/bosses/fargo/textures/unk8.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk8.rgba16.png
+build build/assets/bosses/fargo/textures/unk5.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk5.rgba16.png
+build build/assets/bosses/fargo/textures/unk12.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk12.rgba16.png
+build build/assets/bosses/fargo/textures/unk14.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk14.rgba16.png
+build build/assets/bosses/fargo/textures/unk4.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk4.rgba16.png
+build build/assets/bosses/fargo/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk2.rgba16.png
+build build/assets/bosses/fargo/textures/unk13.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk13.rgba16.png
+build build/assets/bosses/fargo/textures/unk11.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk11.rgba16.png
+build build/assets/bosses/fargo/textures/unk10.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk10.rgba16.png
+build build/assets/bosses/fargo/textures/face.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/face.rgba16.png
+build build/assets/bosses/fargo/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/fargo/textures/unk1.rgba16.png
+build build/assets/bosses/beigis/textures/unk6.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk6.rgba16.png
+build build/assets/bosses/beigis/textures/unk9.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk9.rgba16.png
+build build/assets/bosses/beigis/textures/unk3.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk3.rgba16.png
+build build/assets/bosses/beigis/textures/unk7.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk7.rgba16.png
+build build/assets/bosses/beigis/textures/unk8.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk8.rgba16.png
+build build/assets/bosses/beigis/textures/unk5.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk5.rgba16.png
+build build/assets/bosses/beigis/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk2.rgba16.png
+build build/assets/bosses/beigis/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/beigis/textures/unk1.rgba16.png
 build build/assets/bosses/zelse/textures/forearm.rgba16.png.j: $
     rgba16_convert assets/bosses/zelse/textures/forearm.rgba16.png
 build build/assets/bosses/zelse/textures/hair.rgba16.png.j: rgba16_convert $
@@ -472,8 +546,6 @@ build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.j: $
     rgba16_convert assets/bosses/zelse/textures/staff_gem.rgba16.png
 build build/assets/bosses/zelse/textures/boots.rgba16.png.j: rgba16_convert $
     assets/bosses/zelse/textures/boots.rgba16.png
-build build/assets/bosses/zelse/textures/unk2.rgba16.png.j: rgba16_convert $
-    assets/bosses/zelse/textures/unk2.rgba16.png
 build build/assets/bosses/zelse/textures/pants.rgba16.png.j: rgba16_convert $
     assets/bosses/zelse/textures/pants.rgba16.png
 build build/assets/bosses/zelse/textures/face.rgba16.png.j: rgba16_convert $
@@ -484,8 +556,6 @@ build build/assets/bosses/zelse/textures/scarf.rgba16.png.j: rgba16_convert $
     assets/bosses/zelse/textures/scarf.rgba16.png
 build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j: $
     rgba16_convert assets/bosses/zelse/textures/clothes2.rgba16.png
-build build/assets/bosses/zelse/textures/unk1.rgba16.png.j: rgba16_convert $
-    assets/bosses/zelse/textures/unk1.rgba16.png
 build build/assets/bosses/zelse/textures/chest.rgba16.png.j: rgba16_convert $
     assets/bosses/zelse/textures/chest.rgba16.png
 build build/assets/bosses/solvaring/textures/unk3.rgba16.png.j: $
@@ -518,6 +588,30 @@ build build/assets/bosses/solvaring/textures/unk1.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/unk1.rgba16.png
 build build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/chest_armor.rgba16.png
+build build/assets/bosses/mammon/textures/unk6.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk6.rgba16.png
+build build/assets/bosses/mammon/textures/unk9.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk9.rgba16.png
+build build/assets/bosses/mammon/textures/unk3.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk3.rgba16.png
+build build/assets/bosses/mammon/textures/unk7.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk7.rgba16.png
+build build/assets/bosses/mammon/textures/unk8.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk8.rgba16.png
+build build/assets/bosses/mammon/textures/unk5.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk5.rgba16.png
+build build/assets/bosses/mammon/textures/wings.rgba16.png.j: $
+    rgba16_convert assets/bosses/mammon/textures/wings.rgba16.png
+build build/assets/bosses/mammon/textures/unk4.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk4.rgba16.png
+build build/assets/bosses/mammon/textures/unk2.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk2.rgba16.png
+build build/assets/bosses/mammon/textures/unk11.rgba16.png.j: $
+    rgba16_convert assets/bosses/mammon/textures/unk11.rgba16.png
+build build/assets/bosses/mammon/textures/unk10.rgba16.png.j: $
+    rgba16_convert assets/bosses/mammon/textures/unk10.rgba16.png
+build build/assets/bosses/mammon/textures/unk1.rgba16.png.j: rgba16_convert $
+    assets/bosses/mammon/textures/unk1.rgba16.png
 build build/assets/bosses/shilf/textures/sash.rgba16.png.j: rgba16_convert $
     assets/bosses/shilf/textures/sash.rgba16.png
 build build/assets/bosses/shilf/textures/unk3.rgba16.png.j: rgba16_convert $
@@ -538,6 +632,26 @@ build build/assets/bosses/shilf/textures/unk1.rgba16.png.j: rgba16_convert $
     assets/bosses/shilf/textures/unk1.rgba16.png
 build build/assets/bosses/shilf/textures/gold1.rgba16.png.j: rgba16_convert $
     assets/bosses/shilf/textures/gold1.rgba16.png
+build build/assets/bosses/guilty/textures/unk6.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk6.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk9.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk9.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk3.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk3.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk7.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk7.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk8.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk8.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk5.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk5.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk4.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk4.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk2.rgba16.png.j
+build build/assets/bosses/guilty/textures/grass_cloak.rgba16.png.o: $
+    rgba16_build build/assets/bosses/guilty/textures/grass_cloak.rgba16.png.j
+build build/assets/bosses/guilty/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/guilty/textures/unk1.rgba16.png.j
 build build/assets/bosses/nepty/textures/unk6.rgba16.png.o: rgba16_build $
     build/assets/bosses/nepty/textures/unk6.rgba16.png.j
 build build/assets/bosses/nepty/textures/unk8.rgba16.png.o: rgba16_build $
@@ -564,6 +678,54 @@ build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.o: $
     rgba16_build build/assets/bosses/nepty/textures/ear_upper.rgba16.png.j
 build build/assets/bosses/nepty/textures/unk1.rgba16.png.o: rgba16_build $
     build/assets/bosses/nepty/textures/unk1.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk6.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk6.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk9.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk9.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk3.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk3.rgba16.png.j
+build build/assets/bosses/fargo/textures/hair.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/hair.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk7.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk7.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk8.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk8.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk5.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk5.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk12.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk12.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk14.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk14.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk4.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk4.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk2.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk13.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk13.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk11.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk11.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk10.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk10.rgba16.png.j
+build build/assets/bosses/fargo/textures/face.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/face.rgba16.png.j
+build build/assets/bosses/fargo/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/fargo/textures/unk1.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk6.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk6.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk9.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk9.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk3.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk3.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk7.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk7.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk8.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk8.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk5.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk5.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk2.rgba16.png.j
+build build/assets/bosses/beigis/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/beigis/textures/unk1.rgba16.png.j
 build build/assets/bosses/zelse/textures/forearm.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/forearm.rgba16.png.j
 build build/assets/bosses/zelse/textures/hair.rgba16.png.o: rgba16_build $
@@ -572,8 +734,6 @@ build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.o: $
     rgba16_build build/assets/bosses/zelse/textures/staff_gem.rgba16.png.j
 build build/assets/bosses/zelse/textures/boots.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/boots.rgba16.png.j
-build build/assets/bosses/zelse/textures/unk2.rgba16.png.o: rgba16_build $
-    build/assets/bosses/zelse/textures/unk2.rgba16.png.j
 build build/assets/bosses/zelse/textures/pants.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/pants.rgba16.png.j
 build build/assets/bosses/zelse/textures/face.rgba16.png.o: rgba16_build $
@@ -584,8 +744,6 @@ build build/assets/bosses/zelse/textures/scarf.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/scarf.rgba16.png.j
 build build/assets/bosses/zelse/textures/clothes2.rgba16.png.o: $
     rgba16_build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j
-build build/assets/bosses/zelse/textures/unk1.rgba16.png.o: rgba16_build $
-    build/assets/bosses/zelse/textures/unk1.rgba16.png.j
 build build/assets/bosses/zelse/textures/chest.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/chest.rgba16.png.j
 build build/assets/bosses/solvaring/textures/unk3.rgba16.png.o: $
@@ -621,6 +779,30 @@ build build/assets/bosses/solvaring/textures/unk1.rgba16.png.o: $
 build build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.o: $
     rgba16_build $
     build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk6.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk6.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk9.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk9.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk3.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk3.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk7.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk7.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk8.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk8.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk5.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk5.rgba16.png.j
+build build/assets/bosses/mammon/textures/wings.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/wings.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk4.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk4.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk2.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk2.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk11.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk11.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk10.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk10.rgba16.png.j
+build build/assets/bosses/mammon/textures/unk1.rgba16.png.o: rgba16_build $
+    build/assets/bosses/mammon/textures/unk1.rgba16.png.j
 build build/assets/bosses/shilf/textures/sash.rgba16.png.o: rgba16_build $
     build/assets/bosses/shilf/textures/sash.rgba16.png.j
 build build/assets/bosses/shilf/textures/unk3.rgba16.png.o: rgba16_build $
@@ -726,12 +908,12 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/737D0.bin.o build/assets/71AF0.bin.o $
     build/assets/ucode_boot.bin.o build/assets/ucode_data.bin.o $
     build/assets/ucode.bin.o build/assets/DA99F8.bin.o $
-    build/assets/monsters/MammonMonsters.bin.o $
-    build/assets/monsters/BlueCaveMonsters.bin.o $
-    build/assets/monsters/DesertMonsters.bin.o $
-    build/assets/monsters/HolyPlainsMonsters.bin.o $
-    build/assets/monsters/NormoonMonsters.bin.o $
-    build/assets/monsters/DondoranMonsters.bin.o $
+    build/assets/monsters/Mammon/data.bin.o $
+    build/assets/monsters/BlueCave/data.bin.o $
+    build/assets/monsters/Desert/data.bin.o $
+    build/assets/monsters/Normoon/data.bin.o $
+    build/assets/monsters/HolyPlains/data.bin.o $
+    build/assets/monsters/Dondoran/data.bin.o $
     build/assets/text/text_palettes.bin.o build/assets/text/font_tbl.bin.o $
     build/assets/inventory/icon_wind_jade.bin.o $
     build/assets/inventory/icon_green_wings.bin.o $
@@ -761,21 +943,24 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/inventory/icon_white_wings.bin.o $
     build/assets/inventory/icon_water_jewel.bin.o $
     build/assets/inventory/icon_silent_flute.bin.o $
-    build/assets/bosses/boss_Mammon.bin.o $
-    build/assets/bosses/boss_Shilf.bin.o $
-    build/assets/bosses/boss_Zelse.bin.o $
-    build/assets/bosses/boss_Beigis.bin.o $
-    build/assets/bosses/boss_Solvaring.bin.o $
-    build/assets/bosses/boss_Guilty.bin.o $
-    build/assets/bosses/boss_Fargo.bin.o $
+    build/assets/bosses/guilty/data.bin.o $
+    build/assets/bosses/guilty/dls/model.bin.o $
     build/assets/bosses/nepty/data.bin.o $
     build/assets/bosses/nepty/dls/model.bin.o $
+    build/assets/bosses/fargo/data.bin.o $
+    build/assets/bosses/fargo/dls/model.bin.o $
+    build/assets/bosses/beigis/data.bin.o $
+    build/assets/bosses/beigis/dls/model.bin.o $
+    build/assets/bosses/beigis/textures/unk4.rgba16.bin.o $
     build/assets/bosses/zelse/data.bin.o $
     build/assets/bosses/zelse/dls/model.bin.o $
+    build/assets/bosses/solvaring/data.bin.o $
     build/assets/bosses/solvaring/dls/model.bin.o $
     build/assets/bosses/solvaring/textures/unk5.rgba16.bin.o $
     build/assets/bosses/solvaring/textures/unk4.rgba16.bin.o $
     build/assets/bosses/solvaring/textures/unk6.rgba16.bin.o $
+    build/assets/bosses/mammon/data.bin.o $
+    build/assets/bosses/mammon/dls/model.bin.o $
     build/assets/bosses/shilf/data.bin.o $
     build/assets/bosses/shilf/dls/model.bin.o $
     build/assets/maps/houses_7.bin.o build/assets/maps/ship.bin.o $
@@ -807,6 +992,16 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/npcs/npc_held_objects.bin.o $
     build/assets/npcs/actor_Shannon.bin.o build/assets/npcs/NPC_Msg.bin.o $
     build/assets/npcs/NPC_Blob.bin.o $
+    build/assets/bosses/guilty/textures/unk6.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk9.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk3.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk7.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk8.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk5.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk4.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk2.rgba16.png.o $
+    build/assets/bosses/guilty/textures/grass_cloak.rgba16.png.o $
+    build/assets/bosses/guilty/textures/unk1.rgba16.png.o $
     build/assets/bosses/nepty/textures/unk6.rgba16.png.o $
     build/assets/bosses/nepty/textures/unk8.rgba16.png.o $
     build/assets/bosses/nepty/textures/cape.rgba16.png.o $
@@ -820,17 +1015,39 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/bosses/nepty/textures/face.rgba16.png.o $
     build/assets/bosses/nepty/textures/ear_upper.rgba16.png.o $
     build/assets/bosses/nepty/textures/unk1.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk6.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk9.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk3.rgba16.png.o $
+    build/assets/bosses/fargo/textures/hair.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk7.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk8.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk5.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk12.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk14.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk4.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk2.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk13.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk11.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk10.rgba16.png.o $
+    build/assets/bosses/fargo/textures/face.rgba16.png.o $
+    build/assets/bosses/fargo/textures/unk1.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk6.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk9.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk3.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk7.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk8.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk5.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk2.rgba16.png.o $
+    build/assets/bosses/beigis/textures/unk1.rgba16.png.o $
     build/assets/bosses/zelse/textures/forearm.rgba16.png.o $
     build/assets/bosses/zelse/textures/hair.rgba16.png.o $
     build/assets/bosses/zelse/textures/staff_gem.rgba16.png.o $
     build/assets/bosses/zelse/textures/boots.rgba16.png.o $
-    build/assets/bosses/zelse/textures/unk2.rgba16.png.o $
     build/assets/bosses/zelse/textures/pants.rgba16.png.o $
     build/assets/bosses/zelse/textures/face.rgba16.png.o $
     build/assets/bosses/zelse/textures/clothes1.rgba16.png.o $
     build/assets/bosses/zelse/textures/scarf.rgba16.png.o $
     build/assets/bosses/zelse/textures/clothes2.rgba16.png.o $
-    build/assets/bosses/zelse/textures/unk1.rgba16.png.o $
     build/assets/bosses/zelse/textures/chest.rgba16.png.o $
     build/assets/bosses/solvaring/textures/unk3.rgba16.png.o $
     build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.o $
@@ -847,6 +1064,18 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/bosses/solvaring/textures/pelt_eye.rgba16.png.o $
     build/assets/bosses/solvaring/textures/unk1.rgba16.png.o $
     build/assets/bosses/solvaring/textures/chest_armor.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk6.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk9.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk3.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk7.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk8.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk5.rgba16.png.o $
+    build/assets/bosses/mammon/textures/wings.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk4.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk2.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk11.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk10.rgba16.png.o $
+    build/assets/bosses/mammon/textures/unk1.rgba16.png.o $
     build/assets/bosses/shilf/textures/sash.rgba16.png.o $
     build/assets/bosses/shilf/textures/unk3.rgba16.png.o $
     build/assets/bosses/shilf/textures/hair.rgba16.png.o $
