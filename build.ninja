@@ -54,6 +54,7 @@ rule rgba16_build
   command = ($LD -r -b binary -o $out $in)
   description = Converting rgba16
 build build/src/25290.c.o: main_cc src/25290.c
+build build/src/hud.c.o: main_cc src/hud.c
 build build/src/camera.c.o: main_cc src/camera.c
 build build/src/328F0.c.o: main_cc src/328F0.c
 build build/src/screen_dim.c.o: main_cc src/screen_dim.c
@@ -118,7 +119,39 @@ build build/src/31F00.c.o: main_cc src/31F00.c
 build build/src/pfssearchfile.c.o: O1_cc src/pfssearchfile.c
 build build/src/1EDF0.c.o: main_cc src/1EDF0.c
 build build/src/sptaskyielded.c.o: O1_cc src/sptaskyielded.c
+build build/src/ovl_overlay1/DA68F0.c.o: main_cc src/ovl_overlay1/DA68F0.c
+build build/src/os/vimgr.c.o: O1_cc src/os/vimgr.c
+build build/src/os/contramread.c.o: main_cc src/os/contramread.c
+build build/src/os/startthread.c.o: O1_cc src/os/startthread.c
+build build/src/os/csplayer.c.o: main_cc src/os/csplayer.c
+build build/src/os/pimgr.c.o: main_cc src/os/pimgr.c
+build build/src/os/aigetlen.c.o: O1_cc src/os/aigetlen.c
+build build/src/os/contpfs.c.o: O1_cc src/os/contpfs.c
+build build/src/os/syncprintf.c.o: main_cc src/os/syncprintf.c
 build build/src/os/createthread.c.o: O1_cc src/os/createthread.c
+build build/src/os/controller.c.o: O1_cc src/os/controller.c
+build build/src/os/viswapbuf.c.o: O1_cc src/os/viswapbuf.c
+build build/src/os/sptask.c.o: O1_cc src/os/sptask.c
+build build/src/os/pfsfilestate.c.o: O1_cc src/os/pfsfilestate.c
+build build/src/os/pfsgetstatus.c.o: O1_cc src/os/pfsgetstatus.c
+build build/src/os/pfsallocatefile.c.o: O1_cc src/os/pfsallocatefile.c
+build build/src/os/pfsinitpak.c.o: main_cc src/os/pfsinitpak.c
+build build/src/os/leodiskinit.c.o: O1_cc src/os/leodiskinit.c
+build build/src/os/pfsreadwritefile.c.o: O1_cc src/os/pfsreadwritefile.c
+build build/src/os/initialize.c.o: O1_cc src/os/initialize.c
+build build/src/os/pfsisplug.c.o: O1_cc src/os/pfsisplug.c
+build build/src/os/createmesgqueue.c.o: O1_cc src/os/createmesgqueue.c
+build build/src/os/pfschecker.c.o: O1_cc src/os/pfschecker.c
+build build/src/os/seqpgetstate.c.o: O2_cc src/os/seqpgetstate.c
+build build/src/os/sptaskyield.c.o: main_cc src/os/sptaskyield.c
+build build/src/os/pfsnumfiles.c.o: O1_cc src/os/pfsnumfiles.c
+build build/src/os/visetevent.c.o: O1_cc src/os/visetevent.c
+build build/src/os/vigetcurrframebuf.c.o: O1_cc src/os/vigetcurrframebuf.c
+build build/src/os/viblack.c.o: O1_cc src/os/viblack.c
+build build/src/os/pfsfreeblocks.c.o: O1_cc src/os/pfsfreeblocks.c
+build build/src/os/pfsdeletefile.c.o: O1_cc src/os/pfsdeletefile.c
+build build/src/os/pfssearchfile.c.o: O1_cc src/os/pfssearchfile.c
+build build/src/os/sptaskyielded.c.o: O1_cc src/os/sptaskyielded.c
 build build/asm/pirawdma.s.o: s_file asm/pirawdma.s
 build build/asm/contreaddata.s.o: s_file asm/contreaddata.s
 build build/asm/cartrominit.s.o: s_file asm/cartrominit.s
@@ -251,6 +284,10 @@ build build/asm/sndplayer.s.o: s_file asm/sndplayer.s
 build build/asm/sndpsetpitch.s.o: s_file asm/sndpsetpitch.s
 build build/asm/seqpplay.s.o: s_file asm/seqpplay.s
 build build/asm/epirawwrite.s.o: s_file asm/epirawwrite.s
+build build/asm/data/ovl_overlay1/DC15C0.rodata.s.o: s_file $
+    asm/data/ovl_overlay1/DC15C0.rodata.s
+build build/asm/data/ovl_overlay1/DC15E0.rodata.s.o: s_file $
+    asm/data/ovl_overlay1/DC15E0.rodata.s
 build build/assets/boot.bin.o: bin_file assets/boot.bin
 build build/assets/725D0.bin.o: bin_file assets/725D0.bin
 build build/assets/Instrument_ctl.bin.o: bin_file assets/Instrument_ctl.bin
@@ -269,6 +306,7 @@ build build/assets/ucode_boot.bin.o: bin_file assets/ucode_boot.bin
 build build/assets/ucode_data.bin.o: bin_file assets/ucode_data.bin
 build build/assets/ucode.bin.o: bin_file assets/ucode.bin
 build build/assets/DA99F8.bin.o: bin_file assets/DA99F8.bin
+build build/assets/overlay2.bin.o: bin_file assets/overlay2.bin
 build build/assets/monsters/Mammon/data.bin.o: bin_file $
     assets/monsters/Mammon/data.bin
 build build/assets/monsters/BlueCave/data.bin.o: bin_file $
@@ -279,6 +317,12 @@ build build/assets/monsters/Normoon/data.bin.o: bin_file $
     assets/monsters/Normoon/data.bin
 build build/assets/monsters/HolyPlains/data.bin.o: bin_file $
     assets/monsters/HolyPlains/data.bin
+build build/assets/monsters/HolyPlains/endData.bin.o: bin_file $
+    assets/monsters/HolyPlains/endData.bin
+build build/assets/monsters/HolyPlains/dls/models.f3dex.bin.o: bin_file $
+    assets/monsters/HolyPlains/dls/models.f3dex.bin
+build build/assets/monsters/HolyPlains/textures/textures.rgba16.bin.o: $
+    bin_file assets/monsters/HolyPlains/textures/textures.rgba16.bin
 build build/assets/monsters/Dondoran/data.bin.o: bin_file $
     assets/monsters/Dondoran/data.bin
 build build/assets/text/text_palettes.bin.o: bin_file $
@@ -340,14 +384,48 @@ build build/assets/inventory/icon_water_jewel.bin.o: bin_file $
     assets/inventory/icon_water_jewel.bin
 build build/assets/inventory/icon_silent_flute.bin.o: bin_file $
     assets/inventory/icon_silent_flute.bin
+build build/assets/ovl_overlay1/DA9A20.bin.o: bin_file $
+    assets/ovl_overlay1/DA9A20.bin
 build build/assets/bosses/guilty/data.bin.o: bin_file $
     assets/bosses/guilty/data.bin
 build build/assets/bosses/guilty/dls/model.bin.o: bin_file $
     assets/bosses/guilty/dls/model.bin
 build build/assets/bosses/nepty/data.bin.o: bin_file $
     assets/bosses/nepty/data.bin
+build build/assets/bosses/nepty/dls/left_foot.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/left_foot.f3dex.bin
+build build/assets/bosses/nepty/dls/right_upper_leg.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/right_upper_leg.f3dex.bin
+build build/assets/bosses/nepty/dls/neck.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/neck.f3dex.bin
+build build/assets/bosses/nepty/dls/right_shoulder.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/right_shoulder.f3dex.bin
+build build/assets/bosses/nepty/dls/head.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/head.f3dex.bin
 build build/assets/bosses/nepty/dls/model.bin.o: bin_file $
     assets/bosses/nepty/dls/model.bin
+build build/assets/bosses/nepty/dls/right_foot.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/right_foot.f3dex.bin
+build build/assets/bosses/nepty/dls/left_shoulder.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/left_shoulder.f3dex.bin
+build build/assets/bosses/nepty/dls/bust.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/bust.f3dex.bin
+build build/assets/bosses/nepty/dls/left_lower_leg.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/left_lower_leg.f3dex.bin
+build build/assets/bosses/nepty/dls/right_forearm_and_hand.fedex.bin.o: $
+    bin_file assets/bosses/nepty/dls/right_forearm_and_hand.fedex.bin
+build build/assets/bosses/nepty/dls/left_upper_leg.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/left_upper_leg.f3dex.bin
+build build/assets/bosses/nepty/dls/right_upper_arm.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/right_upper_arm.f3dex.bin
+build build/assets/bosses/nepty/dls/left_forearm_and_hand.f3dex.bin.o: $
+    bin_file assets/bosses/nepty/dls/left_forearm_and_hand.f3dex.bin
+build build/assets/bosses/nepty/dls/right_lower_leg.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/right_lower_leg.f3dex.bin
+build build/assets/bosses/nepty/dls/left_upper_arm.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/left_upper_arm.f3dex.bin
+build build/assets/bosses/nepty/dls/torso_and_cape.f3dex.bin.o: bin_file $
+    assets/bosses/nepty/dls/torso_and_cape.f3dex.bin
 build build/assets/bosses/fargo/data.bin.o: bin_file $
     assets/bosses/fargo/data.bin
 build build/assets/bosses/fargo/dls/model.bin.o: bin_file $
@@ -558,6 +636,8 @@ build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j: $
     rgba16_convert assets/bosses/zelse/textures/clothes2.rgba16.png
 build build/assets/bosses/zelse/textures/chest.rgba16.png.j: rgba16_convert $
     assets/bosses/zelse/textures/chest.rgba16.png
+build build/assets/bosses/solvaring/textures/unk6.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk6.rgba16.png
 build build/assets/bosses/solvaring/textures/unk3.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/unk3.rgba16.png
 build build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.j: $
@@ -566,6 +646,10 @@ build build/assets/bosses/solvaring/textures/cape.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/cape.rgba16.png
 build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/pelt_ear.rgba16.png
+build build/assets/bosses/solvaring/textures/unk5.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk5.rgba16.png
+build build/assets/bosses/solvaring/textures/unk4.rgba16.png.j: $
+    rgba16_convert assets/bosses/solvaring/textures/unk4.rgba16.png
 build build/assets/bosses/solvaring/textures/hand.rgba16.png.j: $
     rgba16_convert assets/bosses/solvaring/textures/hand.rgba16.png
 build build/assets/bosses/solvaring/textures/unk2.rgba16.png.j: $
@@ -746,6 +830,8 @@ build build/assets/bosses/zelse/textures/clothes2.rgba16.png.o: $
     rgba16_build build/assets/bosses/zelse/textures/clothes2.rgba16.png.j
 build build/assets/bosses/zelse/textures/chest.rgba16.png.o: rgba16_build $
     build/assets/bosses/zelse/textures/chest.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk6.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk6.rgba16.png.j
 build build/assets/bosses/solvaring/textures/unk3.rgba16.png.o: $
     rgba16_build build/assets/bosses/solvaring/textures/unk3.rgba16.png.j
 build build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.o: $
@@ -755,6 +841,10 @@ build build/assets/bosses/solvaring/textures/cape.rgba16.png.o: $
     rgba16_build build/assets/bosses/solvaring/textures/cape.rgba16.png.j
 build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.o: $
     rgba16_build build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk5.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk5.rgba16.png.j
+build build/assets/bosses/solvaring/textures/unk4.rgba16.png.o: $
+    rgba16_build build/assets/bosses/solvaring/textures/unk4.rgba16.png.j
 build build/assets/bosses/solvaring/textures/hand.rgba16.png.o: $
     rgba16_build build/assets/bosses/solvaring/textures/hand.rgba16.png.j
 build build/assets/bosses/solvaring/textures/unk2.rgba16.png.o: $
@@ -823,7 +913,7 @@ build build/assets/bosses/shilf/textures/unk1.rgba16.png.o: rgba16_build $
     build/assets/bosses/shilf/textures/unk1.rgba16.png.j
 build build/assets/bosses/shilf/textures/gold1.rgba16.png.o: rgba16_build $
     build/assets/bosses/shilf/textures/gold1.rgba16.png.j
-build build/quest64.us.elf: make_elf  build/src/25290.c.o $
+build build/quest64.us.elf: make_elf  build/src/25290.c.o build/src/hud.c.o $
     build/src/camera.c.o build/src/328F0.c.o build/src/screen_dim.c.o $
     build/src/vimgr.c.o build/src/contramread.c.o build/src/191F0.c.o $
     build/src/startthread.c.o build/src/2F1E0.c.o build/src/271F0.c.o $
@@ -847,7 +937,23 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/src/viblack.c.o build/src/pfsfreeblocks.c.o $
     build/src/pfsdeletefile.c.o build/src/31F00.c.o $
     build/src/pfssearchfile.c.o build/src/1EDF0.c.o $
-    build/src/sptaskyielded.c.o build/src/os/createthread.c.o $
+    build/src/sptaskyielded.c.o build/src/ovl_overlay1/DA68F0.c.o $
+    build/src/os/vimgr.c.o build/src/os/contramread.c.o $
+    build/src/os/startthread.c.o build/src/os/csplayer.c.o $
+    build/src/os/pimgr.c.o build/src/os/aigetlen.c.o $
+    build/src/os/contpfs.c.o build/src/os/syncprintf.c.o $
+    build/src/os/createthread.c.o build/src/os/controller.c.o $
+    build/src/os/viswapbuf.c.o build/src/os/sptask.c.o $
+    build/src/os/pfsfilestate.c.o build/src/os/pfsgetstatus.c.o $
+    build/src/os/pfsallocatefile.c.o build/src/os/pfsinitpak.c.o $
+    build/src/os/leodiskinit.c.o build/src/os/pfsreadwritefile.c.o $
+    build/src/os/initialize.c.o build/src/os/pfsisplug.c.o $
+    build/src/os/createmesgqueue.c.o build/src/os/pfschecker.c.o $
+    build/src/os/seqpgetstate.c.o build/src/os/sptaskyield.c.o $
+    build/src/os/pfsnumfiles.c.o build/src/os/visetevent.c.o $
+    build/src/os/vigetcurrframebuf.c.o build/src/os/viblack.c.o $
+    build/src/os/pfsfreeblocks.c.o build/src/os/pfsdeletefile.c.o $
+    build/src/os/pfssearchfile.c.o build/src/os/sptaskyielded.c.o $
     build/asm/pirawdma.s.o build/asm/contreaddata.s.o $
     build/asm/cartrominit.s.o build/asm/sirawdma.s.o $
     build/asm/aisetnextbuf.s.o build/asm/heapalloc.s.o $
@@ -899,20 +1005,25 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/asm/virtualtophysical.s.o build/asm/sprintf.s.o $
     build/asm/sndplayer.s.o build/asm/sndpsetpitch.s.o $
     build/asm/seqpplay.s.o build/asm/epirawwrite.s.o $
-    build/assets/boot.bin.o build/assets/725D0.bin.o $
-    build/assets/Instrument_ctl.bin.o build/assets/SE_tbl.bin.o $
-    build/assets/71DD0.bin.o build/assets/SE_ctl.bin.o $
-    build/assets/Instrument_tbl.bin.o build/assets/72680.bin.o $
-    build/assets/4BFF0.bin.o build/assets/73A90.bin.o $
-    build/assets/trailer.bin.o build/assets/D4B3C0.bin.o $
-    build/assets/737D0.bin.o build/assets/71AF0.bin.o $
-    build/assets/ucode_boot.bin.o build/assets/ucode_data.bin.o $
-    build/assets/ucode.bin.o build/assets/DA99F8.bin.o $
+    build/asm/data/ovl_overlay1/DC15C0.rodata.s.o $
+    build/asm/data/ovl_overlay1/DC15E0.rodata.s.o build/assets/boot.bin.o $
+    build/assets/725D0.bin.o build/assets/Instrument_ctl.bin.o $
+    build/assets/SE_tbl.bin.o build/assets/71DD0.bin.o $
+    build/assets/SE_ctl.bin.o build/assets/Instrument_tbl.bin.o $
+    build/assets/72680.bin.o build/assets/4BFF0.bin.o $
+    build/assets/73A90.bin.o build/assets/trailer.bin.o $
+    build/assets/D4B3C0.bin.o build/assets/737D0.bin.o $
+    build/assets/71AF0.bin.o build/assets/ucode_boot.bin.o $
+    build/assets/ucode_data.bin.o build/assets/ucode.bin.o $
+    build/assets/DA99F8.bin.o build/assets/overlay2.bin.o $
     build/assets/monsters/Mammon/data.bin.o $
     build/assets/monsters/BlueCave/data.bin.o $
     build/assets/monsters/Desert/data.bin.o $
     build/assets/monsters/Normoon/data.bin.o $
     build/assets/monsters/HolyPlains/data.bin.o $
+    build/assets/monsters/HolyPlains/endData.bin.o $
+    build/assets/monsters/HolyPlains/dls/models.f3dex.bin.o $
+    build/assets/monsters/HolyPlains/textures/textures.rgba16.bin.o $
     build/assets/monsters/Dondoran/data.bin.o $
     build/assets/text/text_palettes.bin.o build/assets/text/font_tbl.bin.o $
     build/assets/inventory/icon_wind_jade.bin.o $
@@ -943,10 +1054,27 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/inventory/icon_white_wings.bin.o $
     build/assets/inventory/icon_water_jewel.bin.o $
     build/assets/inventory/icon_silent_flute.bin.o $
+    build/assets/ovl_overlay1/DA9A20.bin.o $
     build/assets/bosses/guilty/data.bin.o $
     build/assets/bosses/guilty/dls/model.bin.o $
     build/assets/bosses/nepty/data.bin.o $
+    build/assets/bosses/nepty/dls/left_foot.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/right_upper_leg.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/neck.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/right_shoulder.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/head.f3dex.bin.o $
     build/assets/bosses/nepty/dls/model.bin.o $
+    build/assets/bosses/nepty/dls/right_foot.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/left_shoulder.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/bust.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/left_lower_leg.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/right_forearm_and_hand.fedex.bin.o $
+    build/assets/bosses/nepty/dls/left_upper_leg.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/right_upper_arm.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/left_forearm_and_hand.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/right_lower_leg.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/left_upper_arm.f3dex.bin.o $
+    build/assets/bosses/nepty/dls/torso_and_cape.f3dex.bin.o $
     build/assets/bosses/fargo/data.bin.o $
     build/assets/bosses/fargo/dls/model.bin.o $
     build/assets/bosses/beigis/data.bin.o $
@@ -1049,10 +1177,13 @@ build build/quest64.us.elf: make_elf  build/src/25290.c.o $
     build/assets/bosses/zelse/textures/scarf.rgba16.png.o $
     build/assets/bosses/zelse/textures/clothes2.rgba16.png.o $
     build/assets/bosses/zelse/textures/chest.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk6.rgba16.png.o $
     build/assets/bosses/solvaring/textures/unk3.rgba16.png.o $
     build/assets/bosses/solvaring/textures/pants_cloth.rgba16.png.o $
     build/assets/bosses/solvaring/textures/cape.rgba16.png.o $
     build/assets/bosses/solvaring/textures/pelt_ear.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk5.rgba16.png.o $
+    build/assets/bosses/solvaring/textures/unk4.rgba16.png.o $
     build/assets/bosses/solvaring/textures/hand.rgba16.png.o $
     build/assets/bosses/solvaring/textures/unk2.rgba16.png.o $
     build/assets/bosses/solvaring/textures/arm_shield.rgba16.png.o $
