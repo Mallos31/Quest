@@ -8,6 +8,10 @@ extern s32 D_8011AD38;
 extern s32 D_8011AD3C;
 extern s32 D_8011AD40;
 extern s32 D_8011AD44;
+extern u8 D_80103138_DA9A28[];
+
+
+void func_80100BA0_DA7490(u32 arg0);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/ovl_overlay1/DA68F0/func_80100000_DA68F0.s")
 void func_80100000_DA68F0(void) {
@@ -27,7 +31,16 @@ void func_80100000_DA68F0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl_overlay1/DA68F0/func_801006D8_DA6FC8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl_overlay1/DA68F0/func_80100B14_DA7404.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/ovl_overlay1/DA68F0/func_80100B14_DA7404.s")
+void func_80100B14_DA7404(void) {
+    gSPDisplayList(gMasterGfxPos++, D_80103138_DA9A28);
+    gDPSetEnvColor(gMasterGfxPos++, 0x00, 0x00, 0x00, 0xFF);
+    func_80100BA0_DA7490(D_8011AD44);
+    D_8011AD34--;
+    if (D_8011AD34 == 0) {
+        D_8011AD44 = 0xF;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl_overlay1/DA68F0/func_80100BA0_DA7490.s")
 

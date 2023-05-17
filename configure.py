@@ -139,6 +139,7 @@ ninja_file.rule('rgba16_convert',
 ninja_file.rule('rgba16_build',
                  command = "($LD -r -b binary -o $out $in)",
                  description = "Converting rgba16")   
+print (c_files)
 
 for c_file in c_files:
     if os.path.basename(c_file) in optO2_files:
