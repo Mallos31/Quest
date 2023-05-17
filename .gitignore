@@ -15,4 +15,4 @@ asm/
 *.old
 ctx.c
 .ninja_log
-.build.ninja
+build.ninja
