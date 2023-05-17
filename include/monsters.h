@@ -73,7 +73,7 @@ typedef struct {
 
 typedef struct {
     /* 0x0   */ u16 actionID;
-    /* 0x2   */ u16 actionTimer;
+    /* 0x2   */ s16 actionTimer;
     /* 0x4   */ u16 unk4;
     /* 0x6   */ u16 unk6;
     /* 0x8   */ u16 unk8;

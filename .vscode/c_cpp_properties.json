@@ -16,7 +16,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "${workspaceFolder}/include/**",
-                    "${workspaceFolder}/src/**",
+                    "${workspaceFolder}/src/**"
                 ]
             },
             "includePath": [
@@ -30,7 +30,8 @@
                 "_MIPS_SZLONG=32"
             ],
             "cStandard": "gnu89",
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "${default}",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ]
 }
