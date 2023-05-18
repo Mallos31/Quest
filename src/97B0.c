@@ -33,6 +33,10 @@ typedef struct {
     f32 unk10;
 }unka3f4s;
 
+
+extern s32 D_8007BA68;
+extern s32 D_8007BA6C;
+extern unk232f4s D_8007D0D0;
 extern void** D_8007D0A8;
 extern void* D_8007D0AC;
 extern unkMonsterData* D_8007D0BC;
@@ -121,6 +125,29 @@ void func_8000932C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009588.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009818.s")
+/*function matches but does not build. Needs investigation*/
+#ifdef NON_MATCHING
+void func_80009818(BrianData2* arg0, EnemyAction* arg1, s32 arg2) {
+    func_8000A7D8(arg0, &D_8007D0D0);
+    func_8000A508(0, D_8007D0D0.unk0, D_8007D0D0.unk4, (unk202e4s* ) arg0, arg1);
+    arg1->actionTimer--;
+    if ((s16) arg1->actionTimer == 0) {
+        if (arg1->currHP == 0) {
+            func_800202E4((unk202e4s* ) arg0);
+            func_8000B170(arg0);
+            arg0->unk50 = -1;
+            arg0->unk60 &= 0xFFFE;
+            D_8007C990 -= 1;
+            D_8007BA68 += arg0->brianData1->exp;
+            D_8007BA6C += arg0->brianData1->unk14;
+            func_800268D4(0, 0xA, 0xFF);
+            return;
+        }
+        arg1->actionID = 0;
+        arg0->unk60 &= 0xFFFC;
+    }
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009934.s")
 

@@ -2,7 +2,7 @@
 #include <rcp.h>
 #include <bstring.h>
 
-#pragma GLOBAL_ASM("asm/nonmatchings/leodiskinit/func_8003D650.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/leodiskinit/func_8003D650.s")
 /*
 OSPiHandle LeoDiskHandle;
 OSPiHandle *__osDiskHandle;

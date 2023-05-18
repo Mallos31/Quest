@@ -155,7 +155,7 @@ void func_800210FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
 void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3);
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001E1F0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E1F0.s")
 void func_8001E1F0(void)
 {
   D_8008C638 = 0;
@@ -167,9 +167,9 @@ void func_8001E1F0(void)
   D_8008C65C = 0xF0; //HUD Width
   D_8008C630 = 0;
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001E25C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E25C.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001E7FC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E7FC.s")
 void func_8001E7FC(BrianData2 *arg0)
 {
   s32 temp_lo;
@@ -198,7 +198,7 @@ void func_8001E7FC(BrianData2 *arg0)
   func_80020F8C(0x2F, 0, 8, 0xA, 0x70, 0x1D, 0x400, 0x400);
   func_80020F8C(0x2F, 0x1B, 8, 0xA, 0x70, 0x1D, 0x400, 0x400);
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001EA84.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001EA84.s")
 void func_8001EA84(Mtx *arg0) {
     MtxF sp38;
 
@@ -220,7 +220,7 @@ void func_8001EA84(Mtx *arg0) {
     //Pointer to texture, X, Y, NumPixelsX, NumPixelsY, SheetLocationX, unknown, resolutionX, resolutionY
     func_800210FC((s32) &gTex_HUD_and_Menu, 0xD, 0xA, 0xB, 0xE, 0x93, 0, 0x400, 0x400);
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001EBDC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001EBDC.s")
 void func_8001EBDC(unk1ebdcs* arg0) {
     s32 var_s0;
     s32 i;
@@ -239,9 +239,9 @@ void func_8001EBDC(unk1ebdcs* arg0) {
         var_s0 += 0x16;
     }
 }
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001ED5C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001ED5C.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F3DC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001F3DC.s")
 void func_8001F3DC(unk1f3dcTEST* arg0) {
     s32 var_t9;
     unk1f3dcTEST2* temp_v0_14;
@@ -299,7 +299,7 @@ void func_8001F3DC(unk1f3dcTEST* arg0) {
     }
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F818.s") //Matched by rainchus
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001F818.s") //Matched by rainchus
 void func_8001F818(void) {
     s32 sp34; //probably a struct of 8 size to align stack
     Vec3f* temp_v0;
@@ -315,7 +315,7 @@ void func_8001F818(void) {
     D_8008C644 = 0xF0;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F900.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001F900.s")
 void func_8001F900(void) {
     s32 sp34;
     s32 sp30;
@@ -325,7 +325,7 @@ void func_8001F900(void) {
         func_80020F8C(sp34, sp30 - 0x1E, 0x18, 0x1E, 0, 0, 0x400, 0x400);
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001F9B0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001F9B0.s")
 //displays exclamation mark above brian's head
 
 void func_8001F9B0(void) {
@@ -338,7 +338,7 @@ void func_8001F9B0(void) {
         func_80020F8C(sp34, sp30 - 0x1E, 0x10, 0x1E, 0, 0, 0x400, 0x400);
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FA60.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FA60.s")
 
 /*This is set as non-matching until the enemy data structs are fixed*/
 void func_8001FA60(u16 monsterNum) {
@@ -370,7 +370,7 @@ void func_8001FA60(u16 monsterNum) {
 }
 
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FB94.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FB94.s")
 void func_8001FB94(void) {
 
     s32 sp5C;
@@ -399,11 +399,11 @@ void func_8001FB94(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FCF8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FCF8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_8001FEEC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FEEC.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800202E4.s")//Matched by EllipticEllipsis and StuckPixel
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_800202E4.s")//Matched by EllipticEllipsis and StuckPixel
 void func_800202E4(unk202e4s *arg0)
 {
     u32 i;
@@ -443,7 +443,7 @@ void func_800203C0(void) {
 void func_800203C8(void) {
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800203D0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_800203D0.s")
 void func_800203D0(void)
 {
   unk20e2cs *new_var;
@@ -487,7 +487,7 @@ void func_800203D0(void)
     }
   }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Init_MISS_Icon.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/Init_MISS_Icon.s")
 void Init_MISS_Icon(void) {
     MissIcon* missIconData;
     s32 var_v1;
@@ -501,7 +501,7 @@ void Init_MISS_Icon(void) {
         var_v1--;
     }
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Setup_MISS_Icon.s") 
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/Setup_MISS_Icon.s") 
 /*may be a different struct for the argument since it also applies to the MISS above Brian, but this works for now*/
 void Setup_MISS_Icon(MonsterBattleData* arg0) {
     MonsterBaseData* monsterData;
@@ -530,7 +530,7 @@ void Setup_MISS_Icon(MonsterBattleData* arg0) {
     missIconData->height = 0xE;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/Draw_MISS_Icon.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/Draw_MISS_Icon.s")
 void Draw_MISS_Icon(void)
 {
     
@@ -576,7 +576,7 @@ void Draw_MISS_Icon(void)
   }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020B4C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020B4C.s")
 
 /*This DOES match, I just have to fix a ton of errors in other functions to make it work.*/
 #ifdef NON_MATCHING
@@ -621,7 +621,7 @@ void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
 }
 #endif
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D18.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020D18.s")
 s32 func_80020D18(u8* arg0) {
     s32 ret;
     u8 val;
@@ -640,7 +640,7 @@ s32 func_80020D18(u8* arg0) {
     return ret;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020D4C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020D4C.s")
 void func_80020D4C(u16 arg0, s32 arg1, s32 arg2, s32 arg3)
 {
   u8 *var_s1;
@@ -668,7 +668,7 @@ void func_80020D4C(u16 arg0, s32 arg1, s32 arg2, s32 arg3)
 void func_80020E24(void) {
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020E2C.s") //Assist by StuckPixel
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020E2C.s") //Assist by StuckPixel
 /*This function sets up the graphics pipeline for loading a texture image and rendering it to the screen.*/
 void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         
@@ -681,7 +681,7 @@ void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     gDPSetTileSize(gMasterGfxPos++, G_TX_RENDERTILE, arg1 * 4, arg2 * 4, (arg1 + arg3) * 4, (arg2 + arg4) * 4);
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_80020F8C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020F8C.s")
 void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy)
 {
   ulx += gHUDResolutionX;
@@ -715,7 +715,7 @@ void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s
   }
  dummy_label_814065: ;
 }
-//#pragma GLOBAL_ASM("asm/nonmatchings/1EDF0/func_800210FC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_800210FC.s")
 void func_800210FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
     func_80020E2C((unk20e2cs* ) arg0, arg5, arg6, arg3, arg4);
     func_80020F8C(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);

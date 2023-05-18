@@ -20,6 +20,8 @@ optO1_files = [
 'vimgr.c'
 ]
 
+optg0_files = ['DA68F0.c']
+
 c_files = []
 for root, dirs, files in os.walk(dir_path):
     for file in files:
@@ -96,6 +98,10 @@ ninja_file.rule('main_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c -32 $cflags $DEFINES $CFLAGS -O2 -g3 $mips_version -o $out $in',
     description = 'Compiling -O2 .c file' )
 #doesn't have -g3
+ninja_file.rule('O2g0_cc',
+    command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c -32 $cflags $DEFINES $CFLAGS -O2 -g0 $mips_version -o $out $in',
+    description = 'Compiling -O2 -g0 .c file')
+
 ninja_file.rule('O2_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c -32 $cflags $DEFINES $CFLAGS -O2 $mips_version -o $out $in',
     description = 'Compiling -O2 .c file' )
@@ -103,7 +109,7 @@ ninja_file.rule('O2_cc',
 ninja_file.rule('O1_cc',
     command = '$ASM_PROC $ASM_PROC_FLAGS $ido_cc -- $AS $ASFLAGS -- -c -32 $cflags $DEFINES $CFLAGS -O1 $mips_version -o $out $in',
     description = 'Compiling -O1 .c file' )
-
+    
 ninja_file.rule('s_file',
     command = 'iconv --from UTF-8 --to EUC-JP $in | $AS $ASFLAGS -o $out',
     description = 'Assembling .s file' )
@@ -133,12 +139,15 @@ ninja_file.rule('rgba16_convert',
 ninja_file.rule('rgba16_build',
                  command = "($LD -r -b binary -o $out $in)",
                  description = "Converting rgba16")   
+print (c_files)
 
 for c_file in c_files:
     if os.path.basename(c_file) in optO2_files:
         ninja_file.build("build/" + append_extension(c_file), "O2_cc", c_file)
     elif os.path.basename(c_file) in optO1_files:
         ninja_file.build("build/" + append_extension(c_file), "O1_cc", c_file)
+    elif os.path.basename(c_file) in optg0_files:
+        ninja_file.build("build/" + append_extension(c_file), "O2g0_cc", c_file)
     else:
         ninja_file.build("build/" + append_extension(c_file), "main_cc", c_file)
 for s_file in s_files:

@@ -19,7 +19,7 @@ OSMesgQueue __osEepromTimerQ;
 OSMesg __osEepromTimerMsg;
 
 */
-#pragma GLOBAL_ASM("asm/nonmatchings/controller/osContInit.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/controller/osContInit.s")
 /*s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* data) {
     OSMesg dummy;
     s32 ret = 0;
@@ -58,6 +58,6 @@ OSMesg __osEepromTimerMsg;
     return ret;
 }*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/controller/__osContGetInitData.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/controller/__osContGetInitData.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/controller/__osPackRequestData.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/controller/__osPackRequestData.s")

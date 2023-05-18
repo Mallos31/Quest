@@ -1,6 +1,6 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/vigetcurrframebuf/osViGetCurrentFramebuffer.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/vigetcurrframebuf/osViGetCurrentFramebuffer.s")
 #ifdef NON_MATCHING //matches, but needs some stuff done with the next funtction to work out some bad data. 
 void *osViGetCurrentFramebuffer(void)
 {

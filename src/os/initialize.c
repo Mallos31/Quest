@@ -2,7 +2,7 @@
 #include <os_internal.h>
 #include <R4300.h>
 #include <rcp.h>
-#pragma GLOBAL_ASM("asm/nonmatchings/initialize/osInitialize.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/initialize/osInitialize.s")
 
 /*Matching, but needs data migration to work*/
 #ifdef NON_MATCHING
