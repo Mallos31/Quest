@@ -6,6 +6,7 @@ junk/
 __pycache__/
 decomp-permuter/
 asm/
+nonmatchings/
 
 # files
 *.ld
