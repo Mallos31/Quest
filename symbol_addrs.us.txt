@@ -428,6 +428,10 @@ LeoDiskHandle             = 0x80095564;
 __osDiskHandle            = 0x800955D4;
 __osPfsPifRam             = 0x80095660;
 
+
+gGlobalStartScreenTimer   = 0x8011AD34;
+gPushStartBlinkTimer      = 0x8011AD3C;
+gPushStartBlinkFrequency  = 0x8011AD40;
 gBossVAddr                = 0x802A7BC0;
 
 gTextPalettes             = 0x80331A30;

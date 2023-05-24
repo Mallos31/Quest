@@ -21,4 +21,5 @@ s32 func_8000FF54(f32);                             /* extern */
 void func_80023A08(f32 arg0[4][4], f32 arg1, f32 arg2, f32 arg3);
 void func_80023DF4(f32 arg0[4][4], f32 arg1, f32 arg2, f32 arg3);
 f32 func_80023210(f32, f32);                        /* extern */
+void func_80025B8C(s32 arg0, s32 arg1, s32 arg2);
 
