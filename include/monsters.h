@@ -1,6 +1,10 @@
 #ifndef _MONSTERS_H_
 #define _MONSTERS_H_
 
+#define ON_GROUND 0
+#define FLYING 1
+#define MAMMON 2
+
 typedef struct {
     u8 unk0[0x18];
 }AIScript;
@@ -31,10 +35,22 @@ typedef struct {
 } MonsterBaseData; // size 0x38
 
 typedef struct {
-    u8 pad[0x86];
-    u16 unk86;
-    char unk88[0xC];
-    f32 unk94;
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    u16 unk8;
+}UnknownMonsterData3;
+
+typedef struct {
+/*0x00*/ u8  pad[0x12];
+/*0x12*/ u8 status[7];
+/*0x19*/ char unk19[0x2B];
+/*0x44*/ UnknownMonsterData3* unk44[4];
+/*0x54*/ char unk54[0x32];
+/*0x86*/ u16 unk86;
+/*0x88*/ char unk88[0xC];
+/*0x94*/ f32 unk94;
 } UnknownMonsterData2;
 
 typedef struct {

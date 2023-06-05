@@ -1,10 +1,23 @@
 #include "common.h"
 
 
+//static s8 D_8008FD00[4] = {0, 0, 0, 0};
+//static u16 D_8008FD0C = 0; //pause and save screen flags 
+//static u16 D_8008FD20 = 0; //unknown at this time, but found between save menu and pfs related vars. 
+
 void func_80026A40();
-void func_80026A7C(void* arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/27640/func_80026A40.s")
+#ifdef NON_MATCHING //This function DOES match, but bss needs to be migrated. The variables will be commented out above. 
+void func_80026A40(void) {
+    s32 i;
+    D_8008FD0C = 0x8000;
+    D_8008FD20 = 0;
+    for(i=0; i<4; i++) {
+        D_8008FD00[i] = i;
+    }
+}
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/27640/func_80026A7C.s")
 

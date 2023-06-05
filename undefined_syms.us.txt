@@ -8,3 +8,5 @@ D_8008C592 = 0x8008C592;
 gDL_StaffIcon = 0x803A8CF8;
 gExclamationMarkPalette = 0x803A8C08;
 gCurrentTime              = 0x800859d0;
+gAlphaNumerics            = 0x8004D44C;
+gAlphaNumericTexture      = 0x803A6F80;

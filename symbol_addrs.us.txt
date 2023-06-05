@@ -367,6 +367,7 @@ alSeqNew                  = 0x80049c78;
 alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
 
+gAlphaNumerics            = 0x8004D44C;
 gCheckItemUsableFuncs     = 0x8004D480;
 gUseItemFuncs             = 0x8004D490;
 dlScreenDimRectangle      = 0x8004D4F0;

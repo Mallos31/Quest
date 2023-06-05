@@ -47,6 +47,7 @@ extern f64 D_800716E0;
 extern f64 D_800716E8;
 extern f64 D_800716F0;
 extern f64 D_800716F8;
+extern f32 D_8004D74C;
 
 
 
@@ -67,7 +68,7 @@ void func_80023974(unk23df4s* arg0, f32 arg1, f32 arg2, f32 arg3, f32* arg4, f32
 void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3);
 
 void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3);
-
+void func_80023E80(MtxF *arg0, MtxF *arg1, MtxF *arg2);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/getRandomNumber.s")
 u32 getRandomNumber(u32 arg0)
@@ -397,6 +398,41 @@ void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023C1C.s")
+#ifdef NON_MATCHING
+void func_80023C1C(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9)
+{
+  f32 s1;
+  f32 s2;
+  f32 s3;
+  f32 c2;
+  f32 c3;
+  f32 c1;
+  arg5 *= D_8004D74C;
+  arg6 *= D_8004D74C;
+  s1 = sinf(arg4 * D_8004D74C);
+  c1 = cosf(arg4 * ((0, D_8004D74C)));
+  s2 = sinf(arg5);
+  c2 = cosf(arg5);
+  s3 = sinf(arg6);
+  c3 = cosf(arg6);
+  arg0->mf[0][0] = ((c3 * c2) + ((s3 * s1) * s2)) * arg7;
+  arg0->mf[0][1] = (s3 * c1) * arg7;
+  arg0->mf[0][2] = (((-s2) * c3) + ((s3 * s1) * c2)) * arg7;
+  arg0->mf[0][3] = 0.0f;
+  arg0->mf[1][0] = (((-s3) * c2) + ((c3 * s1) * s2)) * arg8;
+  arg0->mf[1][1] = (c3 * c1) * arg8;
+  arg0->mf[1][2] = (((-s3) * (-s2)) + ((c3 * s1) * c2)) * arg8;
+  arg0->mf[1][3] = 0.0f;
+  arg0->mf[2][0] = (c1 * s2) * arg9;
+  arg0->mf[2][1] = (-s1) * arg9;
+  arg0->mf[2][2] = (c1 * c2) * arg9;
+  arg0->mf[2][3] = 0.0f;
+  arg0->mf[3][0] = arg1;
+  arg0->mf[3][1] = arg2;
+  arg0->mf[3][2] = arg3;
+  arg0->mf[3][3] = 1.0f;
+}
+#endif
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023DF4.s")
 void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3) {
@@ -411,7 +447,95 @@ void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3) {
     arg0[2][2] *= arg3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023E80.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023E80.s")
+void func_80023E80(MtxF *arg0, MtxF *arg1, MtxF *arg2)
+{
+  f32 temp_f2;
+  f32 temp_f20;
+  f32 temp_f14;
+  f32 temp_f12;
+  f32 temp_f0;
+  f32 temp_f16;
+  f32 temp_f22;
+  f32 temp_f24;
+  f32 temp_f18;
+  f32 sp58;
+  f32 sp54;
+  f32 sp50;
+  f32 temp_f10;
+  f32 sp48;
+  f32 temp_f6;
+  f32 temp_f8;
+  f32 sp3C;
+  f32 temp_f4;  
+  f32 sp34;
+  f32 sp30;
+  f32 temp_f10_2;
+  f32 sp28;
+  f32 temp_f6_2;  
+  f32 sp20;
+  
+    
+  temp_f0 = arg0->mf[0][0];
+  temp_f2 = arg0->mf[0][1];
+  temp_f12 = arg0->mf[0][2];
+    
+  temp_f14 = arg0->mf[1][0];
+  temp_f16 = arg0->mf[1][1];
+  temp_f18 = arg0->mf[1][2];
+    
+  temp_f20 = arg0->mf[2][0];
+  temp_f22 = arg0->mf[2][1];
+  temp_f24 = arg0->mf[2][2];
+    
+  sp58 = arg0->mf[3][0];
+  sp54 = arg0->mf[3][1];
+  sp50 = arg0->mf[3][2];
+    
+  temp_f10 = arg1->mf[0][0];
+  sp48 = arg1->mf[0][1];
+  temp_f6 = arg1->mf[0][2];
+    
+  temp_f8 = arg1->mf[1][0];
+  sp3C = arg1->mf[1][1];
+  temp_f4 = arg1->mf[1][2];
+    
+  sp34 = arg1->mf[2][0];
+  sp30 = arg1->mf[2][1];
+  temp_f10_2 = arg1->mf[2][2];
+    
+  sp28 = arg1->mf[3][0];
+  temp_f6_2 = arg1->mf[3][1];
+  sp20 = arg1->mf[3][2];
+    
+  arg2->mf[0][0] = ((temp_f0 * temp_f10) + (temp_f14 * sp48)) + (temp_f20 * temp_f6);
+  arg2->mf[1][0] = ((temp_f0 * temp_f8) + (temp_f14 * sp3C)) + (temp_f20 * temp_f4);
+  arg2->mf[2][0] = ((temp_f0 * sp34) + (temp_f14 * sp30)) + (temp_f20 * temp_f10_2);
+  arg2->mf[3][0] = (((temp_f0 * sp28) + (temp_f14 * temp_f6_2)) + (temp_f20 * sp20)) + sp58;
+    
+  arg2->mf[0][1] = ((temp_f2 * temp_f10) + (temp_f16 * sp48)) + (temp_f22 * temp_f6);
+  arg2->mf[1][1] = ((temp_f2 * temp_f8) + (temp_f16 * sp3C)) + (temp_f22 * temp_f4);
+  arg2->mf[2][1] = ((temp_f2 * sp34) + (temp_f16 * sp30)) + (temp_f22 * temp_f10_2);
+  arg2->mf[3][1] = (((temp_f2 * sp28) + (temp_f16 * temp_f6_2)) + (temp_f22 * sp20)) + sp54;
+    
+  arg2->mf[0][2] = ((temp_f12 * temp_f10) + (temp_f18 * sp48)) + (temp_f24 * temp_f6);
+  arg2->mf[1][2] = ((temp_f12 * temp_f8) + (temp_f18 * sp3C)) + (temp_f24 * temp_f4);
+  arg2->mf[2][2] = ((temp_f12 * sp34) + (temp_f18 * sp30)) + (temp_f24 * temp_f10_2);
+  arg2->mf[3][2] = (((temp_f12 * sp28) + (temp_f18 * temp_f6_2)) + (temp_f24 * sp20)) + sp50;
+    
+  arg2->mf[0][3] = 0.0f; 
+  arg2->mf[1][3] = 0.0f;
+  arg2->mf[2][3] = 0.0f;
+  arg2->mf[3][3] = 1.f;
+}
+
+
+
+
+
+
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_8002413C.s")
 /*s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32 *arg3, s32 *arg4)

@@ -1,40 +1,18 @@
 #include "common.h"
 #include "monsters.h"
 #include "player.h"
+//#include "hud.h" !TODO once everything at the top of this file is named and updated, put it in hud.h and uncomment.
 
-#define ON_GROUND 0
-#define FLYING 1
-#define MAMMON 2
 #define U_CBUTTONS	CONT_E
 #define L_CBUTTONS	CONT_C
 #define R_CBUTTONS	CONT_F
 #define D_CBUTTONS	CONT_D
 
 typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    u16 unk8;
-}unk202e4s3;
-
-typedef struct {
-    char unk0[0x12];
-    u8 unk12[7];
-    char unk19[0x2B];
-    unk202e4s3* unk44[4];
-}unk202e4s2;
-
-typedef struct {
-    char unk0[0x68];
-    unk202e4s2* unk68;
-}unk202e4s;
-
-
-typedef struct {
-    s32 unk0;
+    void* unk0;
     s32 unk4;
     s32 unk8;
+    s32 unkC;
 }unk20e2cs;
 
 typedef struct {
@@ -119,10 +97,10 @@ extern s32 D_8008C658; //number of lines to draw from left to right (HUD)
 extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD) 
 extern MissIcon gMISSData;
 extern u8 gBattleStatusPal[]; //Status icons palette
-extern unk20e2cs D_803A6F70;
-extern u8 D_8004D44C[];
-extern u8 D_803A6F80[];
-extern void* D_803A6FB0[];
+extern unk20e2cs D_803A6F70; //pointers to status icons and text
+extern u8 gAlphaNumerics[]; //0-9, punctuation, and capital letters
+extern u8 gAlphaNumericTexture[]; //texture corresponds perfectly with gAlphaNumerics
+extern void* D_803A6FB0[]; //array of palettes
 extern unk203d0s* D_8007D088;
 extern s32 *D_8007D0AC;
 extern u8 D_80399AB0[];
@@ -151,7 +129,7 @@ void func_8001EA84(Mtx *arg0);
 void func_80020D4C(u16 arg0, s32 arg1, s32 arg2, s32 arg3);
 s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32* arg3, s32* arg4);
 void func_80020F8C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7);
-void func_800210FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8);
+void func_800210FC(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8);
 void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3);
 
@@ -178,17 +156,17 @@ void func_8001E7FC(BrianData2 *arg0)
   brianData = arg0->brianData1;
   gfxHUD = &gTex_HUD_and_Menu;
     
-  func_800210FC((s32) gfxHUD, 0, 1, 0x3E, 0x11, 0x20, 0x27, 0x400, 0x400);
-  func_800210FC((s32) gfxHUD, 0, 0x12, 0x3E, 0x12, 0x20, 0x38, 0x400, 0x400);
+  func_800210FC(gfxHUD, 0, 1, 0x3E, 0x11, 0x20, 0x27, 0x400, 0x400);
+  func_800210FC(gfxHUD, 0, 0x12, 0x3E, 0x12, 0x20, 0x38, 0x400, 0x400);
   temp_lo = ((s32) (brianData->currHP * 0x38)) / ((s32) brianData->maxHP);
   if (temp_lo != 0)
   {
-    func_800210FC((s32) gfxHUD, 3, 0xB, temp_lo, 5, 0x5E, 0x27, 0x400, 0x400);
+    func_800210FC(gfxHUD, 3, 0xB, temp_lo, 5, 0x5E, 0x27, 0x400, 0x400);
   }
   temp_lo = ((s32) (brianData->currMP * 0x38)) / ((s32) brianData->maxMP);
   if (temp_lo != 0)
   {
-    func_800210FC((s32) gfxHUD, 3, 0x15, temp_lo, 5, 0x5E, 0x2C, 0x400, 0x400);
+    func_800210FC(gfxHUD, 3, 0x15, temp_lo, 5, 0x5E, 0x2C, 0x400, 0x400);
   }
   func_80020E2C(gfxHUD, 0x20, 0x1D, 0x80, 0xA);
   func_80020D4C(3, 0xC, 0, (s32) brianData->currHP);
@@ -218,7 +196,7 @@ void func_8001EA84(Mtx *arg0) {
     gSPDisplayList(gMasterGfxPos++, D_803A8EA0); //Compass DL
 
     //Pointer to texture, X, Y, NumPixelsX, NumPixelsY, SheetLocationX, unknown, resolutionX, resolutionY
-    func_800210FC((s32) &gTex_HUD_and_Menu, 0xD, 0xA, 0xB, 0xE, 0x93, 0, 0x400, 0x400);
+    func_800210FC(&gTex_HUD_and_Menu, 0xD, 0xA, 0xB, 0xE, 0x93, 0, 0x400, 0x400);
 }
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001EBDC.s")
 void func_8001EBDC(unk1ebdcs* arg0) {
@@ -227,11 +205,11 @@ void func_8001EBDC(unk1ebdcs* arg0) {
     void* HUDTex;
 
     HUDTex = &gTex_HUD_and_Menu;
-    func_800210FC((s32)HUDTex, 0, 0, 0xC, 0xC, 0x20, 0x10, 0x400, 0x400);
-    func_800210FC((s32)HUDTex, 0x16, 0, 0xC, 0xC, 0x2C, 0x10, 0x400, 0x400);
-    func_800210FC((s32)HUDTex, 0x2C, 0, 0xC, 0xC, 0x38, 0x10, 0x400, 0x400);
-    func_800210FC((s32)HUDTex, 0x42, 0, 0xC, 0xC, 0x44, 0x10, 0x400, 0x400);
-    func_80020E2C((unk20e2cs*)HUDTex, 0x20, 0x1D, 0x80, 0xA);
+    func_800210FC(HUDTex, 0, 0, 0xC, 0xC, 0x20, 0x10, 0x400, 0x400);
+    func_800210FC(HUDTex, 0x16, 0, 0xC, 0xC, 0x2C, 0x10, 0x400, 0x400);
+    func_800210FC(HUDTex, 0x2C, 0, 0xC, 0xC, 0x38, 0x10, 0x400, 0x400);
+    func_800210FC(HUDTex, 0x42, 0, 0xC, 0xC, 0x44, 0x10, 0x400, 0x400);
+    func_80020E2C(HUDTex, 0x20, 0x1D, 0x80, 0xA);
     
     var_s0 = 6;
     for (i = 0; i < 4; i++) {
@@ -261,10 +239,10 @@ void func_8001F3DC(unk1f3dcTEST* arg0) {
     gDPPipeSync(gMasterGfxPos++);
 
     temp = &D_803A6F60;
-    func_800210FC((s32) temp, 0x81, 0x48, 0x40, 0x14, 0, 0, 0x400, 0x400);
-    func_800210FC((s32) temp, 0x81, 0x5C, 0x40, 0x14, 0, 0x14, 0x400, 0x400);
-    func_800210FC((s32) temp, 0x81, 0x70, 0x40, 0x14, 0, 0x28, 0x400, 0x400);
-    func_800210FC((s32) temp, 0x81, 0x84, 0x40, 0x14, 0, 0x3C, 0x400, 0x400);
+    func_800210FC(temp, 0x81, 0x48, 0x40, 0x14, 0, 0, 0x400, 0x400);
+    func_800210FC(temp, 0x81, 0x5C, 0x40, 0x14, 0, 0x14, 0x400, 0x400);
+    func_800210FC(temp, 0x81, 0x70, 0x40, 0x14, 0, 0x28, 0x400, 0x400);
+    func_800210FC(temp, 0x81, 0x84, 0x40, 0x14, 0, 0x3C, 0x400, 0x400);
     func_80020E2C(&gTex_HUD_and_Menu, 0x20, 0x1D, 0x80, 0xA);
 
     gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_80399AB0);
@@ -404,17 +382,19 @@ void func_8001FB94(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FEEC.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_800202E4.s")//Matched by EllipticEllipsis and StuckPixel
-void func_800202E4(unk202e4s *arg0)
+
+/*This funciton has something to do with status effects and buffs/debuffs on monsters*/
+void func_800202E4(MonsterBattleData *arg0)
 {
     u32 i;
-    unk202e4s2 *temp_v0;
-    unk202e4s3 *temp_a0;
+    UnknownMonsterData2 *temp_v0;
+    UnknownMonsterData3 *temp_a0;
 
     temp_v0 = arg0->unk68;
 
     for(i = 0; i < 7; i++) {
-        if(temp_v0->unk12[i] != 0) {
-            temp_v0->unk12[i] = 0;
+        if(temp_v0->status[i] != 0) {
+            temp_v0->status[i] = 0;
         }
     }
 
@@ -457,16 +437,16 @@ void func_800203D0(void)
   new_var = &D_803A6F60;
   if (D_8007D088->unk90 & 0x80)
   {
-    func_800210FC((s32) new_var, 0, 0, 0x6E, 0x10, 0x64, 0x1C, 0x400, 0x400);
-    func_800210FC((s32) new_var, 0, 0x10, 0x6E, 0x10, 0x64, 0x2C, 0x400, 0x400);
-    func_800210FC((s32) new_var, 0, 0x20, 0x6E, 0x10, 0x64, 0x3C, 0x400, 0x400);
-    func_800210FC((s32) new_var, 0, 0x30, 0x6E, 4, 0x64, 0x4C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0, 0x6E, 0x10, 0x64, 0x1C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0x10, 0x6E, 0x10, 0x64, 0x2C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0x20, 0x6E, 0x10, 0x64, 0x3C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0x30, 0x6E, 4, 0x64, 0x4C, 0x400, 0x400);
   }
   else
   {
-    func_800210FC((s32) new_var, 0, 0, 0x6E, 0x10, 0x64, 0x1C, 0x400, 0x400);
-    func_800210FC((s32) new_var, 0, 0x10, 0x6E, 0xA, 0x64, 0x2C, 0x400, 0x400);
-    func_800210FC((s32) new_var, 0, 0x1A, 0x6E, 2, 0x64, 0x4E, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0, 0x6E, 0x10, 0x64, 0x1C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0x10, 0x6E, 0xA, 0x64, 0x2C, 0x400, 0x400);
+    func_800210FC(new_var, 0, 0x1A, 0x6E, 2, 0x64, 0x4E, 0x400, 0x400);
   }
   func_80020B4C(4, 0x11, 0, D_8007D0AC[D_8007D088->unk20->unk2]);
   func_80020E2C(&gTex_HUD_and_Menu, 0x20, 0x1D, 0x80, 0xA);
@@ -483,7 +463,7 @@ void func_800203D0(void)
     func_80020D4C(3U, 0x46, 0x26, (s32) D_8007D088->unk20->unkC);
     if (D_8007D088->unk20->unk26 != 4)
     {
-      func_800210FC((s32) (&gTex_HUD_and_Menu), 0x5B, 3, 0xC, 0xC, (D_8007D088->unk20->unk26 * 0xC) + 0x20, 0x10, 0x400, 0x400);
+      func_800210FC(&gTex_HUD_and_Menu, 0x5B, 3, 0xC, 0xC, (D_8007D088->unk20->unk26 * 0xC) + 0x20, 0x10, 0x400, 0x400);
     }
   }
 }
@@ -568,7 +548,7 @@ void Draw_MISS_Icon(void)
         var_f0 += missIconData->pos->z;
       }
       func_8002413C(var_f12, var_f14, var_f0, &sp74, &sp70);
-      func_800210FC((s32) new_var, sp74 - (((s32) missIconData->width) >> 1), sp70 - missIconData->height, (s32) missIconData->width, (s32) missIconData->height, (s32) missIconData->unk14, (s32) missIconData->unk16, 0x400, 0x400);
+      func_800210FC(new_var, sp74 - (((s32) missIconData->width) >> 1), sp70 - missIconData->height, (s32) missIconData->width, (s32) missIconData->height, (s32) missIconData->unk14, (s32) missIconData->unk16, 0x400, 0x400);
       missIconData->displayTimer--;
     }
     var_s1--;
@@ -606,7 +586,7 @@ void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
             continue;
         } else {
             for (i = 0; i < 44; i++) {
-                if (D_8004D44C[i] != *arg3) {
+                if (gAlphaNumerics[i] != *arg3) {
                     continue;
                 } else {
                     break;
@@ -614,7 +594,7 @@ void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
             }
         }
         
-        func_800210FC(D_803A6F80, arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
+        func_800210FC(gAlphaNumericTexture, arg0, arg1, 6, 8, i * 6, 0, 0x400, 0x400);
         arg0++;
         arg3++;
     }
@@ -670,15 +650,15 @@ void func_80020E24(void) {
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020E2C.s") //Assist by StuckPixel
 /*This function sets up the graphics pipeline for loading a texture image and rendering it to the screen.*/
-void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_80020E2C(unk20e2cs* arg0, s32 s, s32 t, s32 lrx, s32 lry) {
         
     gDPSetTextureImage(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, arg0->unk8, arg0->unk0);
-    gDPSetTile(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, ((((arg1 + arg3) - arg1) + 8)) >> 3, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTile(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, ((((s + lrx) - s) + 8)) >> 3, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gMasterGfxPos++);
-    gDPLoadTile(gMasterGfxPos++, G_TX_LOADTILE, arg1 * 4, arg2 * 4, (arg1 + arg3) * 4, (arg2 + arg4) * 4);
+    gDPLoadTile(gMasterGfxPos++, G_TX_LOADTILE, s * 4, t * 4, (s + lrx) * 4, (t + lry) * 4);
     gDPPipeSync(gMasterGfxPos++);
-    gDPSetTile(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, ((((arg1 + arg3) - arg1) + 8)) >> 3, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gMasterGfxPos++, G_TX_RENDERTILE, arg1 * 4, arg2 * 4, (arg1 + arg3) * 4, (arg2 + arg4) * 4);
+    gDPSetTile(gMasterGfxPos++, G_IM_FMT_CI, G_IM_SIZ_8b, ((((s + lrx) - s) + 8)) >> 3, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTileSize(gMasterGfxPos++, G_TX_RENDERTILE, s * 4, t * 4, (s + lrx) * 4, (t + lry) * 4);
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020F8C.s")
@@ -716,7 +696,7 @@ void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s
  dummy_label_814065: ;
 }
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_800210FC.s")
-void func_800210FC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    func_80020E2C((unk20e2cs* ) arg0, arg5, arg6, arg3, arg4);
-    func_80020F8C(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+void func_800210FC(unk20e2cs* arg0, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy) {
+    func_80020E2C(arg0, s, t, lrx, lry);
+    func_80020F8C(ulx, uly, lrx, lry, s, t, dsdx, dtdy);
 }
