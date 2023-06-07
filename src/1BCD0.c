@@ -64,7 +64,7 @@ test2* func_8001B108(test2* arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B19C.s")
-#ifdef NONMATCHING
+#ifdef NON_MATCHING
 void func_8001B19C(s32 arg0) {
     s32 var_s5;
     s32 var_s6;
@@ -101,7 +101,7 @@ void func_8001B19C(s32 arg0) {
                     }
                     func_80023DF4(&spB4, var_s0->unk28, var_s0->unk2C, 1.0f);
                 }
-                guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 0xC0);
+                guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 3);
 
                 gSPMatrix(gMasterGfxPos++, &D_2000000[D_8007B2F8 + 3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
                 

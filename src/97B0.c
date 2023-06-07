@@ -65,18 +65,18 @@ extern s32 D_8007D0C4;
 //#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008C20.s")
 void func_80008C20(void)
 {
-  EnemyAction *var_s0;
-  MonsterBattleData *temp_a0;
-  int var_s1;
+  EnemyAction *monster;
+  MonsterBattleData *monsterData;
+  s32 var_s1;
   var_s1 = D_8007C990;
   if (var_s1 != 0)
   {
-    for (var_s0 = D_8007C998; var_s1 != 0; var_s0++)
+    for (monster = D_8007C998; var_s1 != 0; monster++)
     {
-      temp_a0 = &var_s0->battleData;
-      if ((var_s0->battleData.modelID) != (-1))
+      monsterData = &monster->battleData;
+      if ((monster->battleData.modelID) != (-1))
       {
-        D_8004C290[var_s0->actionID](temp_a0, var_s0, D_8007D0A8[temp_a0->modelID]);
+        D_8004C290[monster->actionID](monsterData, monster, D_8007D0A8[monsterData->modelID]);
         var_s1 -= 1;
       }
     }
@@ -127,19 +127,19 @@ void func_8000932C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009818.s")
 /*function matches but does not build. Needs investigation*/
 #ifdef NON_MATCHING
-void func_80009818(BrianData2* arg0, EnemyAction* arg1, s32 arg2) {
-    func_8000A7D8(arg0, &D_8007D0D0);
+void func_80009818(MonsterBattleData* arg0, EnemyAction* arg1, s32 arg2) {
+    func_8000A7D8((BrianData2* ) arg0, &D_8007D0D0);
     func_8000A508(0, D_8007D0D0.unk0, D_8007D0D0.unk4, (unk202e4s* ) arg0, arg1);
-    arg1->actionTimer--;
-    if ((s16) arg1->actionTimer == 0) {
+    arg1->actionTimer -= 1;
+    if (arg1->actionTimer == 0) {
         if (arg1->currHP == 0) {
-            func_800202E4((unk202e4s* ) arg0);
-            func_8000B170(arg0);
-            arg0->unk50 = -1;
+            func_800202E4(arg0);
+            func_8000B170((BrianData2* ) arg0);
+            arg0->modelID = -1;
             arg0->unk60 &= 0xFFFE;
             D_8007C990 -= 1;
-            D_8007BA68 += arg0->brianData1->exp;
-            D_8007BA6C += arg0->brianData1->unk14;
+            D_8007BA68 += arg0->unk64->expValue;
+            D_8007BA6C += arg0->unk64->unk14;
             func_800268D4(0, 0xA, 0xFF);
             return;
         }

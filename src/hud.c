@@ -123,15 +123,58 @@ extern s32 D_8008C638;
 extern s32 D_8008C63C;
 extern s32 D_8008C640;
 extern Gfx gExclamationMarkPalette[]; //exclamation mark display list
+extern u8 D_8004D2B4;
+extern s32 D_8004D2B8;
+extern s32 D_8004D2BC;
+extern s32 D_8007BA78;
+extern s32 D_8007BA7C;
+extern u16 D_8007BABA;
+extern u16 D_8007BAC0;
+extern unk1ebdcs* D_8007BAC8;
+extern f32 D_8007BAE4;
+extern f32 D_8007BAEC;
+extern u16 D_8007BB2C;
+extern s32 D_8007C990;
+extern u16 D_80084EE0;
+extern s32 D_80086F10;
+extern s32 D_8008C660;
+extern s32 D_8008C664;
+extern u8 D_803A6FC0[];
 
-void func_8001EBDC(unk1ebdcs* arg0);
+s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32 *arg3, s32 *arg4); //from camera.c (soon to be quest_math.c)
+
+void func_8001E1F0(void);
+
+void func_8001E7FC(BrianData2 *arg0);
 void func_8001EA84(Mtx *arg0);
+void func_8001EBDC(unk1ebdcs* arg0);
+
+void func_8001F3DC(unk1f3dcTEST* arg0);
+void func_8001F818(void);
+void func_8001F900(void);
+void func_8001F9B0(void);
+void func_8001FA60(u16 monsterNum);
+void func_8001FB94(void);
+
+
+void func_800202E4(MonsterBattleData *arg0);
+void func_800203A8(void);
+void func_800203B0(void);
+void func_800203B8(void);
+void func_800203C0(void);
+void func_800203C8(void);
+void func_800203D0(void);
+void Init_MISS_Icon(void);
+void Setup_MISS_Icon(MonsterBattleData* arg0);
+void Draw_MISS_Icon(void);
+
+
+s32 func_80020D18(u8* arg0);
 void func_80020D4C(u16 arg0, s32 arg1, s32 arg2, s32 arg3);
-s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32* arg3, s32* arg4);
-void func_80020F8C(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7);
-void func_800210FC(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8);
-void func_80020E2C(unk20e2cs* arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
-void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3);
+void func_80020E24(void);
+void func_80020E2C(unk20e2cs* arg0, s32 s, s32 t, s32 lrx, s32 lry);
+void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy);
+void func_800210FC(unk20e2cs* arg0, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E1F0.s")
 void func_8001E1F0(void)
@@ -146,7 +189,128 @@ void func_8001E1F0(void)
   D_8008C630 = 0;
 }
 #pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E25C.s")
+#ifdef NON_MATCHING
+void func_8001E25C(Mtx* arg0) {
+    EnemyAction* var_v1_3;
+    s32 temp_lo;
+    s32 temp_v0_4;
+    s32 var_v0;
+    s32 i;
 
+    gSPMatrix(gMasterGfxPos++, D_2000040, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guTranslate(arg0 + (D_8007B2F8 << 6) + 0xC0, -160.0f, -120.0f, 0.0f);
+    gSPMatrix(gMasterGfxPos++, &D_2000000[D_8007B2F8]/*.unkC0*/, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION); //removed .unkC0 until I figure out what to do with it. 
+    
+    D_8007B2F8 += 1;
+    gSPDisplayList(gMasterGfxPos++, D_803A6FC0);
+
+    
+    if (D_8004D2B4 != 0) {
+        if (D_8004D2BC != 0) {
+            D_8004D2BC--;
+        }
+        
+        temp_v0_4 = 0xF - D_8004D2BC;
+        temp_lo = temp_v0_4 * temp_v0_4;
+        D_8008C660 = temp_lo >> 1;
+        D_8008C664 = temp_lo;
+        
+        if (!(D_8007B2E4 & 0x480)) {
+            if ((D_8007BAE4 == 0.0f) && (D_8007BAEC == 0.0f)) {
+                D_8004D2B8++;
+                if (D_8004D2B8 >= 0x1F) {
+                    D_8004D2BC = 0xF;
+                    D_8004D2B4 = 0;
+                    D_8004D2B8 = 0;
+                }
+            } else {
+                D_8004D2B8 = 0;
+            }
+        }
+    } else {
+        if (D_8004D2BC != 0) {
+            D_8004D2BC--;
+        }
+        temp_lo = D_8004D2BC * D_8004D2BC;
+        D_8008C660 = temp_lo >> 1;
+        D_8008C664 = temp_lo;
+        
+        if (!(gBattleState & 1) && !(D_8007B2E4 & 0x480)) {
+            if ((D_8007BAE4 != 0.0f) || (D_8007BAEC != 0.0f)) {
+                D_8004D2B8++;
+                if (D_8004D2B8 >= 0x1F) {
+                    D_8004D2BC = 0xF;
+                    D_8004D2B4 += 1;
+                    D_8004D2B8 = 0;
+                }
+            } else {
+                D_8004D2B8 = 0;
+            }
+        }
+    }
+    gHUDResolutionX = 0x1C - D_8008C660;
+    gHUDResolutionY = 0x18;
+    var_v0 = D_8007B2E4 & 0xC00;
+    if (var_v0 == 0) {
+        func_8001E7FC(&gPlayerPos);
+        var_v0 = D_8007B2E4 & 0xC00;
+    }
+    gHUDResolutionX = 0x1C - D_8008C664;
+    gHUDResolutionY = 0xC5;
+    if (var_v0 == 0) {
+        func_8001EBDC(D_8007BAC8);
+    }
+    var_v0 = gBattleState & 1;
+    if ((D_80084EE0 & 0xD) && (var_v0 == 0) && !(D_80084F1C->unk14 & 8)) {
+        func_8001EA84(arg0);
+        var_v0 = gBattleState & 1;
+    }
+    gHUDResolutionY = 0;
+    gHUDResolutionX = 0;
+    if ((var_v0 != 0) && ((u16) D_8008C630 != 0)) {
+        func_800203D0();
+        D_8008C630 = (u16) D_8008C630 - 1;
+    }
+    if (D_8007B2E4 & 4) {
+        func_8001ED5C(&D_8007BAB8);
+    } else if (D_8007B2E4 & 8) {
+        func_8001F3DC(&D_8007BAB8);
+    }
+    gHUDResolutionY = 0;
+    gHUDResolutionX = 0;
+    D_8008C658 = 0x140;
+    D_8008C65C = 0xF0;
+    if (gBattleState & 1) {
+        Draw_MISS_Icon();
+        if (!(gBattleState & 2) && (D_8007BABA != 0) && !(D_8007BB2C & 1) && !(D_80086F10 & 1)) {
+            func_8001FA60((D_8007BABA - 1) & 0xFFFF);
+        }
+        if ((D_8007BAC0 & 0x20) && !(D_8007B2E4 & 0x800)) {
+            func_8001FB94();
+        }
+        func_8001FEEC(&gPlayerPos);
+        if (D_8007C990 != 0) {
+            for (i = 0; i < D_8007C990; i++) {
+                if (D_8007C998[i].battleData.modelID != -1) {
+                    func_8001FEEC(&D_8007C998[i].battleData);
+                }
+            }
+        }
+    } else {
+        if ((D_8007BA74 != 0) && !(D_8007B2E4 & 7)) {
+            func_8001F818();
+            return;
+        }
+        if ((D_8007BA78 != 0) && !(D_8007B2E4 & 0xB)) {
+            func_8001F900();
+            return;
+        }
+        if ((D_8007BA7C != 0) && !(D_8007B2E4 & 7)) {
+            func_8001F9B0();
+        }
+    }
+}
+#endif
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E7FC.s")
 void func_8001E7FC(BrianData2 *arg0)
 {
@@ -220,7 +384,7 @@ void func_8001EBDC(unk1ebdcs* arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001ED5C.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001F3DC.s")
-void func_8001F3DC(unk1f3dcTEST* arg0) {
+void func_8001F3DC(unk1f3dcTEST* arg0) { //sBrianAction
     s32 var_t9;
     unk1f3dcTEST2* temp_v0_14;
     unk20e2cs* temp;
