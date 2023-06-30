@@ -86,10 +86,10 @@ extern temp2 D_8007BD30[];
 extern s32 D_8008C644;
 extern Gfx D_803A8B90[];
 
-extern u8 D_8007BAA4;
-extern u8 D_8007BAA5;
-extern u8 D_8007BAA6;
-extern u8 D_8007BAA7;
+extern u8 gFireSpirits;
+extern u8 gEarthSpirits;
+extern u8 gWaterSpirits;
+extern u8 gWindSpirits;
 
 extern s32 D_8008C650; //number of lines to cover from left to right (HUD)
 extern s32 D_8008C654; //number of lines to cover from top to bottom (HUD)
@@ -417,10 +417,10 @@ void func_8001F3DC(unk1f3dcTEST* arg0) { //sBrianAction
     gDPLoadTLUTCmd(gMasterGfxPos++, G_TX_LOADTILE, 255);
     gDPPipeSync(gMasterGfxPos++);
     
-    func_80020D4C(5U, 0x9D, 0x6C, (s32) D_8007BAA4); //fire
-    func_80020D4C(5U, 0x8B, 0x7C, (s32) D_8007BAA5); //earth
-    func_80020D4C(5U, 0x9D, 0x8B, (s32) D_8007BAA6); //water
-    func_80020D4C(5U, 0xAF, 0x7C, (s32) D_8007BAA7); //wind
+    func_80020D4C(5U, 0x9D, 0x6C, (s32) gFireSpirits); //fire
+    func_80020D4C(5U, 0x8B, 0x7C, (s32) gEarthSpirits); //earth
+    func_80020D4C(5U, 0x9D, 0x8B, (s32) gWaterSpirits); //water
+    func_80020D4C(5U, 0xAF, 0x7C, (s32) gWindSpirits); //wind
     
     if ((D_80092876 & U_CBUTTONS) && (arg0->unk10->unk24 < 0x32)) { 
         arg0->unk10->unk24++;

@@ -372,6 +372,8 @@ gCheckItemUsableFuncs     = 0x8004D480;
 gUseItemFuncs             = 0x8004D490;
 dlScreenDimRectangle      = 0x8004D4F0;
 
+gPlayerBaseData           = 0x80053D04;
+
 osClockRate               = 0x8006F400;
 __osPiTable               = 0x8006F43C;
 
@@ -385,6 +387,11 @@ __osViCurr                = 0x80070A80;
 __osViNext                = 0x80070A84;
 gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
+gPlayerData               = 0x8007BA80;
+gFireSpirits              = 0x8007BAA4;
+gEarthSpirits             = 0x8007BAA5;
+gWaterSpirits             = 0x8007BAA6;
+gWindSpirits              = 0x8007BAA7;
 gPlayerPos                = 0x8007BACC;
 
 gDoorAnimData             = 0x80084E60;
