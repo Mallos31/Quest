@@ -143,7 +143,7 @@ extern u8 D_803A6FC0[];
 
 s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32 *arg3, s32 *arg4); //from camera.c (soon to be quest_math.c)
 
-void func_8001E1F0(void);
+void HUDInit(void);
 
 void func_8001E7FC(BrianData2 *arg0);
 void func_8001EA84(Mtx *arg0);
@@ -176,8 +176,8 @@ void func_80020E2C(unk20e2cs* arg0, s32 s, s32 t, s32 lrx, s32 lry);
 void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy);
 void func_800210FC(unk20e2cs* arg0, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy);
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001E1F0.s")
-void func_8001E1F0(void)
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/HUDInit.s")
+void HUDInit(void)
 {
   D_8008C638 = 0;
   D_8008C63C = 0;

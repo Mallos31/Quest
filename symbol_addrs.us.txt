@@ -17,6 +17,9 @@ nnScRemoveClient          = 0x80000824;
 nnScExecuteAudio          = 0x80000900;
 nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
+
+HUDInit                   = 0x8001E1F0;
+
 Inventory_Init            = 0x80021170;
 CheckIfItemUsable         = 0x800212E4;
 UseItem                   = 0x800213D8;
@@ -366,6 +369,8 @@ read16                    = 0x80049c48;
 alSeqNew                  = 0x80049c78;
 alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
+
+gDL_DustAndSmoke          = 0x8004D050;
 
 gAlphaNumerics            = 0x8004D44C;
 gCheckItemUsableFuncs     = 0x8004D480;

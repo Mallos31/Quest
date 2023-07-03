@@ -28,7 +28,7 @@ typedef struct test2 {
 
 extern s32 D_80088420;
 extern test2 D_80088428[0x100];
-extern Gfx D_8004D050[];
+extern Gfx gDL_DustAndSmoke[];
 
 
 void func_8001B0D0(void) {
@@ -85,7 +85,7 @@ void func_8001B19C(s32 arg0) {
                 if (var_s0->unk4 != 0) {
                     ((void (*)(test2*)) var_s0->unk4)(var_s0);
                 } else {
-                    gSPDisplayList(gMasterGfxPos++, D_8004D050);
+                    gSPDisplayList(gMasterGfxPos++, gDL_DustAndSmoke);
                 }
                 if (var_s0->unk2 & 1) {
                     func_80023A08((f32 (*)[4])&spB4, var_s0->unk30, var_s0->unk34, var_s0->unk38);
