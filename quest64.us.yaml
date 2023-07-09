@@ -8,6 +8,7 @@ options:
   symbol_addrs_path: symbol_addrs.us.txt
   migrate_rodata_to_functions: True
   target_path: baserom.us.z64
+  asm_emit_size_directive: false
 segments:
   - name:  header
     type:  header
