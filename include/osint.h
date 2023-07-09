@@ -1,5 +1,6 @@
-#ifndef _OSINT_H
-#define _OSINT_H
+#ifndef _OSINT_H_
+#define _OSINT_H_
+
 #include <os_internal.h>
 typedef struct __OSEventState
 {

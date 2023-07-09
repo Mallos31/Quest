@@ -12,9 +12,9 @@ typedef struct {  //needs more work
 }unk32218s;
 
 typedef struct {
-    s8 unk0;
-    s8 unk1;
-    s8 unk2;
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
 }unk31cf0s;
 
 extern unk32218s D_8006CC88;
@@ -32,17 +32,21 @@ extern OSMesgQueue* D_80092D28;
 extern void* D_80092D2C;
 extern void* D_8006E4B8[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031CF0.s")
-//
-//{
-//  if (arg0 >= 1000)
-//  {
-//    arg0 = 999;
-//  }
-//  arg1->unk0 = (s8) (((arg0 / 100) + ((arg0 < 100) ^ 1)) + 0xF);
-//  arg1->unk1 = (s8) ((((((s32) (arg0 % 100)) / 10) + ((arg0 < 10) ^ 1)) ^ ((arg0 / 100) * 0)) + 0xF);
-//  arg1->unk2 = (s8) ((arg0 % 10) + 0x10);
-//}
+void func_80031CF0(u16 arg0, s8* arg1);
+
+void func_80031F1C(s16 arg0, s16 arg1);
+void func_80031F74(u8 *arg0);
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031CF0.s")
+void func_80031CF0(u16 arg0, s8* arg1) {
+
+    if (arg0 >= 1000) {
+        arg0 = 999;
+    }
+    arg1[0] = (arg0 / 100) + (arg0 >= 100) + 15;
+    arg1[1] = ((arg0 % 100) / 10) + (arg0 >= 10) + 15;
+    arg1[2] = (arg0 % 10) + 16;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031DD4.s")
 
@@ -50,22 +54,25 @@ extern void* D_8006E4B8[];
 void func_80031F1C(s16 arg0, s16 arg1) {
     D_80092D34 = arg0;
     D_80092D36 = arg1;
-    D_80092D30 = ((arg0 + (arg1 * 0x140)) * 2) + D_80092D20;  //! TODO make this make sense
+    D_80092D30 = (arg0 + arg1 * 0x140) * 2 + D_80092D20;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031F74.s")
-/*void func_80031F74(u8* arg0) {
-    u8 var_s0;
-
-    var_s0 = *arg0;
-    if (var_s0 != 0) {
-        do {
-            arg0++;
-            func_80031DD4(var_s0);
-            var_s0 = *arg0;
-        } while (var_s0 != 0);
-    }
-}*/
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031F74.s")
+void func_80031F74(u8 *arg0)
+{
+  s32 var_s0;
+  if (0 != (*arg0))
+  {
+    do 
+    {
+      var_s0 = *arg0;
+      arg0++;
+      func_80031DD4(var_s0);
+      var_s0 = *arg0;
+    } 
+    while (*arg0 != 0);
+  }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031FBC.s")
 

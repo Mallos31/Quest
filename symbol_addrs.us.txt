@@ -4,7 +4,7 @@ gSoundBank0Tbl            = 0x00E81610;
 gSoundBank1Ctl            = 0x00EEE020;
 gSoundBank1Tbl            = 0x00EEFCE0;
 
-osTvType		  = 0x80000300;
+osTvType		          = 0x80000300;
 osViClock                 = 0x8006F408;
 
 nnScCreateScheduler       = 0x80000530;
@@ -17,6 +17,9 @@ nnScRemoveClient          = 0x80000824;
 nnScExecuteAudio          = 0x80000900;
 nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
+
+HUDInit                   = 0x8001E1F0;
+
 Inventory_Init            = 0x80021170;
 CheckIfItemUsable         = 0x800212E4;
 UseItem                   = 0x800213D8;
@@ -367,9 +370,14 @@ alSeqNew                  = 0x80049c78;
 alSynSetPriority          = 0x80049d50;
 ldiv                      = 0x80049e60;
 
+gDL_DustAndSmoke          = 0x8004D050;
+
+gAlphaNumerics            = 0x8004D44C;
 gCheckItemUsableFuncs     = 0x8004D480;
 gUseItemFuncs             = 0x8004D490;
 dlScreenDimRectangle      = 0x8004D4F0;
+
+gPlayerBaseData           = 0x80053D04;
 
 osClockRate               = 0x8006F400;
 __osPiTable               = 0x8006F43C;
@@ -384,6 +392,11 @@ __osViCurr                = 0x80070A80;
 __osViNext                = 0x80070A84;
 gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
+gPlayerData               = 0x8007BA80;
+gFireSpirits              = 0x8007BAA4;
+gEarthSpirits             = 0x8007BAA5;
+gWaterSpirits             = 0x8007BAA6;
+gWindSpirits              = 0x8007BAA7;
 gPlayerPos                = 0x8007BACC;
 
 gDoorAnimData             = 0x80084E60;
@@ -428,6 +441,10 @@ LeoDiskHandle             = 0x80095564;
 __osDiskHandle            = 0x800955D4;
 __osPfsPifRam             = 0x80095660;
 
+
+gGlobalStartScreenTimer   = 0x8011AD34;
+gPushStartBlinkTimer      = 0x8011AD3C;
+gPushStartBlinkFrequency  = 0x8011AD40;
 gBossVAddr                = 0x802A7BC0;
 
 gTextPalettes             = 0x80331A30;

@@ -28,7 +28,7 @@ typedef struct test2 {
 
 extern s32 D_80088420;
 extern test2 D_80088428[0x100];
-extern Gfx D_8004D050[];
+extern Gfx gDL_DustAndSmoke[];
 
 
 void func_8001B0D0(void) {
@@ -64,7 +64,7 @@ test2* func_8001B108(test2* arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B19C.s")
-#ifdef NONMATCHING
+#ifdef NON_MATCHING
 void func_8001B19C(s32 arg0) {
     s32 var_s5;
     s32 var_s6;
@@ -85,7 +85,7 @@ void func_8001B19C(s32 arg0) {
                 if (var_s0->unk4 != 0) {
                     ((void (*)(test2*)) var_s0->unk4)(var_s0);
                 } else {
-                    gSPDisplayList(gMasterGfxPos++, D_8004D050);
+                    gSPDisplayList(gMasterGfxPos++, gDL_DustAndSmoke);
                 }
                 if (var_s0->unk2 & 1) {
                     func_80023A08((f32 (*)[4])&spB4, var_s0->unk30, var_s0->unk34, var_s0->unk38);
@@ -101,7 +101,7 @@ void func_8001B19C(s32 arg0) {
                     }
                     func_80023DF4(&spB4, var_s0->unk28, var_s0->unk2C, 1.0f);
                 }
-                guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 0xC0);
+                guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 3);
 
                 gSPMatrix(gMasterGfxPos++, &D_2000000[D_8007B2F8 + 3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
                 
