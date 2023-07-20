@@ -7,6 +7,7 @@ __pycache__/
 decomp-permuter/
 asm/
 nonmatchings/
+stats/
 
 # files
 *.ld

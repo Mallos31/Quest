@@ -58,20 +58,10 @@ void func_80031F1C(s16 arg0, s16 arg1) {
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031F74.s")
-void func_80031F74(u8 *arg0)
-{
-  s32 var_s0;
-  if (0 != (*arg0))
-  {
-    do 
-    {
-      var_s0 = *arg0;
-      arg0++;
-      func_80031DD4(var_s0);
-      var_s0 = *arg0;
-    } 
-    while (*arg0 != 0);
-  }
+void func_80031F74(u8* arg0) {
+    while (*arg0 != 0) {
+        func_80031DD4(*arg0++);
+    }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031FBC.s")

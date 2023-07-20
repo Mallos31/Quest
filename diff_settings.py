@@ -7,4 +7,4 @@ def apply(config, args):
     config['mapfile'] = f'build/{basename}.{version}.map'
     config['source_directories'] = ['src', 'include']
     config['objdump_flags'] = ['-M','reg-names=32']
-    config['makeflags'] = ['COMPARE=0']
+    config["make_command"] = ["ninja"]
