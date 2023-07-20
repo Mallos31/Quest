@@ -219,58 +219,6 @@ void func_8001A238(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A268.s")
-#ifdef NON_MATCHING
-unk1a238s *func_8001A268(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB)
-{
-  s32 i;
-  test3 *temp_t0;
-  unk1a238s *var_v1;
-  s32 new_var;
-  unk800DA828s *temp_t9;
-
-  i = 0x1F;
-  var_v1 = &D_800875A8;
-    
-  while (i != 0 && var_v1->unk0 != 0) {
-        i--;
-      var_v1++;
-  }
-  
-  var_v1->unkC = arg5;
-  var_v1->unk10 = arg6;
-  var_v1->unk14 = arg7;
-  var_v1->unk18 = arg8;
-  temp_t0 = &D_800EB9EC[arg0];
-  var_v1->unk1C = arg9;
-  var_v1->unk20 = argA;
-  var_v1->unk24 = argB;
-  var_v1->unk28 = 0.0f;
-  var_v1->unk2C = 0.0f;
-  temp_t9 = temp_t0;
-  var_v1->unk30 = 1.0f;
-  var_v1->unk38 = temp_t9->unk0;
-  var_v1->unk3C = temp_t9->unk4;
-  var_v1->unk4 = 0;
-  var_v1->unk6 = arg3;
-  var_v1->unk40 = temp_t9->unk8;
-  var_v1->unk40 = &D_800CB4E0[arg1];
-  var_v1->unk0 = var_v1->unk3A;
-  var_v1->unk2 = (s16) var_v1->unk3A;
-  temp_t9 = &D_800DA828[arg2];
-  var_v1->unk8 = (s16) arg4;
-  var_v1->unk34 = 0;
-  var_v1->unk44 = temp_t9->unk0;
-  var_v1->unk48 = temp_t9->unk4;
-  new_var = temp_t9->unk8;
-  var_v1->unk4C = new_var;
-  var_v1->unk50 = temp_t9->unkC;
-  var_v1->unk54 = temp_t9->unk10;
-    
-  return var_v1;
-}
-#endif
-
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A398.s")
 

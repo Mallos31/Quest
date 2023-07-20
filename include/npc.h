@@ -36,15 +36,15 @@ typedef struct {
 /*0x60*/u16 unk60;
 /*0x62*/char unk62[4];
 /*0x66*/s16 animID;
-    u16 animFrames;
-    u16 totalFrames;
-    u16 animSpeed;
-    s16 unkAnimID; //may be nextAnimID, but doesn't seem to be. Research needed. 
-    s16 unk70;
-    char unk72[0x2];
-    u16 unk74;
-    char unk76[0xA];
-    NPCData2* unk80;    
+/*0x68*/u16 animFrames;
+/*0x6A*/u16 totalFrames;
+/*0x6C*/u16 animSpeed;
+/*0x6E*/s16 unkAnimID; //may be nextAnimID, but doesn't seem to be. Research needed. 
+/*0x70*/s16 unk70;
+/*0x72*/char unk72[0x2];
+/*0x74*/u16 unk74;
+/*0x76*/char unk76[0xA];
+/*0x80*/NPCData2* unk80;    
 }NPCData;
 
 #endif

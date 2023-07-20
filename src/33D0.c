@@ -239,29 +239,7 @@ void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80006F6C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80007030.s")
-#ifdef NON_MATCHING
-s32 func_80007030(s32 arg0, unk1d924s2* arg1) {
-    
-    s32 var_v1;
-    s32 sp1C;
 
-    var_v1 = 0;
-    if (!(arg1->unk60 & 1) && !(D_8007B2E4 & 0x80)) {
-        if (gBattleState & 1) {
-            if (!(gBattleState & 0x202)) {
-                sp1C = 0;
-                var_v1 = sp1C;
-                if ((func_80015B50() == 0) && (D_8008C594 == 0)) {
-                    var_v1 = 1;
-                }
-            }
-        } else {
-            var_v1 = 1;
-        }
-    }
-    return var_v1;
-}
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800070C0.s")
 

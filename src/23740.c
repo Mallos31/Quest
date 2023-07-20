@@ -1,3 +1,5 @@
+/*rename to animation.c*/
+
 #include "common.h"
 
 typedef struct {
@@ -10,23 +12,13 @@ typedef struct {
 /*0x28*/ f32 unk28;
 /*0x2C*/ f32 unk2C;
 /*0x30*/ s16 unk30; //maybe padding. 
-/*0x32*/ u16 frameNum;
-/*0x34*/ Vec3f nextPos;
-/*0x40*/ f32 nextYRot;
-/*0x44*/ f32 nextZRot;
-/*0x48*/ f32 nextXRot;
-/*0x4C*/ Vec3f nextScale;
-/*0x58*/ f32 unk58;
-/*0x5C*/ f32 unk5C;
-/*0x60*/ f32 unk60;
-/*0x64*/ s16 unk64;
-/*0x66*/ u16 nextFrameNum;
+/*0x32*/ u16 startingFrame;
 }LimbKeyframe;
 
 typedef struct {
-    LimbKeyframe* unk0;
+    LimbKeyframe* unk0; //pointer to an array
     u16 unk4;
-    u16 unk6;
+    u16 numFramesInAnim;
     f32 unk8;
     f32 unkC;
     f32 unk10;
@@ -41,6 +33,7 @@ typedef struct {
 void func_80022F60(f32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/23740/func_80022B40.s")
+
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/23740/func_80022F60.s")

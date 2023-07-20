@@ -18,3 +18,4 @@ stats/
 ctx.c
 .ninja_log
 build.ninja
+function_references.txt

@@ -1,4 +1,5 @@
 #include "common.h"
+#include "monsters.h"
 
 typedef struct unk_2513c_s{
     s32 unk0;
@@ -51,6 +52,7 @@ extern ALHeap D_8008F240;
 extern ALCSPlayer D_8008F994;
 extern ALSeqpConfig D_8008FB14;
 extern ALCSPlayer D_8008FB30;
+extern s32 D_8008FCB0;
 
 
 
@@ -163,21 +165,9 @@ s32 func_80025938(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025B3C.s")
 
+
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025B8C.s")
-#ifdef NON_MATCHING
-void func_80025B8C(s32 arg0, s32 arg1, s32 arg2) {
-    s32 temp_v0 = D_80053970;
 
-    D_8005390C[temp_v0] = arg0;
-    D_8005392C[temp_v0] = arg1;
-    D_8005394C[temp_v0] = arg2;
-    
-    temp_v0++;
-
-    D_80053970 = temp_v0 & 7;
-    D_8008FCB4 = temp_v0 ;
-}
-#endif
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025BD8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025E0C.s")

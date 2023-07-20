@@ -1,3 +1,5 @@
+/*Rename to eletale_math.c*/
+
 #include "common.h"
 
 typedef struct {
@@ -398,41 +400,7 @@ void func_80023BCC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023C1C.s")
-#ifdef NON_MATCHING
-void func_80023C1C(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9)
-{
-  f32 s1;
-  f32 s2;
-  f32 s3;
-  f32 c2;
-  f32 c3;
-  f32 c1;
-  arg5 *= D_8004D74C;
-  arg6 *= D_8004D74C;
-  s1 = sinf(arg4 * D_8004D74C);
-  c1 = cosf(arg4 * ((0, D_8004D74C)));
-  s2 = sinf(arg5);
-  c2 = cosf(arg5);
-  s3 = sinf(arg6);
-  c3 = cosf(arg6);
-  arg0->mf[0][0] = ((c3 * c2) + ((s3 * s1) * s2)) * arg7;
-  arg0->mf[0][1] = (s3 * c1) * arg7;
-  arg0->mf[0][2] = (((-s2) * c3) + ((s3 * s1) * c2)) * arg7;
-  arg0->mf[0][3] = 0.0f;
-  arg0->mf[1][0] = (((-s3) * c2) + ((c3 * s1) * s2)) * arg8;
-  arg0->mf[1][1] = (c3 * c1) * arg8;
-  arg0->mf[1][2] = (((-s3) * (-s2)) + ((c3 * s1) * c2)) * arg8;
-  arg0->mf[1][3] = 0.0f;
-  arg0->mf[2][0] = (c1 * s2) * arg9;
-  arg0->mf[2][1] = (-s1) * arg9;
-  arg0->mf[2][2] = (c1 * c2) * arg9;
-  arg0->mf[2][3] = 0.0f;
-  arg0->mf[3][0] = arg1;
-  arg0->mf[3][1] = arg2;
-  arg0->mf[3][2] = arg3;
-  arg0->mf[3][3] = 1.0f;
-}
-#endif
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023DF4.s")
 void func_80023DF4(f32 (*arg0)[4], f32 arg1, f32 arg2, f32 arg3) {

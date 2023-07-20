@@ -120,21 +120,6 @@ void func_8001D820(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001D828.s")
-#ifdef NON_MATCHING
-u8 func_8001D828(void)
-{
-    u8 ret;
-  if ((gBattleState & 0x100) || ((getRandomNumber(4U)) == 0))
-  {
-    ret = D_8007C9B8[getRandomNumber(D_8008C59A)].unk00->unk34;
-  }
-  else
-  {
-    ret = 0xFF;
-  }
-    return ret;
-}
-#endif
 
 void func_8001D89C(void) {
 }

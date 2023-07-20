@@ -219,18 +219,7 @@ void func_8000B110(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B140.s")
-#ifdef NON_MATCHING
-s32 func_8000B140(TestStruct* arg0) {
-    s32 var_v1;
 
-    for(var_v1 = 0; var_v1 < 6; var_v1++) {
-        if(arg0 == &D_8007C9BC[var_v1]) {
-            break;
-        }
-    }
-    return var_v1;
-}
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B170.s")
 

@@ -392,6 +392,7 @@ __osViCurr                = 0x80070A80;
 __osViNext                = 0x80070A84;
 gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
+gTreasureChestPointer     = 0x8007BA7C;
 gPlayerData               = 0x8007BA80;
 gFireSpirits              = 0x8007BAA4;
 gEarthSpirits             = 0x8007BAA5;

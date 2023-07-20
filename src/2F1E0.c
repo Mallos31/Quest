@@ -47,46 +47,7 @@ for (i = 0; i != 4; i++){
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002E628.s")
-#ifdef NON_MATCHING
 
-void func_8002E628(s32 arg0, u8 arg1) {
-    s32 i;
-    s32 j;
-
-    if (!arg1) {
-        D_800905E0[arg0].ypos = 0;
-        D_800905E0[arg0].height = 0;
-        D_800905E0[arg0].unk0 = 0;
-        D_800905E0[arg0].xpos = D_800905E0[arg0].ypos;
-        D_800905E0[arg0].width = D_800905E0[arg0].height;
-    }
-    D_800905E0[arg0].quillTimer = 1;
-    D_800905E0[arg0].unkE = 0;
-    D_800905E0[arg0].unkF = 0;
-    D_800905E0[arg0].unk10 = 0;
-    D_800905E0[arg0].unk12 = 0;
-    D_800905E0[arg0].unk14 = -1;
-    D_800905E0[arg0].unk15 = 0;
-    D_800905E0[arg0].unk16 = 0;
-
-    for (i = 0; i < 0x20; i++) {
-        D_800905E0[arg0].unk17[i] = -1;
-    }
-    
-    for(i = 0 ; i < 0x400; i++){
-        D_800905E0[arg0].unk9C[i] = -1;
-        D_800905E0[arg0].unk49C[i] = -1;
-    }
-    
-    D_800905E0[arg0].unk38 = 0;
-    D_800905E0[arg0].unk3A = 0;
-    for(i = 0; i != 0x18; i++) {
-        for (j = 0; j < 4; j++) {
-            D_800905E0[arg0].unk3C[j][i] = -1;
-        }
-    }
-}
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002E768.s")
 
