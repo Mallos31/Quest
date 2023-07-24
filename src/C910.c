@@ -50,6 +50,20 @@ typedef struct unk_e3c4_s
     char unk58[0x18];
 }unke3c4s; //size 0x70
 
+typedef struct {
+    char unk0[0x18];
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    char unk24[0xC];
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+}unke224s;
+
+extern f64 D_80071230;
+extern u16 D_80084ED0;
+
 extern DoorAnimData gDoorAnimData; //Door animation data
 
 extern unke3c4s D_80084180;
@@ -119,7 +133,16 @@ s32 func_8000DB38(void* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000E10C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000E224.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000E224.s")
+void func_8000E224(unke224s* arg0) {
+
+    arg0->unk18 += arg0->unk30;
+    arg0->unk1C += arg0->unk34;
+    arg0->unk20 = (arg0->unk20 + arg0->unk38);
+    arg0->unk34 = (arg0->unk34 - D_80071230);
+
+    gDPSetEnvColor(gMasterGfxPos++, 255, 255, 255, (D_80084ED0 & 1) ? 220 : 120);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/C910/func_8000E2C0.s")
 

@@ -76,8 +76,30 @@ typedef struct unk_3f5c_s2{
     u16 unk4;
 }unk3f5cs2;
 
+typedef struct {
+    u16 map;
+    u16 submap;
+    f32 x;
+    f32 z;
+    f32 yrot;
+}RespawnLocation;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+}unk80085368;
 
+extern RespawnLocation gRespawnLocationTbl[];
+extern BrianData1* D_8007BAC8;
+extern unk80085368 D_80085368;
+extern void* D_80054158;  //the address after the end of the table of respawn locations. 
+
+extern f32 D_8007BA40; //spawn/load x
+extern f32 D_8007BA44; //spawn/load z
+extern f32 D_8007BA48; //spawn/load yrot
+extern s32 gCurrentMap;
+extern s32 gCurrentSubmap;
 extern unkBAB8 D_8007BAB8;
 extern s32 D_8007BC2C;
 
@@ -90,8 +112,39 @@ extern struct_80053D00 *D_80053D00[];
 
 extern fileBounds D_80053F58[];
 
+//
+//
+void func_80002EA0(void);
+//
+//
+//
+//
+void func_80003F5C(unk3f5cs* arg0, unk3f5cs2* arg1, s32 arg2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2);
+void func_80005740(void);
+//
+//
+//
+//
+//
+//
 void func_80006604(unk6604s* arg0, BrianData2* arg1, s32 arg2);
+void func_8000669C(u8 arg0);
 void func_80006720(BrianData2* arg0);
 void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg2);
 
@@ -99,7 +152,26 @@ void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002918.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002EA0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002EA0.s")
+void func_80002EA0(void) {
+    int i;
+
+    D_8007BAC8->colissionSize = 50.0f;
+    gCurrentMap = gNextMap;
+    gCurrentSubmap = gNextSubmap;
+    D_80085368.unk8 = 0;
+    for(i = 0; i < 17; i++) {
+        if ((gNextMap == gRespawnLocationTbl[i].map) && (gNextSubmap == gRespawnLocationTbl[i].submap)) {
+            D_8007BA40 = gRespawnLocationTbl[i].x;
+            D_8007BA44 = gRespawnLocationTbl[i].z;
+            D_8007BA48 = gRespawnLocationTbl[i].yrot;
+            D_80085368.unk8 = -1;
+            break;
+        }
+    }
+    gNextMap = -1;
+    gNextSubmap = -1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002F60.s")
 

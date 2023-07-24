@@ -60,7 +60,7 @@ void func_8000B530(void)
   for (i = 0; i < 8; i++)
   {
     data = &gBossData[i];
-    if ((D_80084EE4 == data->bossMap) && (gNextSubmap == data->bossSubmap))
+    if ((gNextMap == data->bossMap) && (gNextSubmap == data->bossSubmap))
     {
       if (func_8000B9D8(i) == 0)
       {

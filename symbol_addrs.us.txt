@@ -379,6 +379,8 @@ dlScreenDimRectangle      = 0x8004D4F0;
 
 gPlayerBaseData           = 0x80053D04;
 
+gRespawnLocationTbl       = 0x80054048;
+
 osClockRate               = 0x8006F400;
 __osPiTable               = 0x8006F43C;
 
@@ -401,7 +403,10 @@ gWindSpirits              = 0x8007BAA7;
 gPlayerPos                = 0x8007BACC;
 
 gDoorAnimData             = 0x80084E60;
-gNextSubmap				  = 0x80084ee8;
+gNextMap                  = 0x80084EE4;
+gNextSubmap				  = 0x80084EE8;
+gCurrentMap               = 0x80084EEC;
+gCurrentSubmap            = 0x80084EF0;
 gAllowBattles             = 0x80084f10;
 gMapData                  = 0x80084f18;
 

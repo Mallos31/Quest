@@ -10,7 +10,7 @@ extern Mtx D_2000040[];
 extern s32 D_8007B2F8; //Gfx matrix index? 
 extern s32 D_8007B2E4;
 extern s16 D_8007B2E8;
-extern s32 D_80084EE4;
+extern s32 gNextMap;
 extern s16 gGameMode;
 extern u16 gBattleState;
 extern s8 D_80092870;

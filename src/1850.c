@@ -49,8 +49,8 @@ extern s16 D_8007BA60;
 extern u16 D_8007BA62;
 extern s16 D_8007BA64;
 extern s16 D_8007BABE;
-extern u32 D_80084EEC;
-extern s32 D_80084EF0;
+extern u32 gCurrentMap;
+extern s32 gCurrentSubmap;
 extern s32 D_80084EF8;
 extern s32 D_80084F04;
 extern u16 D_80084F14;
@@ -68,14 +68,14 @@ extern unk111Cs* D_80301000[];
 void func_80000EEC(void) {
     D_8007B2E4 = 0x160;  //menu that is open
     gGameMode = 4;
-    D_80084EE4 = -1;     //current map
+    gNextMap = -1;     //current map
     D_80084EF8 = -1;
     D_80084F04 = -1;
     D_80084F14 = 0xFFFF;
     D_80086E44 = 0.0f;  //camera position during transition 
     D_800859E2 = 0;
-    D_80084EEC = 0xD;
-    D_80084EF0 = 0x11;
+    gCurrentMap = 0xD;
+    gCurrentSubmap = 0x11;
     D_80085370 = -1;
     D_8007BA60 = 0xD;
     D_8007BA62 = 0x11;

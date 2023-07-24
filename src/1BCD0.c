@@ -64,59 +64,5 @@ test2* func_8001B108(test2* arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B19C.s")
-#ifdef NON_MATCHING
-void func_8001B19C(s32 arg0) {
-    s32 var_s5;
-    s32 var_s6;
-    test2* var_s0;
-    MtxF spB4;
-    MtxF sp74;
 
-   
-    var_s6 = 0;
-    var_s0 = D_80088428;
-    for ( var_s5 = D_80088420; var_s5 != 0; var_s0++){
-            if (var_s0->unk0 != 0) {
-                var_s0->unk0--;
-                if (var_s6 != var_s0->unk10) {
-                    var_s6 = var_s0->unk10;
-                    func_8001B448(var_s0->unk8, var_s6, var_s0->unk9, var_s0->unkA, (s32) var_s0->unkB, (s32) var_s0->unkC);
-                }
-                if (var_s0->unk4 != 0) {
-                    ((void (*)(test2*)) var_s0->unk4)(var_s0);
-                } else {
-                    gSPDisplayList(gMasterGfxPos++, gDL_DustAndSmoke);
-                }
-                if (var_s0->unk2 & 1) {
-                    func_80023A08((f32 (*)[4])&spB4, var_s0->unk30, var_s0->unk34, var_s0->unk38);
-                    spB4.xw = var_s0->unk18;
-                    spB4.yw = var_s0->unk1C;
-                    spB4.zw = var_s0->unk20;
-                    func_80023DF4( &spB4, var_s0->unk28, var_s0->unk28, var_s0->unk28);
-                } else {
-                    func_8002371C((MtxF* ) &spB4, var_s0->unk18, var_s0->unk1C, var_s0->unk20, D_80086DC0.unkC, D_80086DC0.unk10, D_80086DC0.unk14);
-                    if (var_s0->unk24 != 0.0f) {
-                        func_80023570(&sp74, 0.0f, 0.0f, var_s0->unk24);
-                        guMtxCatF(&sp74,  (f32 (*)[4])&spB4,  (f32 (*)[4])&spB4);
-                    }
-                    func_80023DF4(&spB4, var_s0->unk28, var_s0->unk2C, 1.0f);
-                }
-                guMtxF2L((f32 (*)[4]) &spB4, arg0 + (D_8007B2F8 << 6) + 3);
-
-                gSPMatrix(gMasterGfxPos++, &D_2000000[D_8007B2F8 + 3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-                
-                
-                D_8007B2F8++;
-                var_s5--;
-
-                gSPDisplayList(gMasterGfxPos++, var_s0->unk14);
-                
-                
-                if (var_s0->unk0 == 0) {
-                    D_80088420--;
-                }
-            }
-    }
-}
-#endif
 #pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B448.s")
