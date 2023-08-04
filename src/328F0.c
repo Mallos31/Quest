@@ -17,10 +17,14 @@ typedef struct {
     u8 unk2;
 }unk31cf0s;
 
+typedef struct {
+    char unk0[0x8];
+}unk6f3c0s;
+
 extern unk32218s D_8006CC88;
 extern unk32218s D_8006E288;
 extern unk32218s D_8006E298;
-extern u8 D_80092D0E;
+extern u8 gPakMenuScrollAmt;
 extern u16 D_80092D1A;
 extern s32 D_80092D1C;
 extern s32 D_80092D20; //Probably a struct/array
@@ -31,9 +35,16 @@ extern s32 D_8006E4B4;
 extern OSMesgQueue* D_80092D28;
 extern void* D_80092D2C;
 extern void* D_8006E4B8[];
+extern u8* D_8006E4C0[]; //alphabet texture
+extern s32 D_80092CC0;
+
+
+//these two MAY use some sort of struct, but that is currently unknown. Matches as-is. 
+extern s32  D_8006F3C0[];
+extern u16* D_8006F3F8;
 
 void func_80031CF0(u16 arg0, s8* arg1);
-
+void func_80031DD4(s32 arg0);
 void func_80031F1C(s16 arg0, s16 arg1);
 void func_80031F74(u8 *arg0);
 
@@ -48,7 +59,51 @@ void func_80031CF0(u16 arg0, s8* arg1) {
     arg1[2] = (arg0 % 10) + 16;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031DD4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031DD4.s")
+void func_80031DD4(s32 arg0)
+{
+    u8 temp_t7;
+    u16 *var_a0;
+    s32 i;
+    s32 var_v0;
+    u32* var_a1;
+    
+    if (arg0 == 1) {
+        D_80092D30 += 6;
+        return;
+    }
+    
+    if (arg0 == 0xA) {
+        D_80092D36 += 0xD;
+        func_80031F1C(D_80092D34, D_80092D36);
+        return;
+    }
+    
+    if ((arg0 < 0xF) || (D_80092CC0 < arg0)) {
+        arg0 = 0x3B;
+    }
+
+    arg0 -= 0xF;
+    var_a0 = (u16*)D_80092D30;
+    i = 0;
+    var_a1 = (((((arg0) & 0xF8) * 0xC) / 2) * 8) 
+             + ((((arg0) & 7) * 8) / 2) + (s32)D_8006E4C0;
+    
+    for (i = 0; i < 0xC; i++) {
+        for(var_v0 = 28; var_v0 >= 0; var_v0 -= 4, var_a0++) {
+            temp_t7 = ((*var_a1) >> var_v0) % 0x10;
+            if (temp_t7 != 0) {
+                *var_a0 = D_8006F3F8[temp_t7];
+            }
+        }
+
+        var_a0 += 0x138;
+        var_a1 += 0x8;
+    }
+    
+    D_80092D30 += 0x12;
+}
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031F1C.s")
 void func_80031F1C(s16 arg0, s16 arg1) {
@@ -66,7 +121,12 @@ void func_80031F74(u8* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80031FBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80032020.s")
+
+//#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80032020.s")
+
+void func_80032020(s32 arg0) {
+    D_8006F3F8 = &D_8006F3C0[arg0 * 2];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80032040.s")
 
@@ -105,6 +165,7 @@ void func_8003228C(void)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_8003232C.s")
 
+
 //#pragma GLOBAL_ASM("asm/nonmatchings/328F0/func_80032560.s")
 void func_80032560(u16 arg0) {
     unk31cf0s sp1C;
@@ -126,11 +187,11 @@ void func_8003265C(void) {
 
     func_80032218(&D_8006CC88, 0xF0);
     func_80032560(D_80092D1A);
-    temp_v0 = D_80092D0E;
+    temp_v0 = gPakMenuScrollAmt;
     if (temp_v0 != 0) {
         func_80032218(&D_8006E288, 1);
     }
-    temp_v0 = D_80092D0E;
+    temp_v0 = gPakMenuScrollAmt;
     if ((s32) temp_v0 < 0xA) {
         func_80032218(&D_8006E298, 1);
     }

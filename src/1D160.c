@@ -51,14 +51,29 @@ typedef struct {
     UnknownMonsterData2 unk6C;
 }unkEnemy;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+}unkEncounterSomething;
+
+typedef struct {
+    void* unk0;
+    void* unk4;
+    unkEncounterSomething* unk8;
+    s32 unkC; //encounter rate? 
+}unkEncounterData;
+
 extern unkEnemy* D_8007C9B8[];
 extern u16 D_8008C59A;
 extern s32 gNextSubmap;
 extern u16 gAllowBattles;
 extern void* D_8008C560;
-extern void* D_8008C564;
+extern unkEncounterData* D_8008C564;
 extern f32 D_8008C574;
 extern s16 D_8008C578;
+extern f32 max_encounter_distance_sqr; //.rodata
+extern f32 min_encounter_distance_sqr; //.rodata
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001C560.s")
 void func_8001C560(void) {
