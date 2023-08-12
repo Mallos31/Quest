@@ -19,7 +19,6 @@ nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
 
 HUDInit                   = 0x8001E1F0;
-
 Inventory_Init            = 0x80021170;
 CheckIfItemUsable         = 0x800212E4;
 UseItem                   = 0x800213D8;
@@ -438,6 +437,7 @@ gCurrentBGM               = 0x8008FCC1;
 gPlayBGM                  = 0x8008FCC2;
 gBGMDelay                 = 0x8008FCC4;
 
+gPakMenuScrollAmt         = 0x80092D0E;
 __osContPifRam            = 0x80095450;
 __osContLastCmd           = 0x80095490;
 __osMaxControllers        = 0x80095491;
