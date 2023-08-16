@@ -391,6 +391,8 @@ __osActiveQueue           = 0x800709FC;
 __osRunningThread         = 0x80070A00;
 __osViCurr                = 0x80070A80;
 __osViNext                = 0x80070A84;
+
+
 gGameMode                 = 0x8007b2e0;
 gMasterGfxPos             = 0x8007B2FC;
 gTreasureChestPointer     = 0x8007BA7C;
@@ -438,6 +440,10 @@ gPlayBGM                  = 0x8008FCC2;
 gBGMDelay                 = 0x8008FCC4;
 
 gPakMenuScrollAmt         = 0x80092D0E;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 __osContPifRam            = 0x80095450;
 __osContLastCmd           = 0x80095490;
 __osMaxControllers        = 0x80095491;
