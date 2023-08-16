@@ -136,6 +136,3 @@ void func_8001D820(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001D828.s")
 
-void func_8001D89C(void) {
-}
-

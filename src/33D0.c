@@ -90,6 +90,77 @@ typedef struct {
     s32 unk8;
 }unk80085368;
 
+/*beginning of stuff for func_800074A0*/
+typedef struct unkStruct4 {
+    char unk00[4];
+    u16 unk4;
+    u16 unk6;
+    u16 unk8;
+    u16 unkA;
+    u16 unkC;
+    u16 unkE;
+    s32 unk10;
+} unkStruct4;
+
+typedef struct unkStruct3 {
+    char unk00[0x64];
+    unkStruct4* unk64;
+} unkStruct3;
+
+typedef struct ElementLevels {
+    u8 fire;
+    u8 earth;
+    u8 water;
+    u8 wind;
+} ElementLevels;
+
+typedef struct unkStruct2 {
+    char unk_00[0x24];
+    ElementLevels elements;
+    u16 unk28;
+    u16 unk2A;
+    u16 unk2C;
+    u16 unk2E;
+    u8 unk30;
+    u8 unk31;
+    u8 unk32;
+    u8 unk33;
+    u8 unk34;
+} unkStruct2;
+
+typedef struct unkStruct {
+    u16 unk0;
+    char unk_02[6];
+    u16 unk8;
+    char unk_0A[6];
+    unkStruct2* unk10;
+
+    //0x34 is a substruct within this struct
+    //char unk_14[0x50]; //unk size
+} unkStruct;
+
+extern u32 D_80053D3C[];
+extern u16 D_80053ECC[];
+extern f64 D_800710F8;
+extern f64 D_80071100;
+extern s32 D_8007B2E4;
+extern f32 D_8007BA5C;
+extern s32 D_8007BA70;
+//extern u8 D_8007BA73;
+extern f32 D_8007BC10;
+extern f32 D_8007BC14;
+extern f32 D_8007BC18;
+extern f32 D_8007BC1C;
+extern u16 gAllowBattles;
+extern u16 gBattleState;
+
+void func_800268D4(s32 arg0, s8 arg1, s32 arg2);
+void func_800120C0(s32);
+void func_8002E768(s32);
+void AddItemToInventory(u8);
+
+/*end of stuff for func_800074A0*/
+
 extern RespawnLocation gRespawnLocationTbl[];
 extern BrianData1* D_8007BAC8;
 extern unk80085368 D_80085368;
@@ -312,11 +383,127 @@ void func_800069FC(sPlayerAction* arg0, BrianData2* arg1, MonsterBattleData* arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80007030.s")
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800070C0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800072A8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800073CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800074A0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800074A0.s")
+void func_800074A0(unkStruct* arg0, unkStruct3* arg1) {
+    u16 var_a0;
+    ElementLevels* elementsInstance;
+
+    if (!(gBattleState & 1)) {
+        if (gAllowBattles & 1) {
+            D_8007BC10 += D_8007BA5C;
+            if (D_8007BC10 > 200.0) {
+                D_8007BC10 -= 200.0;
+            }
+            D_8007BC18 += D_8007BA5C;
+            if (1000.0 < D_8007BC18) { //D_800710F8 is 1000.0
+                D_8007BC18 -= 1000.0;
+                arg0->unk10->unk2C++;
+            }
+        } else {
+            D_8007BC14 += D_8007BA5C;
+            if (D_8007BC14 > 800.0) {
+                D_8007BC14 -= 800.0;
+            }
+            D_8007BC1C += D_8007BA5C;
+            if (2000.0 < D_8007BC1C) { //D_80071100 is 2000.0
+                D_8007BC1C -= 2000.0;
+                arg0->unk10->unk2C++;
+            }
+        }
+    }
+    if (arg1->unk64->unk6 < 500) {
+        if (arg0->unk10->unk28 >= D_80053ECC[arg0->unk10->unk30]) {
+            arg0->unk10->unk28 = arg0->unk10->unk28 - D_80053ECC[arg0->unk10->unk30];
+            var_a0 = 1;
+            if ((arg1->unk64->unk6 + 1) > 500) {
+                var_a0 = 500 - arg1->unk64->unk6;
+            }
+            arg1->unk64->unk6 += var_a0;
+            arg1->unk64->unk4 += var_a0;
+            if (arg0->unk10->unk30 < 54) {
+                arg0->unk10->unk30++;
+            }
+        }
+    } else {
+        arg0->unk10->unk28 = 0;
+    }
+    if (arg1->unk64->unkA < 500) {
+        if (arg0->unk10->unk2A >= D_80053ECC[arg0->unk10->unk31] * 4) {
+            arg0->unk10->unk2A -= D_80053ECC[arg0->unk10->unk31] * 4;
+            var_a0 = 1;
+            if ((arg1->unk64->unkA + 1) > 500) {
+                var_a0 = (500 - arg1->unk64->unkA);
+            }
+            arg1->unk64->unkA += var_a0;
+            arg1->unk64->unk8 += var_a0;
+            if (arg0->unk10->unk31 < 54) {
+                arg0->unk10->unk31++;
+            }
+        }
+    } else {
+        arg0->unk10->unk2A = 0;
+    }
+    if (arg1->unk64->unkC < 255) {
+        if (arg0->unk10->unk2C >= D_80053ECC[arg0->unk10->unk32]) {
+            arg0->unk10->unk2C -= D_80053ECC[arg0->unk10->unk32];
+            var_a0 = 1;
+            if ((arg1->unk64->unkC + 1) > 255) {
+                var_a0 = (255 - arg1->unk64->unkC);
+            }
+            arg1->unk64->unkC += var_a0;
+            if (arg0->unk10->unk32 < 54) {
+                arg0->unk10->unk32++;
+            }
+        }
+    } else {
+        arg0->unk10->unk2C = 0;
+    }
+    if (arg1->unk64->unkE < 255) {
+        if (arg0->unk10->unk2E >= D_80053ECC[arg0->unk10->unk33] * 2) {
+            arg0->unk10->unk2E -= D_80053ECC[arg0->unk10->unk33] * 2;
+            var_a0 = 1;
+            if ((arg1->unk64->unkE + 1) > 255) {
+                var_a0 = (255 - arg1->unk64->unkE);
+            }
+            arg1->unk64->unkE += var_a0;
+            if (arg0->unk10->unk33 < 54) {
+                arg0->unk10->unk33++;
+            }
+        }
+    } else {
+        arg0->unk10->unk2E = 0;
+    }
+    if (!(D_8007B2E4 & 8)) {
+        if (arg0->unk10->unk34 >= 98) {
+            arg1->unk64->unk10 = 0;
+        } else {
+            if (arg1->unk64->unk10 >= D_80053D3C[arg0->unk10->unk34]) {
+                arg1->unk64->unk10 -= D_80053D3C[arg0->unk10->unk34];
+                if (arg0->unk10->unk34 < 98) {
+                    arg0->unk10->unk34++;
+                }
+                elementsInstance = &arg0->unk10->elements;
+                if ((elementsInstance->fire != 50) || (elementsInstance->earth != 50) || (elementsInstance->water != 50) || (elementsInstance->wind != 50)) {
+                    D_8007B2E4 |= 8;
+                    arg0->unk0 = 0;
+                    func_800268D4(0, 1, 0xFF);
+                }
+            }
+        }
+    }
+    if (!(D_8007B2E4 & 0xA) && (D_8007BA70 != 255)) {
+        func_800120C0(D_8007BA70);
+        func_8002E768(1);
+        AddItemToInventory(D_8007BA70);
+        D_8007BA70 = 255;
+        arg0->unk8 |= 2;
+        D_8007B2E4 |= 2;
+        func_800268D4(0, 0x3B, 255);
+    }
+}

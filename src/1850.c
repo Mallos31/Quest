@@ -37,7 +37,6 @@ extern OSMesgQueue D_8007B9E8;
 extern u64 D_80300000[]; // dram stack (0x400 bytes)
 extern u64 D_80300400[]; // ucode yield buffer (0xC00 bytes)
 extern u8 D_8031B2A0[]; // ucode output buffer start
-extern f32 D_80070F04;
 extern s16 D_8007B2F0;
 extern s8 D_8007B344;
 extern s8 D_8007B345;
@@ -68,7 +67,7 @@ extern unk111Cs* D_80301000[];
 void func_80000EEC(void) {
     D_8007B2E4 = 0x160;  //menu that is open
     gGameMode = 4;
-    gNextMap = -1;     //current map
+    gNextMap = -1;     
     D_80084EF8 = -1;
     D_80084F04 = -1;
     D_80084F14 = 0xFFFF;
@@ -82,7 +81,7 @@ void func_80000EEC(void) {
     D_8007BA64 = 0;
     D_8007BA40 = -26.0f;
     D_8007BA44 = 0.0f;
-    D_8007BA48 = D_80070F04;
+    D_8007BA48 = M_PI/2;
     D_8007BA4C = 0x108;
     D_8007BABE = 0;
     D_8007B2E8 = 1;

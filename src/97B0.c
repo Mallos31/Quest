@@ -159,8 +159,8 @@ void func_80009818(MonsterBattleData* arg0, EnemyAction* arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A284.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A3F4.s")
-void func_8000A3F4(unka3f4s *arg0, f32 arg1, f32 arg2) {
+#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A3F4.s")
+/*void func_8000A3F4(unka3f4s *arg0, f32 arg1, f32 arg2) {
   f32 var_f2;
     
     arg1 -= arg0->unk0;
@@ -179,7 +179,7 @@ void func_8000A3F4(unka3f4s *arg0, f32 arg1, f32 arg2) {
     } else if (arg0->unk10 < (-M_PI)) {
         arg0->unk10 += 2 * M_PI;
     }
-}
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000A508.s")
 

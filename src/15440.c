@@ -249,7 +249,6 @@ void func_800175B8(s32 arg0, unk18278s* arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_800177F8.s")
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017998.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80017BD4.s")
