@@ -20,3 +20,4 @@ ctx.c
 build.ninja
 function_references.txt
 build_output.txt
+shell_scripts.txt
