@@ -19,3 +19,4 @@ ctx.c
 .ninja_log
 build.ninja
 function_references.txt
+build_output.txt
