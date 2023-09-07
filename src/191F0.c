@@ -100,6 +100,30 @@ typedef struct {
     s32 unk10;
 }unk800DA828s;
 
+typedef struct {
+    Vec3f* unk0;
+    char unk4[0x8];
+    u16 unkC;
+    char unkE[0xE];   
+}unk80087408s;
+
+typedef struct {
+/*0x00*/ Vec3f* targetPos;
+/*0x04*/ u8 damageDigits[8];
+/*0x0C*/ u16 damageDisplayTimer;
+/*0x0E*/ char unkE[2];
+/*0x10*/ s32 unk10;
+/*0x14*/ s32 numDigits;
+/*0x18*/ s32 unk18;    
+}DamageDigs;
+
+extern DamageDigs D_800873D0[];
+extern u16 D_800873DC;
+extern s32 D_800873EC;
+extern u16 D_800873F8;
+extern unk80087408s D_80087408[];
+
+
 extern BattleFence D_800880A8[];
 extern unk18684s D_80087210;
 extern unk19324s D_800874E8;

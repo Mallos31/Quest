@@ -41,6 +41,13 @@ extern u16* D_80085398;
 extern u8 D_800853A0[];
 extern unk11170s D_800859E8[];
 
+/*rodata for func_8000FF54*/
+extern f64 D_80071280;
+extern f64 D_80071288;
+extern f64 D_80071290;
+extern f64 D_80071298;
+extern f64 D_800712A0;
+/*end rodata*/
 
 s32 func_8000FFE8(unkfde0s*);                       /* extern */
 void func_80010080(unkfde0s*);                         /* extern */
@@ -138,7 +145,25 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
   return ret;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FF54.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FF54.s")
+s32 func_8000FF54(f32 arg0)
+{
+  if (D_80071280 < arg0)  //if M_PI < arg0
+  {
+    arg0 = (f32) (arg0 - D_80071288);
+  }
+  else
+    if (arg0 < D_80071290) //if arg0 < -M_PI
+  {
+    arg0 = (f32) (arg0 + D_80071298);
+  }
+  if (arg0 < 0.0f)
+  {
+    arg0 = -arg0;
+  } 
+  return arg0 < D_800712A0; //arg0 < 22.5° in radians. 
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FFE8.s")
 
