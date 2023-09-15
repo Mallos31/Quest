@@ -440,10 +440,7 @@ gPlayBGM                  = 0x8008FCC2;
 gBGMDelay                 = 0x8008FCC4;
 
 gPakMenuScrollAmt         = 0x80092D0E;
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 __osContPifRam            = 0x80095450;
 __osContLastCmd           = 0x80095490;
 __osMaxControllers        = 0x80095491;

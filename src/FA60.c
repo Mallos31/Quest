@@ -221,7 +221,7 @@ void func_800110D0(void) {
     unk11170s* var_v0;
     s32 var_v1;
 
-    var_v0 = &D_800859E8;
+    var_v0 = (unk11170s*)&D_800859E8;
     var_v1 = 8;
     while (var_v1 > 0) {
         var_v0->unk0 = 0;
