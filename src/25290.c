@@ -37,7 +37,7 @@ extern s32 D_800539B8;
 extern s32 D_8005390C[];
 extern s32 D_8005392C[];
 extern s32 D_8005394C[];
-extern s32 D_80053970;
+extern u32 D_80053970;
 extern s32 D_8008FCB4;
 extern void* func_80024BEC;
 extern s32 D_800539E4;
@@ -164,7 +164,6 @@ s32 func_80025938(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025984.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025B3C.s")
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025B8C.s")
 

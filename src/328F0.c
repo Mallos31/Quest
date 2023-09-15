@@ -65,7 +65,7 @@ void func_80031DD4(s32 arg0)
     u8 temp_t7;
     u16 *var_a0;
     s32 i;
-    s32 var_v0;
+    s32 j;
     u32* var_a1;
     
     if (arg0 == 1) {
@@ -90,8 +90,8 @@ void func_80031DD4(s32 arg0)
              + ((((arg0) & 7) * 8) / 2) + (s32)D_8006E4C0;
     
     for (i = 0; i < 0xC; i++) {
-        for(var_v0 = 28; var_v0 >= 0; var_v0 -= 4, var_a0++) {
-            temp_t7 = ((*var_a1) >> var_v0) % 0x10;
+        for(j = 28; j >= 0; j -= 4, var_a0++) {
+            temp_t7 = ((*var_a1) >> j) % 0x10;
             if (temp_t7 != 0) {
                 *var_a0 = D_8006F3F8[temp_t7];
             }
