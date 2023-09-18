@@ -42,9 +42,12 @@ getRandomNumber           = 0x80022FD0;
 calc_arctan_in_radians    = 0x80023028;
 dma_write                 = 0x80024260;
 int_to_str_with_flags     = 0x80024330;
+
+InitializeSoundData       = 0x800265F0;
 UpdateBGM                 = 0x800267B8;
 UpdateBGMDelay            = 0x800267F8;
-func_8002684C             = 0x8002684C;
+FindMapBGM                = 0x8002684C;
+SetBGMVolume              = 0x80026A04;
 string_copy               = 0x80030E10;
 loadTextTextureAndPal     = 0x80030E58;
 osInitialize         	  = 0x80033850;
@@ -379,7 +382,7 @@ dlScreenDimRectangle      = 0x8004D4F0;
 gPlayerBaseData           = 0x80053D04;
 
 gRespawnLocationTbl       = 0x80054048;
-
+gBGMVolume                = 0x8005F010;
 osClockRate               = 0x8006F400;
 __osPiTable               = 0x8006F43C;
 

@@ -4,6 +4,26 @@
 typedef struct {
     s16 unk0;
     s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    u16 unk8;
+}unk202e4s3;
+
+typedef struct {
+    char unk0[0x12];
+    u8 unk12[7];
+    char unk19[0x2B];
+    unk202e4s3* unk44[4];
+}unk202e4s2;
+
+typedef struct {
+    char unk0[0x68];
+    unk202e4s2* unk68;
+}unk202e4s;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
     s32 unk4;
     s32 unk8;
     void* unkC;
@@ -59,6 +79,8 @@ extern f64 D_80071188;
 extern f64 D_80071190;
 extern MonsterBattleData D_8007C9BC;
 extern s32 D_8007D0C4;
+
+void func_8000A508(s32, f32, f32, unk202e4s*, void*);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008BB0.s")
 
@@ -124,9 +146,9 @@ void func_8000932C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009588.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009818.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009818.s")
 /*function matches but does not build. Needs investigation*/
-#ifdef NON_MATCHING
+
 void func_80009818(MonsterBattleData* arg0, EnemyAction* arg1, s32 arg2) {
     func_8000A7D8((BrianData2* ) arg0, &D_8007D0D0);
     func_8000A508(0, D_8007D0D0.unk0, D_8007D0D0.unk4, (unk202e4s* ) arg0, arg1);
@@ -147,7 +169,7 @@ void func_80009818(MonsterBattleData* arg0, EnemyAction* arg1, s32 arg2) {
         arg0->unk60 &= 0xFFFC;
     }
 }
-#endif
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009934.s")
 

@@ -154,7 +154,7 @@ extern f32 D_8007BC1C;
 extern u16 gAllowBattles;
 extern u16 gBattleState;
 
-void func_800268D4(s32 arg0, s8 arg1, s32 arg2);
+void func_800268D4(u8 arg0, s8 arg1, u8 arg2);
 void func_800120C0(s32);
 void func_8002E768(s32);
 void AddItemToInventory(u8);
