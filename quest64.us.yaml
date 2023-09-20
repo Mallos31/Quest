@@ -45,7 +45,7 @@ segments:
       - [0x23BD0, c, camera]
       - [0x24E60, c]
       - [0x25290, c]
-      - [0x271F0, c]
+      - [0x271F0, c, bgm]
       - [0x27640, c]
       - [0x2C110, c]
       - [0x2F1E0, c]

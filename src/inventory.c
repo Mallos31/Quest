@@ -1,5 +1,6 @@
 #include "common.h"
 #include "player.h"
+#include <screen_dim.h>
 
 typedef short int16_t;
 

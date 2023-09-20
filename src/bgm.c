@@ -17,7 +17,7 @@ typedef struct unk26658_s{
 }unk26658s;
 
 extern unk26658s D_8008FCC8[];
-extern s8 D_80053CA4[];
+extern u8 D_80053CA4[];
 extern u8 D_80053CAC[];
 extern u8 D_8008FCC6;
 extern bgmData D_80053B00[];

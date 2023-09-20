@@ -27,6 +27,19 @@ typedef struct unk_2513c_s{
     s32 unk32C;
 }unk2513cs;
 
+typedef struct {
+    s32 unk0;
+}unkVolume;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+}unkVolume2;
+
+extern s16 D_80053976;
+extern unkVolume2 D_80053984;
+extern unkVolume D_80053974;
+
 extern unk2513cs D_8008F978;
 
 extern s16* D_8008F68C;
@@ -54,7 +67,7 @@ extern ALSeqpConfig D_8008FB14;
 extern ALCSPlayer D_8008FB30;
 extern s32 D_8008FCB0;
 
-
+u8 func_80026554(u32 arg0);
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80024690.s")
@@ -197,4 +210,17 @@ void func_8002650C(void) {
     D_800539A4 = 0xFF;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80026554.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80026554.s")
+u8 func_80026554(u32 BGMVolume)
+{
+  if ((D_8005398C != 0) || (D_80053990 != 0))
+  {
+    return 1U;
+  }
+  D_80053974.unk0 = (BGMVolume << 7) + 0x7F;
+  alSeqpSetVol((ALSeqPlayer *) (&D_8008F994), D_80053974.unk0);
+  alSeqpSetVol((ALSeqPlayer *) (&D_8008FB30), D_80053976);
+  D_80053984.unk0 = (s32) D_80053974.unk0;
+  D_80053984.unk4 = (s32) D_80053974.unk0;
+  return 0U;
+}

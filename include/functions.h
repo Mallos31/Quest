@@ -1,6 +1,6 @@
 #include "structs.h"
 
-u8 func_80026554(u8);
+u8 func_80026554(u32);
 s32 func_8003195C(s8, u8);
 s32 func_80031BB0(s32);
 s32 osContInit(OSMesgQueue*, u8*, OSContStatus*);
