@@ -234,8 +234,8 @@ segments:
       #- [0x722C0, .rodata, hud]
       #- [0x722D0, .rodata, camera] #!TODO Rename when camera.c gets renamed. It's DEFINITELY not camera.
       #- [0x72300, .rodata, 25290]
-      #- [0x72330, .rodata, 27640]
-      #- [0x72350, .rodata, 2C110]
+      - [0x72330, .rodata, 27640]
+      - [0x72350, bin] #- [0x72350, .rodata, 2C110]
       #- [0x725D0, .rodata, 2F1E0]
       - [0x72650, .rodata, 31F00]
       - [0x72680, bin] #- [0x72680, .rodata, 328F0]
@@ -548,6 +548,7 @@ segments:
   #  exclusive_ram_id: cutscene
   #  subsegments:
   #    - [0xE27840, c]
+  #    - [0xE2ADEC, rodata]
       
   - [0xE7E800, bin, Instrument_ctl]
   - [0xE81610, bin, Instrument_tbl]

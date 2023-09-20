@@ -53,7 +53,6 @@ typedef struct {
     f32 unk10;
 }unka3f4s;
 
-
 extern s32 D_8007BA68;
 extern s32 D_8007BA6C;
 extern unk232f4s D_8007D0D0;
@@ -77,7 +76,7 @@ extern f64 D_80071178;
 extern f64 D_80071180;
 extern f64 D_80071188;
 extern f64 D_80071190;
-extern MonsterBattleData D_8007C9BC;
+extern EnemyAction D_8007C9BC[];
 extern s32 D_8007D0C4;
 
 void func_8000A508(s32, f32, f32, unk202e4s*, void*);
@@ -240,8 +239,17 @@ void func_8000B110(void) {
     func_800268D4(0, 0x17, 0xFF);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B140.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B140.s")
+s32 func_8000B140(EnemyAction* arg0) {
+    s32 var_v1;
 
+    for(var_v1 = 0; var_v1 < 6; var_v1++) {
+        if(arg0 == &D_8007C9BC[var_v1]) {
+            break;
+        }
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B170.s")
 
