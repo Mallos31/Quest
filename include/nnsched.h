@@ -98,6 +98,7 @@ extern NNScPerf* nnsc_perf_ptr;
 #endif /* NN_SC_PERF */
 /* function prototype declarations */
 void nnScCreateScheduler(NNSched * sc, u8 numFields);
+void nnScStartScheduler(NNSched* sc);
 extern void            nnScAddClient(NNSched *sc, NNScClient *, OSMesgQueue *mq);
 extern void            nnScRemoveClient(NNSched *sc, NNScClient 
 *client);

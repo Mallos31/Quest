@@ -238,7 +238,24 @@ segments:
       - [0x72350, bin] #- [0x72350, .rodata, 2C110]
       #- [0x725D0, .rodata, 2F1E0]
       - [0x72650, .rodata, 31F00]
-      - [0x72680, bin] #- [0x72680, .rodata, 328F0]
+      - [0x72680, .rodata, 328F0]
+      - [0x726B0, rodata]
+      - [0x72740, rodata]
+      - [0x72790, rodata]
+      - [0x727A0, rodata]
+      - [0x727B0, rodata]
+      - [0x72800, rodata]
+      - [0x72A50, rodata]
+      - [0x72AA0, rodata]
+      - [0x72AF0, rodata]
+      - [0x72B10, rodata]
+      - [0x72B20, rodata]
+      - [0x72C20, rodata]
+      - [0x72C80, rodata]
+      - [0x72CE0, rodata]
+      - [0x72F20, rodata]
+      - [0x72F30, rodata]
+      - [0x72FC0, rodata]
       - [0x72FD0, bin, ucode_data]
   - [0x737D0, bin]
   - [0x73A90, bin]
@@ -491,17 +508,19 @@ segments:
       - [0xDC15C0, rodata]
       - [0xDC15E0, rodata]
 
-  - [0xDC1620, bin, overlay2]   
-  #- type: code
-  #  start: 0xDC1620
-  #  vram: 0x80100000
-  #  dir: ovl_overlay2
-  #  name: overlay2
-  #  overlay: True
-  #  exclusive_ram_id: cutscene
-  #  subsegments:
-  #    - [0xDC1620, c]
-  #    - [0xDC7860, data]
+  #- [0xDC1620, bin, overlay2]   
+  - type: code
+    start: 0xDC1620
+    vram: 0x80100000
+    dir: ovl_overlay2
+    name: overlay2
+    overlay: True
+    exclusive_ram_id: cutscene
+    subsegments:
+      - [0xDC1620, c]
+      - [0xDC4700, c]
+      - [0xDC7820, c]
+      - [0xDC7860, data]
   #    - [0xDC7F2C, c]
   #    - [0xDC810C, data]
   #    - [0xDC8134, data]
@@ -538,6 +557,7 @@ segments:
   #    - [0xDCC61C, data]
   #    - [0xDCC644, data]
   #    - [0xDCC7AC, data]
+       
 
   #- type: code
   #  start: 0xE27840

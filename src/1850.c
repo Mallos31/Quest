@@ -1,4 +1,8 @@
 #include "common.h"
+#include "bgm.h"
+#include "inventory.h"
+#include "nnsched.h"
+#include "31A10.h"
 
 #define OS_SC_SWAPBUFFER 0x40
 
@@ -61,7 +65,47 @@ extern s32 D_8007B348;
 extern OSMesgQueue* D_8007B9D8;
 extern unk111Cs* D_80301000[];
 
+extern OSViMode D_8006F4F0;
+extern OSViMode D_8006FDB0;
+extern OSMesgQueue D_8007B320;
+extern void* D_8007B338;
+extern NNSched D_8007B358;
+extern OSMesgQueue D_8007B3CC;
+extern NNScClient D_8007B9E0;
+extern void* D_8007BA00;
+extern OSMesgQueue D_80092880;
+extern u8 D_EBABD0;
+extern u8 gSoundBank0Ctl;
+extern u8 gSoundBank0Tbl;
+extern u8 gSoundBank1Ctl;
+extern u8 gSoundBank1Tbl;
+
+void func_80000EEC(void);
+void func_80000FE8(void);
+void func_80001800(void);
+void func_800020B4(void);
+void func_8000227C(void);
+void func_80002428(void);
+void func_800025E8(void);
+
+
+//These belong in other headers
+void func_800027D0(void);
+void func_8000B520(void);
+void func_800100D0(void);
+void func_80011B40(void);
+void func_800121F0(void);
+void func_80024704(void);
+void func_800250E8(NNSched*);
+void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4); //from 25290.c
+void func_80025488(u32 arg0, s32 arg1, u8* arg2); //from 25290.c
+void func_80026A40(void); //from 27640.c
+s32 func_80031300(void); //from 31F00.c
+u8 func_80032704(OSMesgQueue* arg0, OSMesgQueue* arg1); //completely guessed return type. Returned data is unused anyway. 
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000C50.s")
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000EEC.s")
 void func_80000EEC(void) {

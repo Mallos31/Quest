@@ -1,34 +1,11 @@
 #include "common.h"
+#include <bgm.h>
+
+
+s32 func_8002543C(s32);  //from a different header that probably doesn't exist yet.
 
 /*8008FCC6 appears to be SE volume, but only for SOME SEs.*/
 
-
-typedef struct {
-    s16 map;
-    s16 submap;
-    s8 bgm;
-    s8 pad;
-}bgmData;
-
-typedef struct unk26658_s{
-    u8 unk0;
-    s8 unk1;
-    u8 unk2;
-}unk26658s;
-
-extern unk26658s D_8008FCC8[];
-extern u8 D_80053CA4[];
-extern u8 D_80053CAC[];
-extern u8 D_8008FCC6;
-extern bgmData D_80053B00[];
-extern s8 gBGMVolume;
-extern s8 gCurrentBGM;
-extern u16 gPlayBGM;
-extern u16 gBGMDelay;
-extern s8 D_8008FCC0;
-s32 func_8002543C(s32);                               /* extern */
-
-void SetBGMVolume(void);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/271F0/InitializeSoundData.s")
 void InitializeSoundData(void) {

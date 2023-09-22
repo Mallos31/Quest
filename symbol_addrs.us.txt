@@ -50,6 +50,9 @@ FindMapBGM                = 0x8002684C;
 SetBGMVolume              = 0x80026A04;
 string_copy               = 0x80030E10;
 loadTextTextureAndPal     = 0x80030E58;
+LoadOvl_TitleScreen       = 0x80031C40;
+LoadOvl_Splash_and_Intro  = 0x80031C78;
+LoadOvl_Ending            = 0x80031CB0;
 osInitialize         	  = 0x80033850;
 osCreateThread       	  = 0x80033AE0;
 osStartThread        	  = 0x80033C30;
@@ -453,7 +456,7 @@ LeoDiskHandle             = 0x80095564;
 __osDiskHandle            = 0x800955D4;
 __osPfsPifRam             = 0x80095660;
 
-
+Ovl_Entry                 = 0x80100000;
 gGlobalStartScreenTimer   = 0x8011AD34;
 gPushStartBlinkTimer      = 0x8011AD3C;
 gPushStartBlinkFrequency  = 0x8011AD40;
