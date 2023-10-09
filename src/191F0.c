@@ -1,6 +1,13 @@
 #include "common.h"
 
 typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+}unk19918s;
+
+typedef struct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
@@ -117,6 +124,29 @@ typedef struct {
 /*0x18*/ s32 unk18;    
 }DamageDigs;
 
+
+/*for smoke and particles*/
+extern s32 D_80087208;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    void* unk14;
+} unkSmoke; // size 0x18
+
+typedef struct {
+    unkSmoke unk0[4];
+} unkSmoke2;
+
+extern unk19918s D_800EBD1C[];
+
+extern unkSmoke2 D_80087250[];
+extern unkSmoke2 D_80087310[];
+
+
 extern DamageDigs D_800873D0[];
 extern u16 D_800873DC;
 extern s32 D_800873EC;
@@ -136,6 +166,7 @@ extern void* D_800CB4E0[];
 void func_80018684(void);
 void func_80019324(void);
 void func_8001A238(void);
+void func_800188C4(void);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800185F0.s")
 void func_800185F0(void) {
@@ -172,7 +203,29 @@ void func_80018684(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800187F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800188C4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800188C4.s") !TODO almost certainly needs refactoring. 
+void func_800188C4(void) {
+    unkSmoke2 *var_a0;
+    unkSmoke2 *var_v1;
+    s32 i, j;
+
+    D_80087208 = 0;
+    i = 8;
+    var_v1 = D_80087250;
+    var_a0 = D_80087310;
+    
+    do {
+        for (j = 0; j < 4; j++) {
+            var_a0->unk0[j].unk0 = 0;
+            var_v1->unk0[j].unk0 = 0;
+        }
+ 
+
+        var_v1++; // += 1;
+        var_a0++; // += 1;
+        i -= 4;
+    } while (i != 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018918.s")
 
@@ -190,7 +243,7 @@ void func_80018684(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018F60.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019324.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019324.s") !Refactor
 void func_80019324(void) {
     unk19324s* var_v0;
     s32 var_v1;
@@ -215,7 +268,28 @@ void func_80019324(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019738.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019918.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019918.s")
+void func_80019918(MtxF* arg0) {
+    u8* color;
+    
+    arg0->mf[1][2] += arg0->mf[3][0];
+    arg0->mf[1][3] += arg0->mf[3][1];
+    arg0->mf[2][0] += arg0->mf[3][2];
+    arg0->mf[3][0] *= 0.8;
+    arg0->mf[3][1] *= 0.8;
+    arg0->mf[3][2] *= 0.8;
+    arg0->mf[2][1] += M_PI/8;
+    
+    if (*(u16*)&arg0->mf[0][0] < 0xA) {
+        arg0->mf[2][2] = arg0->mf[2][3] = 1.0f;
+    }
+    color = (u8*) &D_800EBD1C[*(u8*)&arg0->mf[3][3]];
+    if (*(u16*)&arg0->mf[0][0] & 1) {
+        gDPSetEnvColor(gMasterGfxPos++, color[0], color[1], color[2], 0xDC);
+    } else {
+        gDPSetEnvColor(gMasterGfxPos++, color[0], color[1], color[2], 0x20);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019A70.s")
 
@@ -228,7 +302,7 @@ void func_80019CA4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CCC.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A238.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_8001A238.s") !Refactor
 void func_8001A238(void) {
     unk1a238s* var_v1;
     s32 var_v0;

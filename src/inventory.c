@@ -320,7 +320,7 @@ void UseHealingItem(BrianData2* BrianData, ItemData* item)
 void UseWings(BrianData2 *brian, ItemData *item)
 {
   unk2234c3 *new_var;
-  D_8007B2E4 |= 0x80;
+  gGameState |= 0x80;
   D_8007B2EC = 0x16;
   D_80085368.unk0 = (s32) gWingData[item->itemArg1].mapID;
   D_80085368.unk4 = (s32) gWingData[item->itemArg1].submapID;

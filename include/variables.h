@@ -5,10 +5,14 @@
 #include "player.h"
 
 //Used by more than one C file. Need to be moved into their own headers eventually. 
+
+extern s32 gGameState;
+
+
+
 extern Mtx D_2000000[]; //Gfx matrix 
 extern Mtx D_2000040[];
 extern s32 D_8007B2F8; //Gfx matrix index? 
-extern s32 D_8007B2E4;
 extern s16 D_8007B2E8;
 extern s32 gNextMap;
 extern s16 gGameMode;

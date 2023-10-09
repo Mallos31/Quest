@@ -109,7 +109,7 @@ u8 func_80032704(OSMesgQueue* arg0, OSMesgQueue* arg1); //completely guessed ret
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80000EEC.s")
 void func_80000EEC(void) {
-    D_8007B2E4 = 0x160;  //menu that is open
+    gGameState = 0x160;  //menu that is open
     gGameMode = 4;
     gNextMap = -1;     
     D_80084EF8 = -1;

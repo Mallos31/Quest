@@ -228,7 +228,7 @@ segments:
       #- [0x71E60, .rodata, FA60]
       #- [0x71EC0, .rodata, 12740]
       #- [0x72090, .rodata, 15440]
-      #- [0x72130, .rodata, 191F0]
+      - [0x72130, .rodata, 191F0]
       - [0x721F0, .rodata, 1BCD0]
       - [0x72210, bin] #- [0x72210, .rodata, 1D160]
       #- [0x722C0, .rodata, hud]

@@ -400,6 +400,7 @@ __osViNext                = 0x80070A84;
 
 
 gGameMode                 = 0x8007b2e0;
+gGameState                = 0x8007B2E4;
 gMasterGfxPos             = 0x8007B2FC;
 gTreasureChestPointer     = 0x8007BA7C;
 gPlayerData               = 0x8007BA80;

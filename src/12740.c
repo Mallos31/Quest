@@ -52,7 +52,7 @@ extern s32 D_20080D0;
 extern void* D_8004CC98[];
 extern f64 D_80071340;
 extern f64 D_80071348;
-extern s32 D_8007B2E4;
+extern s32 gGameState;
 extern u16 D_8007BB2E;
 extern s32 D_80086B88;
 extern f32 D_80086DCC;

@@ -303,19 +303,19 @@ void func_8001F3DC(unk1f3dcTEST* arg0) { //sBrianAction
     
     if ((D_80092876 & U_CBUTTONS) && (arg0->unk10->unk24 < 0x32)) { 
         arg0->unk10->unk24++;
-        D_8007B2E4 &= ~8; 
+        gGameState &= ~8; 
     } else if ((D_80092876 & D_CBUTTONS) && (arg0->unk10->unk26 < 0x32)) {  
         arg0->unk10->unk26++;
-        D_8007B2E4 &= ~8;
+        gGameState &= ~8;
     } else if ((D_80092876 & R_CBUTTONS) && (arg0->unk10->unk27 < 0x32)) { 
         arg0->unk10->unk27++;
-        D_8007B2E4 &= ~8;
+        gGameState &= ~8;
     } else if ((D_80092876 & L_CBUTTONS) && (arg0->unk10->unk25 < 0x32)) {  
         arg0->unk10->unk25++;
-        D_8007B2E4 &= ~8;
+        gGameState &= ~8;
     }
 
-    if ((D_8007B2E4 & 8) == 0) {
+    if ((gGameState & 8) == 0) {
         func_800268D4(0, 4, 0xFF);
     }
 }

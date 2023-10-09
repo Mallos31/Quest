@@ -143,7 +143,7 @@ extern u32 D_80053D3C[];
 extern u16 D_80053ECC[];
 extern f64 D_800710F8;
 extern f64 D_80071100;
-extern s32 D_8007B2E4;
+extern s32 gGameState;
 extern f32 D_8007BA5C;
 extern s32 D_8007BA70;
 //extern u8 D_8007BA73;
@@ -479,7 +479,7 @@ void func_800074A0(unkStruct* arg0, unkStruct3* arg1) {
     } else {
         arg0->unk10->unk2E = 0;
     }
-    if (!(D_8007B2E4 & 8)) {
+    if (!(gGameState & 8)) {
         if (arg0->unk10->unk34 >= 98) {
             arg1->unk64->unk10 = 0;
         } else {
@@ -490,20 +490,20 @@ void func_800074A0(unkStruct* arg0, unkStruct3* arg1) {
                 }
                 elementsInstance = &arg0->unk10->elements;
                 if ((elementsInstance->fire != 50) || (elementsInstance->earth != 50) || (elementsInstance->water != 50) || (elementsInstance->wind != 50)) {
-                    D_8007B2E4 |= 8;
+                    gGameState |= 8;
                     arg0->unk0 = 0;
                     func_800268D4(0, 1, 0xFF);
                 }
             }
         }
     }
-    if (!(D_8007B2E4 & 0xA) && (D_8007BA70 != 255)) {
+    if (!(gGameState & 0xA) && (D_8007BA70 != 255)) {
         func_800120C0(D_8007BA70);
         func_8002E768(1);
         AddItemToInventory(D_8007BA70);
         D_8007BA70 = 255;
         arg0->unk8 |= 2;
-        D_8007B2E4 |= 2;
+        gGameState |= 2;
         func_800268D4(0, 0x3B, 255);
     }
 }
