@@ -17,7 +17,9 @@ optO1_files = [
 'createmesgqueue.c', 'visetevent.c', 'pfsisplug.c',
 'pfschecker.c', 'sptaskyielded.c', 'sptask.c',
 'viblack.c', 'viswapbuf.c', 'vigetcurrframebuf.c',
-'vimgr.c'
+'vimgr.c', 'seteventmesg.c', "recvmesg.c", "sendmesg.c",
+"visetmode.c", "visetspecial.c", "virtualtophysical.c",
+"gettime.c"
 ]
 
 optg0_files = ['DA68F0.c']

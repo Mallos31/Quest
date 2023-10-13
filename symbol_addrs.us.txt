@@ -398,6 +398,7 @@ __osRunningThread         = 0x80070A00;
 __osViCurr                = 0x80070A80;
 __osViNext                = 0x80070A84;
 
+__osRcpImTable            = 0x80071AB0;
 
 gGameMode                 = 0x8007b2e0;
 gGameState                = 0x8007B2E4;
@@ -448,6 +449,7 @@ gBGMDelay                 = 0x8008FCC4;
 
 gPakMenuScrollAmt         = 0x80092D0E;
 
+__osEventStateTab         = 0x80093F20;
 __osContPifRam            = 0x80095450;
 __osContLastCmd           = 0x80095490;
 __osMaxControllers        = 0x80095491;
@@ -455,6 +457,8 @@ __osEepromTimerQ          = 0x800954B8;
 __osEepromTimerMsg        = 0x800954D0;
 LeoDiskHandle             = 0x80095564;
 __osDiskHandle            = 0x800955D4;
+__osCurrentTime           = 0x80095620;
+__osBaseCounter           = 0x80095628;
 __osPfsPifRam             = 0x80095660;
 
 Ovl_Entry                 = 0x80100000;

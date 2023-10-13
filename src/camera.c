@@ -2,24 +2,6 @@
 
 #include "common.h"
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
-    f32 unk34;
-    f32 unk38;
-    f32 unk3C;
-}unk23360s;
 
 typedef struct unk_23df4_s
 {
@@ -58,7 +40,7 @@ f32 calc_arctan_in_radians(f32 x);
 void func_800231B0(f32* arg0, f32* arg1);
 f32 func_80023210(f32 arg0, f32 arg1);
 void func_800232F4(f32 arg0, unk232f4s* arg1);
-void func_80023360(unk23360s *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+void func_80023360(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_80023500(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_800236CC(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3);
@@ -206,48 +188,47 @@ void func_800232F4(f32 arg0, unk232f4s* arg1) {
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023360.s")
-void func_80023360(unk23360s *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
+void func_80023360(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
 {
     
-  f32 s1;    
-  f32 s2;
-  f32 s3;
-  f32 c1;    
-  f32 c2;    
-  f32 c3;
+  f32 sp4C;    
+  f32 sp48;
+  f32 sp44;
+  f32 temp_f20;    
+  f32 sp3C;    
+  f32 temp_f0;
     
-  s1 = sinf(arg1);
-  c1 = cosf(arg1);
-  s2 = sinf(arg2);
-  c2 = cosf(arg2);
-  s3 = sinf(arg3);
-  c3 = cosf(arg3);
-  
-  arg0->unk0 = (f32) (((c3 * c2) + ((s3 * s1) * s2)) * arg4);
-  arg0->unk4 = (f32) ((s3 * c1) * arg4);
-  arg0->unk8 = (f32) ((((-s2) * c3) + ((s3 * s1) * c2)) * arg4);
-  arg0->unkC = 0.0f;
-  arg0->unk10 = (f32) ((((-s3) * c2) + ((c3 * s1) * s2)) * arg4);
-  arg0->unk14 = (f32) ((c3 * c1) * arg4);
-  arg0->unk18 = (f32) ((((-s3) * (-s2)) + ((c3 * s1) * c2)) * arg4);
-  arg0->unk1C = 0.0f;
-  arg0->unk20 = (f32) ((c1 * s2) * arg4);
-  arg0->unk24 = (f32) ((-s1) * arg4);
-  arg0->unk28 = (f32) ((c1 * c2) * arg4);
-  arg0->unk2C = 0.0f;
-  arg0->unk30 = arg5;
-  arg0->unk34 = arg6;
-  arg0->unk38 = arg7;
-  arg0->unk3C = 1.0f; 
+  sp4C = sinf(arg1);
+  temp_f20 = cosf(arg1);
+  sp48 = sinf(arg2);
+  sp3C = cosf(arg2);
+  sp44 = sinf(arg3);
+  temp_f0 = cosf(arg3);
+  arg0->mf[0][0] = (f32) (((temp_f0 * sp3C) + ((sp44 * sp4C) * sp48)) * arg4);
+  arg0->mf[0][1] = (f32) ((sp44 * temp_f20) * arg4);
+  arg0->mf[0][2] = (f32) ((((-sp48) * temp_f0) + ((sp44 * sp4C) * sp3C)) * arg4);
+  arg0->mf[0][3] = 0.0f;
+  arg0->mf[1][0] = (f32) ((((-sp44) * sp3C) + ((temp_f0 * sp4C) * sp48)) * arg4);
+  arg0->mf[1][1] = (f32) ((temp_f0 * temp_f20) * arg4);
+  arg0->mf[1][2] = (f32) ((((-sp44) * (-sp48)) + ((temp_f0 * sp4C) * sp3C)) * arg4);
+  arg0->mf[1][3] = 0.0f;
+  arg0->mf[2][0] = (f32) ((temp_f20 * sp48) * arg4);
+  arg0->mf[2][1] = (f32) ((-sp4C) * arg4);
+  arg0->mf[2][2] = (f32) ((temp_f20 * sp3C) * arg4);
+  arg0->mf[2][3] = 0.0f;
+  arg0->mf[3][0] = arg5;
+  arg0->mf[3][1] = arg6;
+  arg0->mf[3][2] = arg7;
+  arg0->mf[3][3] = 1.0f; 
 }
 
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023500.s")
 void func_80023500(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    func_80023360((unk23360s* ) &D_8008D030, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    func_80023360(&D_8008D030, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     guMtxF2L((f32 (*)[4]) &D_8008D030, arg0);
-}
+} 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023570.s")
 
@@ -506,33 +487,4 @@ void func_80023E80(MtxF *arg0, MtxF *arg1, MtxF *arg2)
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/camera/func_8002413C.s")
-/*s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32 *arg3, s32 *arg4)
-{
-  f32 new_var3;
-  f32 sp38;
-  f32 sp34;
-  f32 sp30;
-  f32 temp_f0;
-  s32 ret;
-    
-  guMtxXFMF((f32 (*)[4]) D_80086E88, arg0, arg1, arg2, &sp38, &sp34, &sp30);
-  ret = 0;
-  new_var3 = D_80086ECC;
-  if (sp30 < -D_80086ECC)
-  {
-    ret = 1;
-  }
-  if (ret != 0)
-  {
-    temp_f0 = sp30 * D_80086ED4;
-    ret = 0;
-    *arg3 = 0xA0 - ((s32) (((sp38 * 160.0) / temp_f0) * 0.75));
-    
-    *arg4 = ((s32) ((sp34 * 120.0f) / temp_f0)) + 0x78;
-    if (sp30 < -new_var3)
-    {
-      ret = 1;
-    }
-  }
-  return ret;
-}*/
+

@@ -135,7 +135,7 @@ typedef struct {
     f32 unkC;
     f32 unk10;
     void* unk14;
-} unkSmoke; // size 0x18
+} unkSmoke; // size 0x18   positional data for smokestack particles. 
 
 typedef struct {
     unkSmoke unk0[4];
