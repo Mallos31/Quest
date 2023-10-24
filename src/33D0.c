@@ -206,7 +206,7 @@ void func_80003F5C(unk3f5cs* arg0, unk3f5cs2* arg1, s32 arg2);
 //
 //
 //
-void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2);
+void func_800056D0(BrianData2* arg0, s32 arg1, Coordinates2D* arg2);
 void func_80005740(void);
 //
 //
@@ -296,12 +296,12 @@ void func_80003F5C(unk3f5cs* arg0, unk3f5cs2* arg1, s32 arg2) {
 //#pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800056D0.s") 
 /*This is correct, but the structs need to be cleaned up to make it work.*/
 
-void func_800056D0(BrianData2* arg0, s32 arg1, unk232f4s* arg2) {
+void func_800056D0(BrianData2* arg0, s32 arg1, Coordinates2D* coordinates) {
     func_80006720(arg0);
     func_8001D924(arg0, (arg0->animID * 0xC) + arg1, arg0->scale);
-    arg2->unk0 = -arg0->unkDoor44;
-    arg2->unk4 = arg0->unkDoor4C;
-    func_800232F4(arg0->yrot, arg2);
+    coordinates->x = -arg0->unkDoor44;
+    coordinates->y = arg0->unkDoor4C;
+    rotateCoordinatesByAngle(arg0->yrot, coordinates);
 }
 
 void func_80005740(void) {

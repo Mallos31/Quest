@@ -52,7 +52,7 @@ typedef struct {
 extern f64 D_80071110;
 extern f64 D_80071118;
 extern f32 D_80071120;
-extern unk232f4s D_8007BCB8;
+extern Coordinates2D D_8007BCB8;
 
 extern NPCFile D_800547F0[];
 

@@ -86,8 +86,7 @@ void func_80031DD4(s32 arg0)
     arg0 -= 0xF;
     var_a0 = (u16*)D_80092D30;
     i = 0;
-    var_a1 = (((((arg0) & 0xF8) * 0xC) / 2) * 8)        //!W illegal combination of pointer and integer
-             + ((((arg0) & 7) * 8) / 2) + (s32)&D_8006E4C0;
+    var_a1 = (((((arg0 & 0xF8) * 0xC) / 2) * 8) + (((arg0 & 7) * 8) / 2)) + ((s32) D_8006E4C0);
     
     for (i = 0; i < 0xC; i++) {
         for(j = 28; j >= 0; j -= 4, var_a0++) {

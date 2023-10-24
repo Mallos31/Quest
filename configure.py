@@ -19,7 +19,7 @@ optO1_files = [
 'viblack.c', 'viswapbuf.c', 'vigetcurrframebuf.c',
 'vimgr.c', 'seteventmesg.c', "recvmesg.c", "sendmesg.c",
 "visetmode.c", "visetspecial.c", "virtualtophysical.c",
-"gettime.c"
+"gettime.c", "pfsinitpak.c", "contramread.c", "controller.c"
 ]
 
 optg0_files = ['DA68F0.c']

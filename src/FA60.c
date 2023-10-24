@@ -26,7 +26,7 @@ extern unk11170s D_80085B38;
 
 extern unk111d8s D_80085A14[]; //For probably unused function func_800111D8
 
-extern unk232f4s D_80085358;
+extern Coordinates2D D_80085358;
 extern f64 D_80071268;
 extern f64 D_80071270;
 extern f64 D_80071278;
@@ -103,15 +103,15 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
     loop_5:
     if (func_8000FFE8(var_s0) != 0)
     {
-      D_80085358.unk0 = arg0 - var_s0->unk0;
-      D_80085358.unk4 = arg1 - var_s0->unk4;
-      func_800232F4(var_s0->unk8, &D_80085358);
-      var_f0 = D_80085358.unk0;
+      D_80085358.x = arg0 - var_s0->unk0;
+      D_80085358.y = arg1 - var_s0->unk4;
+      rotateCoordinatesByAngle(var_s0->unk8, &D_80085358);
+      var_f0 = D_80085358.x;
       if (var_f0 < 0.0f)
       {
         var_f0 = -var_f0;
       }
-      var_f2 = D_80085358.unk4;
+      var_f2 = D_80085358.y;
       if (var_f2 < 0.0f)
       {
         var_f2 = -var_f2;

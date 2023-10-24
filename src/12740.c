@@ -162,7 +162,7 @@ void func_800121F0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012220.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")//!TODO make sure coordinates is correct here.
 Spirit* func_80012358(unk12358s* arg0) {
     
     Spirit* var_s0;
@@ -171,7 +171,7 @@ Spirit* func_80012358(unk12358s* arg0) {
     s32 pad;
     Spirit* sp5C;
     s32 var_s1;
-    unk232f4s sp50;
+    Coordinates2D coordinates;
     
 
     var_s1 = D_80086A00;
@@ -182,11 +182,11 @@ Spirit* func_80012358(unk12358s* arg0) {
             temp_f0 = var_s0->x - arg0->unk0;
             temp_f2 = var_s0->z - arg0->unk8;
             if((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 400.0f)){
-                sp50.unk0 = temp_f0;
-                sp50.unk4 = temp_f2;
-                func_800232F4(arg0->unk10, (unk232f4s* ) &sp50);
-                if((sp50.unk4  >= 0.0f) 
-                    && ((sp50.unk0 > -5.0)) && (sp50.unk0 < 5.0)
+                coordinates.x = temp_f0;
+                coordinates.y = temp_f2;
+                rotateCoordinatesByAngle(arg0->unk10, &coordinates);
+                if((coordinates.y  >= 0.0f) 
+                    && ((coordinates.x > -5.0)) && (coordinates.x < 5.0)
                 ) {
                     sp5C = var_s0;
                     break;

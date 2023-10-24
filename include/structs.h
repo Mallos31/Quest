@@ -45,9 +45,9 @@ typedef struct
 
 //Leave this one for last. Seems to be used by several files, but probably isn't ACTUALLY
 typedef struct unk_232f4_s{
-    f32 unk0;
-    f32 unk4;
-}unk232f4s;
+    f32 x;
+    f32 y;
+}Coordinates2D;
 
 //used by a function whose prototype is in functions.h and needs to be moved when it is. 
 typedef struct unk_1d924_s

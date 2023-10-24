@@ -39,7 +39,7 @@ u32 getRandomNumber(u32 arg0);
 f32 calc_arctan_in_radians(f32 x);
 void func_800231B0(f32* arg0, f32* arg1);
 f32 func_80023210(f32 arg0, f32 arg1);
-void func_800232F4(f32 arg0, unk232f4s* arg1);
+void rotateCoordinatesByAngle(f32 arg0, Coordinates2D* arg1);
 void func_80023360(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_80023500(Mtx* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
@@ -172,19 +172,18 @@ f32 func_80023210(f32 arg0, f32 arg1)
   return var_f2;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_800232F4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/camera/rotateCoordinatesByAngle.s")
 /*rotates a 2D vector*/
-void func_800232F4(f32 arg0, unk232f4s* arg1) {
-    f32 sp1C;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
+void rotateCoordinatesByAngle(f32 angle, Coordinates2D* coordinates) {
+    f32 sinAngle;
+    f32 cosAngle;
+    f32 xcoord;
 
-    sp1C = sinf(arg0);
-    temp_f0 = cosf(arg0);
-    temp_f2 = arg1->unk0;
-    arg1->unk0 = (arg1->unk4 * sp1C) - (temp_f2 * temp_f0);
-    arg1->unk4 = (arg1->unk4 * temp_f0) + (temp_f2 * sp1C);
+    sinAngle = sinf(angle);
+    cosAngle = cosf(angle);
+    xcoord = coordinates->x;
+    coordinates->x = (coordinates->y * sinAngle) - (xcoord * cosAngle);
+    coordinates->y = (coordinates->y * cosAngle) + (xcoord * sinAngle);
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/camera/func_80023360.s")

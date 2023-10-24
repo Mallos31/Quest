@@ -10,7 +10,7 @@ s32 int_to_str_with_flags(s32 arg0, u8* arg1, u16 arg2);
 float _nsqrtf(float value);
 u32 getRandomNumber(u32 arg0);
 s32 func_80031ACC(s32 arg0, s32 arg1);
-void func_800232F4(f32 arg0, unk232f4s* arg1);
+void rotateCoordinatesByAngle(f32 arg0, Coordinates2D* arg1);
 void func_80006720(BrianData2* arg0);
 void func_8001D924(BrianData2* arg0, unk1d924s* arg1, f32 arg2);
 void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);

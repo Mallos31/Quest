@@ -43,13 +43,18 @@ typedef struct {
 }UnknownMonsterData3;
 
 typedef struct {
-/*0x00*/ u8  pad[0x12];
+/*0x00*/ u16  unk0;
+/*0x02*/ char unk2[0x10];
 /*0x12*/ u8 status[7];
 /*0x19*/ char unk19[0x2B];
 /*0x44*/ UnknownMonsterData3* unk44[4];
 /*0x54*/ char unk54[0x32];
 /*0x86*/ u16 unk86;
-/*0x88*/ char unk88[0xC];
+/*0x88*/ u16 unk88;
+/*0x8A*/ u16 unk8A;
+/*0x8C*/ u16 unk8C;
+/*0x8E*/ char unk8E[2];
+/*0x90*/ f32 unk90;
 /*0x94*/ f32 unk94;
 } UnknownMonsterData2;
 

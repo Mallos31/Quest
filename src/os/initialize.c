@@ -2,10 +2,7 @@
 #include <os_internal.h>
 #include <R4300.h>
 #include <rcp.h>
-#pragma GLOBAL_ASM("asm/nonmatchings/os/initialize/osInitialize.s")
 
-/*Matching, but needs data migration to work*/
-#ifdef NON_MATCHING
 typedef struct
 {
    /* 0x0 */ unsigned int inst1;
@@ -67,4 +64,3 @@ void osInitialize()
       osViClock = VI_NTSC_CLOCK;
    }
 }
-#endif

@@ -55,7 +55,7 @@ typedef struct {
 
 extern s32 D_8007BA68;
 extern s32 D_8007BA6C;
-extern unk232f4s D_8007D0D0;
+extern Coordinates2D D_8007D0D0;
 extern void** D_8007D0A8;
 extern void* D_8007D0AC;
 extern unkMonsterData* D_8007D0BC;
@@ -146,11 +146,10 @@ void func_8000932C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009588.s")
 
 // #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80009818.s")
-/*function matches but does not build. Needs investigation*/
 
 void func_80009818(MonsterBattleData* arg0, EnemyAction* arg1, s32 arg2) {
     func_8000A7D8((BrianData2* ) arg0, &D_8007D0D0);
-    func_8000A508(0, D_8007D0D0.unk0, D_8007D0D0.unk4, (unk202e4s* ) arg0, arg1);
+    func_8000A508(0, D_8007D0D0.x, D_8007D0D0.y, (unk202e4s* ) arg0, arg1);
     arg1->actionTimer -= 1;
     if (arg1->actionTimer == 0) {
         if (arg1->currHP == 0) {
