@@ -73,39 +73,39 @@ extern f32 D_800871D4;
 #pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014A98.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014E80.s")
-void func_80014E80(tempStruct14F48* arg0, MonsterBattleData* arg1) {
+void func_80014E80(tempStruct14F48* arg0, MonsterBattleData* monster) {
 
-    arg0->unkC = arg1->pos.x;
-    arg0->unk14 = arg1->pos.z;
-    if (arg1->unk64->monsterType == 1) {
-        arg0->unk10 = arg1->unk68->unk94 - (arg1->unk64->hitboxHeight * arg1->scale);
+    arg0->unkC = monster->pos.x;
+    arg0->unk14 = monster->pos.z;
+    if (monster->unk64->monsterType == FLYING) {
+        arg0->unk10 = monster->unk68->unk94 - (monster->unk64->hitboxHeight * monster->scale);
         return;
     }
-    arg0->unk10 = arg1->pos.y;
+    arg0->unk10 = monster->pos.y;
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014ED4.s")
-void func_80014ED4(tempStruct14F48* arg0, MonsterBattleData* arg1) {
+void func_80014ED4(tempStruct14F48* arg0, MonsterBattleData* monster) {
     
-    arg0->unkC = arg1->pos.x;
-    arg0->unk14 = arg1->pos.z;
-    if (arg1->unk64->monsterType == 1) {
-        arg0->unk10 = arg1->unk68->unk94;
+    arg0->unkC = monster->pos.x;
+    arg0->unk14 = monster->pos.z;
+    if (monster->unk64->monsterType == FLYING) {
+        arg0->unk10 = monster->unk68->unk94;
         return;
     }
-    arg0->unk10 = (f32) ((f64) arg1->pos.y + ((f64) arg1->unk64->hitboxWidth * 0.5 * (f64) arg1->scale));
+    arg0->unk10 = (f32) ((f64) monster->pos.y + ((f64) monster->unk64->hitboxWidth * 0.5 * (f64) monster->scale));
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014F48.s")
-void func_80014F48(tempStruct14F48* arg0, MonsterBattleData* arg1) {
+void func_80014F48(tempStruct14F48* arg0, MonsterBattleData* monster) {
 
-    arg0->unkC = arg1->pos.x;
-    arg0->unk14 = arg1->pos.z;
-    if (arg1->unk64->monsterType == FLYING) {
-        arg0->unk10 = (arg1->unk68->unk94 + (arg1->unk64->hitboxHeight * arg1->scale) + arg0->unk2C->unk1C);
+    arg0->unkC = monster->pos.x;
+    arg0->unk14 = monster->pos.z;
+    if (monster->unk64->monsterType == FLYING) {
+        arg0->unk10 = (monster->unk68->unk94 + (monster->unk64->hitboxHeight * arg1->scale) + arg0->unk2C->unk1C);
         return;
     }
-    arg0->unk10 = (arg1->pos.y + (2.0 * arg1->unk64->hitboxWidth * arg1->scale) + arg0->unk2C->unk1C);
+    arg0->unk10 = (monster->pos.y + (2.0 * monster->unk64->hitboxWidth * monster->scale) + arg0->unk2C->unk1C);
 }
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/15440/func_80014FDC.s")
