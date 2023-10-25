@@ -7,20 +7,6 @@ typedef struct {
     char unk6[0x36];
 }unk15b50s;
 
-typedef struct {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    u16 unk8;
-}arg6s;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-}arg7s;
-
 typedef struct unk_16ffc_s{
     char unk0[0x24];
     s32 unk24;
