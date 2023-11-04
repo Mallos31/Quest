@@ -1,4 +1,5 @@
 #include "common.h"
+#include <inventory.h>
 
 extern Gfx D_8005FAA0[];
 extern u16 D_8008FD0C;

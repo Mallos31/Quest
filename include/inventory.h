@@ -10,6 +10,9 @@ typedef struct unk_22260_s3{
     u16 unkA;
 }ItemData;
 
+extern u8 gInventory[150];
+
+
 void Inventory_Init(void);
 s32 CheckIfInventoryFull(void);
 

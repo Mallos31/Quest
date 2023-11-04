@@ -1,10 +1,5 @@
 #include "common.h"
 
-typedef struct {
-    s32 unk0[0xC];
-}unk111d8s; //For probably unused function func_800111D8
-
-
 typedef struct unk_11170_s {
     s32 unk0;
     s32 unk4;
@@ -20,37 +15,17 @@ typedef struct unk_11170_s {
     s32 unk2C; 
 }unk11170s;
 
-
-
-extern unk11170s D_80085B38;
+typedef struct {
+    s32 unk0[0xC];
+}unk111d8s; //For probably unused function func_800111D8
 
 extern unk111d8s D_80085A14[]; //For probably unused function func_800111D8
-
+extern unk11170s D_80085B38;
+extern unk11170s D_800859E8[];
 extern Coordinates2D D_80085358;
-extern f64 D_80071268;
-extern f64 D_80071270;
-extern f64 D_80071278;
-extern s32 D_80085B68[4][3];
 extern s32 D_8008C634;
 extern s32 D_800859D8;
 
-extern s32 D_8008538C;
-extern s32 D_80085390;
-extern s32 D_80085394;
-extern u16* D_80085398;
-extern u8 D_800853A0[];
-extern unk11170s D_800859E8[];
-
-/*rodata for func_8000FF54*/
-extern f64 D_80071280;
-extern f64 D_80071288;
-extern f64 D_80071290;
-extern f64 D_80071298;
-extern f64 D_800712A0;
-/*end rodata*/
-
-s32 func_8000FFE8(unkfde0s*);                       /* extern */
-void func_80010080(unkfde0s*);                         /* extern */
 
 
 
@@ -77,8 +52,6 @@ s32 func_8000F5A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000F6A4.s")
-
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FCBC.s")
 
@@ -145,32 +118,31 @@ s32 func_8000FDE0(f32 arg0, f32 arg1, f32 arg2)
   return ret;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FF54.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FF54.s")
+/* Rodata not matching for some reason.
 s32 func_8000FF54(f32 arg0)
 {
-  if (D_80071280 < arg0)  //if M_PI < arg0
+  if (M_PI < arg0)  //if M_PI < arg0
   {
-    arg0 = (f32) (arg0 - D_80071288);
+    arg0 = (f32) (arg0 - M_PI * 2);
   }
   else
-    if (arg0 < D_80071290) //if arg0 < -M_PI
+    if (arg0 < -M_PI) //if arg0 < -M_PI
   {
-    arg0 = (f32) (arg0 + D_80071298);
+    arg0 = (f32) (arg0 + M_PI * 2);
   }
   if (arg0 < 0.0f)
   {
     arg0 = -arg0;
   } 
-  return arg0 < D_800712A0; //arg0 < 22.5° in radians. 
-}
-
+  return arg0 < 0.39269908169872414; //arg0 < 22.5° in radians. 
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FFE8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010080.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800100D0.s")
-/*needs data migration to match*/
 #ifdef NON_MATCHING
 void func_800100D0(void) {
     s32 i;
@@ -192,7 +164,6 @@ void func_800100D0(void) {
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010510.s")
 void func_80010510(s32 arg0) {
-    s32 temp_v1;
 
     gCurrentTime = arg0;
     if (gDayLength <= gCurrentTime) {
@@ -211,7 +182,6 @@ void func_80010510(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010CAC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010E70.s")
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80010EC4.s")
 
@@ -263,7 +233,6 @@ void func_80011170(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_v0->unk14 = arg3;
     temp_v0->unk10 = arg3;
 }
-
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111A4.s")
 void func_800111A4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     unk11170s* temp_v0;
@@ -275,13 +244,11 @@ void func_800111A4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_v0->unk28 = arg3;
     temp_v0->unk24 = arg3;
 }
-
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111D8.s")
 /*This function appears to be uncalled. If so, the struct and global variable associated with it are also unused.*/
 void func_800111D8(s32 arg0, s32 arg1) {
     D_80085A14[arg0].unk0[0] = arg1;
 }
-
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_800111F8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_80011768.s")

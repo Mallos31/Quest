@@ -116,7 +116,6 @@ extern s32 gInventoryScrollAmt;
 extern s32 gInvHighlightedItemIndex;
 extern s32 D_8008C768; //Possibly amount the control stick is being pressed left or right to determine inventory scroll speed.
 extern s8 gVisibleInvItemIDs[8]; //IDs of items visible in inventory. One per item no matter how many of it you have.  
-extern u8 gInventory[150];
 extern u8 gInventoryPalette;
 extern u8 D_D3BE40; //phys inventory palette
 extern funcTypedef gCheckItemUsableFuncs[];
