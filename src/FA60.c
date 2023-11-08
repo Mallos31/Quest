@@ -53,6 +53,10 @@ s32 func_8000F5A4(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000F6A4.s")
 
+
+
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FCBC.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/FA60/func_8000FDE0.s") //!TODO cleanup

@@ -217,7 +217,7 @@ segments:
       - [0x4A950, asm, synsetpriority]
       - [0x4AAF0, bin, ucode_boot]
       - [0x4ABC0, bin, ucode]
-      - [0x4BFF0, bin]  # TBD whether this is actually code
+      - [0x4BFF0, bin]  #not sure WHAT this is, but it's definitely not code. 
       - [0x71AF0, .rodata, 1850]
       - [0x71B10, .rodata, 33D0]
       - [0x71D10, bin] #- [0x71D10, .rodata, 8650]
@@ -502,12 +502,22 @@ segments:
     dir: ovl_overlay1
     name: overlay1
     overlay: True
-    exclusive_ram_id: cutscene
+    exclusive_ram_id: title
     symbol_name_format: $VRAM_$ROM
     subsegments:
       - [0xDA68F0, c]
       - [0xDA9A00, data]
       - [0xDA9A20, bin]
+      #- [0xDA9D30, palette, textures/menu_arrows]
+      #- [0xDA9F30, ci8, textures/menu_arrows, 128, 14]
+      #- [0xDAA630, bin] #- [0xDAA630, palette, textures/push_start]
+      #- [0xDAA830, ci8, textures/push_start, 100, 15]
+      #- [0xDAAE0C, bin]
+      #- [0xDABE40, palette, textures/quest_logo.ci8]
+      #- [0xDAC040, ci8, textures/quest_logo.ci8, 222, 66]
+      #- [0xDAF980, palette, textures/title_bg]  
+      #- [0xDAFB80, ci8, textures/title_bg, 320, 224]
+      - [0xDC1380, bin]
       - [0xDC15C0, rodata]
       - [0xDC15E0, rodata]
 
@@ -518,13 +528,18 @@ segments:
     dir: ovl_overlay2
     name: overlay2
     overlay: True
-    exclusive_ram_id: cutscene
+    exclusive_ram_id: intro
+    symbol_name_format: $VRAM_$ROM
     subsegments:
       - [0xDC1620, c]
       - [0xDC4700, c]
       - [0xDC7820, c]
-      - [0xDC7860, data]
-  #    - [0xDC7F2C, c]
+      - [0xDC7860, bin] #DL
+      #DC7E00 = pointers to something
+      #DCDE70 = logo palette
+      #DCE22A = Quest64 Logo 222*64
+      #DD1BB0 = Logo Background 304*225
+  #    - [0xDC7F2C, data]
   #    - [0xDC810C, data]
   #    - [0xDC8134, data]
   #    - [0xDC815C, c]
@@ -560,18 +575,20 @@ segments:
   #    - [0xDCC61C, data]
   #    - [0xDCC644, data]
   #    - [0xDCC7AC, data]
+  
        
 
   #- type: code
-  #  start: 0xE27840
-  #  vram: 0x80100000
-  #  dir: ovl_overlay3
-  #  name: overlay3
-  #  overlay: True 
-  #  exclusive_ram_id: cutscene
-  #  subsegments:
-  #    - [0xE27840, c]
-  #    - [0xE2ADEC, rodata]
+   # start: 0xE27840
+   # vram: 0x80100000
+   # dir: ovl_overlay3
+   # name: overlay3
+   # overlay: True 
+   # exclusive_ram_id: cutscene
+   # symbol_name_format: $VRAM_$ROM
+   # subsegments:
+   #   - [0xE27840, c]
+   #   - [0xE2ADEC, bin]
       
   - [0xE7E800, bin, Instrument_ctl]
   - [0xE81610, bin, Instrument_tbl]

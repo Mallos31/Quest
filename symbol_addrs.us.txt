@@ -482,3 +482,7 @@ gBossData                 = 0x803A9AD0;
 gBossNamePtrs             = 0x803AABD8;
 gBossSpeechPtrs           = 0x803AABF8;
 gInventoryPalette		  = 0x803AAC20;
+
+func_84001008             = 0x84001008;
+func_8400103C             = 0x8400103C;
+func_84001064             = 0x84001064;
