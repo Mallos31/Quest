@@ -88,7 +88,7 @@ void func_80014F48(tempStruct14F48* arg0, MonsterBattleData* monster) {
     arg0->unkC = monster->pos.x;
     arg0->unk14 = monster->pos.z;
     if (monster->unk64->monsterType == FLYING) {
-        arg0->unk10 = (monster->unk68->unk94 + (monster->unk64->hitboxHeight * arg1->scale) + arg0->unk2C->unk1C);
+        arg0->unk10 = (monster->unk68->unk94 + (monster->unk64->hitboxHeight * monster->scale) + arg0->unk2C->unk1C);
         return;
     }
     arg0->unk10 = (monster->pos.y + (2.0 * monster->unk64->hitboxWidth * monster->scale) + arg0->unk2C->unk1C);
