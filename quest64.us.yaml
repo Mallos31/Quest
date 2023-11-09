@@ -61,7 +61,7 @@ segments:
       - [0x34B40, c, os/visetevent]
       - [0x34BB0, c, os/seteventmesg]
       - [0x34C20, c, os/recvmesg]
-      - [0x34D60, bin] #- [0x34D60, asm, os/setintmask] #handwritten
+      - [0x34D60, hasm, os/setintmask] #- [0x34D60, asm, os/setintmask] #handwritten
       - [0x34E00, c, os/sendmesg]
       - [0x34F50, asm, os/writebackdcacheall] #handwritten
       - [0x34F80, c, os/sptaskyield]
@@ -225,7 +225,7 @@ segments:
       - [0x71DD0, bin] #- [0x71DD0, .rodata, C120]
       - [0x71DF0, .rodata, C910]
       - [0x71E60, .rodata, FA60]
-      - [0x71EC0, bin] #- [0x71EC0, .rodata, 12740]
+      - [0x71EC0, .rodata, 12740]
       - [0x72090, .rodata, 15440]
       - [0x72130, .rodata, 191F0]
       - [0x721F0, .rodata, 1BCD0]

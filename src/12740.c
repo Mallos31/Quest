@@ -1,9 +1,11 @@
 #include "common.h"
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-}unk13f20s;
+typedef struct unk_1205c_s
+{
+    char unk0[0x60];
+    u16 unk60;
+    u16 unk62;
+}unk1205cs;
 
 typedef struct {
     f32 x;
@@ -23,13 +25,6 @@ typedef struct {
     f32 unk10;
 }unk12358s;
 
-typedef struct unk_1205c_s
-{
-    char unk0[0x60];
-    u16 unk60;
-    u16 unk62;
-}unk1205cs;
-
 typedef struct unkD_80086EE0_s
 {
     s32 unk0;
@@ -44,48 +39,16 @@ typedef struct unkD_80086EE0_s
 
 extern unkD80086EE0s D_80086EE0;
 
-extern s32 D_80086A00;
-extern Spirit D_80086A08;
-extern s32 D_2000080;
-extern s32 D_20080C0;
-extern s32 D_20080D0;
-extern void* D_8004CC98[];
-extern f64 D_80071340;
-extern f64 D_80071348;
-extern s32 gGameState;
-extern u16 D_8007BB2E;
-extern s32 D_80086B88;
-extern f32 D_80086DCC;
-extern f32 D_80086DD0;
-extern f32 D_80086DD4;
-extern f32 D_80086DD8;
-extern f32 D_80086DE0;
-extern f32 D_80086E48[4];
-extern f32 D_80086E88[4];
-extern f32 D_80086EC8;
-extern f32 D_80086ECC;
-extern f32 D_80086ED0;
-extern f32 D_80086ED4;
-extern s32 D_80086ED8;
-extern u16 D_80086F00;
-extern u16 D_80092876;
-extern unk13f20s D_8004CCB0[];
-extern s32 D_80086C2C;
-extern f32 D_80086C30;
-extern f32 D_80086C34;
-
-extern u8 D_8004C460[];
 extern u8 D_8007C570[];
 extern u8 D_8007C574[];
+extern u8 D_8004C460[];
 extern u8 D_8007C970[];
+extern s32 D_80086A00; //gNumMapSpirits
+extern Spirit D_80086A08[];
 extern u8* gItemNamePtrs[]; //array of pointers to item names
-extern u8 D_800869F8;
-extern u8 D_800869D8[];
-extern f32 D_80071428;
-extern f32 D_8007142C;
 
 void func_800121B0(u16 arg0);
-void func_800120C0(s32 arg0);
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80011B40.s")
 void func_80011B40(void) {
@@ -151,6 +114,7 @@ void func_800121B0(u16 arg0) {
     temp_v1 = &D_800869D8[arg0 >> 3];
     *temp_v1 |= D_8004D740[arg0 & 7];
 }
+
 //#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_800121F0.s")
 void func_800121F0(void) {
     s32 i;
@@ -162,7 +126,7 @@ void func_800121F0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012220.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")//!TODO make sure coordinates is correct here.
+//#pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012358.s")
 Spirit* func_80012358(unk12358s* arg0) {
     
     Spirit* var_s0;
@@ -176,7 +140,7 @@ Spirit* func_80012358(unk12358s* arg0) {
 
     var_s1 = D_80086A00;
     sp5C = NULL;
-    var_s0 = &D_80086A08;
+    var_s0 = D_80086A08;
     while (var_s1 != 0) {
         if ((var_s0->pickedUp == 0)){
             temp_f0 = var_s0->x - arg0->unk0;
@@ -222,7 +186,6 @@ void func_80012740(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80012BE0.s")
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013008.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013698.s")
@@ -231,7 +194,6 @@ void func_80012740(u16 arg0) {
 void func_80013A14(s32 arg0) {
 
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013A20.s")
 
@@ -247,12 +209,6 @@ void func_80013D30(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013DE0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013F20.s")
-//void func_80013F20(s32 arg0) {
-//
-//    D_80086C2C = 0xF;
-//    D_80086C30 = D_8004CCB0[arg0].unk0;
-//    D_80086C34 = D_8004CCB0[arg0].unk4;
-//}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/12740/func_80013F5C.s")
 
@@ -265,8 +221,8 @@ void func_800143C0(s32 arg0) {
     D_80086EE0.unk4 = 0xF;
     D_80086EE0.unk8 = (s32) D_80086DC0.unk0;
     D_80086EE0.unkC = (u16) D_80086DC0.unk8;
-    D_80086EE0.unk14 = D_80071428;
-    D_80086EE0.unk18 = (f32) D_8007142C;
+    D_80086EE0.unk14 = 0.005f;
+    D_80086EE0.unk18 = (f32) 0.9f;
     D_80086DC0.unk0 = 5;
     D_80086DC0.unk54 = (f32) D_80086EE0.unk10;
     
