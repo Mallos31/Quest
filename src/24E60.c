@@ -27,7 +27,7 @@ void dma_write(u8* devAddr, void* vaddr, u32 nbytes) {
 }
 
 
-s32 int_to_str_with_flags(s32 value, u8 *str_ptr, u16 flags) //matched by a mysterious stranger. 
+s32 count_digits(s32 value, u8 *str_ptr, u16 flags) //matched by a mysterious stranger. 
 {
   u32 char_count;
   s32 continue_loop;

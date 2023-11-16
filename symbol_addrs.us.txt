@@ -42,7 +42,7 @@ getRandomNumber           = 0x80022FD0;
 calc_arctan_in_radians    = 0x80023028;
 rotateCoordinatesByAngle  = 0x800232F4;
 dma_write                 = 0x80024260;
-int_to_str_with_flags     = 0x80024330;
+count_digits              = 0x80024330;
 
 InitializeSoundData       = 0x800265F0;
 UpdateBGM                 = 0x800267B8;

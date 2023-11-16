@@ -94,27 +94,6 @@ typedef struct {
 }BattleFence;
 
 typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-}test3;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-}unk800DA828s;
-
-typedef struct {
-    Vec3f* unk0;
-    char unk4[0x8];
-    u16 unkC;
-    char unkE[0xE];   
-}unk80087408s;
-
-typedef struct {
 /*0x00*/ Vec3f* targetPos;
 /*0x04*/ u8 damageDigits[8];
 /*0x0C*/ u16 damageDisplayTimer;
@@ -122,7 +101,7 @@ typedef struct {
 /*0x10*/ s32 unk10;
 /*0x14*/ s32 numDigits;
 /*0x18*/ s32 unk18;    
-}DamageDigs;
+}DamageDigs; // size = 0x1C
 
 
 /*for smoke and particles*/
@@ -147,26 +126,19 @@ extern unkSmoke2 D_80087250[];
 extern unkSmoke2 D_80087310[];
 
 
-extern DamageDigs D_800873D0[];
-extern u16 D_800873DC;
-extern s32 D_800873EC;
-extern u16 D_800873F8;
-extern unk80087408s D_80087408[];
-
+extern DamageDigs D_800873D0[10];
 
 extern BattleFence D_800880A8[];
 extern unk18684s D_80087210;
 extern unk19324s D_800874E8;
 extern unk1a238s D_800875A8;
-extern test3 D_800EB9EC[];
-extern unk800DA828s D_800DA828[]; //updates when enemy defeated. 
-extern void* D_800CB4E0[];
 
 
 void func_80018684(void);
 void func_80019324(void);
 void func_8001A238(void);
 void func_800188C4(void);
+void func_80018DF4(Vec3f* arg0, s32 arg1, s32 arg2);
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800185F0.s")
 void func_800185F0(void) {
@@ -239,7 +211,37 @@ void func_800188C4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DB4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DF4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DF4.s")//thanks to Chippy for the help. 
+void func_80018DF4(Vec3f* arg0, s32 arg1, s32 arg2) {
+    s32 pad[2];
+    DamageDigs* var_t0;
+    s32 var_v1;
+    s32 i;
+
+    i = 9;
+    var_t0 = D_800873D0;
+        while ((i != 0) && (var_t0->damageDisplayTimer != 0)){
+            i--;
+            var_t0++;
+        }
+    var_t0->damageDisplayTimer = 0x2D;
+    var_t0->targetPos = arg0;
+    var_t0->unk10 = arg1;
+    
+    if (arg2 < 0) {
+        arg2 = -arg2;
+    }
+
+    var_t0->numDigits = count_digits(arg2, var_t0->damageDigits, 1U);
+    var_v1 = 0;
+    
+    for(i = 0; i < 10; i++) {
+        if((D_800873D0[i].damageDisplayTimer != 0) && (arg0 == D_800873D0[i].targetPos)){
+            var_v1++;
+        } 
+    }
+    var_t0->unk18 = var_v1 - 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018F60.s")
 
