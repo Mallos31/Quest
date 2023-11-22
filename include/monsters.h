@@ -46,7 +46,10 @@ typedef struct {
 /*0x00*/ u16  unk0;
 /*0x02*/ char unk2[0x10];
 /*0x12*/ u8 status[7];
-/*0x19*/ char unk19[0x2B];
+/*0x19*/ char unk19[0x9];
+/*0x22*/ u8 unk22[4]; //not final size
+/*0x26*/ char unk26[0xC];
+/*0x32*/ s8 unk32[0x12];
 /*0x44*/ UnknownMonsterData3* unk44[4];
 /*0x54*/ char unk54[0x32];
 /*0x86*/ u16 unk86;

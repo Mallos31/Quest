@@ -121,7 +121,7 @@ extern u8 D_D3BE40; //phys inventory palette
 extern funcTypedef gCheckItemUsableFuncs[];
 
 /*move to other headers*/
-void func_800177F8(u16 arg0, u16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, void* arg6, void* arg7, void* arg8);
+s32 func_800177F8(u16 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, void* arg6, void* arg7, void* arg8);
 void func_80018DF4(s32 arg0, s32 arg1, s32 arg2);
 void func_800268D4(u8 arg0, s8 arg1, u8 arg2);
 
@@ -170,6 +170,7 @@ s32 CheckIfInventoryFull(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021240.s")
+
 
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/inventory/AddItemToInventory.s")

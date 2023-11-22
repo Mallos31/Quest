@@ -79,6 +79,31 @@ typedef struct temp2 {
 /* 0x20 */ char unk_20[0x64];
 } temp2; //NPC struct. 
 
+typedef struct STRUCT_D_803A8DD8 {
+    char unk00[10];
+} STRUCT_D_803A8DD8;
+
+typedef struct VEC4_MEM {
+    float unk0;
+    float unk4;
+    float unk8;
+    float unkC;
+} VEC4_MEM;
+
+typedef struct STRUCT_803A8E0C {
+    s16 unk0;
+    s16 unk2;
+    u16 unk4;
+    float unk8;
+    float unkC;
+} STRUCT_803A8E0C;
+
+extern STRUCT_803A8E0C D_803A8E0C[];
+
+VEC4_MEM D_8008C748;
+
+extern STRUCT_D_803A8DD8 D_803A8DD8[];
+
 extern sPlayerAction D_8007BAB8;
 
 extern s32 D_8007BA74;
@@ -98,6 +123,8 @@ extern s32 D_8008C65C; //number of lines to draw from top to bottom (HUD)
 extern MissIcon gMISSData;
 extern u8 gBattleStatusPal[]; //Status icons palette
 extern unk20e2cs D_803A6F70; //pointers to status icons and text
+extern unk20e2cs D_803A6F60;
+extern unk20e2cs gTex_HUD_and_Menu;
 extern u8 gAlphaNumerics[]; //0-9, punctuation, and capital letters
 extern u8 gAlphaNumericTexture[]; //texture corresponds perfectly with gAlphaNumerics
 extern void* D_803A6FB0[]; //array of palettes
@@ -105,11 +132,9 @@ extern unk203d0s* D_8007D088;
 extern s32 *D_8007D0AC;
 extern u8 D_80399AB0[];
 extern u8 D_8039D990[];
-extern unk20e2cs D_803A6F60;
 extern f64 D_800716C0; //.rodata value 4075E00000000000 or 350.0 
 extern EnemyAction D_8007C998[]; //enemy action data
 extern Gfx gDL_StaffIcon[]; //Staff icon DL
-extern unk20e2cs gTex_HUD_and_Menu;
 extern s32 D_8007B2F8;
 extern f32 D_80086DEC;
 extern s32 gHUDResolutionX;
@@ -140,8 +165,12 @@ extern s32 D_80086F10;
 extern s32 D_8008C660;
 extern s32 D_8008C664;
 extern u8 D_803A6FC0[];
+extern u16 D_8004D2CC[];
+extern u16 D_8004D2DC[];
 
+s32 func_800177F8(u16 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, void* arg6, void* arg7, void* arg8);
 s32 func_8002413C(f32 arg0, f32 arg1, f32 arg2, s32 *arg3, s32 *arg4); //from camera.c (soon to be quest_math.c)
+void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3);
 
 void HUDInit(void);
 
@@ -420,7 +449,38 @@ void func_8001FB94(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FCF8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FCF8.s") //matched by 1superchip
+void func_8001FCF8(MonsterBattleData* arg0, u16 arg1, u16 arg2, s16 arg3) {
+    u32 i = 0;
+    UnknownMonsterData2* t2 = arg0->unk68;
+    for(i = 0; i < 7; i++) {
+        if (D_8004D2CC[i] & arg1) {
+            t2->status[i] = arg2;
+            t2->unk22[i] = arg3;
+            break;
+        }
+    }
+    for(i = 0; i < 4; i++) {
+        f32 fv0;
+        void* p;
+        u16 temp;
+        if ((D_8004D2DC[i] & arg1) && (t2->unk44[i] == 0)) {
+            t2->unk32[i] = arg3;
+            D_8008C748.unk0 = D_803A8E0C[arg2].unk8;
+            D_8008C748.unk4 = D_803A8E0C[arg2].unkC;
+            D_8008C748.unk8 = 1.0f;
+            p = &D_803A8DD8[D_803A8E0C[arg2].unk0];
+            if (arg0->unk64->monsterType == FLYING) {
+                fv0 = (D_803A8E0C[arg2].unk4 & 0x100) ? arg0->unk68->unk94 : arg0->unk68->unk94 - (arg0->unk64->hitboxHeight * arg0->scale);
+            } else {
+                fv0 = (D_803A8E0C[arg2].unk4 & 0x100) ? (f32)(arg0->pos.y + (arg0->unk64->hitboxWidth * 0.5 * arg0->scale)) : arg0->pos.y;
+            }
+            t2->unk44[i] = 
+                func_800177F8(D_803A8E0C[arg2].unk2, D_803A8E0C[arg2].unk4, arg0->pos.x, fv0, arg0->pos.z, 0.0f, p, &D_8008C748, (void*)arg0);
+            return;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/hud/func_8001FEEC.s")
 
@@ -599,10 +659,7 @@ void Draw_MISS_Icon(void)
   }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020B4C.s")
-
-/*This DOES match, I just have to fix a ton of errors in other functions to make it work.*/
-#ifdef NON_MATCHING
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020B4C.s")
 void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
     u32 i;
     
@@ -642,7 +699,7 @@ void func_80020B4C(temp4* arg0, s32 arg1, s32 arg2, u8* arg3) {
         arg3++;
     }
 }
-#endif
+
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020D18.s")
 s32 func_80020D18(u8* arg0) {
@@ -704,8 +761,8 @@ void func_80020E2C(unk20e2cs* arg0, s32 s, s32 t, s32 lrx, s32 lry) {
     gDPSetTileSize(gMasterGfxPos++, G_TX_RENDERTILE, s * 4, t * 4, (s + lrx) * 4, (t + lry) * 4);
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020F8C.s")
-void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy)
+//#pragma GLOBAL_ASM("asm/nonmatchings/hud/func_80020F8C.s") 
+void func_80020F8C(s32 ulx, s32 uly, s32 lrx, s32 lry, s32 s, s32 t, s32 dsdx, s32 dtdy) //!TODO Get rid of dummy label if possible! 
 {
   ulx += gHUDResolutionX;
   lrx += ulx;
